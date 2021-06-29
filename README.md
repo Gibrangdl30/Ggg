@@ -1,29 +1,25 @@
-# README #
+cordova build android --prod --release
 
-This README would normally document whatever steps are necessary to get your application up and running.
+keytool -genkey -v -keystore jocose-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias jocose-key
+ /Users/alonso/Library/Android/sdk/build-tools/27.0.3/zipalign -v -p 4 app-release-unsigned.apk app-zip.apk
+ /Users/alonso/Library/Android/sdk/build-tools/27.0.3/apksigner sign --ks jocose-key.jks --out jocose.apk app-zip.apk
 
-### What is this repository for? ###
+nuevo modulo de chat para servicio en proceso
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+remplazar UIApplication.openSettingsURLString por UIApplicationOpenSettingsURLString
+en platforms/ios/Proyecto/Plugins/.....qrscaneer/.....swift
 
-### How do I get set up? ###
+For Android 
+cordova plugin rm cordova-plugin-keyboard 
+cordova plugin add cordova-plugin-ionic-keyboard
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+For ios
+cordova plugin rm cordova-plugin-ionic-keyboard 
+cordova plugin add cordova-plugin-keyboard 
 
-### Contribution guidelines ###
+2132.96
+426.59
 
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+4947
+132*20
+2640
