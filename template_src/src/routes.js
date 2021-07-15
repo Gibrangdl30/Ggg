@@ -5,6 +5,7 @@ import push from './assets/pages/push.vue';
 import login from './assets/pages/login.vue';
 import recuperar_password from './assets/pages/recuperar_password.vue';
 import registro from './assets/pages/registro.vue';
+import registro_nuevo from './assets/pages/registro_nuevo.vue';
 import registro_paypal from './assets/pages/registro_paypal.vue';
 import registro_metodo_pago from './assets/pages/registro_metodo_pago.vue';
 import menu from './assets/pages/menu.vue';
@@ -12,27 +13,6 @@ import preguntas_frecuentes from './assets/pages/preguntas_frecuentes.vue';
 import preguntas_frecuentes_afiliado from './assets/pages/preguntas_frecuentes_afiliado.vue';
 import politica_cancelacion from './assets/pages/politica_cancelacion.vue';
 import politica_cancelacion_afiliado from './assets/pages/politica_cancelacion_afiliado.vue';
-
-//pacientes
-import pacientes_desactivados from './assets/pages/pacientes/pacientes_desactivados.vue';
-import registro_paciente from './assets/pages/pacientes/registro_paciente.vue';
-import paciente_detalle from './assets/pages/pacientes/paciente_detalle.vue';
-import paciente_hospital from './assets/pages/pacientes/paciente_hospital.vue';
-import editar_paciente from './assets/pages/pacientes/editar_paciente.vue';
-import editar_payer from './assets/pages/pacientes/editar_payer.vue';
-import editar_other from './assets/pages/pacientes/editar_other.vue';
-import editar_careproviders from './assets/pages/pacientes/editar_careproviders.vue';
-import editar_pharmacy from './assets/pages/pacientes/editar_pharmacy.vue';
-import editar_facilities from './assets/pages/pacientes/editar_facilities.vue';
-import paciente_contactos from './assets/pages/pacientes/paciente_contactos.vue';
-import agregar_contacto from './assets/pages/pacientes/agregar_contacto.vue';
-import editar_contacts from './assets/pages/pacientes/editar_contacts.vue';
-import paciente_diagnosticos from './assets/pages/pacientes/paciente_diagnosticos.vue';
-import agregar_diagnostico from './assets/pages/pacientes/agregar_diagnostico.vue';
-import editar_diagnostico from './assets/pages/pacientes/editar_diagnostico.vue';
-import editar_directive from './assets/pages/pacientes/editar_directive.vue';
-import editar_misscellanous from './assets/pages/pacientes/editar_misscellanous.vue';
-
 
 //usuario
 import notificaciones from './assets/pages/usuario/notificaciones.vue';
@@ -48,7 +28,6 @@ import carrito from './assets/pages/usuario/carrito.vue';
 import confirmacion_carrito from './assets/pages/usuario/confirmacion_carrito.vue';
 import mis_domicilios from './assets/pages/usuario/mis_domicilios.vue';
 import nuevo_domicilio from './assets/pages/usuario/nuevo_domicilio.vue';
-import eventos from './assets/pages/usuario/eventos.vue';
 import nuevo_evento_calendario from './assets/pages/usuario/nuevo_evento_calendario.vue';
 import agregar_usuarios_eventos from './assets/pages/usuario/agregar_usuarios_eventos.vue';
 import regalos_eventos from './assets/pages/usuario/regalos_eventos.vue';
@@ -69,8 +48,6 @@ import nuevos_amigos from './assets/pages/usuario/nuevos_amigos.vue';
 import enviar_invitacion from './assets/pages/usuario/enviar_invitacion.vue';
 import misReuniones from './assets/pages/usuario/misReuniones.vue';
 import misPartys from './assets/pages/usuario/misPartys.vue';
-import detalle_eventos from './assets/pages/usuario/detalle_eventos.vue';
-import editar_evento_calendario from './assets/pages/usuario/editar_evento_calendario.vue';
 import deseos_amigos from './assets/pages/usuario/deseos_amigos.vue';
 import deseos_fechas_amigos from './assets/pages/usuario/deseos_fechas_amigos.vue';
 import deseos_amigo from './assets/pages/usuario/deseos_amigo.vue';
@@ -88,9 +65,53 @@ import nuevo_metodo_pago from './assets/pages/usuario/nuevo_metodo_pago.vue';
 import historial_viajes from './assets/pages/usuario/historial_viajes.vue';
 
 //usuario
-import inicio_chofer from './assets/pages/chofer/inicio_chofer.vue';
-import historial_chofer from './assets/pages/chofer/historial_chofer.vue';
-import servicio_chofer from './assets/pages/chofer/servicio_chofer.vue';
+import comunicados from './assets/pages/usuario/comunicados/comunicados.vue';
+import detalle_comunicado from './assets/pages/usuario/comunicados/detalle_comunicado.vue';
+
+import eventos from './assets/pages/usuario/eventos/eventos.vue';
+import detalle_eventos from './assets/pages/usuario/eventos/detalle_eventos.vue';
+import editar_evento_calendario from './assets/pages/usuario/eventos/editar_evento_calendario.vue';
+import usuarios_confianza_eventos from './assets/pages/usuario/eventos/usuarios_confianza_eventos.vue';
+
+import rutas from './assets/pages/usuario/rutas/rutas.vue';
+import detalle_ruta from './assets/pages/usuario/rutas/detalle_ruta.vue';
+
+//faltas
+import agendar_faltas from './assets/pages/usuario/faltas/agendar_faltas.vue';
+import historial_faltas from './assets/pages/usuario/faltas/historial_faltas.vue';
+import quejas_usuario from './assets/pages/usuario/faltas/quejas_usuario.vue';
+
+//personas
+import personas_confianza from './assets/pages/usuario/personas/personas_confianza.vue';
+import hijos_usuario from './assets/pages/usuario/personas/hijos_usuario.vue';
+import agregar_persona_confianza from './assets/pages/usuario/personas/agregar_persona_confianza.vue';
+import editar_persona_confianza from './assets/pages/usuario/personas/editar_persona_confianza.vue';
+
+import reportes_hijos from './assets/pages/usuario/reportes/reportes_hijos.vue';
+import detalle_reporte from './assets/pages/usuario/reportes/detalle_reporte.vue';
+
+import rondas from './assets/pages/usuario/rondas/rondas.vue';
+import crear_ronda from './assets/pages/usuario/rondas/crear_ronda.vue';
+import seleccionar_padres_rondas from './assets/pages/usuario/rondas/seleccionar_padres_rondas.vue';
+
+import servicio_usuario from './assets/pages/usuario/recolecciones/servicio_usuario.vue';
+
+
+//COOR
+import inicio_coor from './assets/pages/coor/inicio_coor.vue';
+import grados_coor from './assets/pages/coor/grados_coor.vue';
+import grupos_coor from './assets/pages/coor/grupos_coor.vue';
+import alumnos_coor from './assets/pages/coor/alumnos_coor.vue';
+import agregar_acceso_terceros from './assets/pages/coor/agregar_acceso_terceros.vue';
+import salidas_coor from './assets/pages/coor/salidas_coor.vue';
+import ingresos_coor from './assets/pages/coor/ingresos_coor.vue';
+
+
+//maestros
+import inicio_maestro from './assets/pages/maestros/inicio_maestro.vue';
+import grupos_maestro from './assets/pages/maestros/grupos_maestro.vue';
+import alumnos_maestro from './assets/pages/maestros/alumnos_maestro.vue';
+
 
 import chats from './assets/pages/chats.vue';
 import mensajes_chat from './assets/pages/mensajes_chat.vue';
@@ -127,6 +148,7 @@ export default [
   {path: '/login',component: login,},
   {path: '/recuperar_password',component: recuperar_password,},
   {path: '/registro',component: registro,},
+  {path: '/registro_nuevo',component: registro_nuevo,},
   {path: '/registro_paypal',component: registro_paypal,},
   {path: '/registro_metodo_pago',component: registro_metodo_pago,},
   {path: '/menu',component: menu,},
@@ -134,26 +156,6 @@ export default [
   {path: '/preguntas_frecuentes_afiliado',component: preguntas_frecuentes_afiliado,},
   {path: '/politica_cancelacion',component: politica_cancelacion,},
   {path: '/politica_cancelacion_afiliado',component: politica_cancelacion_afiliado,},
-
-  //pacientes
-  {path: '/pacientes_desactivados',component: pacientes_desactivados},
-  {path: '/registro_paciente',component: registro_paciente},
-  {path: '/paciente_detalle',component: paciente_detalle},
-  {path: '/paciente_hospital',component: paciente_hospital},
-  {path: '/editar_paciente',component: editar_paciente},
-  {path: '/editar_payer',component: editar_payer},
-  {path: '/editar_other',component: editar_other},
-  {path: '/editar_careproviders',component: editar_careproviders},
-  {path: '/editar_pharmacy',component: editar_pharmacy},
-  {path: '/editar_facilities',component: editar_facilities},
-  {path: '/paciente_contactos',component: paciente_contactos},
-  {path: '/agregar_contacto',component: agregar_contacto},
-  {path: '/editar_contacts',component: editar_contacts},
-  {path: '/paciente_diagnosticos',component: paciente_diagnosticos},
-  {path: '/agregar_diagnostico',component: agregar_diagnostico},
-  {path: '/editar_diagnostico',component: editar_diagnostico},
-  {path: '/editar_directive',component: editar_directive},
-  {path: '/editar_misscellanous',component: editar_misscellanous},
 
   //User
   {path: '/inicio',component: inicio},
@@ -192,6 +194,9 @@ export default [
   {path: '/misPartys',component: misPartys},
   {path: '/detalle_eventos',component: detalle_eventos},
   {path: '/editar_evento_calendario',component: editar_evento_calendario},
+  {path: '/usuarios_confianza_eventos',component: usuarios_confianza_eventos},
+
+  
   {path: '/deseos_fechas_amigos',component: deseos_fechas_amigos},
   {path: '/deseos_amigos',component: deseos_amigos},
   {path: '/deseos_amigo',component: deseos_amigo},
@@ -209,9 +214,43 @@ export default [
   {path: '/historial_viajes',component: historial_viajes},
 
   //CHOFER
-  {path: '/inicio_chofer',component: inicio_chofer},
-  {path: '/historial_chofer',component: historial_chofer},
-  {path: '/servicio_chofer',component: servicio_chofer},
+  {path: '/comunicados',component: comunicados},
+  {path: '/detalle_comunicado',component: detalle_comunicado},
+
+  {path: '/rutas',component: rutas},
+  {path: '/detalle_ruta',component: detalle_ruta},
+
+  {path: '/agendar_faltas',component: agendar_faltas},
+  {path: '/historial_faltas',component: historial_faltas},
+  {path: '/quejas_usuario',component: quejas_usuario},
+
+  {path: '/personas_confianza',component: personas_confianza},
+  {path: '/hijos_usuario',component: hijos_usuario},
+  {path: '/agregar_persona_confianza',component: agregar_persona_confianza},
+  {path: '/editar_persona_confianza',component: editar_persona_confianza},
+
+  {path: '/reportes_hijos',component: reportes_hijos},
+  {path: '/detalle_reporte',component: detalle_reporte},
+
+  {path: '/rondas',component: rondas},
+  {path: '/crear_ronda',component: crear_ronda},
+  {path: '/seleccionar_padres_rondas',component: seleccionar_padres_rondas},
+
+  {path: '/servicio_usuario',component: servicio_usuario},
+
+
+  {path: '/inicio_coor',component: inicio_coor},
+  {path: '/grados_coor',component: grados_coor},
+  {path: '/grupos_coor',component: grupos_coor},
+  {path: '/alumnos_coor',component: alumnos_coor},
+  {path: '/agregar_acceso_terceros',component: agregar_acceso_terceros},
+  {path: '/salidas_coor',component: salidas_coor},
+  {path: '/ingresos_coor',component: ingresos_coor},
+
+
+  {path: '/inicio_maestro',component: inicio_maestro},
+  {path: '/grupos_maestro',component: grupos_maestro},
+  {path: '/alumnos_maestro',component: alumnos_maestro},
 
   {path: '/mi_cuenta',component: mi_cuenta,},
   {path: '/editar_perfil_profesional',component: editar_perfil_profesional,},

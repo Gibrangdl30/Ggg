@@ -41,7 +41,7 @@
     <div class="col-12 my-auto p-0" v-else-if="password" >
         <p :class="`letra-${textcolor?textcolor:'gray3'}-4-1vw m-0 mb-1 pl-1`" v-if="texto">{{texto}}</p>
         <div class="row w-100 m-0 position-relative">
-            <div class="w-auto position-absolute top-6px right-5px z-200" @click="ver = !ver">
+            <div class="w-auto position-absolute top-9px right-5px z-200" @click="ver = !ver">
                 <icono icono="visibility" :clase="`letra-${ver?'rojo2':'gray3'}-26`" />
             </div>
             <input :id="id" :type="ver?'text':'password'" :class="`${input?input:'regular'}-input w-100 m-0 ${password?'pr-26px':''} ${clase?clase:''}`" 
@@ -91,7 +91,6 @@ export default {
             year: null,
             inicio: Number(moment().format('YYYY')),
             conteo: 10,
-            android: (device || {}).platform == 'Android',
         };
     },
     computed:{
@@ -102,6 +101,13 @@ export default {
                 a.push({numero: this.inicio + x});
             }
             return a;
+        },
+        android(){
+            // console.log("ANDORIDNG", this.$store.getters.deviceready);
+            if(this.$store.getters.deviceready){
+                return device.platform == 'Android'
+            }
+            return false;
         },
     },
     created() {
@@ -125,8 +131,10 @@ export default {
                     if(this.elemento){
                         this.focus();
                     }
-                    let numero = Number(this.id.split("_")[1])+1;
-                    this.next = document.getElementById('inputF_'+numero);
+                    if(this.id){
+                        let numero = Number(String(this.id).split("_")[1])+1;
+                        this.next = document.getElementById('inputF_'+numero);
+                    }
             },350);
     },
     methods:{

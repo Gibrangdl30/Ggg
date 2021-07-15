@@ -17,6 +17,7 @@
         <globalMsn />
         <modal-loader />
         <modalSession />
+        <modalHijosRecoleccion />
         <selectImagen />
         <photoswipe />
     </f7-app>

@@ -7,7 +7,7 @@
             <div class="row w-100 m-0 mt-5 back-color-blanco position-relative py-3 border-radius-15px">
 
                 <div class="w-auto position-absolute right-5px top-5px z-100" @click="closeModal()">
-                    <icono icono="clear" clase="letra-verde5-40" />
+                    <icono icono="clear" clase="letra-gray4-40" />
                 </div>
 
                 <div class="row w-100 m-0 py-2 pt-4">
@@ -17,7 +17,6 @@
                     <div class="row w-100 m-0 px-2">
                         <div class="row w-100 m-0 letra-gray4-20 justify-content-center text-center">{{usuario.nombre}}</div>
                         <div class="row w-100 m-0 letra-gray3-18 justify-content-center text-center">{{usuario.email}}</div>
-                        <div class="row w-100 m-0 letra-azul1-16 justify-content-center text-center">Amigos: {{usuario.amigos || 2}}</div>
                     </div>
                 </div>
             </div>

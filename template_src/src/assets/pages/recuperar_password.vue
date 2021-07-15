@@ -7,8 +7,8 @@
                     <imagen clase="my-auto" :logo="true"  />
                 </div>
             </div>
-            <div class="row w-100 m-0 mt-3">
-                <div class="col-12 letra-gray-light-4-4vw mb-3 pl-3 text-center">Enter your email and we will send you the instructions to recover your password</div>
+            <div class="row w-100 m-0 mt-4">
+                <div class="col-10 mx-auto letra-gray3-18 mb-3 pl-3 text-center">Ingresa tu correo y te enviaremos instrucciones para recuperarla.</div>
                 <div class="col-12 my-auto">
                     <p class="letra-gray-light-3-8vw m-0 mb-2 pl-1">Email</p>
                     <input type="email" class="regular-input w-100 m-0" placeholder="" v-model="form.email">
@@ -16,7 +16,7 @@
             </div>
             <div class="row w-100 m-0 justify-content-center mt-5 pt-2">
                 <div class="col-12">
-                    <botonApp @click="post()" tipo="rojo" texto="Send" radius="30px" />
+                    <botonApp @click="post()" tipo="verde" texto="Enviar" radius="30px" />
                 </div>
             </div>
         </div>

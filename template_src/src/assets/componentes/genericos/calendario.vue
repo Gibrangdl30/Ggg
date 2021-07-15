@@ -7,11 +7,11 @@
                         <div class="row w-100 m-0 mb-2">
                             <div class="row w-100 m-0">
                                  <div class="col-auto my-auto pl-0 pr-2" @click="lastMonth()">
-                                    <icono icono="chevron_left" clase="letra-azul1-45" />
+                                    <icono icono="chevron_left" clase="letra-verde-45" />
                                 </div>
-                                <div class="col my-auto px-0 text-center letra-azul1-21 fw-800">{{mes.mes}} {{year}}</div>
+                                <div class="col my-auto px-0 text-center letra-gray4-21 fw-800">{{mes.mes}} {{year}}</div>
                                 <div class="col-auto my-auto pl-0 pr-2" @click="nextMonth()">
-                                    <icono icono="chevron_right" clase="letra-azul1-45" />
+                                    <icono icono="chevron_right" clase="letra-verde-45" />
                                 </div>
                             </div>
                         </div>
@@ -26,9 +26,9 @@
                                     <div class="w-14 my-auto " v-for="d of predias" :key="d.id">
                                         <div class="row w-100 m-0 justify-content-center border-radius-30px letra-blanco-17 py-9px" >{{dia}}</div>
                                     </div>
-                                    <div class="w-14 my-auto position-relative" v-for="d of dias" :key="d.dia" @click="dia = d.dia, set(); " :class="(dia == d.dia)?'back-color-azul1':''">
-                                        <div class="row w-100 m-0  justify-content-center  border-radius-30px"
-                                        :class="(dia == d.dia)?'letra-blanco-17 fw-800 border-app-3 py-6px':'letra-gray3-17 py-9px'" >{{d.dia}}</div>
+                                    <div class="w-14 my-auto px-8px position-relative" v-for="d of dias" :key="d.dia" @click="dia = d.dia, set(); " :class="(dia == d.dia)?'':''">
+                                        <div class="row w-100 m-0 justify-content-center border-radius-30px "
+                                        :class="(dia == d.dia)?'back-color-verde letra-blanco-17 fw-800 py-6px':'letra-gray3-17 py-9px'" >{{d.dia}}</div>
 
                                         <div class="w-12px h-12px back-color-rojo border-radius-50 position-absolute top-3px right-3px" v-if=" evento(d.dia) "></div>
                                     </div>

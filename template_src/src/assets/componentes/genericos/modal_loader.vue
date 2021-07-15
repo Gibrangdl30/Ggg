@@ -73,27 +73,27 @@ export default {
   .lds-ellipsis div:nth-child(1) div {
     -webkit-animation: lds-ellipsis2 1.3s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
     animation: lds-ellipsis2 1.3s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
-    background: #262a65;
+    background: #00c8a3;
   }
   .lds-ellipsis div:nth-child(2) div {
     -webkit-animation-delay: -0.65s;
     animation-delay: -0.65s;
-    background: #262a65;
+    background: #00c8a3;
   }
   .lds-ellipsis div:nth-child(3) div {
     -webkit-animation-delay: -0.325s;
     animation-delay: -0.325s;
-    background: #262a65;
+    background: #00c8a3;
   }
   .lds-ellipsis div:nth-child(4) div {
     -webkit-animation-delay: 0s;
     animation-delay: 0s;
-    background: #262a65;
+    background: #00c8a3;
   }
   .lds-ellipsis div:nth-child(5) div {
     -webkit-animation: lds-ellipsis3 1.3s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
     animation: lds-ellipsis3 1.3s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
-    background: #262a65;
+    background: #00c8a3;
   }
   .lds-ellipsis {
     width: 65px !important;

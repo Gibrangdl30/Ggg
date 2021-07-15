@@ -1,8 +1,8 @@
 cordova build android --prod --release
 
-keytool -genkey -v -keystore jocose-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias jocose-key
+keytool -genkey -v -keystore axit-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias axit-key
  /Users/alonso/Library/Android/sdk/build-tools/27.0.3/zipalign -v -p 4 app-release-unsigned.apk app-zip.apk
- /Users/alonso/Library/Android/sdk/build-tools/27.0.3/apksigner sign --ks jocose-key.jks --out jocose.apk app-zip.apk
+ /Users/alonso/Library/Android/sdk/build-tools/27.0.3/apksigner sign --ks axit-key.jks --out axit.apk app-zip.apk
 
 nuevo modulo de chat para servicio en proceso
 
@@ -23,3 +23,9 @@ cordova plugin add cordova-plugin-keyboard
 4947
 132*20
 2640
+
+
+1500x2415
+500x800
+
+e10adc3949ba59abbe56e057f20f883e

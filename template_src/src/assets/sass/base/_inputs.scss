@@ -56,7 +56,7 @@ input.buscar
     text-align: start !important;
     &::placeholder{
         font-size: 15px !important;
-        color: #717171;
+        color: #00c8a3;
         font-style: normal !important;
         text-align: start !important;
     }
@@ -68,7 +68,7 @@ input.buscar
     padding: 10px !important;
     border-radius: 0px !important;
     &:focus {
-        border-bottom: 1px solid #004445 !important;
+        border-bottom: 1px solid #00c8a3 !important;
     }
     &::placeholder{
         color: #b6b6b6;
@@ -81,7 +81,7 @@ input.buscar
     padding: 10px !important;
     border-radius: 0px !important;
     &:focus {
-        border-bottom: 1px solid white !important;
+        border-bottom: 1px solid #00c8a3 !important;
     }
     &::placeholder{
         color: #b6b6b6;
@@ -91,9 +91,9 @@ input.buscar
     border: 1px solid #adadad !important;
     background-color: white !important;
     padding: 10px !important;
-    border-radius: 15px !important;
+    border-radius: 30px !important;
     &:focus {
-        border: 1px solid #7bbf50 !important;
+        border: 1px solid #00c8a3 !important;
     }
     &::placeholder{
         color: #b6b6b6;
@@ -126,7 +126,7 @@ input.buscar
     padding: 10px !important;
     border-radius: 5px !important;
     &:focus {
-        border: 1px solid #7bbf50 !important;
+        border: 1px solid #00c8a3 !important;
     }
     &::placeholder{
         color: #b6b6b6;
@@ -140,7 +140,7 @@ input.buscar
     color: white !important;
     &:focus{
         color: white !important;
-        border-bottom: 1px solid white !important;
+        border-bottom: 1px solid #00c8a3 !important;
     }
     &::placeholder{
         color: white !important;

@@ -38,11 +38,11 @@
 }
 
 input:checked + .slider {
-  background-color:  #90cf00;
+  background-color:  #00c8a3;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px  #90cf00;
+  box-shadow: 0 0 1px  #00c8a3;
 }
 
 input:checked + .slider:before {
@@ -59,7 +59,9 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
 </style>
+
 <template>
 <div class="row w-100 m-0">
     <label class="switch m-0">
@@ -69,20 +71,24 @@ input:checked + .slider:before {
     </label>
 </div>
 </template>
+
 <script>
+
 export default {
-    data()
-    {
+    data(){
         return {
         };
     },
-    props:  [    
-              'value',
-              'check',
-              'checked',
-              'v',
-              'f',
-            ],
+
+    props:[    
+      'auto',
+      'value',
+      'check',
+      'checked',
+      'v',
+      'f',
+    ],
+
     computed:{
     },
     methods:{

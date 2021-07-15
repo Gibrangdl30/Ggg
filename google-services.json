@@ -116,6 +116,42 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:80519246540:android:1a1d0b2254aaee0cc1c869",
+        "android_client_info": {
+          "package_name": "com.axit.axit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "80519246540-dpp9h9k603u6t0qvm6fe58f01hrcto3j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqLbJ9gUEODv47380-yTx3ZFvL5iMir5A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "80519246540-dpp9h9k603u6t0qvm6fe58f01hrcto3j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "80519246540-0nou653rjr8m6ioodf4m54nqbs2l2nc7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.megabiker.riders"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:80519246540:android:762f1ebfcece82a4c1c869",
         "android_client_info": {
           "package_name": "com.baipass.baipass"
@@ -1235,6 +1271,42 @@
         "mobilesdk_app_id": "1:80519246540:android:d1c8e9f037c0b127",
         "android_client_info": {
           "package_name": "com.sustam.secapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "80519246540-dpp9h9k603u6t0qvm6fe58f01hrcto3j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqLbJ9gUEODv47380-yTx3ZFvL5iMir5A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "80519246540-dpp9h9k603u6t0qvm6fe58f01hrcto3j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "80519246540-0nou653rjr8m6ioodf4m54nqbs2l2nc7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.megabiker.riders"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:80519246540:android:0d4f2de49894c48cc1c869",
+        "android_client_info": {
+          "package_name": "com.tequinato.tequinato"
         }
       },
       "oauth_client": [

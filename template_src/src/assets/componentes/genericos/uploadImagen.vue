@@ -7,11 +7,11 @@
         <imagen clase="object-fit url" :src="imagenUrl" v-else-if="create && value" @click="takePicture()" />
 
         <imagen :class="(padding)?padding:'p-4'" :icono="true" src="user" v-else-if="user" @click="takePicture()" />
-        <imagen :class="(padding)?padding:'p-4'" :icono="true" src="camerar" v-else @click="takePicture()" />
+        <imagen :class="(padding)?padding:'p-4'" :icono="true" src="camera" v-else @click="takePicture()" />
 
         <button class="button boton-remove" v-if="url"  @click="eliminar()">
             <div class="row justify-content-center">
-                <img src="../../iconos/clear.svg" alt="">
+                <imagen :icono="true" src="clear" alt="" />
             </div>
         </button>
     </div>
@@ -51,7 +51,12 @@ export default {
             'padding',
         ],
     computed:{
-        emulador(){return device.platform == 'browser' || device.platform == null },
+        emulador(){
+            if(this.$store.getters.deviceready){
+                return device.platform == 'browser' || device.platform == null;
+            }
+            return true;
+        },
         baseUrl(){ return this.$store.getters.baseUrl; },
         imagenUrl(){return `${this.baseUrl}img/render/${this.value}/500/500/foto.jpg`},
     },

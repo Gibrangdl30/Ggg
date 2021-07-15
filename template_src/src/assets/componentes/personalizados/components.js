@@ -1,16 +1,24 @@
 
+import comunicadoRow from './comunicadoRow.vue';
+import usuarioRow from './usuarioRow.vue';
+import hijosRow from './hijosRow.vue';
+import reportsRow from './reportsRow.vue';
+import modalHijosRecoleccion from './modalHijosRecoleccion.vue';
+import faltasRow from './faltasRow.vue';
+import recoleccionRow from './recoleccionRow.vue';
+import rutasRow from './rutasRow.vue';
+import rondasRow from './rondasRow.vue';
+import padreRow from './padreRow.vue';
+import gradosRow from './gradosRow.vue';
+import gruposRow from './gruposRow.vue';
+import modalCoorRecoleccionHijos from './modalCoorRecoleccionHijos.vue';
 
-
-import recoleccion from './recoleccion.vue';
 import sliderTransporte from './sliderTransporte.vue';
 import cardProducto from './cardProducto.vue';
 import mapaUsuario from './mapaUsuario.vue';
 import rowViaje from './rowViaje.vue';
-import mapaChofer from './mapaChofer.vue';
-import rowUsuario from './rowUsuario.vue';
 import modalCalificar from './modalCalificar.vue';
 import modalConfirmar from './modalConfirmar.vue';
-import modalAvisar from './modalAvisar.vue';
 import modalCambioDestino from './modalCambioDestino.vue';
 import modalNuevoDestino from './modalNuevoDestino.vue';
 import modalUsuario from './modalUsuario.vue';
@@ -26,18 +34,28 @@ import rowInfoPaciente from './rowInfoPaciente.vue';
 
 function plugin(Vue) {
     // PERSONALIZADOS
+    Vue.component('comunicadoRow', comunicadoRow);
+    Vue.component('usuarioRow', usuarioRow);
+    Vue.component('hijosRow', hijosRow);
+    Vue.component('reportsRow', reportsRow);
+    Vue.component('modalHijosRecoleccion', modalHijosRecoleccion);
+    Vue.component('faltasRow', faltasRow);
+    Vue.component('recoleccionRow', recoleccionRow);
+    Vue.component('rutasRow', rutasRow);
+    Vue.component('rondasRow', rondasRow);
+    Vue.component('padreRow', padreRow);
+    Vue.component('gradosRow', gradosRow);
+    Vue.component('gruposRow', gruposRow);
+    Vue.component('modalCoorRecoleccionHijos', modalCoorRecoleccionHijos);
+
     Vue.component('rowPaciente', rowPaciente);
     Vue.component('rowInfoPaciente', rowInfoPaciente);
-    Vue.component('recoleccion', recoleccion);
     Vue.component('sliderTransporte', sliderTransporte);
     Vue.component('cardProducto', cardProducto);
     Vue.component('mapaUsuario', mapaUsuario);
     Vue.component('rowViaje', rowViaje);
-    Vue.component('mapaChofer', mapaChofer);
-    Vue.component('rowUsuario', rowUsuario);
     Vue.component('modalCalificar', modalCalificar);
     Vue.component('modalConfirmar', modalConfirmar);
-    Vue.component('modalAvisar', modalAvisar);
     Vue.component('modalQr', modalQr);
     Vue.component('modalRegalo', modalRegalo);
     Vue.component('modalCambioDestino', modalCambioDestino);

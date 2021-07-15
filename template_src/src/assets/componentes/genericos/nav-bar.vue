@@ -2,7 +2,7 @@
 <div class="nav-bar-component template w-100 pt-20px">
 
     <template v-if="tipo=='init'">
-        <div class="row m-0 justify-content-space-between px-3px nav-bar nav-inicio" :class="`${no_border?'':'border-b-gray0-1'}`">
+        <div class="row m-0 justify-content-space-between px-3px nav-bar nav-inicio" :class="`${no_border?'':'border-b-gray1-1'}`">
             
             <div class="col-auto my-auto px-0 pl-3 text-left">
                 <div class="w-40px" v-if="logo">
@@ -73,7 +73,8 @@
 
 <template v-if="tipo=='inicio'">
     <div class="row m-0 justify-content-space-between px-3px nav-bar nav-inicio" :class="`${no_border?'':'border-b-gray0-1'}`">
-        <div class="w-12 boton-menu p-0" v-if="right || backs || emitBack">
+
+        <div class="w-12 boton-menu p-0">
             <template v-if="backs">
                 <button type="button" class="button button-outline button-raised button-active-gray h-100 p-2px" @click="back()">
                     <i class="f7-icons color-white letra-gray-5-5vw">chevron_left</i>
@@ -85,6 +86,7 @@
                 </button>
             </template>
         </div>
+
         <div class="w-12 boton-menu p-0" v-if="chat">
         </div>
 
@@ -108,7 +110,9 @@
             </div>
         </div>
 
-        <div class="w-12 boton-carrito h-100"  v-if="right || (backs || emitBack)" >
+        <div class="w-12 boton-carrito h-100"  v-if="fix==1"></div>
+
+        <div class="w-12 boton-carrito h-100"  v-if="right">
             <button type="button" class="button button-outline button-raised button-active-gray h-100 p-2px" @click="$emit('right')" v-if="icon">
                 <imagen :icono="true" src="scan_blanco" v-if="!icon"/>
                 <i class="material-icons letra-gray-7-5vw" v-else>{{icon}}</i>
@@ -288,6 +292,7 @@
             'tipo', 
             'routerView',
             'title', 
+            'fix', 
             'logo', 
             'texto', 
             'chat',

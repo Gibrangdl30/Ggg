@@ -4,17 +4,22 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div class="row w-100 m-0 justify-content-center">
-                        <imagen clase="" :src="imagen('op11.png')" /> 
+                        <imagen clase="" :src="imagen('1.png')" /> 
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="row w-100 m-0 justify-content-center">
-                        <imagen clase="" :src="imagen('op2.png')" /> 
+                        <imagen clase="" :src="imagen('2.png')" /> 
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="row w-100 m-0 justify-content-center">
-                        <imagen clase="" :src="imagen('op3.png')" /> 
+                        <imagen clase="" :src="imagen('4.png')" /> 
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="row w-100 m-0 justify-content-center">
+                        <imagen clase="" :src="imagen('3.png')" /> 
                     </div>
                 </div>
             </div>
@@ -26,37 +31,42 @@
             <div class="row w-100 m-0 px-3 pt-2 justify-content-space-between">
 
                 <div class="col-12 px-0 px-4" v-if="index==0" >
+                    <div class="row w-100 m-0" @click="continuar()">
+                        <div class="row w-100 m-0 pb-12px letra-gray4-18 fw-600 justify-content-center text-center ">Siguiente</div>
+                    </div>
                     <div class="row w-100 m-0" @click="goLogin()">
-                        <botonApp tipo="rojo" texto="Start"  radius="30px" />
+                        <botonApp tipo="verde" texto="Comenzar"  radius="30px" />
                     </div>
                 </div>
 
-                <div class="row w-100 m-0 px-4" v-if="index==1">
+                <div class="row w-100 m-0 px-4" v-if="index==1 || index==2">
                     <div class="row w-100 m-0">
-                        <div class="col-5 px-0"  @click="regresar()">
-                            <botonApp tipo="verde" texto="Previous"  radius="30px" />
+                        <div class="row w-100 m-0">
+                            <div class="col px-0">
+                                <div class="row w-100 m-0" @click="regresar()">
+                                    <div class="row w-100 m-0 pb-12px letra-gray4-18 fw-600 justify-content-center text-center ">Anterior</div>
+                                </div>
+                            </div>
+                            <div class="col px-0">
+                                <div class="row w-100 m-0" @click="continuar()">
+                                    <div class="row w-100 m-0 pb-12px letra-gray4-18 fw-600 justify-content-center text-center ">Siguiente</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-5 px-0 ml-auto" @click="continuar()">
-                            <botonApp tipo="verde" texto="Next"  radius="30px" />
-                        </div>
-                        <div class="col-12 px-0 pt-2" >
+                        <div class="row w-100 m-0 pt-2" >
                             <div class="row w-100 m-0" @click="goLogin()">
-                                <botonApp tipo="rojo" texto="Start"  radius="30px" />
+                                <botonApp tipo="verde" texto="Start"  radius="30px" />
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="row w-100 m-0 px-4" v-if="index==2">
-                    <div class="row w-100 m-0">
-                        <div class="col-5 px-0 mx-auto" @click="regresar()">
-                            <botonApp tipo="verde" texto="Previous"  radius="30px" />
-                        </div>
-                        <div class="col-12 px-0 pt-2" >
-                            <div class="row w-100 m-0" @click="goLogin()">
-                                <botonApp tipo="rojo" texto="Start"  radius="30px" />
-                            </div>
-                        </div>
+                <div class="row w-100 m-0 px-4" v-if="index==3">
+                    <div class="row w-100 m-0" @click="regresar()">
+                        <div class="row w-100 m-0 pb-12px letra-gray4-18 fw-600 justify-content-center text-center ">Anterior</div>
+                    </div>
+                    <div class="row w-100 m-0" @click="goLogin()">
+                        <botonApp tipo="verde" texto="Comenzar"  radius="30px" />
                     </div>
                 </div>
 

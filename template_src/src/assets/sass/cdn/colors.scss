@@ -37,7 +37,7 @@ $colors: (
 ('gray' , gray),
 (gray00 , #eeeeee),
 (gray0 , #dbdbdb),
-(gray01 , #cacaca),
+(gray01 , #adadad),
 (gray1 , #9B9B9B),
 (gray2 , #a7a6a6),
 (gray3 , #717171),
@@ -68,14 +68,14 @@ $colors: (
 (blanco, white),
 (negro, #000000),
 
-(rojo, #ff545c),
-(rojo1, #b91619),
+(rojo, #d6001d),
+(rojo1, #d6001d),
 (rojo2, #ec2024),
 
-(verde, #90cf00),
-(verde1, #498a80),
-(verde2, #2c786c),
-(verde3, #4cd77c),
+(verde, #00c8a3),
+(verde1, #008c9b),
+(verde2, #00c8a3),
+(verde3, #008c9b),
 
 );
 
@@ -99,6 +99,11 @@ $colors: (
 {
     @for $size from 1 to 50{
         .letra-#{nth($color, 1)}-#{$size}
+        {
+            color: #{nth($color, 2)} !important;
+            font-size: #{$size}px !important;
+        }  
+        .#{nth($color, 1)}-#{$size}
         {
             color: #{nth($color, 2)} !important;
             font-size: #{$size}px !important;

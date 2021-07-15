@@ -30,6 +30,7 @@ import select_form from './select-form.vue';
 import sliderHome from './sliderHome.vue';
 import banners from './banners.vue';
 import sliderFotos from './sliderFotos.vue';
+import tabsIcon from './tabsIcon.vue';
 import tabs from './tabs.vue';
 import toggle from './toggle.vue';
 import spinner from './spinner.vue';
@@ -40,6 +41,7 @@ import buscarDireccion from './buscarDireccion.vue';
 import geoResultado from './geoResultado.vue';
 import selectFecha from './selectFecha.vue';
 import modalFecha from './modalFecha.vue';
+import mapaRutaEscuela from './mapaRutaEscuela.vue';
 
 
 function plugin(Vue) {
@@ -67,6 +69,7 @@ function plugin(Vue) {
 
     Vue.component('nav-bar', nav_bar);
     Vue.component('tabs', tabs);
+    Vue.component('tabsIcon', tabsIcon);
     Vue.component('toggle', toggle);
     Vue.component('spinner', spinner);
     Vue.component('banners', banners);
@@ -85,6 +88,7 @@ function plugin(Vue) {
     Vue.component('geoResultado', geoResultado);
     Vue.component('selectFecha', selectFecha);
     Vue.component('modalFecha', modalFecha);
+    Vue.component('mapaRutaEscuela', mapaRutaEscuela);
 }
 
 export default plugin

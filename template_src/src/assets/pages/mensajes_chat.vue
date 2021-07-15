@@ -29,7 +29,7 @@
                         <inputForm type="text" placeholder="" v-model="mensaje" :disabled="false" @enter="enviarMensaje()" />
                     </div>
                     <div class="col-3 my-auto pl-0 pr-1">
-                        <botonApp tipo="rojo" @click="enviarMensaje()" texto="Send" radius="35px" />
+                        <botonApp tipo="verde" @click="enviarMensaje()" texto="Enviar" radius="35px" />
                     </div>
                 </div>
             </div>

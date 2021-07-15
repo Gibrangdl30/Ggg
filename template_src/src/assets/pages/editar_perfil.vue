@@ -2,23 +2,23 @@
     <f7-page id="inicio">
         <seleccionar-imagen :updateImg="setImg"></seleccionar-imagen>
         <div class="vista" v-vistak>
-            <nav-bar tipo="inicio" :backs="true" :title="'Edit profile'" />
+            <nav-bar tipo="inicio" :backs="true" :title="'Editar perfil'" :fix="1" />
             <div class="contenedor-page-tabs back-color-blanco">
                 <div class="row w-100 m-0">
 
                     <div class="row w-100 m-0 mt-3 px-3 justify-content-center">
                         <div class="col-auto px-0 text-center my-auto position-relative">
                             <div class="w-40vw h-40vw mx-auto border-radius-10 overflow-hidden" >
-                                <uploadImagen class="border-rojo-3 border-radius-50 overflow-hidden" :user="false" v-model="form.foto" :imagen="foto" />
+                                <uploadImagen class="border-verde-3 border-radius-50 overflow-hidden" :user="false" v-model="form.foto" :imagen="foto" />
                             </div>
                         </div>
                     </div>
 
                     <div class="col-12 mt-3">
-                        <inputForm type="text" texto="Name:" placeholder="" v-model="form.nombre" />
+                        <inputForm type="text" texto="Nombre:" placeholder="" v-model="form.nombre" />
                     </div>
                     <div class="col-12 mt-3">
-                        <inputForm type="tel" texto="Phone:" placeholder="" v-model="form.telefono" :maxlength="10" />
+                        <inputForm type="tel" texto="Teléfono:" placeholder="" v-model="form.telefono" :maxlength="10" />
                     </div>
                     <!-- <div class="col-12 p-0 mt-5" @click="router.navigate('/cambiar_password')">
                         <div class="row m-0 w-100 px-3 py-2 justify-content-between border-b-gray1-1 border-t-gray1-1 ">
@@ -29,7 +29,7 @@
                 </div>
                 <div class="row w-100 m-0 py-4 justify-content-center">
                     <div class="col-12 px-4 pt-4 pb-4">
-                        <botonApp tipo="rojo" texto="save" @click="save" radius="10px" />
+                        <botonApp tipo="verde" texto="Guardar" @click="save" radius="10px" />
                     </div>
                 </div>
             </div>

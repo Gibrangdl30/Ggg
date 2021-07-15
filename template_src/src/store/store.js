@@ -5,58 +5,64 @@ import swal from 'sweetalert';
 import _ from 'lodash';
 const moment = require('moment');
 
-import viaje from './modulos/viaje.js';
-import servicio from './modulos/servicio.js';
-import pacientes from './modulos/pacientes.js';
-
-import carrito from './modulos/carrito.js';
-import restaurantes from './modulos/restaurantes.js';
-
-import usuario from './modulos/usuario.js';
-
 //  GENERALES
-import sync from './modulos/sync.js';
-import session from './modulos/session.js';
-import navigation from './modulos/navigation.js';
-import notificaciones from './modulos/notificaciones.js';
-import apirtc from './modulos/apirtc.js';
-import camara from './modulos/camara.js';
-import catalogos from './modulos/catalogos.js';
-import escaner from './modulos/escaner.js';
-import chats from './modulos/chats.js';
-import fileunpload from './modulos/fileunpload.js';
-import maps from './modulos/maps.js';
-import provider from './modulos/provider.js';
-
+import apirtc from './modulos/generales/apirtc.js';
+import camara from './modulos/generales/camara.js';
+import carrito from './modulos/generales/carrito.js';
+import catalogos from './modulos/generales/catalogos.js';
+import chats from './modulos/generales/chats.js';
+import escaner from './modulos/generales/escaner.js';
+import fileunpload from './modulos/generales/fileunpload.js';
+import maps from './modulos/generales/maps.js';
+import navigation from './modulos/generales/navigation.js';
+import notificaciones from './modulos/generales/notificaciones.js';
+import provider from './modulos/generales/provider.js';
+import servicio from './modulos/generales/servicio.js';
+import session from './modulos/generales/session.js';
+import sync from './modulos/generales/sync.js';
+import usuario from './modulos/generales/usuario.js';
 Vue.use(Vuex);
-const modules = {
-    viaje,
-    servicio,
-    pacientes,
-    
-    carrito,
-    restaurantes,
-    usuario,
-    
-    //  GENERALES
-    sync,
-    session,
-    navigation,
-    notificaciones,
+const general = {
     apirtc,
     camara,
+    carrito,
     catalogos,
-    escaner,
     chats,
+    escaner,
     fileunpload,
     maps,
+    navigation,
+    notificaciones,
     provider,
+    servicio,
+    session,
+    sync,
+    usuario,
 };
+
+//custom
+import coordinador from './modulos/custom/coordinador.js';
+import pacientes from './modulos/custom/pacientes.js';
+import viaje from './modulos/custom/viaje.js';
+import restaurantes from './modulos/custom/restaurantes.js';
+const custom = {
+    coordinador,
+    pacientes,
+    viaje,
+    restaurantes,
+};
+
+const modules = {
+    ...general,
+    ...custom,
+}
+
+
 const state = {
     base:   { 
-        url: "https://jocoseapp.com/apiv1/api/",
-        img: "https://jocoseapp.com/apiv1/img/",
-        iconos: "https://jocoseapp.com/apiv1/iconos/",
+        url:    "https://axitapp.online/apiv1/api/",
+        img:    "https://axitapp.online/apiv1/img/",
+        iconos: "https://axitapp.online/apiv1/iconos/",
     },
     procesando: false,
     api: '3'

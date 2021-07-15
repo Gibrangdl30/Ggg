@@ -1,5 +1,5 @@
 <template>
-    <img :class="`h-100 w-100 ${clase?clase:''} ${fit?'object-fit':''}`" :id="`img_${id}`"  :src="imagen" :alt="`alt_${id}`" @click="showImage()">
+    <img :class="`h-100 w-100 ${clase?clase:''} ${!nofit?'object-fit':''}`" :id="`img_${id}`"  :src="imagen" :alt="`alt_${id}`" @click="showImage()">
 </template>
 <script>
 export default {
@@ -19,6 +19,7 @@ export default {
     props:[    
             'src',
             'fit',
+            'nofit',
             'create',
             'user',
             'perfil',
@@ -35,12 +36,12 @@ export default {
         imagen(){
             if(this.logo) {
                 if(this.logo == 2){
-                    return `${this.baseImg}lo2.svg`;
+                    return `${this.baseImg}log.svg`;
                 }
                 if(this.logo == 3){
-                    return `${this.baseImg}lo4.svg`;
+                    return `${this.baseImg}log.svg`;
                 }
-                return `${this.baseImg}lo1.svg`;
+                return `${this.baseImg}log.svg`;
             }
             if(this.icono) {
                 if(this.formato){
