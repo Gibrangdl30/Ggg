@@ -48,6 +48,9 @@
 .object-fit{ object-fit: cover !important; }
 .object-fit-contain{ object-fit: contain !important; }
 .overflow-hidden {overflow: hidden !important;}
+.over-wrap { 
+	word-break: break-all;
+}
 .fw-400{font-weight: 400 !important;}
 .fw-600{font-weight: 600 !important;}
 .fw-800{font-weight: 800 !important;}
@@ -180,10 +183,12 @@
 		.ios-right-#{$s}{ right: #{$s}% !important;	}
 		.ios-z-#{$s}{ z-index: #{$s} !important;	}
 	}
+
 	.h-#{$s}{ height: #{$s}% !important;	}
 	.h-#{$s}px{ height: #{$s}px !important;	}
 	.h-#{$s}vh{ height: #{$s}vh !important;	}
 	.h-#{$s}vw{ height: #{$s}vw !important;	}
+	.h-min-#{$s}px{ min-height: #{$s}px !important;	}
 	.h-max-#{$s}px{ max-height: #{$s}px !important;	}
 	.h-max-#{$s}{ max-height: #{$s}% !important;	}
 	.h-max-#{$s}vh{ max-height: #{$s}vh !important;	}

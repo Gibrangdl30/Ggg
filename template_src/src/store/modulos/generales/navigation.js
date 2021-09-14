@@ -13,13 +13,14 @@ const initialState = {
     funcion: null,
 
     msn:{
-        icono: 'success',
-        tipo: null,
-        texto: null,
-        boton: null,
-        one: null,
+        data:   {},
+        icono:  'success',
+        tipo:   null,
+        texto:  null,
+        boton:  null,
+        one:    null,
         cuenta: null,
-        fn: null,
+        fn:     null,
     },
 
     modales:{
@@ -181,9 +182,18 @@ const mutations = {
         state.funcion = fn;
     },
 
-    openMsnTipo(state,[tipo,]){
+    openMsnTipo(state,{ 
+        data = {}, 
+        tipo = '',
+        one = false,
+        boton = '',
+        fn = null,
+    }){
+        state.msn.data = data;
         state.msn.tipo = tipo;
-        state.msn.tipo = tipo;
+        state.msn.one = one;
+        state.msn.boton = boton;
+        state.msn.fn = fn;
         this.commit('openModal',['globalMsn']);
     },
 
@@ -253,6 +263,11 @@ const mutations = {
 };
 
 const actions = {
+
+    nav({state},{ruta = '',params = {}}){
+        this.getters.getRouter.navigate(ruta, params);
+    },
+
     backRouta({state}){
         this.getters.getRouter.back();
     },

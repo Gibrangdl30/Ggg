@@ -872,6 +872,42 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:80519246540:android:b6291af85b99c2f1c1c869",
+        "android_client_info": {
+          "package_name": "com.namee.namee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "80519246540-dpp9h9k603u6t0qvm6fe58f01hrcto3j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqLbJ9gUEODv47380-yTx3ZFvL5iMir5A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "80519246540-dpp9h9k603u6t0qvm6fe58f01hrcto3j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "80519246540-0nou653rjr8m6ioodf4m54nqbs2l2nc7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.megabiker.riders"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:80519246540:android:46f4ea2569ada8b6c1c869",
         "android_client_info": {
           "package_name": "com.payo.payo"

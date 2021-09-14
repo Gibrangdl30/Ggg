@@ -28,6 +28,9 @@ export default {
             if(this.icono == 'check'){
                 return 'radio_button_checked'
             }
+            if(this.icono == 'done'){
+                return 'check_circle_outline'
+            }
             if(!this.icono) return 'add';
             return this.icono;
         }

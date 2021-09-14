@@ -1,6 +1,6 @@
 import axios from 'axios';
 import _ from 'lodash';
-const storage = 'jocoseuser';
+const storage = 'nameeSlotXW1';
 
 const initialState = {
     session : JSON.parse(localStorage.getItem(storage)) || {token: null, tipo: 'usuario'},
@@ -30,10 +30,15 @@ const getters = {
 };
 
 const mutations = {
+
     setToken(state, data){
-        state.session = {token: data.token, tipo: data.tipo};
+        state.session = {
+            token: data.token, 
+            tipo: data.tipo || 'usuario',
+        };
         localStorage.setItem(storage,JSON.stringify(state.session));
     },
+
     setSession(state, data){
         if(data.usuario){
             state.session = data.usuario;
@@ -44,6 +49,7 @@ const mutations = {
             this.commit('initMetodoPago',data.metodosPago);
         }
     },
+
     logout(state){
         localStorage.clear();
         state.session = {token: null, tipo: 'usuario'};
@@ -53,6 +59,7 @@ const mutations = {
         this.commit('initVista');
         this.commit('logoutApirtc');
     },
+
     processSession(state, fn){
         if(!state.session.token){
             this.commit('openModal',['modalSession']);
@@ -60,6 +67,7 @@ const mutations = {
         }
         fn();
     },
+
     processRuteSession(state, ruta){
         if(!state.session.token){
             this.commit('openModal',['modalSession']);
@@ -67,6 +75,7 @@ const mutations = {
         }
         this.getters.getRouter.navigate(ruta);
     },
+    
     setFormRegistro(state, form){state.registro = form;},
     initWatcher(state,id){state.GPSWatcher = id},
     cleanWatcher(state){

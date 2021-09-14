@@ -1,20 +1,33 @@
 <template>
 <div class="w-100 h-100 position-relative">
-    <div class="w-100 h-100 border-radius-15px border-gray-lligth-1 overflow-hidden position-relative" :class="`${clase?clase:''}`">
+    <div class="h-100 w-100 border-radius-50 app-degra" v-if="custom" @click="takePicture()" >
+        <div class="row w-100 m-0 px-3 pt-14px ">
+            <imagen :icono="true" src="camx" />
+        </div>
+    </div>
+    <div 
+        v-else
+        class="w-100 h-100 overflow-hidden position-relative" 
+        :class="`${clase?clase:''} border-radius-${rad?rad:''} border-${bcolor?bcolor:''}-${bsize || '1'}`"
+    >
 
         <imagen clase="object-fit url" :src="url" v-if="url" @click="takePicture()" />
         
         <imagen clase="object-fit url" :src="imagenUrl" v-else-if="create && value" @click="takePicture()" />
 
         <imagen :class="(padding)?padding:'p-4'" :icono="true" src="user" v-else-if="user" @click="takePicture()" />
-        <imagen :class="(padding)?padding:'p-4'" :icono="true" src="camera" v-else @click="takePicture()" />
 
-        <button class="button boton-remove" v-if="url"  @click="eliminar()">
-            <div class="row justify-content-center">
-                <imagen :icono="true" src="clear" alt="" />
+        <imagen :class="(padding)?padding:'p-4'" :icono="true" src="camx" v-else @click="takePicture()" />
+
+    </div>
+
+    <template v-if="!custom">
+        <button class="button boton-remove z-index-10000 bottom-10px" v-if="url"  @click="eliminar()">
+            <div class="row w-100 m-0 justify-content-center">
+                <icono icono="clear" clase="letra-azul1-30" />
             </div>
         </button>
-    </div>
+    </template>
 
     <div class="w-45px h-45px position-absolute top--10px right--10px back-color-blanco border-radius-50 border-amar2-2 " v-if="crop && value"  @click="crops()">
         <div class="row w-100 m-0 pt-2px justify-content-center">
@@ -42,15 +55,22 @@ export default {
         };
     },
     props:[    
-            'value',
-            'clase',
-            'create',
-            'crop',
-            'user',
-            'imagen',
-            'padding',
-        ],
+        'value',
+        'custom',
+        'post',
+        'clase',
+        'rad',
+        'bcolor',
+        'bsize',
+        'create',
+        'crop',
+        'user',
+        'imagen',
+        'padding',
+    ],
     computed:{
+        router(){return this.$store.getters.getRouter;},
+        takePhoto(){return this.$store.getters.userStateObject('takePhoto');},
         emulador(){
             if(this.$store.getters.deviceready){
                 return device.platform == 'browser' || device.platform == null;
@@ -66,6 +86,11 @@ export default {
         }
     },
     mounted() {
+        if(this.takePhoto){
+            this.$store.commit('setUsD',[ 'takePhoto', false ]);
+            this.$store.commit('commitFuncion',this.unploadFoto);
+            this.$store.dispatch('getFotoFunction', [this.unploadFoto]);
+        }
         console.log("UPLOAD IMG", this.value, this.imagen);
     },
     methods:{
@@ -82,26 +107,49 @@ export default {
             setTimeout(()=>{this.uploadFromWeb(this.web)},1000);
         },
         uploadFromWeb(foto){
-            console.log("SUBIENDO FOTO", foto);
-            this.$store.dispatch('unploadWebImage',[{},foto,'sync/saveimg']).then(
+            let payload = {}
+
+            this.$store.dispatch('unploadWebImage',[ payload, foto, 'sync/saveimg']).then(
                 res=>{
                     if(res.data){
                         this.url = res.data.url;
                         this.imagen_id = res.data.id;
                         this.$emit('input', this.imagen_id);
                         this.$emit('change', res.data.base);
+                        this.$emit('save', this.imagen_id);
+                        this.$store.dispatch('synchronizeData');
+                        if(this.custom){
+                            if(this.post){
+                                this.$store.commit('setUsuarioDataForm',['formPost', 'imagen', this.imagen_id]);
+                                this.$store.commit('setUsuarioDataForm',['formPost', 'url', this.url]);
+                                this.router.navigate('/crear_post');
+                            }
+                        }
                     }
                 },error=>{});
         },
+
         unploadFoto(img){
-            this.$store.dispatch('saveImagen',img).then(
+            let payload = {}
+
+            this.$store.dispatch('saveImagen',[ img, payload ]).then(
                 res=>{
                     this.url = res.data.url;
                     this.imagen_id = res.data.id;
                     this.$emit('input', this.imagen_id);
                     this.$emit('change', res.data.base);
+                    this.$emit('save', this.imagen_id);
+                    this.$store.dispatch('synchronizeData');
+                    if(this.custom){
+                        if(this.post){
+                            this.$store.commit('setUsuarioDataForm',['formPost', 'imagen', this.imagen_id]);
+                            this.$store.commit('setUsuarioDataForm',['formPost', 'url', this.url]);
+                            this.router.navigate('/crear_post');
+                        }
+                    }
                 },error=>{})
         },
+
         eliminar(){
             this.url = null;
             this.imagen_id = null;

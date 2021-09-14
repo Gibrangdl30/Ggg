@@ -2,43 +2,38 @@
     <f7-page id="inicio">
         <div class="vista h-99vh">
         <div class="contenedor-page-tabs back-color-blanco position-relative">
-            <div class="row w-100 m-0 justify-content-start pt-4">
-            </div>
             <div class="row w-100 m-0 justify-content-center">
-                <div class="col-8 px-1 pt-3">
-                    <imagen clase="my-auto" :logo="true"  />
-                </div>
+                <imagen clase="my-auto" :logo="4"  />
             </div>
+
             <div class="row w-100 m-0 pt-4 mt-3 justify-content-center">
                 <div class="col-11">
-                    <inputForm texto="Email" input="form" type="email" textcolor="verde2" placeholder="email@ejemplo.com" v-model="form.email" />
+                    <inputForm 
+                        texto="Phone number" 
+                        type="tel" 
+                        placeholder="" 
+                        v-model="form.tel"
+                        :maxlength="10"
+                        @enter="login"
+                    />
                 </div>
-                <div class="col-11 mt-4">
-                    <inputForm texto="Codigo de accesso" input="form" :password="true" textcolor="verde2" type="password" placeholder="********" v-model="form.password" @enter="login" />
+                <div class="col-11 mt-4" v-if="false" > 
+                    <inputForm texto="Codigo de accesso" input="form" :password="true" type="password" placeholder="********" v-model="form.password" @enter="login" />
                 </div>
 
-                <div class="col-11 mt-3 letra-verde-4-1vw text-center" @click="router.navigate('/recuperar_password')">¿Olvidaste tu contraseña?</div>
+                <div class="col-11 mt-3 letra-azul-4-1vw text-center" v-if="false" @click="router.navigate('/recuperar_password')">¿Olvidaste tu contraseña?</div>
 
-                <div class="col-11 mt-4 " @click="login()">
-                   <botonApp texto="Entrar" tipo="verde" radius="30px" />
-                </div>
-
-                <div class="col-11 pt-2 ">
-                    <div class="row w-100 m-0 justify-content-center mt-1" @click="router.navigate('/registro_nuevo')">
-                        <div class="col-12 mt-3 text-center justify-content-center letra-gray3-18 ">¿No cuentas con acceso a AXIT?</div>
+                <div class="col-11 mt-5"  >
+                    <div class="row w-100 m-0 mt-1 justify-content-center " @click="router.navigate('/registro_corto')">
+                        <div class="col-auto px-0 pr-1 letra-gray3-18">New here?</div>
+                        <div class="col-auto px-0 letra-azul1-18">Create a new account</div>
                     </div>
                 </div>
-                <div class="col-11 pt-2 ">
-                    <div class="row w-100 m-0 justify-content-center mt-1" @click="open">
-                        <div class="col-12 mt-3 text-center justify-content-center letra-gray3-18 ">¿Quieres que tu colegio pertenezca a AXIT? Solicita una demo</div>
-                    </div>
-                </div>
 
-                <div class="col-11 pt-4 ">
-                    <div class="row w-100 m-0 justify-content-center mt-1">
-                        <div class="col-12 mt-3 text-center justify-content-center letra-verde-18 ">AXIT App S. de R.L. de C.V.</div>
-                    </div>
+                <div class="col-11 mt-5 " @click="login()">
+                   <botonApp texto="Start" tipo="azul" radius="30px" />
                 </div>
+                
             </div>
         </div>
         </div>
@@ -54,21 +49,8 @@ import Swiper from 'swiper';
         data(){
             return{
                 form:{
-                    email: '',
-                    password: '',
+                    tel: '',
                 },
-                afiliado:{
-                    email: 'jesus@sustam.com',
-                    password: 'sustam',
-                },
-                estudio:{
-                    email: 'sara@sustam.com',
-                    password: 'sustam',
-                },
-                usuario:{
-                    email: 'daniel@sustam.com',
-                    password: '123456',
-                }
             } 
         },
         computed: {
@@ -95,11 +77,10 @@ import Swiper from 'swiper';
                 this.$store.dispatch('openBrowser', 'https://axitapp.online');
             },
             login(){
-                if(!this.form.email || !this.form.password){
-                    swal("Ingrese email y contraseña", "" ,"warning");
+                if(!this.form.tel){
                     return;
                 }
-                this.$store.dispatch('postLogin',[this.form]);
+                this.$store.dispatch('userPostRegistoTelefono',[this.form, 'login']);
             },
             enter(f){
                 this.$store.dispatch('postLogin',[f]);

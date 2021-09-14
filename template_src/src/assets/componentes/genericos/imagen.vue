@@ -21,6 +21,7 @@ export default {
             'fit',
             'nofit',
             'create',
+            'size',
             'user',
             'perfil',
             'logo',
@@ -32,14 +33,22 @@ export default {
         ],
     computed:{
         session(){return this.$store.getters.getSession;},
-        imagenUrl(){return `${this.baseUrl}img/render/${this.src}/500/500/foto.jpg`},
+        imagenUrl(){
+            if(this.size){
+                return `${this.baseUrl}img/render/${this.src}/${this.size}/${this.size}/foto.jpg`
+            }
+            return `${this.baseUrl}img/render/${this.src}/foto.jpg`
+        },
         imagen(){
             if(this.logo) {
                 if(this.logo == 2){
-                    return `${this.baseImg}log.svg`;
+                    return `${this.baseImg}hl.svg`;
                 }
                 if(this.logo == 3){
-                    return `${this.baseImg}log.svg`;
+                    return `${this.baseImg}lc3.svg`;
+                }
+                if(this.logo == 4){
+                    return `${this.baseImg}fo1.png`;
                 }
                 return `${this.baseImg}log.svg`;
             }
@@ -71,25 +80,26 @@ export default {
 
     },
     created() {
-        // this.getDatos();
+        this.getDatos();
     },
     methods:{
         getDatos(){
             this.load = document.createElement('img');
-            this.load.src = this.src;
-            if(this.load){
-                this.load.onload = ()=>{
-                    this.height = this.load.height*5;
-                    this.width = this.load.width*5;
-                };
+            if(this.show){
+                this.load.src = `${this.baseUrl}img/render/${this.show}/foto.jpg`;
+                if(this.load){
+                    this.load.onload = ()=>{
+                        this.height = this.load.height*5;
+                        this.width = this.load.width*5;
+                    };
+                }
             }
         },
         showImage(){
             if(this.show){
+                console.log("SHOWING APP", this.show);
                 if(this.height && this.width){
-                    if(this.src){
-                        this.$store.dispatch('showImage',[this.imagen,this.height, this.width]);
-                    }
+                    this.$store.dispatch('showImage',[`${this.baseUrl}img/render/${this.show}/foto.jpg`, this.height, this.width]);
                 }
             }
             else{

@@ -87,22 +87,24 @@ input.buscar
         color: #b6b6b6;
     }
 }
+
 .form-input{
     border: 1px solid #adadad !important;
     background-color: white !important;
     padding: 10px !important;
     border-radius: 30px !important;
     &:focus {
-        border: 1px solid #00c8a3 !important;
+        border: 1px solid #47a9be !important;
     }
     &::placeholder{
         color: #b6b6b6;
     }
 }
+
 .busqueda-input
 {
     padding: 10px !important;
-    border-radius: 0px !important;
+    border-radius: 28px !important;
     &::placeholder
     {
         color: #b6b6b6;

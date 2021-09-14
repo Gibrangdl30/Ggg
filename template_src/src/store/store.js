@@ -42,12 +42,12 @@ const general = {
 
 //custom
 import coordinador from './modulos/custom/coordinador.js';
-import pacientes from './modulos/custom/pacientes.js';
+import post from './modulos/custom/post.js';
 import viaje from './modulos/custom/viaje.js';
 import restaurantes from './modulos/custom/restaurantes.js';
 const custom = {
+    post,
     coordinador,
-    pacientes,
     viaje,
     restaurantes,
 };
@@ -60,9 +60,9 @@ const modules = {
 
 const state = {
     base:   { 
-        url:    "https://axitapp.online/apiv1/api/",
-        img:    "https://axitapp.online/apiv1/img/",
-        iconos: "https://axitapp.online/apiv1/iconos/",
+        url:    "https://namee.club/apiv1/api/",
+        img:    "https://namee.club/apiv1/img/",
+        iconos: "https://namee.club/apiv1/iconos/",
     },
     procesando: false,
     api: '3'

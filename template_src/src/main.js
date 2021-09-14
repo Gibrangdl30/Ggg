@@ -41,8 +41,12 @@ import directives from './directive.js';
 import componentsG from './assets/componentes/genericos/components.js';
 Vue.use(componentsG);
 
+import componentsM from './assets/componentes/modales/components.js';
+Vue.use(componentsM);
+
 import components from './assets/componentes/personalizados/components.js';
 Vue.use(components);
+
 
 import VueCurrencyFilter from 'vue-currency-filter'
 Vue.use(VueCurrencyFilter,{
@@ -56,7 +60,7 @@ Vue.use(VueCurrencyFilter,{
 
 // MOMENT
 const moment = require('moment');
-require('moment/locale/es-do');
+// require('moment/locale/es-do');
 Vue.use(require('vue-moment'), {moment});
 
 Vue.filter('timestamp', (fecha) => {

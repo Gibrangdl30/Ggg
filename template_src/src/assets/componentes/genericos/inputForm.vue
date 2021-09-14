@@ -76,10 +76,12 @@ export default {
         'textarea', 
         'rows', 
         'texto' ,
-        'offset' ,
-        'scroll' ,
+        'scroll',
+        'offset',
+        'fixed',
         'contendorId' ,
-        'textcolor'],
+        'textcolor'
+    ],
     data(){
         return {
             id: _.uniqueId('inputF_'),
@@ -161,25 +163,26 @@ export default {
                 this.$emit('enter');
             }
         },
+
         focus(){
-            console.log("focus", this.android);
-            if(this.android || this.scroll){
-                $(`#${this.id}`).focus(()=>{
-                    setTimeout(()=>{
-                        if(this.contendorId){
-                            $(`#${this.contendorId}`).animate({ scrollTop: 450 }, 330);
-                        }
-                        else if(this.offset){
-                            console.log("OFFSET", this.offset);
-                            $('.contenedor-page-tabs').animate({ scrollTop: this.offset }, 330);
-                        }
-                        else{
-                            $('.contenedor-page-tabs').animate({ scrollTop: 450 }, 330);
-                        }
-                    },350);
-                });
+            if(!this.fixed){
+                if(this.android || this.scroll){
+                    $(`#${this.id}`).focus(()=>{
+                        setTimeout(()=>{
+                            const offset = this.offset || 450;
+                            console.log("SETING OFFSET", offset);
+                            if(this.contendorId){
+                                $(`#${this.contendorId}`).animate({ scrollTop: offset }, 330);
+                            }
+                            else{
+                                $('.contenedor-page-tabs').animate({ scrollTop: offset }, 330);
+                            }
+                        },350);
+                    });
+                }
             }
         },
+
         keyenter(event){
             if(this.type == 'number'){
                 // console.log("LENGTH",this.maxlength > event.target.value.length, event.target.value.length)

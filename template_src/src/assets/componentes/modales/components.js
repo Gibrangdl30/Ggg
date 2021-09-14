@@ -1,0 +1,25 @@
+import modalSearchDireccion from './modalSearchDireccion.vue';
+import modalPickRangoFecha from './modalPickRangoFecha.vue';
+import modalPickFecha from './modalPickFecha.vue';
+import modalNotificacion from './modalNotificacion.vue';
+import modal_loader from './modal_loader.vue';
+import modalMensaje from './modalMensaje.vue';
+import globalMsn from './globalMsn.vue';
+import modalSession from './modalSession.vue';
+import modalCalificar from './modalCalificar.vue';
+import modalQr from './modalQr.vue';
+
+
+function plugin(Vue) {
+    Vue.component('globalMsn', globalMsn);
+    Vue.component('modal-loader', modal_loader);
+    Vue.component('modalCalificar', modalCalificar);
+    Vue.component('modalMensaje', modalMensaje);
+    Vue.component('modalSession', modalSession);
+    Vue.component('modalNotificacion', modalNotificacion);
+    Vue.component('modalSearchDireccion', modalSearchDireccion);
+    Vue.component('modalPickFecha', modalPickFecha);
+    Vue.component('modalPickRangoFecha', modalPickRangoFecha);
+    Vue.component('modalQr', modalQr);
+}
+export default plugin

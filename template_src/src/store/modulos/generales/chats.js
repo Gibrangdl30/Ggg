@@ -114,13 +114,15 @@ const mutations = {
             this.getters.getRouter.navigate('/mensajes_chat');
         }
         else{
-            if(this.getters.user){
-                this.dispatch('postCreateChatFromUsuario',[user_id]);
-            }
+            this.dispatch('postCreateChatFromUsuario',[user_id]);
         }
     },
 
     goToChatPadre(state, [user_id]){
+        if(!user_id){
+            swal("","No se recibio el usaurio","");
+            return;
+        }
         if(user_id == this.getters.getSession.id){
             swal("","Usuario invalido","");
             return;
@@ -146,10 +148,11 @@ const mutations = {
 };
 const actions = {
 
-    postSaveMsn({ commit, state }, [msn]){
+    postSaveMsn({ commit, state }, [msn, tipo = '0']){
         let data = {
             mensaje: msn,
             chats_id: state.chat.id,
+            tipo: tipo,
         }
         let insert = {
             chats_id: state.chat.id,
@@ -157,6 +160,7 @@ const actions = {
             id: `chat_${state.chat.id}_${_.uniqueId('temp_')}_${moment().format('X')}`,
             leido: null,
             mensaje: msn,
+            tipo: tipo,
             usuarios_id: this.getters.getSession.id,
         };
         this.commit('insertMsn',[insert]);
@@ -198,12 +202,7 @@ const actions = {
         };
         this.dispatch('postPromiseLoaderSync', ['chats/create_chat', data, false]).then(
             res => {
-                if(tipo == 'padre'){
-                    this.commit('goToChatPadre',[ amigos_id ]);
-                }else{
-
-                    this.commit('goToChat',[amigos_id]);
-                }
+                this.commit('goToChat',[amigos_id]);
             },
             error=>{});
     },

@@ -7,7 +7,7 @@ const initialState = {
     sync: false,
     syncAll: false,
     syncExtra: {
-        // prod: { load: false, url:'productos' },
+        post: { load: false, url:'posts' },
     },
     update: moment().format('HH:mm [hrs] DD/MM/YYYY'),
     deviceready: false,
@@ -23,6 +23,7 @@ const state = JSON.parse(JSON.stringify(initialState));
 
 const getters = {   
     deviceready(state){return state.deviceready;},
+    deviceReady(state){return state.deviceready;},
     debug(state){return state.deviceready == false; },
     deviceIos(state){return state.deviceIos;},
     update(state){return state.update;},
@@ -47,8 +48,6 @@ const mutations = {
         
         //PERSONALIZADO
         this.commit('setUsuarioInfo', data);
-        this.commit('initCoorState', data);
-        this.commit('setPacienteState', data);
 
         if(!state.deviceReadyListener){
             state.deviceReadyListener = true;
@@ -69,12 +68,11 @@ const mutations = {
     
 
     setExtraData(state, [data]){
-        this.commit('setAfiliadoStateExrtra', data);
-        this.commit('setNotificacionesData', data);
+        this.commit('initPostState', data);
     },
 
     setSyncData(state, [id, data]){
-        this.commit('setCatalogos', data);
+        this.commit('initPostState', data);
     },
 
     initSync(state){
@@ -254,8 +252,8 @@ const actions = {
         }
     },
 
-    saveImagen({commit,state},foto){
-        return this.dispatch('postPromiseLoaderImage',['sync/saveimg', {}, foto]);
+    saveImagen({commit,state},[ foto, data = {} ]){
+        return this.dispatch('postPromiseLoaderImage',['sync/saveimg', data, foto]);
     },
     
     postPromiseSync({state}, [url, data]){
@@ -301,6 +299,7 @@ const actions = {
         alert = true, 
         customAlert = '',
         customSwal = {},
+        callback = null
     }){
         try{
 
@@ -323,6 +322,9 @@ const actions = {
                                 if(errorMsg){
                                     if(response.data.msg == 'Incorrect password') {
                                         swal({title: response.data.msg, text:"", icon:"error", button: 'Try again'});
+                                    }
+                                    else if(response.data.msg == 'sorry') {
+                                        swal({ title:"", text:"We are sorry, the phone number you entered is not registered in out platform", icon:"error", button:'Try again' });
                                     }
                                     else if(response.data.msg != 'Usuario inexistente') {
                                         swal(response.data.msg, "", "error");
@@ -353,6 +355,10 @@ const actions = {
                                 else{
                                     swal("","Información actulizada","success");
                                 }
+                            }
+
+                            if(callback){
+                                callback(response.data);
                             }
 
                             this.dispatch('synchronizeData');

@@ -52,9 +52,8 @@ $colors: (
 (negro1 , #535658),
 
 
-(azul ,  #05789b),
-(azul1,  #262a65),
-(azul2 ,  #30bced),
+(azul ,  #14bfe4),
+(azul1,  #47a9be),
 
 (fondo,  #F9FAFC),
 (fondo2,  #e8f0f2),
@@ -75,13 +74,12 @@ $colors: (
 (verde, #00c8a3),
 (verde1, #008c9b),
 (verde2, #00c8a3),
-(verde3, #008c9b),
 
 );
 
-// .back-appve-degradado{
-//     background: linear-gradient(136.67deg, #59b750 0%, #9bc951 100%) !important;
-// }
+.app-degra{
+    background: linear-gradient(136.67deg, #14bfe4 0%, #47a9be 100%) !important;
+}
 // .back-appazu-degradado{
 //     background: linear-gradient(136.67deg, #5999e9 0%, #1268d8 100%) !important;
 // }

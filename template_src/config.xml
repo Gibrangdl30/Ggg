@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.axit.axit" version="1.43.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.namee.namee" version="1.89.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <hook src="hooks/hookers.js" type="before_prepare" />
     <hook src="hooks/beforedep.js" type="before_deploy" />
-    <name>Axit</name>
+    <name>Namee</name>
     <description>
-        Axit
+        Namee
     </description>
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Sustam Apps
@@ -18,17 +18,29 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <preference name="android-minSdkVersion" value="20" />
-    <preference name="android-targetSdkVersion" value="29" />
+    <preference name="android-targetSdkVersion" value="30" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="SplashScreenDelay" value="4000" />
     <preference name="FadeSplashScreen" value="true" />
     <preference name="FadeSplashScreenDuration" value="500" />
     <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
         <preference name="WKWebViewOnly" value="true" />
         <feature name="CDVWKWebViewEngine">
             <param name="ios-package" value="CDVWKWebViewEngine" />
         </feature>
         <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
+        <preference name="DisallowOverscroll" value="true" />
+        <preference name="disallowOverscroll" value="true" />
+        <preference name="BackupWebStorage" value="local" />
+        <preference name="webviewbounce" value="false" />
+        <preference name="UIWebViewBounce" value="false" />
+        <preference name="DisallowOverscroll" value="true" />
+        <preference name="ios-XCBuildConfiguration-ENABLE_BITCODE" value="NO" />
+        <config-file parent="CFBundleVersion" platform="ios" target="*-Info.plist">
+            <string>11</string>
+        </config-file>
     </platform>
     <platform name="android">
         <allow-intent href="market:*" />
@@ -71,17 +83,27 @@
         <splash height="1334" src="res/screen/ios/Default-667h.png" width="750" />
         <splash height="2208" src="res/screen/ios/Default-736h.png" width="1242" />
         <splash height="2436" src="res/screen/ios/Default-812h.png" width="1125" />
-        <allow-intent href="itms:*" />
-        <allow-intent href="itms-apps:*" />
     </platform>
+    <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
+        <string>need camera access to take pictures for your profile or posts</string>
+    </edit-config>
+    <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryUsageDescription">
+        <string>need photo library access to get pictures need camera access to take pictures for your profile or posts </string>
+    </edit-config>
+    <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
+        <string>need location access to find user nearby and can share pictures</string>
+    </edit-config>
+    <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryAddUsageDescription">
+        <string>need photo library access to take pictures for your profile or posts</string>
+    </edit-config>
+    <edit-config file="*-Info.plist" mode="merge" target="NSContactsUsageDescription">
+        <string>This app needs contacts access to share invitations or pictures if you wish</string>
+    </edit-config>
     <plugin name="cordova-plugin-whitelist" spec="^1.3.4" />
     <allow-navigation href="*" />
     <plugin name="cordova-plugin-device" spec="^2.0.3" />
     <plugin name="cordova-plugin-splashscreen" spec="^6.0.0" />
     <plugin name="cordova-plugin-keyboard" spec="^1.2.0" />
-    <plugin name="cordova-plugin-camera" spec="^4.1.0">
-        <variable name="ANDROID_SUPPORT_V4_VERSION" value="27.+" />
-    </plugin>
     <plugin name="phonegap-plugin-push" spec="^2.3.0">
         <variable name="ANDROID_SUPPORT_V13_VERSION" value="27.+" />
         <variable name="FCM_VERSION" value="17.0.+" />
@@ -89,6 +111,14 @@
     <plugin name="cordova-plugin-file-transfer" spec="^1.7.1" />
     <plugin name="cordova-plugin-wkwebview-engine" spec="^1.2.2" />
     <plugin name="cordova-plugin-inappbrowser" spec="^4.1.0" />
+    <plugin name="cordova-plugin-file" spec="^6.0.2" />
+    <plugin name="cordova-custom-config" spec="^5.1.0" />
+    <plugin name="cordova-plugin-camera" spec="^4.1.0">
+        <variable name="ANDROID_SUPPORT_V4_VERSION" value="27.+" />
+    </plugin>
+    <plugin name="cordova-plugin-contacts-phonenumbers" spec="0.0.12">
+        <variable name="CONTACTS_USAGE_DESCRIPTION" value="This app needs contacts access" />
+    </plugin>
     <engine name="android" spec="^8.1.0" />
     <engine name="browser" spec="^5.0.4" />
     <engine name="ios" spec="^5.1.1" />

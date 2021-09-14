@@ -8,7 +8,7 @@ const initialState = {
     estado: localStorage.getItem(stateStorage) || 'Jalisco',
     posicion:JSON.parse(localStorage.getItem(latlng)) || {lat: 20.674484,lng: -103.387352,  velocidad: null},
 
-    track: true,
+    track: false,
     GPSWatcher: false,
     busqueda:{ data: null },
     lugares: {arreglo:[]},

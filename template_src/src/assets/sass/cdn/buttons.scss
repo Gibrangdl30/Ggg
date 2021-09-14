@@ -34,7 +34,7 @@ button:focus, a:focus{
 button.boton-verde
 {
     background: linear-gradient(136.67deg, #00c8a3 0%, #008c9b 100%) !important;
-    border: 1px solid #00c8a3 !important;
+    border: 1px solid #00c8a3  !important;
     &.active-state,:hover{
         .row{
             color: white !important;
@@ -45,25 +45,25 @@ button.boton-verde
 
 button.boton-app
 {
-    // background: linear-gradient(136.67deg, #b91619 0%, #b91619 100%) !important;
-    background-color: #90cf00 !important;
-    border: 1px solid #90cf00  !important;
+    background: linear-gradient(136.67deg, #14bfe4 0%, #47a9be 100%) !important;
+    border: 1px solid #14bfe4  !important;
     &.active-state,:hover{
         .row{
             color: white !important;
         }
-        background: #c3eb66 !important;      
+        background: #031c1f !important;      
     }
 }
 
 button.boton-azul{
-    background-color: #262a65 !important;
-    border: 1px solid #262a65  !important;
+    background: linear-gradient(136.67deg, #14bfe4 0%, #47a9be 100%) !important;
+    border: 1px solid #14bfe4  !important;
+
     &.active-state,:hover{
         .row{
             color: white !important;
         }
-        background: #343657  !important;      
+        background: #00738d  !important;      
     }
 }
 

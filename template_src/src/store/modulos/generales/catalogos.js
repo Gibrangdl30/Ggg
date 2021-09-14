@@ -18,6 +18,7 @@ const initialState = {
         {numero: '12', mes: 'Diciembre', dias: 31},
     ]},
 
+    contactos:  {a:[]},
     comunicados:  {a:[]},
     motivos:  {a:[]},
     tipos_familia:  {a:[]},
@@ -40,7 +41,7 @@ const mutations={
         if(data.version) state.version  = data.version;
     },
 
-    setContactos(state){
+    initContactosAgenda(state){
         if(this.getters.deviceready){
             navigator.contactsPhoneNumbers.list(r=>{
                 if(r && r.length){
@@ -48,12 +49,16 @@ const mutations={
                         x.nombre = x.displayName;
                         x.telefono = (x.phoneNumbers.find(y=>{return y.normalizedNumber.includes('+')}) || {}).normalizedNumber;
                         if(!x.telefono){
-                            x.telefono = (x.phoneNumbers.find(y => { return true }) || {}).normalizedNumber;
+                            x.telefono = `+521${ (x.phoneNumbers.find(y => { return true }) || {}).normalizedNumber } `;
                         }
+                        x.usuario = ( this.getters.userStateArray('amigos').find(a=>{ return x.telefono.includes(a.telefono) }) || {}).id || null;
                     })
                 }
-                console.log("CONTACTOS", r);
-                state.contactos = { a: _.orderBy(r, ['nombre'], ['asc'])};
+
+                let con = r.filter(y=>{ return y.usuario == null });
+                state.contactos = { a: _.orderBy(con, ['nombre'], ['asc'])};
+                console.log("CONTACTOS STATE", r, con, state.contactos);
+                
             }, e=>{
                 console.log("ERROR GETTING CONTACTS");
             });

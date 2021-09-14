@@ -12,14 +12,15 @@
 
         <f7-view url="/views" :main="true" class="ios-edges"></f7-view>
 
+        
+
         <modalCalificar />
         <modalNotificacion />
         <globalMsn />
-        <modal-loader />
         <modalSession />
-        <modalHijosRecoleccion />
         <selectImagen />
         <photoswipe />
+        <modal-loader />
     </f7-app>
 
 </template>

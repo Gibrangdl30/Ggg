@@ -5,22 +5,30 @@ const moment = require('moment')
 const comision = 0;
 const lastStorage = 'lastStorage';
 
-const initialState = {
+const setS = (name,val)=>{
+    localStorage.setItem(name,val);
+};
 
-    eventos: {a:[]},
-    usuarios: {a:[]},
-    hijos: {a:[]},
-    reportes: {a:[]},
-    rutas: {a:[]},
-    faltas: {a:[]},
-    recolecciones: {a:[]},
-    rondas: {a:[]},
-    padres: {a:[]},
+const initS = (name)=>{
+    return JSON.parse(localStorage.getItem(name));
+};
+
+const initialState = {
+    amigos:{a:[]},
+    lastrequest:{a:[]},
+    request:{a:[]},
+    takePhoto: false,
+
+    tel: null,
+    tipo: null,
+    init: initS('nameeSlot1') || false,
     
-    detalle: null,
-    tipo: 'r',
-    
-    padresForm: {a:[]},
+    formPost:{
+        imagen: null,
+        publico: 1,
+        url: null,
+        usuarios: [],
+    },
 };
     
 const state=JSON.parse(JSON.stringify(initialState));
@@ -41,6 +49,9 @@ const mutations={
 
     setUsD(state,[campo,id]){
         state[campo] = id;
+        if(campo == 'init'){
+            setS('nameeSlot1', 100);
+        }
     },
 
     setUsuarioDataForm(state,[form,campo,id]){
@@ -48,97 +59,52 @@ const mutations={
         state[form] = JSON.parse(JSON.stringify(state[form]));
     },
 
-    cleanForm(state){
-        state.nuevoEventoForm = JSON.parse(JSON.stringify(initialState.nuevoEventoForm));
-        state.usuariosForm = {a:[]};
-        state.regalosForm = {a:[]};
-        state.listaRegalosForm = {a:[]};
-    },
-
-    addUser(state,usuario){
-        let x = state.padresForm.a.findIndex(x=>{return x.id == usuario.id});
-        if(x == -1){
-            state.padresForm.a.push(usuario);
-        }
-        state.padresForm = {a: JSON.parse(JSON.stringify(state.padresForm.a)) };
-    },
-
-    removeUser(state,id){
-        let x = state.padresForm.a.findIndex(x=>{return x.id == id});
-        if(x != -1){
-            state.padresForm.a.splice(x,1);
-        }
-        state.padresForm = {a: JSON.parse(JSON.stringify(state.padresForm.a)) };
-    },
-
-    addConcepto(state,regalo){
-        state.listaRegalosForm.a.push(regalo);
-        state.listaRegalosForm = {a: JSON.parse(JSON.stringify(state.listaRegalosForm.a)) };
-    },
-
-    removeConcepto(state,index){
-        state.listaRegalosForm.a.splice(index,1);
-        state.listaRegalosForm = {a: JSON.parse(JSON.stringify(state.listaRegalosForm.a)) };
-    },
-
-    removeRegalo(state,id){
-        let x = state.regalosForm.a.findIndex(x=>{return x.id == id});
-        if(x != -1){
-            state.regalosForm.a.splice(x,1);
-        }
-        state.regalosForm = {a: JSON.parse(JSON.stringify(state.regalosForm.a)) };
-    },
-
     setUsuarioInfo(state,data){
-        if(data.eventos){
-           state.eventos = {a: data.eventos};
+        if('amigos' in data){
+           state.amigos = {a: data.amigos};
         }
-        if(data.usuarios){
-           state.usuarios = {a: data.usuarios};
+        if('lastrequest' in data){
+           state.lastrequest = {a: data.lastrequest};
         }
-        if(data.hijos){
-           state.hijos = {a: data.hijos};
+        
+        if('request' in data){
+           state.request = data.request;
+            if(state.request.id){
+                if(state.request.estatus == 'e'){
+                    this.commit('openMsnTipo',{ 
+                        data: state.request, 
+                        tipo: 'newrequest',
+                        one: true,
+                        boton: 'Let´s go!',
+                        fn: ()=>{
+
+                            this.dispatch('userPostRequestLectura',[state.request]);
+                        }
+                    });
+                }    
+            }
         }
-        if(data.reportes){
-           state.reportes = {a: data.reportes};
-        }
-        if(data.faltas){
-           state.faltas = {a: data.faltas};
-        }
-        if(data.recolecciones){
-           state.recolecciones = {a: data.recolecciones};
-        }
-        if(data.rutas){
-           state.rutas = {a: data.rutas};
-        }
-        if(data.rondas){
-           state.rondas = {a: data.rondas};
-        }
-        if(data.padres){
-           state.padres = {a: data.padres};
-        }
+       
     },
 };
 
 const actions={
 
-    userPostActulizarInvitacion({ commit, state }, [evento, status = false, persona = null, invitacion = {}]){
+    userPostRegistoTelefono({ commit, state }, [ form, tipo = 'registro' ]){
         let data = {
-            evento: evento.id,
-            status: status?'aceptado':'rechazado',
-            persona: persona,
-            invitacion: invitacion,
+            form: form,
         };
 
         let finish = ()=>{
-
+            this.commit('setUsD',['tel', form.tel]);
+            this.commit('setUsD',['tipo', tipo]);
+            this.getters.getRouter.navigate('/registro_code');
         }
 
         let load = { 
-            url: 'datos/actulizar_invitacion_evento', 
-            data: data, 
-            back: false,
-            backTo: '/eventos',
+            url: tipo=='login'?'usuarios/login_telefono':'usuarios/registrar_telefono', 
+            data: data,
+            alert:false,
         }
         this.dispatch('superPostLoader', load).then(
         res => {
@@ -146,18 +112,93 @@ const actions={
         },error=>{});
     },
 
-    userPostActulizarLectura({ commit, state }, [ form ]){
+    userPostConfirmarTelefono({ commit, state }, [ form ]){
         let data = {
-            id: form.id,
+            form: {
+                tel: state.tel,
+                code: form.code,
+            },
+        };
+
+        let finish = (res)=>{
+        }
+
+        let callback = (res)=>{
+            this.commit('setToken', res.data);
+            this.commit('changeView', 'usuario');
+        }
+
+        let load = { 
+            url: 'usuarios/confirmar_telefono', 
+            data: data, 
+            alert: state.tipo == 'registro',
+            customAlert: 'Account created succesfully',
+            callback: callback,
+        }
+        this.dispatch('superPostLoader', load).then(
+        res => {
+            finish(res);
+        },error=>{});
+    },
+
+    userPostCrearPost({ commit, state }, [ form ]){
+        let data = {
+            form,
         };
         let finish = ()=>{
 
         }
         let load = { 
-            url: 'datos/actulizar_lectura', 
-            data: data, 
-            errorMsg: false,
-            loader: false,
+            url: 'servicios/crear_post', 
+            data: data,
+            back: true,
+            toBack: '/inicio'
+        }
+        this.dispatch('superPostLoader', load).then(
+        res => {
+            finish(res);
+        },error=>{});
+    },
+
+    userPostRequestFoto({ commit, state }, [ usuario ]){
+        let data = {
+            usuario: usuario,
+        };
+
+        let finish = ()=>{};
+
+        let load = { 
+            url: 'datos/request_foto', 
+            data: data,
+            back: true,
+            toBack: '/inicio',
+            alert: true,
+            customSwal:{
+                title:  'Your request has been sent',
+                text:   "Wait for the other's person answer.",
+                button: 'Understood',
+                icon:   'success',
+            }
+        }
+        this.dispatch('superPostLoader', load).then(
+        res => {
+            finish(res);
+        },error=>{});
+    },
+
+    userPostRequestLectura({ commit, state }, [ request ]){
+        let data = {
+            request: request,
+        };
+
+        let finish = ()=>{
+            this.commit('setUsD',[ 'takePhoto', true ]);
+            this.commit('goToChat',[ request.usuarios_id ]);
+        };
+
+        let load = { 
+            url: 'datos/request_lectura', 
+            data: data,
             alert: false,
         }
         this.dispatch('superPostLoader', load).then(
@@ -166,150 +207,37 @@ const actions={
         },error=>{});
     },
 
-    userPostEnviarFalta({ commit, state }, [form, usuarios]){
+    userPostCreateGroup({ commit, state }, [ form, usuarios ]){
         let data = {
             form: form,
             usuarios: usuarios,
         };
-        let finish = ()=>{
-            
-        }
+
+        let finish = (res)=>{
+            if(res.data){
+                console.log("RESTING DATA NAV", res, res.id);
+                this.commit('setChats', res.data);
+                this.commit('selectChat', res.id)
+                setTimeout(()=>{
+                    this.getters.getRouter.navigate('/mensajes_chat');
+                }, 1000);
+            }
+        };
+
         let load = { 
-            url: 'datos/guardar_falta', 
-            data: data, 
+            url: 'chats/create_group', 
+            data: data,
+            alert: false,
             back: true,
-        }
-        this.dispatch('superPostLoader', load).then(
-        res => {
-            finish(res);
-        },error=>{});
-    },
-
-    userPostDelFalta({ commit, state }, [form, usuarios = []]){
-        let data = {
-            form: form,
-            usuarios: usuarios,
+            toBack: '/chats'
         };
-        let finish = ()=>{
-            
-        }
-        let load = { 
-            url: 'datos/eliminar_falta', 
-            data: data, 
-            back: false,
-        }
         this.dispatch('superPostLoader', load).then(
         res => {
             finish(res);
         },error=>{});
     },
 
-    userPostEnviarPersona({ commit, state }, [form, usuarios = []]){
-        let data = {
-            form: form,
-            usuarios: usuarios,
-        };
-        let finish = ()=>{
-
-        }
-        let load = { 
-            url: 'datos/guardar_persona', 
-            data: data, 
-            back: true,
-        }
-        this.dispatch('superPostLoader', load).then(
-        res => {
-            finish(res);
-        },error=>{});
-    },
     
-    userPostEnviarQueja({ commit, state }, [form, usuarios = []]){
-        let data = {
-            form: form,
-            usuarios: usuarios,
-        };
-        let finish = ()=>{
-
-        }
-        let load = { 
-            url: 'datos/guardar_queja', 
-            data: data, 
-            back: true,
-            customSwal: {
-                title: 'Queja o sugerencia enviada.',
-                text:'Se tomaran en cuenta sus comentarios.',
-                icon: 'success',
-                button: 'Entendido',
-            }
-        }
-        this.dispatch('superPostLoader', load).then(
-        res => {
-            finish(res);
-        },error=>{});
-    },
-
-    userPostEnviarRegistro({ commit, state }, [ form ]){
-        let data = {
-            form: form,
-        };
-        let finish = ()=>{
-
-        }
-        let load = { 
-            url: 'datos/guardar_prospecto', 
-            data: data, 
-            back: true,
-            customSwal: {
-                title: '',
-                text:'Información enviada',
-                icon: 'success',
-                button: 'Entendido',
-            }
-        }
-        this.dispatch('superPostLoader', load).then(
-        res => {
-            finish(res);
-        },error=>{});
-    },
-
-    userPostEnviarRonda({ commit, state }, [ form, hijos, padres ]){
-        let data = {
-            form: form,
-            hijos: hijos,
-            padres: [...padres, ...[this.getters.getSession] ],
-        };
-        console.log("GETTERS", this.getters.getSession);
-        let finish = ()=>{
-
-        }
-        let load = { 
-            url: 'datos/guardar_ronda', 
-            data: data, 
-            back: true,
-        }
-        this.dispatch('superPostLoader', load).then(
-        res => {
-            finish(res);
-        },error=>{});
-    },
-
-    userPostSalirRonda({ commit, state }, [ ronda ]){
-        let data = {
-            ronda: ronda,
-        };
-        let finish = ()=>{
-
-        }
-        let load = { 
-            url: 'datos/actualizar_ronda', 
-            data: data, 
-        }
-        this.dispatch('superPostLoader', load).then(
-        res => {
-            finish(res);
-        },error=>{});
-    },
-
 };
 
 export default {

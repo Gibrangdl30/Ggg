@@ -1,39 +1,30 @@
 <template>
     <f7-page>
-        <modalUsuario :usuario="chat.usuario" />
+        <!-- <modalUsuario :usuario="chat.usuario" /> -->
         <div class="vista" v-vistak v-chatss >
-            <nav-bar tipo="chat"  :backs="true" :title="chat.usuario.nombre" :usuario="chat.usuario" @call="llamar()" @perfil="verPerfil()" :show="chat.usuario.tipo == 'usuario'" />
+            <nav-bar tipo="chat" v-if="chat.tipo == 'solo'" :backs="true"  :title="chat.usuario.nombre" :usuario="chat.usuario" @call="llamar()" @perfil="verPerfil()" :show="chat.usuario.tipo == 'usuario'" />
+            <nav-bar tipo="chat" v-else :backs="true"  :title="chat.nombre"  />
+
             <div class="contenedor-page-tabs pb-10px" :id="'mensajes_'+chat.id">
                 <template v-for="m of chat.mensajes">
-                <div class="row w-100 m-0 px-3" :key="m.id" v-if="m.usuarios_id!=session.id">
-                    <div class="p-2 my-2 mr-auto mensaje-usuario">
-                        <div class="row m-0 justify-content-rigth">
-                            <div class="col p-0 letra-gray-dark2-4-4vw white-space-preline">{{m.mensaje}}</div>
-                        </div>
-                        <div class="row w-100 px-2 m-0 my-auto pb-1 justify-content-end letra-gray-2-8vw">{{$store.getters.getFechaHora(m.fecha)}}</div>
-                    </div>
-                </div>
-                <div class="row w-100 m-0 px-3" :key="m.id" v-if="m.usuarios_id==session.id">
-                    <div class="w-auto p-2 my-2 ml-auto mensaje-propio">
-                        <div class="row m-0 justify-content-rigth mb-1">
-                            <div class="p-0 pr-2 letra-blanco-4-4vw white-space-preline">{{m.mensaje}}</div>
-                        </div>
-                        <div class="row px-2 m-0 my-auto py-0 justify-content-end letra-gray00-13">{{$store.getters.getFechaHora(m.fecha)}}</div>
-                    </div>
-                </div>
+                    <mensajeComponent :key="m.id" :data="m" :info="chat" />
                 </template>
             </div>
-            <div class="row w-100 m-0 py-2 pb-ios-5 back-color-blanco border-t-appve-1">
-                <div class="row w-100 m-0 pb-3">
+
+            <div class="row w-100 m-0 py-2 pb-ios-5 back-color-blanco border-t-gray0-1 ">
+                <div class="row w-100 m-0 pb-3 pt-3 position-relative">
+                    <div class="w-12vw h-12vw position-absolute top--40px left-42 z-index-10000">
+                        <uploadImagen :custom="true" @save="saveImagen" />
+                    </div>
                     <div class="col-9 px-1">
-                        <inputForm type="text" placeholder="" v-model="mensaje" :disabled="false" @enter="enviarMensaje()" />
+                        <inputForm type="text" placeholder="" input="form" v-model="mensaje" :fixed="true" @enter="enviarMensaje()" />
                     </div>
                     <div class="col-3 my-auto pl-0 pr-1">
-                        <botonApp tipo="verde" @click="enviarMensaje()" texto="Enviar" radius="35px" />
+                        <botonApp tipo="azul" @click="enviarMensaje()" texto="Send" radius="35px" />
                     </div>
                 </div>
             </div>
-            <!-- <div class="row w-100 m-0 back-color-blanco" v-chatk ></div> -->
+
         </div>
     </f7-page>
 </template>
@@ -57,21 +48,26 @@ import Swiper from 'swiper';
             // usuario_bloqueado(){return this.$store.getters.getUsuarioBloqueado(this.chat.usuario.id)},
             // bloqueo_usuario(){return this.$store.getters.getBloqueoUsuario(this.chat.usuario.id)},
         },
+        
         created() {
-            if(device.platform == 'iOS'){
-                console.log("TECLADO PARA CHATS IOS");
-                Keyboard.shrinkView(true);
-                // console.log("VOY NAVEGAMTO TO IOS", this.router);
-                // this.router.navigate('/mensajes_chat_ios',{reloadCurrent: true});
+            if(this.$store.getters.deviceReady){
+                if(device.platform == 'iOS'){
+                    console.log("TECLADO PARA CHATS IOS");
+                    Keyboard.shrinkView(true);
+                }
             }
         },
+
         destroyed() {
-            if(device.platform == 'iOS'){
-                console.log("DESACTIVO TECLADO PARA CHATS IOS");
-                Keyboard.disableScrollingInShrinkView(false);
-                Keyboard.shrinkView(false);
+            if(this.$store.getters.deviceReady){
+                if(device.platform == 'iOS'){
+                    console.log("DESACTIVO TECLADO PARA CHATS IOS");
+                    Keyboard.disableScrollingInShrinkView(false);
+                    Keyboard.shrinkView(false);
+                }
             }
         },
+
         updated(){
             if(!this.chat.id){
                 if(this.esAfiliado){
@@ -84,6 +80,7 @@ import Swiper from 'swiper';
             this.resfreshScroll();
         },
         mounted(){
+            console.log("CHAT", this.chat);
             this.resfreshScroll();
         },
         methods:{
@@ -94,6 +91,9 @@ import Swiper from 'swiper';
                 if(!this.mensaje) return;
                 this.$store.dispatch('postSaveMsn',[this.mensaje]);
                 this.mensaje = null;
+            },
+            saveImagen(id){
+                this.$store.dispatch('postSaveMsn',[id,'1']);
             },
             scroll(){
                 $('#mensajes_'+this.chat.id).scrollTop($('#mensajes_'+this.chat.id)[0].scrollHeight);

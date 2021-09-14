@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>80519246540-36c8i4em3f14jd172pnavu03qe5uld3h.apps.googleusercontent.com</string>
+	<string>80519246540-ku674726lmuvcuhn4nfdu1k48qnq2qrd.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.80519246540-36c8i4em3f14jd172pnavu03qe5uld3h</string>
+	<string>com.googleusercontent.apps.80519246540-ku674726lmuvcuhn4nfdu1k48qnq2qrd</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBmbQV0QGWsyg-nlbN6HQFoFJ6s72nqZy0</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.axit.axit</string>
+	<string>com.namee.namee</string>
 	<key>PROJECT_ID</key>
 	<string>globel-1</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:80519246540:ios:7957fce94173cb0ac1c869</string>
+	<string>1:80519246540:ios:d9483a4f568a01b7c1c869</string>
 	<key>DATABASE_URL</key>
 	<string>https://globel-1.firebaseio.com</string>
 </dict>

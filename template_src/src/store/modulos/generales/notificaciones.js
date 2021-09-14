@@ -95,7 +95,7 @@ const actions = {
         if(this.getters.getSession.token){
             let data ={
                 app_version:    '1.10.0',
-                app_identifier: 'com.jocose.jocose',
+                app_identifier: 'com.namee.namee',
                 type:           'usuarios',
                 type_name:      'token',
                 type_id:        this.getters.getSession.token,

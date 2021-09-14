@@ -6,10 +6,11 @@ const mutations = {};
 const actions = {
     getFotoFunction({state}, [fn]){
         let optionsCamera = {
-            quality: 30,
+            quality: 50,
             destinationType: Camera.DestinationType.FILE_URI,
-            saveToPhotoAlbum:false,
-            correctOrientation: true
+            saveToPhotoAlbum: false,
+            correctOrientation: true,
+            allowEdit:false,
         }
         navigator.camera.getPicture(
             (imageURI) =>{
@@ -23,7 +24,7 @@ const actions = {
 
     selectFotoFunction({state}, [fn]){
         let optionsCamera = {
-            quality: 30,
+            quality: 50,
             destinationType: Camera.DestinationType.FILE_URI,
             allowEdit:false,
             sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
