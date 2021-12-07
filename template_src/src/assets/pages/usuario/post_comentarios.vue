@@ -7,10 +7,10 @@
             <div class="contenedor-page-tabs back-color-blanco">
 
                 <div class="row w-100 m-0">
-                    <postCard :data="post" />
+                    <postCard :data="post" :notComment="1" />
                 </div>
                 <div class="row w-100 m-0">
-                    <div class="row w-100 m-0">
+                    <div class="row w-100 m-0 px-14px">
                         <div class="col px-0 px-1" @click="t=1">
                             <div class="row w-100 m-0 py-5px border-azul1-1 justify-content-center text-center border-radius-30px " 
                                 :class="(t==1?'back-color-azul1 letra-blanco-18':'letra-azul1-18')" >Comments</div>
@@ -26,13 +26,13 @@
                 </div>
 
                 <template v-if="t==1">
-                    <div class="row w-100 m-0" v-for="(c,x) of comentarios" :key="x" >
+                    <div class="row w-100 m-0 px-14px" v-for="(c,x) of comentarios" :key="x" >
                         <comenatarioRow :data="c" />
                     </div>
                 </template>
 
                 <template v-if="t==2">
-                    <div class="row w-100 m-0" v-for="(c,x) of likes" :key="x" >
+                    <div class="row w-100 m-0 px-14px" v-for="(c,x) of likes" :key="x" >
                         <comenatarioRow :like="true" :data="c" />
                     </div>
                 </template>
@@ -42,7 +42,7 @@
             <div class="row w-100 m-0 border-t-gray0-1 ">
                 <div class="row w-100 m-0 pb-3 pt-3 ">
                     <div class="col-9 my-auto px-1 ">
-                        <inputForm type="text" placeholder="" :fixed="true" input="form" v-model="mensaje" @enter="sendComentario()" />
+                        <inputForm  :textarea="true" :rows="1" :auto="true" type="text" placeholder="" :fixed="true" input="form" v-model="mensaje" @enter="sendComentario()" />
                     </div>
                     <div class="col-3 my-auto pl-0 pr-1">
                         <botonApp tipo="azul" @click="sendComentario()" texto="Send" radius="35px" />

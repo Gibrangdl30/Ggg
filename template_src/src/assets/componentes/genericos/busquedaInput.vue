@@ -1,5 +1,5 @@
 <template>
-<div class="row w-100 m-0 p-1px justify-content-center carta border-radius-30px">
+<div class="row w-100 m-0 p-1px justify-content-center border-gray0-2 border-radius-30px">
     <div class="w-10vw text-right">
         <i class="material-icons letra-gray0-25 my-auto pt-5px">search</i>
     </div>
@@ -25,26 +25,78 @@ export default {
     props:  [
         'value',
         'holder',
-        ],
+        'date',
+        'type',
+        'input',
+        'password',
+        'clase',
+        'noNumeros',
+        'placeholder',
+        'maxlength',
+        'disabled',
+        'auto', 
+        'textarea', 
+        'rows', 
+        'texto' ,
+        'scroll',
+        'offset',
+        'fixed',
+        'contendorId' ,
+        'textcolor'
+    ],
     data(){
         return {
             id: _.uniqueId('input_'),
             elemento: null,
         };
     },
-    computed:{ },
+    computed:{
+        android(){
+            // console.log("ANDORIDNG", this.$store.getters.deviceready);
+            if(this.$store.getters.deviceready){
+                return device.platform == 'Android'
+            }
+            return false;
+        },
+    },
     mounted() {
-        this.initElemento();
+        setTimeout(
+            ()=>{
+                this.initElemento();
+        },350);
     },
     methods:{
         initElemento(){
             if(document.getElementById(this.id)){
                 this.elemento = document.getElementById(this.id);
+                if(this.elemento){
+                    this.focus();
+                }
             }
             else{
                 setTimeout(this.initElemento, 300);
             }
         },
+
+        focus(){
+            if(!this.fixed){
+                if(this.android || this.scroll){
+                    $(`#${this.id}`).focus(()=>{
+                        setTimeout(()=>{
+                            const offset = this.offset || 450;
+                            console.log("SETING OFFSET", offset);
+                            if(this.contendorId){
+                                $(`#${this.contendorId}`).animate({ scrollTop: offset }, 330);
+                            }
+                            else{
+                                $('.contenedor-page-tabs').animate({ scrollTop: offset }, 330);
+                            }
+                        },350);
+                    });
+                }
+            }
+        },
+
         enter(){
             if(this.elemento){
                 this.elemento.blur();

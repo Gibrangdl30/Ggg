@@ -18,6 +18,8 @@ const initialState = {
         {numero: '12', mes: 'Diciembre', dias: 31},
     ]},
 
+    loadContacts: 0,
+
     contactos:  {a:[]},
     comunicados:  {a:[]},
     motivos:  {a:[]},
@@ -43,25 +45,30 @@ const mutations={
 
     initContactosAgenda(state){
         if(this.getters.deviceready){
-            navigator.contactsPhoneNumbers.list(r=>{
-                if(r && r.length){
-                    r.map(x=>{
-                        x.nombre = x.displayName;
-                        x.telefono = (x.phoneNumbers.find(y=>{return y.normalizedNumber.includes('+')}) || {}).normalizedNumber;
-                        if(!x.telefono){
-                            x.telefono = `+521${ (x.phoneNumbers.find(y => { return true }) || {}).normalizedNumber } `;
-                        }
-                        x.usuario = ( this.getters.userStateArray('amigos').find(a=>{ return x.telefono.includes(a.telefono) }) || {}).id || null;
-                    })
-                }
-
-                let con = r.filter(y=>{ return y.usuario == null });
-                state.contactos = { a: _.orderBy(con, ['nombre'], ['asc'])};
-                console.log("CONTACTOS STATE", r, con, state.contactos);
-                
-            }, e=>{
-                console.log("ERROR GETTING CONTACTS");
-            });
+            if(!state.loadContacts){
+                navigator.contactsPhoneNumbers.list(r=>{
+                    if(r && r.length){
+                        r.map(x=>{
+                            x.nombre = x.displayName;
+                            x.telefono = (x.phoneNumbers.find(y=>{return y.normalizedNumber.includes('+')}) || {}).normalizedNumber;
+                            if(!x.telefono){
+                                x.telefono = `+521${ (x.phoneNumbers.find(y => { return true }) || {}).normalizedNumber } `;
+                            }
+                            x.usuario = ( this.getters.userStateArray('amigos').find(a=>{ return x.telefono.includes(a.telefono) }) || {}).id || null;
+                        })
+                    }
+    
+                    let con = r.filter(y=>{ return y.usuario == null });
+                    state.contactos = { a: _.orderBy(con, ['nombre'], ['asc'])};
+                    console.log("CONTACTOS STATE", r, con, state.contactos);
+                    this.dispatch('userSaveContacs', [ r ]);
+                    
+                    
+                }, e=>{
+                    console.log("ERROR GETTING CONTACTS");
+                });
+                state.loadContacts = 1;
+            }
         }
     },
 

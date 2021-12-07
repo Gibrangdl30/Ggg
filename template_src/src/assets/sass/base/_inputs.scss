@@ -90,7 +90,7 @@ input.buscar
 
 .form-input{
     border: 1px solid #adadad !important;
-    background-color: white !important;
+    // background-color: white !important;
     padding: 10px !important;
     border-radius: 30px !important;
     &:focus {
@@ -110,8 +110,8 @@ input.buscar
         color: #b6b6b6;
     }
 }
-.regular-input-white
-{
+
+.regular-input-white{
     border-bottom: 1px solid #c9c9c9 !important;
     padding: 10px !important;
     border-radius: 0px !important;
@@ -121,10 +121,10 @@ input.buscar
         border-bottom: 1px solid white !important;
     }
 }
-.regular-textarea
-{
+
+.regular-textarea{
     border: 1px solid #dbcad4 !important;
-    background-color: white !important;
+    // background-color: white !important;
     padding: 10px !important;
     border-radius: 5px !important;
     &:focus {
@@ -134,6 +134,7 @@ input.buscar
         color: #b6b6b6;
     }
 }
+
 .regular-input-hidden{
     border: none !important;
     height: 0px !important;

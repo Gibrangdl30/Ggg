@@ -2,7 +2,21 @@
 <div class="input-component row w-100 m-0 justify-content-center">
     <div class="col-12 my-auto p-0" v-if="textarea">
         <p :class="`letra-${textcolor?textcolor:'gray3'}-4-1vw m-0 mb-1 pl-1`">{{texto}}</p>
-        <textarea :id="id" :type="type" :rows="rows" class="regular-textarea w-100 m-0" :placeholder="placeholder" :maxlength="maxlength" :disabled="disabled" :value="value" @input="update" @change="update" @keyup.enter="enter()"></textarea>
+        <textarea 
+            :id="id" 
+            :type="type" 
+            :rows="autorows" 
+            class="regular-textarea w-100 m-0" 
+            :class="clase"
+            :placeholder="placeholder" 
+            :maxlength="maxlength" 
+            :disabled="disabled" 
+            :value="value" 
+            @input="update" 
+            @change="update" 
+            @keypress="keyenter" 
+            @keyup.enter="enter()"
+        ></textarea>
     </div>
     <div class="col-12 my-auto p-0" v-else-if="date">
 
@@ -73,6 +87,7 @@ export default {
         'placeholder',
         'maxlength',
         'disabled',
+        'auto', 
         'textarea', 
         'rows', 
         'texto' ,
@@ -91,6 +106,7 @@ export default {
             ver: false,
             mes: null,
             year: null,
+            autorows: null,
             inicio: Number(moment().format('YYYY')),
             conteo: 10,
         };
@@ -125,6 +141,10 @@ export default {
                 this.$emit('input', `${this.year}-${this.mes}`);
             }
         }
+        if(this.rows){
+            this.autorows = this.rows;
+        }
+
     },
     mounted() {
         setTimeout(
@@ -184,6 +204,28 @@ export default {
         },
 
         keyenter(event){
+            // console.log("length", event.target.value.length);
+            if(this.textarea){
+                if(this.auto){
+                    switch(true){
+                        case event.target.value.length <= 41:
+                            this.autorows = 1;
+                            break;
+                        case event.target.value.length <= 80:
+                            this.autorows = 2;
+                            break;
+                        case event.target.value.length <= 120:
+                            this.autorows = 3;
+                            break;
+                        case event.target.value.length <= 160:
+                            this.autorows = 4;
+                            break;
+                        case event.target.value.length <= 200:
+                            this.autorows = 5;
+                            break;
+                    }
+                }
+            }
             if(this.type == 'number'){
                 // console.log("LENGTH",this.maxlength > event.target.value.length, event.target.value.length)
                 if(this.maxlength > event.target.value.length){

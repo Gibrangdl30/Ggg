@@ -57,8 +57,9 @@ const mutations = {
                 state.deviceready = true;
                 state.devicePlatform = device.platform;
                 state.deviceIos = state.devicePlatform == 'iOS';
-                
+
                 this.commit('addBackbutton_action');
+                this.commit('initContactosAgenda');
                 this.commit('initPushDeviceReady');
                 this.dispatch('getLocalizacion');
             }, false);
@@ -224,7 +225,7 @@ const actions = {
     },
 
     postGetSyncData({state}){
-        console.log("FOERCHING", state.syncExtra);
+        // console.log("FOERCHING", state.syncExtra);
         for (const id in state.syncExtra) {
             this.dispatch('postGetSyncRow',id)
         }

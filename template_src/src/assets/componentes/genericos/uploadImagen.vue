@@ -1,7 +1,7 @@
 <template>
 <div class="w-100 h-100 position-relative">
     <div class="h-100 w-100 border-radius-50 app-degra" v-if="custom" @click="takePicture()" >
-        <div class="row w-100 m-0 px-3 pt-14px ">
+        <div class="row w-100 m-0 px-17px pt-16px ">
             <imagen :icono="true" src="camx" />
         </div>
     </div>
@@ -116,7 +116,7 @@ export default {
                         this.imagen_id = res.data.id;
                         this.$emit('input', this.imagen_id);
                         this.$emit('change', res.data.base);
-                        this.$emit('save', this.imagen_id);
+                        this.$emit('end', this.imagen_id);
                         this.$store.dispatch('synchronizeData');
                         if(this.custom){
                             if(this.post){
@@ -139,6 +139,7 @@ export default {
                     this.$emit('input', this.imagen_id);
                     this.$emit('change', res.data.base);
                     this.$emit('save', this.imagen_id);
+                    this.$emit('end', this.imagen_id);
                     this.$store.dispatch('synchronizeData');
                     if(this.custom){
                         if(this.post){

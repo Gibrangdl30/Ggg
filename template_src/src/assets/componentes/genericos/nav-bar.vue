@@ -4,26 +4,29 @@
     <template v-if="tipo=='logo'">
     <div class="row m-0 justify-content-space-between px-3px nav-bar nav-inicio" :class="`${no_border?'':'border-b-gray0-1'}`">
 
-        <div class="w-21 my-auto ml-2">
+        <div class="w-28 my-auto ml-auto">
            <div class="row w-100 m-0">
                <imagen :logo="2" />
            </div>
         </div>
 
-
-        <div class="w-12 ml-auto boton-carrito h-100 position-relative" @click="router.navigate('/chats')">
-            <div class="row w-100 m-0 px-10px">
-                <imagen :icono="true" src="ch1" />
-            </div>
-            <div class="w-14px h-14px back-color-azul1 position-absolute right-0px top-0px border-radius-50" v-if="mensajeNuevo" ></div>
+        <div class="w-15 boton-carrito h-100 position-relative" @click="router.navigate('/chats')" >
+           
         </div>
 
-        <div class="col-auto px-1 boton-carrito h-100 position-relative" v-if="profile" @click="router.navigate('/mi_cuenta')">
+        <div class="w-9 my-auto position-relative" @click="router.navigate('/chats')" >
+            <div class="row w-100 m-0 pt-1px  px-2px"> 
+                <imagen :icono="true" src="ch12" />
+            </div>
+            <!-- <div class="w-14px h-14px back-color-azul1 position-absolute right-0px top-0px border-radius-50" v-if="mensajeNuevo" ></div> -->
+            <div class="row w-100 m-0 justify-content-center text-center position-absolute top--7px right-0px letra-gray3-23 ">...</div>
+        </div>
+
+        <div class="col-auto my-auto px-1 boton-carrito h-100 position-relative" v-if="profile" @click="router.navigate('/mi_cuenta')">
             <div class="w-45px h-45px border-radius-50 overflow-hidden">
                 <imagen clase=" " :fit="true" :perfil="true" />
             </div>
         </div>
-
 
     </div>
     </template>
@@ -31,9 +34,9 @@
     <template v-if="tipo=='inicio'">
     <div class="row m-0 justify-content-space-between px-3px nav-bar nav-inicio" :class="`${no_border?'':'border-b-gray0-1'}`">
 
-        <div class="w-12 boton-menu p-0">
+        <div class="w-13 boton-menu p-0">
             <template v-if="backs">
-                <button type="button" class="button button-outline button-raised button-active-gray h-100 p-2px" @click="back()">
+                <button type="button" class="button button-outline button-raised button-active-gray h-100 p-2px" @click="back()" >
                     <i class="f7-icons color-white letra-gray-5-5vw">chevron_left</i>
                 </button>
             </template>
@@ -42,10 +45,15 @@
                     <i class="f7-icons color-white letra-gray-5-5vw">chevron_left</i>
                 </button>
             </template>
+            <template v-else-if="customBack">
+                <button type="button" class="button button-outline button-raised button-active-gray h-100 p-2px" @click="back()">
+                    <div class="row w-100 m-0 letra-gray3-16 ">Cancel</div>
+                </button>
+            </template>
         </div>
 
-        <div class="w-12 boton-menu p-0" v-if="chat">
-        </div>
+        <div class="w-12 boton-menu p-0" v-if="fix==-1"></div>
+       
 
         <div class="col text-center title p-0">
             <div class="w-40px mx-auto pb-10px" v-if="logo">
@@ -53,6 +61,7 @@
             </div>
             <p class="m-0 letra-gray-4-8vw my-auto" v-else >{{title}}</p>
         </div>
+
 
         <div class="w-12 boton-carrito h-100 position-relative" v-if="chat">
             <button type="button" class="button button-outline button-raised button-active-gray h-100 p-2px" @click="router.navigate('/chats')" >
@@ -72,6 +81,7 @@
         <div class="w-12 boton-carrito h-100"  v-if="right">
             <button type="button" class="button button-outline button-raised button-active-gray h-100 p-2px" @click="$emit('right')" v-if="icon">
                 <imagen :icono="true" src="scan_blanco" v-if="!icon"/>
+                <imagen clase="pr-4px" :icono="true" src="newC" formato="png" v-else-if="icon=='newC'"/>
                 <i class="material-icons letra-azul1-40" v-else>{{icon}}</i>
             </button>
         </div>
@@ -146,14 +156,23 @@
                 <i class="f7-icons color-white letra-gray-5-5vw">chevron_left</i>
             </button>
         </div>
-       <div class="col text-center title p-0">
+
+        <div class="col text-center title p-0">
             <p class="m-0 letra-gray-4-1vw my-auto">{{title}}</p>
         </div>
+
         <!-- <div class="w-10 h-100" @click="$emit('call')">
             <div class="row w-100 h-100 m-0 py-14px px-2px ">
                 <img class="w-100 h-100 object-fit-contain overflow-hidden" src="../../iconos/phone.svg">
             </div>
         </div> -->
+
+        <div class="col-2 boton-carrito h-100 pl-1" v-if="borrar">
+            <div class="row w-12vw h-12vw m-0 mx-auto my-auto p-5px" @click="$emit('borrar')">
+                <icono icono="delete" clase="letra-gray3-30" />
+            </div>
+        </div>
+
         <div class="col-2 boton-carrito h-100 pl-1" v-if="usuario && usuario.foto">
             <div class="row w-12vw h-12vw m-0 mx-auto my-auto p-5px" @click="$emit('perfil')">
                 <imagen clase="w-100 h-100 border-radius-50 " :user="true" :src="usuario.foto"  />
@@ -182,11 +201,13 @@
             'backs', 
             'bloqueado',
             'emitBack', 
+            'customBack', 
             'no_border', 
             'add',
             'right', 
             'icon',
             'show',
+            'borrar',
             'imagen',
             'usuario',
             'mesa',

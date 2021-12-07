@@ -9,6 +9,7 @@ nuevo modulo de chat para servicio en proceso
 remplazar UIApplication.openSettingsURLString por UIApplicationOpenSettingsURLString
 en platforms/ios/Proyecto/Plugins/.....qrscaneer/.....swift
 
+superlargacontraseña
 
 cordova build android --release -- --keystore=./namee-key.jks --storePassword=sustam --alias=namee-key --password=sustam --packageType=bundle
 
@@ -26,7 +27,11 @@ cordova plugin add cordova-plugin-keyboard
 4947
 132*20
 2640
+TWLIO
+alonso7109torres@gmail.com
+sustamapps2021$1
 
+3339548526
 
 1500x2415
 500x800

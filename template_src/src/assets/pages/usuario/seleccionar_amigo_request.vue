@@ -2,7 +2,7 @@
     <f7-page class="" id="inicio">
 
         <div class="vista">
-            <nav-bar tipo="inicio" title="Select friends" :fix="1" :backs="true"   />
+            <nav-bar tipo="inicio" title="Request" :fix="1" :backs="true"   />
 
             <div class="row w-100 m-0" v-if="false">
                 <div class="row w-100 m-0">
@@ -17,7 +17,7 @@
                 </div>
             </div>
 
-            <div class="row w-100 m-0">
+            <div class="row w-100 m-0 border-b-gray0-2">
                 <div class="row w-100 m-0 px-3 py-3">
                     <busquedaInput v-model="b" />
                 </div>
@@ -25,30 +25,55 @@
 
             <div class="contenedor-page-tabs back-color-blanco">
 
-                <div class="row w-100 m-0 pt-2 px-4 justify-content-space-evenly " v-show="t==1" >
+                <!-- <div class="row w-100 m-0 pt-2 px-4 justify-content-space-evenly " v-show="t==1" >
                     <div class="col-auto px-0" v-for="a of filtrado" :key="a.id">
-                        <amigosRow :card="true" :data="a" :color="true" @click="init" />
+                        <amigosRow :card="true" :data="a" :color="true" @click="init" @set="set" :selectable="true" :check="usuarios.some(x=>{return x.id == a.id})" />
                     </div>
-                    <div class="col-auto px-0" v-if="filtrado.length%2==0" >
+                    <div class="col-auto px-0" >
                         <div class="w-25vw py-1"></div>
                     </div>
-                    <div class="col-auto px-0" v-if="filtrado.length%2==1" >
+                    <div class="col-auto px-0">
                         <div class="w-25vw py-1"></div>
                     </div>
-                    <div class="col-auto px-0" v-if="filtrado.length%2==1" >
-                        <div class="w-25vw py-1"></div>
+                </div> -->
+
+                <div class="row w-100 m-0 pt-2 px-4 justify-content-space-evenly " v-show="t==1" >
+                    <div class="row w-100 m-0" v-for="a of filtrado" :key="a.id">
+                        <amigosRow :card="0" :data="a" :color="true" @click="init" @set="set" :selectable="true" :check="usuarios.some(x=>{return x.id == a.id})" />
                     </div>
                 </div>
 
-                <div class="row w-100 m-0 pt-2 px-4 justify-content-space-evenly " v-show="t==2" >
+                <!-- <div class="row w-100 m-0 pt-2 px-4 justify-content-space-evenly " v-show="t==2" >
                     <div class="col-auto px-0" v-for="(a, x) of reducir" :key="x" >
                         <contactosRow :card="true" :data="a" @click="send" />
                     </div>
                     <div class="col-auto px-0" v-if="reducir.length%2==0" >
                         <div class="w-25vw py-1"></div>
                     </div>
-                </div>
+                </div> -->
 
+                <template v-if="b" >
+                    <div class="row w-100 m-0 pt-2 px-4 justify-content-space-evenly "  >
+                        <div class="col-auto px-0" v-for="(a, x) of reducir" :key="x" >
+                            <contactosRow :card="true" :data="a" @click="send" />
+                        </div>
+                        <div class="col-auto px-0"  >
+                            <div class="w-25vw py-1"></div>
+                        </div>
+                        <div class="col-auto px-0" >
+                            <div class="w-25vw py-1"></div>
+                        </div>
+                    </div>
+                </template>
+
+            </div>
+
+            <div class="row w-100 m-0 border-t-gray0-1 " v-if="usuarios && usuarios.length">
+                <div class="row w-100 m-0 pb-3 pt-3 ">
+                    <div class="col-10 my-auto mx-auto ">
+                        <botonApp tipo="azul" @click="sendU(usuarios)" texto="Send to users" radius="35px" />
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -67,6 +92,7 @@ const moment = require('moment-timezone');
             return{
                 t:1,
                 b: null,
+                usuarios: [],
             } 
         },
         computed: {
@@ -92,7 +118,7 @@ const moment = require('moment-timezone');
         },
 
         beforeCreate() {
-            this.$store.commit('initContactosAgenda');
+            // this.$store.commit('initContactosAgenda');
         },
 
         mounted(){
@@ -104,11 +130,28 @@ const moment = require('moment-timezone');
             go(ruta){
                 this.router.navigate(ruta);
             },
+            
+            set(u){
+                let index = this.usuarios.findIndex(x=>{return x.id == u.id});
+                if(index == -1){
+                    this.usuarios.push(u);
+                }
+                else{
+                    this.usuarios = this.usuarios.filter(x=>{return x.id != u.id});
+                }
+                console.log("USUARIOS", this.usuarios);
+            },
 
             init(u){
                 console.log("INIT CHATD");
-                this.$store.dispatch('userPostRequestFoto',[u]);
+                this.$store.dispatch('userPostRequestFoto',[ [u] ]);
             },
+
+            sendU(u){
+                console.log("INIT CHATD");
+                this.$store.dispatch('userPostRequestFoto',[ u ]);
+            },
+
             send(s){
                 if(!s.telefono){
                     swal("el numero de teléfono no es correcto");

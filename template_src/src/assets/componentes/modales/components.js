@@ -7,13 +7,16 @@ import modalMensaje from './modalMensaje.vue';
 import globalMsn from './globalMsn.vue';
 import modalSession from './modalSession.vue';
 import modalCalificar from './modalCalificar.vue';
+import modalMensajeStatic from './modalMensajeStatic.vue';
 import modalQr from './modalQr.vue';
+import modalUsuario from './modalUsuario.vue';
 
 
 function plugin(Vue) {
     Vue.component('globalMsn', globalMsn);
     Vue.component('modal-loader', modal_loader);
     Vue.component('modalCalificar', modalCalificar);
+    Vue.component('modalMensajeStatic', modalMensajeStatic);
     Vue.component('modalMensaje', modalMensaje);
     Vue.component('modalSession', modalSession);
     Vue.component('modalNotificacion', modalNotificacion);
@@ -21,5 +24,6 @@ function plugin(Vue) {
     Vue.component('modalPickFecha', modalPickFecha);
     Vue.component('modalPickRangoFecha', modalPickRangoFecha);
     Vue.component('modalQr', modalQr);
+    Vue.component('modalUsuario', modalUsuario);
 }
 export default plugin

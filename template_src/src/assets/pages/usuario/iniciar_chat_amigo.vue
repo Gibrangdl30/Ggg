@@ -2,9 +2,9 @@
     <f7-page class="" id="inicio">
 
         <div class="vista">
-            <nav-bar tipo="inicio" title="Friends" :fix="1" :backs="true"   />
+            <nav-bar tipo="inicio" title="NEW CHAT" :fix="1" :backs="true"   />
 
-             <div class="row w-100 m-0">
+             <div class="row w-100 m-0" v-if="false" >
                 <div class="row w-100 m-0">
                     <div class="col px-0" @click="t=1">
                         <div class="row w-100 m-0 border-azul1-1 justify-content-center text-center py-2"
@@ -17,8 +17,7 @@
                 </div>
             </div>
 
-            <div class="row w-100 m-0">
-                
+            <div class="row w-100 m-0 border-b-gray0-2 ">
                 <div class="row w-100 m-0 px-3 py-3">
                     <busquedaInput v-model="b" />
                 </div>
@@ -26,7 +25,7 @@
 
             <div class="contenedor-page-tabs back-color-blanco">
 
-                <div class="row w-100 m-0 pt-2 px-4" v-show="t==1">
+                <!-- <div class="row w-100 m-0 pt-2 px-4" v-show="t==1">
                     <div class="col-auto px-0" v-for="a of filtrado" :key="a.id">
                         <amigosRow :card="true"  :data="a" @click="init" />
                     </div>
@@ -36,11 +35,17 @@
                     <div class="col-auto px-0" >
                         <div class="w-25vw py-1"></div>
                     </div>
+                </div> -->
+
+                <div class="row w-100 m-0 pt-2 px-4" v-show="t==1">
+                    <div class="row w-100 m-0" v-for="a of filtrado" :key="a.id">
+                        <amigosRow :card="0"  :data="a" @click="init" />
+                    </div>
                 </div>
                 
-                <template v-if="t==2" >
+                <template v-if="b" >
                         
-                    <div class="row w-100 m-0" v-if="!b">
+                    <!-- <div class="row w-100 m-0" v-if="!b">
                         <div class="row w-100 m-0 pt-3">
                             <div class="col-4 px-0 mx-auto">
                                 <imagen :icono="true" src="sercon" />
@@ -49,7 +54,7 @@
                         <div class="row w-100 m-0 pt-3">
                             <div class="row w-100 m-0 letra-gray3-18 justify-content-center text-center ">Search for your contacts above.</div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="row w-100 m-0 pt-2 px-4 justify-content-space-evenly "  >
                         <div class="col-auto px-0" v-for="(a, x) of reducir" :key="x" >
@@ -116,7 +121,7 @@ const moment = require('moment-timezone');
         },
 
         beforeCreate() {
-            this.$store.commit('initContactosAgenda');
+            // this.$store.commit('initContactosAgenda');
         },
 
         mounted(){

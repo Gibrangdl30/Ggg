@@ -91,6 +91,7 @@ const mutations = {
     finishLoader(){this.commit('closeModal',['loader']);},
 };
 const actions = {
+    
     postPromise({state}, [url, data, loader = false]){
         try{
             if(loader)this.commit('openModal',['loader']);

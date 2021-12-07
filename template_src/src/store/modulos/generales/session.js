@@ -36,6 +36,7 @@ const mutations = {
             token: data.token, 
             tipo: data.tipo || 'usuario',
         };
+        console.log("TOKESN", data, state.session, this.getters.getSession);
         localStorage.setItem(storage,JSON.stringify(state.session));
     },
 
@@ -134,12 +135,14 @@ const actions = {
             },
             error=>{});
     },
-    postEditCuenta({ commit, state }, [data, update = false]){
+    postEditCuenta({ commit, state }, [data, update = false, back = true]){
         this.dispatch('postPromiseLoader', ['usuarios/edit', data]).then(
             res => {
                 this.dispatch('synchronizeData');
                 swal("","Profile updated","success");
-                this.getters.getRouter.back();
+                if(back){
+                    this.getters.getRouter.back();
+                }
             },
             error=>{});
     },

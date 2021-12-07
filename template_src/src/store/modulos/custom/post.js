@@ -67,6 +67,7 @@ const actions={
         let load = {
             url: 'datos/save_favorito',
             data: data,
+            loader: false,
             alert: false,
         }
         this.dispatch('superPostLoader', load).then(

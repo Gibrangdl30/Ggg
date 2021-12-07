@@ -8,41 +8,37 @@
         />
 
         <div class="vista">
-            <nav-bar tipo="logo" title="Inicio" :backs="false" :logo="false" :profile="true"  />
-
-            <div class="row w-100 m-0" >
-                <div class="row w-100 m-0 pl-2 pt-3">
-                    <!-- <div class="row w-100 m-0 py-2 pl-2 letra-gray3-17">Recent</div> -->
-                    <div class="row w-100 m-0 pl-2">
-                        <div class="col-auto px-0 " @click="go('/seleccionar_amigo_request')">
-                            <div class="w-13vw h-13vw mx-auto app-degra border-radius-50 ">
-                                <div class="row w-100 m-0 justify-content-center text-center pt-6px">
-                                    <icono icono="add" clase="letra-blanco-40" />
-                                </div>
-                            </div>
-                            <div class="row w-100 m-0 justify-content-center text-center letra-azul1-14">Request</div>
-                        </div>
-                        <!-- <div class="col px-0 pl-3" v-if="privados && privados.length">
-                            <postPrivadosSlider   />
-                        </div> -->
-                        <div class="w-80vw px-0 pl-3 mr-auto" v-if="lastrequest && lastrequest.length">
-                            <postRequestSlider   />
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <nav-bar tipo="logo" :no_border="1" title="Inicio" :backs="false" :logo="false" :profile="true"  />
 
             <div class="contenedor-page-tabs back-color-blanco">
 
+                <div class="row w-100 m-0 border-b-gray0-2" >
+                    <div class="row w-100 m-0 pl-2 pt-2">
+                        <div class="row w-100 m-0">
+                            <div class="col-auto px-0 " @click="go('/seleccionar_amigo_request')" v-if="false" >
+                                <div class="w-13vw h-13vw mx-auto app-degra border-radius-50 ">
+                                    <div class="row w-100 m-0 justify-content-center text-center pt-9px">
+                                        <icono icono="add" clase="letra-blanco-35" />
+                                    </div>
+                                </div>
+                                <div class="row w-100 m-0 justify-content-center text-center letra-gray2-14">Request</div>
+                            </div>
+                            <div class="row w-100 m-0 px-0 mr-auto" v-if="lastrequest && lastrequest.length">
+                                <postRequestSlider   />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row w-100 m-0">
-                    <div class="row w-100 m-0" v-for=" f of posts " :key="f.id">
-                        <postCard :data="f" />
+                    <div class="row w-100 m-0" v-for=" f of posts.filter(a => !notShow.includes(a.id) ) " :key="f.id">
+                        <postCard :data="f" v-model="notShow" />
                     </div>
                 </div>
 
             </div>
 
-            <div class="w-20vw h-20vw position-absolute bottom-3 right-8px ">
+            <div class="w-16vw h-16vw position-absolute bottom-3 right-8px ">
                 <uploadImagen :custom="true" :post="true" />
             </div>
             
@@ -68,6 +64,7 @@ const moment = require('moment-timezone');
                 c: 15,
                 add: 5,
                 zona: moment.tz.guess(),
+                notShow:[],
             } 
         },
         computed: {

@@ -2,8 +2,9 @@
 <transition name="custom"
             enter-active-class="animated fadeIn faster"
             leave-active-class="animated fadeOut faster">
-    <div class="modal_aplicar w-100 m-0 p-0 justify-content-center px-1" v-if="state" @click.self="closeModal()">
+    <div class="modal_aplicar com-mensa-modal w-100 m-0 p-0 justify-content-center px-1" v-if="state" @click.self="closeModal()">
 
+        <div class="row w-100 m-0px mt-80px px-3 pt-40px" @click.self="closeModal()">
         <div class="row w-100 m-0px mt-80px px-3 pt-40px" @click.self="closeModal()">
 
             <div class="row w-100 m-0 mt-5 back-color-blanco pt-3 border-radius-15px overflow-hidden">
@@ -82,6 +83,7 @@
                 </div>
             </div>
             </div>
+        </div>
         </div>
     </div>
 

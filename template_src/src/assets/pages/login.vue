@@ -18,7 +18,7 @@
                     />
                 </div>
                 <div class="col-11 mt-4" v-if="false" > 
-                    <inputForm texto="Codigo de accesso" input="form" :password="true" type="password" placeholder="********" v-model="form.password" @enter="login" />
+                    <inputForm texto="Password" :password="true" type="password" placeholder="********" v-model="form.password" @enter="login" />
                 </div>
 
                 <div class="col-11 mt-3 letra-azul-4-1vw text-center" v-if="false" @click="router.navigate('/recuperar_password')">¿Olvidaste tu contraseña?</div>
@@ -50,6 +50,7 @@ import Swiper from 'swiper';
             return{
                 form:{
                     tel: '',
+                    password: '',
                 },
             } 
         },
@@ -80,6 +81,9 @@ import Swiper from 'swiper';
                 if(!this.form.tel){
                     return;
                 }
+                // if(!this.form.password){
+                //     return;
+                // }
                 this.$store.dispatch('userPostRegistoTelefono',[this.form, 'login']);
             },
             enter(f){

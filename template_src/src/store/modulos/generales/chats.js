@@ -28,6 +28,16 @@ const getters = {
         else if (moment(fecha).diff(now, 'days')==-1) moment(fecha).format('[ayer] hh:mm a');
         else return moment(fecha).format('DD/MM/YY hh:mm a');
     },
+
+    getMensajeNuevoChat: (state, getters)=>(usuarios_id)=>{
+        let chat = state.chats.arreglo.find(c => {return c.usuario.id == usuarios_id});
+        if(chat){
+            if(( chat.mensajes[ chat.mensajes.length - 1 ] || {} ).usuarios_id && ( chat.mensajes[ chat.mensajes.length - 1 ] || {} ).usuarios_id != getters.getSession.id){
+                return true;
+            }
+        }
+        return false;
+    },
     getUsuarios(state){return state.usuarios.arreglo},
     getUsuarioBloqueado: (state) => (id)=> {
         return state.usuarios_bloqueados.arreglo.find(u=>{return u.bloqueado_id == id}) != undefined;
@@ -193,6 +203,17 @@ const actions = {
             this.dispatch('sendDataAllUsers',[{servicio:true}]);
         },
         error=>{});
+    },
+
+    postBorrarConversacion({ commit, state }, [ chat ]){
+        let data = {
+            chat: chat,
+        };
+        this.dispatch('postPromiseLoader', ['chats/borrar_conversacion', data]).then(
+            res => {
+                this.dispatch('synchronizeData');
+            },
+            error=>{});
     },
 
     postCreateChatFromUsuario({ commit, state }, [amigos_id, tipo = 'usuario']){

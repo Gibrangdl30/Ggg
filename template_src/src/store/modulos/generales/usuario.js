@@ -90,21 +90,53 @@ const mutations={
 
 const actions={
 
+    userSaveContacs({ commit, state }, [ contactos ]){
+        let data = {
+            contactos: contactos,
+        };
+
+        let finish = (res)=>{};
+
+        let callback = (res)=>{}
+
+        let load = { 
+            url: 'usuarios/save_contactos',
+            data: data,
+            errorMsg:false,
+            loader:false,
+            alert:false,
+        }
+        this.dispatch('superPostLoader', load).then(
+        res => {
+            finish(res);
+        },error=>{});
+    },
+
     userPostRegistoTelefono({ commit, state }, [ form, tipo = 'registro' ]){
         let data = {
             form: form,
         };
 
-        let finish = ()=>{
+        let finish = (res)=>{
+           
+        }
+
+        let callback = (res)=>{
+            console.log("RES DATA", res.data);
             this.commit('setUsD',['tel', form.tel]);
             this.commit('setUsD',['tipo', tipo]);
+            console.log("NAVEGAR AL REGISTRO");
             this.getters.getRouter.navigate('/registro_code');
+            
+            // this.commit('setToken', res.data)
+            // this.commit('changeView', 'usuario');
         }
 
         let load = { 
             url: tipo=='login'?'usuarios/login_telefono':'usuarios/registrar_telefono', 
             data: data,
             alert:false,
+            callback: callback,
         }
         this.dispatch('superPostLoader', load).then(
         res => {
@@ -125,6 +157,7 @@ const actions={
 
         let callback = (res)=>{
             this.commit('setToken', res.data);
+            console.log("---------> cambiar vista");
             this.commit('changeView', 'usuario');
         }
 
@@ -152,7 +185,8 @@ const actions={
             url: 'servicios/crear_post', 
             data: data,
             back: true,
-            toBack: '/inicio'
+            toBack: '/inicio',
+            alert:0,
         }
         this.dispatch('superPostLoader', load).then(
         res => {
@@ -160,9 +194,9 @@ const actions={
         },error=>{});
     },
 
-    userPostRequestFoto({ commit, state }, [ usuario ]){
+    userPostRequestFoto({ commit, state }, [ usuarios ]){
         let data = {
-            usuario: usuario,
+            usuarios: usuarios,
         };
 
         let finish = ()=>{};
@@ -228,6 +262,27 @@ const actions={
             url: 'chats/create_group', 
             data: data,
             alert: false,
+            back: true,
+            toBack: '/chats'
+        };
+        this.dispatch('superPostLoader', load).then(
+        res => {
+            finish(res);
+        },error=>{});
+    },
+    
+    userleaveGroup({ commit, state }, [ grupo ]){
+        let data = {
+            grupo,
+        };
+
+        let finish = (res)=>{
+        };
+
+        let load = { 
+            url: 'chats/dejar_grupo', 
+            data: data,
+            alert: true,
             back: true,
             toBack: '/chats'
         };

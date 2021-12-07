@@ -2,7 +2,7 @@
     <f7-page >
     <div class="vista">
 
-        <nav-bar tipo="inicio" title="Chats" :backs="true" :right="true" icon="add" @right="router.navigate('/iniciar_chat_amigo')"  />
+        <nav-bar tipo="inicio" title="CHATS" :backs="true" :right="true" icon="newC" @right="router.navigate('/iniciar_chat_amigo')"  />
 
         <div id="chatsd" class="contenedor-page-tabs ">
             <div class="row w-100 m-0 back-color-blanco">
@@ -19,8 +19,8 @@
                         </div>
                         <div class="col-9 px-1" @click="goToDetelle(c.id)">
                             <div class="row w-100 m-0">
-                                <div class="col p-0 my-auto letra-gray-dark2-4-5vw fw-800" v-if="c.tipo == 'solo'">{{c.usuario.nombre}}</div>
-                                <div class="col p-0 my-auto letra-gray-dark2-4-5vw fw-800" v-else>{{c.nombre}}</div>
+                                <div class="col p-0 my-auto letra-gray-dark2-4-5vw fw-600" v-if="c.tipo == 'solo'">{{c.usuario.nombre}}</div>
+                                <div class="col p-0 my-auto letra-gray-dark2-4-5vw fw-600" v-else>{{c.nombre}}</div>
                                 <div class="col-1 p-0 my-auto">
                                     <img src="../iconos/ch_left.svg" alt="">
                                 </div>
