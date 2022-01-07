@@ -81,6 +81,17 @@
                             </div>
                             </button>
                         </div>
+
+                        <div class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1"  >
+                            <button type="button" class="button button-outline button-raised button-active-gray px-3 py-2 text-left" @click="router.navigate('/terminos_condiciones')">
+                                <div class="row m-0 w-100 justify-content-between">
+                                    <div class="col my-auto letra-gray3-5-1vw p-0">Terms and conditions</div>
+                                    <div class="col-auto p-0">
+                                        <icono icono="chevron_right" clase="letra-gray3-30" />
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
                 </div>
                 </div>
                 <div class="row m-0 pt-4 justify-content-center letra-gray4-4-1vw">V.{{version}}</div>

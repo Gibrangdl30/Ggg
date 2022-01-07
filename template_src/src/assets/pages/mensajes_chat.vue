@@ -16,6 +16,11 @@
             :boton="'Accept'"
             @click="borrar()"
         />
+        <modalMensaje v-if="tipo==3"
+            :texto="`Are you sure you want to block this user?`"
+            :boton="'Accept'"
+            @click="block()"
+        />
 
         <div class="vista" v-vistak v-chatss >
             <nav-bar 
@@ -27,6 +32,7 @@
                 :borrar="1" 
                 @call="llamar()" 
                 @borrar="toBorrar()" 
+                @toBlock="toBlock()" 
                 @perfil="verPerfil" 
                 :show="chat.usuario.tipo == 'usuario'" />
             <nav-bar tipo="chat" v-else :backs="true"  :title="chat.nombre" :borrar="true" @borrar="tipo=1; $store.commit('openM')" />
@@ -112,10 +118,12 @@ import Swiper from 'swiper';
             }
             this.resfreshScroll();
         },
+
         mounted(){
             console.log("CHAT", this.chat);
             this.resfreshScroll();
         },
+
         methods:{
             goTo(ruta){
                 this.$f7.views.principal.router.navigate(ruta);
@@ -158,9 +166,19 @@ import Swiper from 'swiper';
                 this.$store.commit('openM')
             },
 
+            toBlock(){
+                this.tipo=3;
+                this.$store.commit('openM')
+            },
+
             borrar(){
                 console.log("VER PERFIL", this.show);
                 this.$store.dispatch('postBorrarConversacion',[ this.chat ]);
+            },
+
+            block(){
+                console.log("VER PERFIL", this.show);
+                this.$store.dispatch('postBorrarConversacion',[ this.chat, true ]);
             },
             
         }

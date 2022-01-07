@@ -37,7 +37,7 @@
                     </div>
                 </div> -->
 
-                <div class="row w-100 m-0 pt-2 px-4" v-show="t==1">
+                <div class="row w-100 m-0 pt-2 px-4" v-show="t==1 && !b">
                     <div class="row w-100 m-0" v-for="a of filtrado" :key="a.id">
                         <amigosRow :card="0"  :data="a" @click="init" />
                     </div>
@@ -58,7 +58,7 @@
 
                     <div class="row w-100 m-0 pt-2 px-4 justify-content-space-evenly "  >
                         <div class="col-auto px-0" v-for="(a, x) of reducir" :key="x" >
-                            <contactosRow :card="true" :data="a" @click="send" />
+                            <contactosRow :card="true" :data="a" @click="send" @create="init" />
                         </div>
                         <div class="col-auto px-0"  >
                             <div class="w-25vw py-1"></div>

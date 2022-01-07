@@ -42,6 +42,29 @@ const mutations={
 
 const actions={
 
+    postPostReportar({ commit, state }, [ comentario, full = true, razon = '', fn = ()=>{} ]){
+        let data = {
+            comentario: comentario,
+            post_id: state.post,
+            full: full,
+            razon: razon,
+        };
+        let finish = ()=>{
+            if(fn){
+                fn();
+            }
+        }
+        let load = { 
+            url: 'servicios/reportar',
+            data: data,
+            alert:true,
+        }
+        this.dispatch('superPostLoader', load).then(
+        res => {
+            finish(res);
+        },error=>{});
+    },
+
     postPostSaveComentario({ commit, state }, [ comentario ]){
         let data = {
             comentario: comentario,

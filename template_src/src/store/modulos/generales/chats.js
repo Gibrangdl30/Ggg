@@ -205,13 +205,18 @@ const actions = {
         error=>{});
     },
 
-    postBorrarConversacion({ commit, state }, [ chat ]){
+    postBorrarConversacion({ commit, state }, [ chat, block = false ]){
         let data = {
             chat: chat,
+            block: block,
         };
         this.dispatch('postPromiseLoader', ['chats/borrar_conversacion', data]).then(
             res => {
                 this.dispatch('synchronizeData');
+                if(block){
+                    swal("",res.msg,"success");
+                    this.getters.getRouter.back();
+                }
             },
             error=>{});
     },

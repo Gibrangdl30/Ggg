@@ -1,7 +1,8 @@
 <template>
 <div :class="card?'w-25vw py-1':'row w-100 m-0'">
+    
     <template v-if="card">
-        <div class="row w-100 m-0 py-2 border-gray0-1 border-radius-15px " @click="click()">
+        <div class="row w-100 m-0 py-2  border-radius-15px " :class="`${existente?'border-azul1-1':'border-gray0-1'}`" @click="click()">
             <div class="row w-100 m-0 justify-content-center">
                 <div class="w-18vw h-18vw my-auto ">
                     <imagen clase="border-radius-50" :user="true" :src="info.foto" />
@@ -12,6 +13,7 @@
             </div>
         </div>
     </template>
+
     <template v-else>
         <div class="row w-100 m-0 py-2" @click="click()">
             <div class="row w-100 m-0 justify-content-center">
@@ -51,10 +53,20 @@ export default {
     computed:{
         router(){return this.$store.getters.getRouter;},
         info(){return this.data || {}},
+        amigos(){return this.$store.getters.userStateArray('amigos');},
+        amistad(){return this.amigos.find(a=>{return this.info.telefono.includes(a.telefono) }) },
+        existente(){return this.amistad != undefined },
+    },
+    mounted() {
+        console.log("amigos", this.amigos, this.existente);
     },
     methods:{
         click(){
-            this.$emit('click', this.info);
+            if(this.existente){
+                this.$emit('create', this.amistad);
+            }else{
+                this.$emit('click', this.info);
+            }
         },
     },
 }

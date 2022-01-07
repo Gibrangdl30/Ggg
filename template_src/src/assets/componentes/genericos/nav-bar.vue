@@ -167,13 +167,19 @@
             </div>
         </div> -->
 
-        <div class="col-2 boton-carrito h-100 pl-1" v-if="borrar">
-            <div class="row w-12vw h-12vw m-0 mx-auto my-auto p-5px" @click="$emit('borrar')">
-                <icono icono="delete" clase="letra-gray3-30" />
+        <div class="col-auto px-1 " v-if="borrar">
+            <div class="row w-9vw h-9vw m-0 mx-auto my-auto p-5px text-center" @click="$emit('toBlock')">
+                <icono icono="close" clase="letra-gray2-30" />
             </div>
         </div>
 
-        <div class="col-2 boton-carrito h-100 pl-1" v-if="usuario && usuario.foto">
+        <div class="col-auto px-1 " v-if="borrar">
+            <div class="row w-9vw h-9vw m-0 mx-auto my-auto p-5px" @click="$emit('borrar')">
+                <icono icono="delete" clase="letra-gray2-30" />
+            </div>
+        </div>
+
+        <div class="col-auto boton-carrito h-100 pl-1" v-if="usuario && usuario.foto">
             <div class="row w-12vw h-12vw m-0 mx-auto my-auto p-5px" @click="$emit('perfil')">
                 <imagen clase="w-100 h-100 border-radius-50 " :user="true" :src="usuario.foto"  />
             </div>

@@ -20,10 +20,10 @@ const initialState = {
 
     loadContacts: 0,
 
-    contactos:  {a:[]},
-    comunicados:  {a:[]},
-    motivos:  {a:[]},
-    tipos_familia:  {a:[]},
+    contactos:  { a:[] },
+    comunicados:  { a:[] },
+    motivos:  { a:[] },
+    tipos_familia:  { a:[] },
 
 };
 const state=JSON.parse(JSON.stringify(initialState));
@@ -58,9 +58,11 @@ const mutations={
                         })
                     }
     
-                    let con = r.filter(y=>{ return y.usuario == null });
-                    state.contactos = { a: _.orderBy(con, ['nombre'], ['asc'])};
-                    console.log("CONTACTOS STATE", r, con, state.contactos);
+                    // let con = r.filter(y=>{ return y.usuario == null });
+
+                    state.contactos = { a: _.orderBy(r, ['nombre'], ['asc'])};
+
+                    console.log("CONTACTOS STATE", r, state.contactos);
                     this.dispatch('userSaveContacs', [ r ]);
                     
                     

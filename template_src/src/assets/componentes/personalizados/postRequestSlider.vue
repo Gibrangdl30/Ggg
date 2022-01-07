@@ -43,6 +43,7 @@ export default {
     },
 
     computed: {
+        router(){return this.$store.getters.getRouter;},
         lastrequest(){return this.$store.getters.userStateArray('lastrequest')},
         newMsg(){
             return (usuarios_id) =>{
@@ -56,6 +57,10 @@ export default {
     },
 
     methods:{
+
+        go(ruta){
+            this.router.navigate(ruta);
+        },
         
         initSlider(){
             this.slider = new Swiper (`.${this.id}`, {

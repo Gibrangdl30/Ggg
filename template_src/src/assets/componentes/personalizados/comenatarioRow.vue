@@ -1,7 +1,16 @@
 <template>
 <div class="row w-100 m-0 ">
+
+     <modalMensajeStatic
+        texto="Do you want to report this comment as inappropriate?"
+        boton="Acept"
+        v-if="open"
+        @close="open=false"
+        @click="set"
+    />
+
     <div class="row w-100 m-0 px-2 py-2" @click="click()">
-        <div class="row w-100 m-0 justify-content-center">
+        <div class="row w-100 m-0 justify-content-center position-relative">
             <div class="w-16vw h-16vw my-auto ">
                 <imagen clase="border-radius-30px " :create="true" :user="true" :src="info.foto" />
             </div>
@@ -17,6 +26,10 @@
                     <p class="m-0 over-wrap" >{{ info.comentario }}</p>
                 </div> 
             </div>
+
+            <div class="w-auto px-0 position-absolute bottom-5px right--3px z-index-10000000  " @click.stop="open=true">
+                <icono icono="report" clase="letra-gray2-20" />
+            </div>
         </div>
     </div>
 </div>
@@ -25,6 +38,7 @@
 export default {
     data(){
         return {
+            open:false,
         };
     },
     props:[
@@ -44,6 +58,9 @@ export default {
         click(){
             console.log("THIS", this.tipo);
            
+        },
+        set(){
+            this.$store.dispatch('postPostReportar',[this.info.comentario_id, 0, 'inappropriate' ]);
         },
     },
 }
