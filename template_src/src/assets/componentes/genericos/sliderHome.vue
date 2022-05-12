@@ -4,42 +4,37 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div class="row w-100 m-0 justify-content-center">
-                        <imagen clase="" :src="imagen('1.png')" /> 
+                        <imagen clase="" :src="imagen('oc2.png')" /> 
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="row w-100 m-0 justify-content-center">
-                        <imagen clase="" :src="imagen('2.png')" /> 
+                        <imagen clase="" :src="imagen('oc1.png')" /> 
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="row w-100 m-0 justify-content-center">
-                        <imagen clase="" :src="imagen('4.png')" /> 
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="row w-100 m-0 justify-content-center">
-                        <imagen clase="" :src="imagen('3.png')" /> 
+                        <imagen clase="" :src="imagen('oc3.png')" /> 
                     </div>
                 </div>
             </div>
-            <div class="swiper-pagination position-absolute bottom-27 left-0px z-150"></div>
+            <!-- <div class="swiper-pagination position-absolute bottom-27 left-0px z-150"></div> -->
       </div>
 
         <!-- <div class="row w-100 m-0 position-absolute bottom-7 left-0px z-100 justify-content-center"> -->
         <div class="row w-100 m-0 z-100 justify-content-center">
-            <div class="row w-100 m-0 px-3 pt-2 justify-content-space-between">
+            <div class="row w-100 m-0 px-3 pt-1 justify-content-space-between">
 
                 <div class="col-12 px-0 px-4" v-if="index==0" >
                     <div class="row w-100 m-0" @click="continuar()">
                         <div class="row w-100 m-0 pb-12px letra-gray4-18 fw-600 justify-content-center text-center ">Siguiente</div>
                     </div>
                     <div class="row w-100 m-0" @click="goLogin()">
-                        <botonApp tipo="verde" texto="Comenzar"  radius="30px" />
+                        <botonApp tipo="azul" texto="Comenzar"  radius="30px" />
                     </div>
                 </div>
 
-                <div class="row w-100 m-0 px-4" v-if="index==1 || index==2">
+                <div class="row w-100 m-0 px-4" v-if="index==1">
                     <div class="row w-100 m-0">
                         <div class="row w-100 m-0">
                             <div class="col px-0">
@@ -55,18 +50,18 @@
                         </div>
                         <div class="row w-100 m-0 pt-2" >
                             <div class="row w-100 m-0" @click="goLogin()">
-                                <botonApp tipo="verde" texto="Start"  radius="30px" />
+                                <botonApp tipo="azul" texto="Comenzar"  radius="30px" />
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="row w-100 m-0 px-4" v-if="index==3">
+                <div class="row w-100 m-0 px-4" v-if="index==2">
                     <div class="row w-100 m-0" @click="regresar()">
                         <div class="row w-100 m-0 pb-12px letra-gray4-18 fw-600 justify-content-center text-center ">Anterior</div>
                     </div>
                     <div class="row w-100 m-0" @click="goLogin()">
-                        <botonApp tipo="verde" texto="Comenzar"  radius="30px" />
+                        <botonApp tipo="azul" texto="Comenzar"  radius="30px" />
                     </div>
                 </div>
 
@@ -107,10 +102,10 @@ export default {
                     observeParents: true,
                     observeSlideChildren: true,
                     slidesPerView: 1,
-                    pagination: {
-                        el: '.swiper-pagination',
-                        type: 'bullets',
-                    },   
+                    // pagination: {
+                    //     el: '.swiper-pagination',
+                    //     type: 'bullets',
+                    // },   
                 });
                 this.slider.on('slideChange',()=>{
                     this.index = this.slider.realIndex;

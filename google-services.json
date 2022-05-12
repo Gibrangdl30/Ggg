@@ -260,9 +260,81 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:80519246540:android:c8e2b912a16c3bd0c1c869",
+        "android_client_info": {
+          "package_name": "com.cabax.cabaxs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "80519246540-dpp9h9k603u6t0qvm6fe58f01hrcto3j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqLbJ9gUEODv47380-yTx3ZFvL5iMir5A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "80519246540-dpp9h9k603u6t0qvm6fe58f01hrcto3j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "80519246540-0nou653rjr8m6ioodf4m54nqbs2l2nc7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.megabiker.riders"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:80519246540:android:52b04362d7c817bdc1c869",
         "android_client_info": {
           "package_name": "com.clic.wop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "80519246540-dpp9h9k603u6t0qvm6fe58f01hrcto3j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqLbJ9gUEODv47380-yTx3ZFvL5iMir5A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "80519246540-dpp9h9k603u6t0qvm6fe58f01hrcto3j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "80519246540-0nou653rjr8m6ioodf4m54nqbs2l2nc7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.megabiker.riders"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:80519246540:android:af31c17578f2ea9fc1c869",
+        "android_client_info": {
+          "package_name": "com.dmi.dmiapp"
         }
       },
       "oauth_client": [
@@ -368,6 +440,42 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:80519246540:android:f2d9b813fd98c123c1c869",
+        "android_client_info": {
+          "package_name": "com.fitbook.fitbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "80519246540-dpp9h9k603u6t0qvm6fe58f01hrcto3j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqLbJ9gUEODv47380-yTx3ZFvL5iMir5A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "80519246540-dpp9h9k603u6t0qvm6fe58f01hrcto3j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "80519246540-0nou653rjr8m6ioodf4m54nqbs2l2nc7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.megabiker.riders"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:80519246540:android:a56cfe714e15937dc1c869",
         "android_client_info": {
           "package_name": "com.fixe.fixes"
@@ -407,6 +515,42 @@
         "mobilesdk_app_id": "1:80519246540:android:9a77ab2c8d014d2dc1c869",
         "android_client_info": {
           "package_name": "com.fixetogo.fixetogos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "80519246540-dpp9h9k603u6t0qvm6fe58f01hrcto3j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqLbJ9gUEODv47380-yTx3ZFvL5iMir5A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "80519246540-dpp9h9k603u6t0qvm6fe58f01hrcto3j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "80519246540-0nou653rjr8m6ioodf4m54nqbs2l2nc7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.megabiker.riders"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:80519246540:android:96f2f8617c0d1819c1c869",
+        "android_client_info": {
+          "package_name": "com.geo.empleo"
         }
       },
       "oauth_client": [
@@ -515,6 +659,42 @@
         "mobilesdk_app_id": "1:80519246540:android:b23abc6c04f13ddbc1c869",
         "android_client_info": {
           "package_name": "com.glogar.glogargps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "80519246540-dpp9h9k603u6t0qvm6fe58f01hrcto3j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqLbJ9gUEODv47380-yTx3ZFvL5iMir5A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "80519246540-dpp9h9k603u6t0qvm6fe58f01hrcto3j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "80519246540-0nou653rjr8m6ioodf4m54nqbs2l2nc7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.megabiker.riders"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:80519246540:android:093149a4cae9ae56c1c869",
+        "android_client_info": {
+          "package_name": "com.jobusco.jobusco"
         }
       },
       "oauth_client": [
@@ -728,6 +908,42 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:80519246540:android:59761d8489493f02c1c869",
+        "android_client_info": {
+          "package_name": "com.meta.metapack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "80519246540-dpp9h9k603u6t0qvm6fe58f01hrcto3j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqLbJ9gUEODv47380-yTx3ZFvL5iMir5A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "80519246540-dpp9h9k603u6t0qvm6fe58f01hrcto3j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "80519246540-0nou653rjr8m6ioodf4m54nqbs2l2nc7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.megabiker.riders"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:80519246540:android:91755c65aaf9c2d8c1c869",
         "android_client_info": {
           "package_name": "com.midoq.midoq"
@@ -836,6 +1052,42 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:80519246540:android:768702bc6e009ddec1c869",
+        "android_client_info": {
+          "package_name": "com.multi.despensas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "80519246540-dpp9h9k603u6t0qvm6fe58f01hrcto3j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqLbJ9gUEODv47380-yTx3ZFvL5iMir5A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "80519246540-dpp9h9k603u6t0qvm6fe58f01hrcto3j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "80519246540-0nou653rjr8m6ioodf4m54nqbs2l2nc7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.megabiker.riders"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:80519246540:android:a99407056c65cdbcc1c869",
         "android_client_info": {
           "package_name": "com.myenvio.myenvio"
@@ -875,6 +1127,42 @@
         "mobilesdk_app_id": "1:80519246540:android:b6291af85b99c2f1c1c869",
         "android_client_info": {
           "package_name": "com.namee.namee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "80519246540-dpp9h9k603u6t0qvm6fe58f01hrcto3j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqLbJ9gUEODv47380-yTx3ZFvL5iMir5A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "80519246540-dpp9h9k603u6t0qvm6fe58f01hrcto3j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "80519246540-0nou653rjr8m6ioodf4m54nqbs2l2nc7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.megabiker.riders"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:80519246540:android:d6c32915fde80ce4c1c869",
+        "android_client_info": {
+          "package_name": "com.paparatz.paparatz"
         }
       },
       "oauth_client": [
@@ -1487,6 +1775,42 @@
         "mobilesdk_app_id": "1:80519246540:android:67e69c12116c06dcc1c869",
         "android_client_info": {
           "package_name": "com.yavoy.entaxi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "80519246540-dpp9h9k603u6t0qvm6fe58f01hrcto3j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqLbJ9gUEODv47380-yTx3ZFvL5iMir5A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "80519246540-dpp9h9k603u6t0qvm6fe58f01hrcto3j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "80519246540-0nou653rjr8m6ioodf4m54nqbs2l2nc7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.megabiker.riders"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:80519246540:android:893f74bde7230578c1c869",
+        "android_client_info": {
+          "package_name": "dmiapp.online"
         }
       },
       "oauth_client": [

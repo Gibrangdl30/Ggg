@@ -8,13 +8,13 @@ Vue.directive('vistak',{
         window.addEventListener('keyboardWillShow', (event) => {
                 if(device.platform == 'Android'){
                     // console.log("TECLADO SHOW BEBE show", event.keyboardHeight);
-                    el.style.paddingBottom = (event.keyboardHeight+ 20 ) + 'px' ;
+                    // el.style.paddingBottom = (event.keyboardHeight+ 20 ) + 'px' ;
                 }
             });
         window.addEventListener('keyboardWillHide', function (event) {
             if(device.platform == 'Android'){
             // console.log("TECLADO HIDE BEBE", event.keyboardHeight);
-            el.style.paddingBottom = '0px';
+                el.style.paddingBottom = '0px';
             }
         });
 

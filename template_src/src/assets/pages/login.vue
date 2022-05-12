@@ -1,37 +1,45 @@
 <template>
     <f7-page id="inicio">
-        <div class="vista h-99vh">
+        <div class="vista">
         <div class="contenedor-page-tabs back-color-blanco position-relative">
-            <div class="row w-100 m-0 justify-content-center">
-                <imagen clase="my-auto" :logo="4"  />
+
+            <div class="row w-100 m-0 pt-5 mt-3 justify-content-center">
+                <div class="col-6 px-0 mx-auto">
+                    <imagen clase="my-auto" :logo="1"  />
+                </div>
             </div>
 
             <div class="row w-100 m-0 pt-4 mt-3 justify-content-center">
                 <div class="col-11">
                     <inputForm 
-                        texto="Phone number" 
-                        type="tel" 
+                        texto="Correo" 
+                        type="email" 
                         placeholder="" 
-                        v-model="form.tel"
-                        :maxlength="10"
-                        @enter="login"
+                        v-model="form.email"
                     />
                 </div>
-                <div class="col-11 mt-4" v-if="false" > 
-                    <inputForm texto="Password" :password="true" type="password" placeholder="********" v-model="form.password" @enter="login" />
+                <div class="col-11 mt-4" > 
+                    <inputForm 
+                        texto="Contraseña" 
+                        :password="true" 
+                        type="password" 
+                        placeholder="********" 
+                        v-model="form.password" 
+                        @enter="enter" 
+                    />
                 </div>
 
-                <div class="col-11 mt-3 letra-azul-4-1vw text-center" v-if="false" @click="router.navigate('/recuperar_password')">¿Olvidaste tu contraseña?</div>
+                <div class="col-11 mt-3 letra-azul1-4-1vw text-right"  @click="router.navigate('/recuperar_password')">¿Olvidaste tu contraseña?</div>
 
                 <div class="col-11 mt-5"  >
-                    <div class="row w-100 m-0 mt-1 justify-content-center " @click="router.navigate('/registro_corto')">
-                        <div class="col-auto px-0 pr-1 letra-gray3-18">New here?</div>
-                        <div class="col-auto px-0 letra-azul1-18">Create a new account</div>
+                    <div class="row w-100 m-0 mt-1 justify-content-center " @click="router.navigate('/registro')">
+                        <div class="col-auto px-0 pr-1 letra-gray3-18">¿Nuevo por aqui?</div>
+                        <div class="col-auto px-0 letra-azul1-18">Crea una cuenta</div>
                     </div>
                 </div>
 
-                <div class="col-11 mt-5 " @click="login()">
-                   <botonApp texto="Start" tipo="azul" radius="30px" />
+                <div class="col-11 mt-5 " @click="enter()">
+                   <botonApp texto="Comenzar" tipo="azul" radius="30px" />
                 </div>
                 
             </div>
@@ -49,7 +57,7 @@ import Swiper from 'swiper';
         data(){
             return{
                 form:{
-                    tel: '',
+                    email: '',
                     password: '',
                 },
             } 
@@ -78,16 +86,17 @@ import Swiper from 'swiper';
                 this.$store.dispatch('openBrowser', 'https://axitapp.online');
             },
             login(){
-                if(!this.form.tel){
-                    return;
-                }
-                // if(!this.form.password){
-                //     return;
-                // }
+                
                 this.$store.dispatch('userPostRegistoTelefono',[this.form, 'login']);
             },
-            enter(f){
-                this.$store.dispatch('postLogin',[f]);
+            enter(){
+                if(!this.form.email){
+                    return;
+                }
+                if(!this.form.password){
+                    return;
+                }
+                this.$store.dispatch('postLogin',[this.form]);
             }
           
         }

@@ -1,12 +1,12 @@
 <template>
-<div class="nav-bar-component template w-100 pt-20px" @click="sync">
+<div class="nav-bar-component template w-100 " :class="clase?clase:'pt-20px'" @click="sync">
 
     <template v-if="tipo=='logo'">
     <div class="row m-0 justify-content-space-between px-3px nav-bar nav-inicio" :class="`${no_border?'':'border-b-gray0-1'}`">
 
-        <div class="w-28 my-auto ml-auto">
+        <div class="w-32 my-auto mr-auto">
            <div class="row w-100 m-0">
-               <imagen :logo="2" />
+               <imagen :logo="6" />
            </div>
         </div>
 
@@ -14,12 +14,17 @@
            
         </div>
 
-        <div class="w-9 my-auto position-relative" @click="router.navigate('/chats')" >
+        <div class="w-11 my-auto position-relative" @click="router.navigate('/chats')" v-if="1" >
             <div class="row w-100 m-0 pt-1px  px-2px"> 
-                <imagen :icono="true" src="ch12" />
+                <icono icono="chat_bubble" clase="letra-gray3-35" />
             </div>
-            <!-- <div class="w-14px h-14px back-color-azul1 position-absolute right-0px top-0px border-radius-50" v-if="mensajeNuevo" ></div> -->
-            <div class="row w-100 m-0 justify-content-center text-center position-absolute top--7px right-0px letra-gray3-23 ">...</div>
+            <div class="w-17px h-17px back-color-rojo2 position-absolute right-0px top-0px border-radius-50" v-if="mensajeNuevo" ></div>
+        </div>
+        <div class="w-11 my-auto position-relative" @click="refresh()" v-if="1" >
+            <div class="row w-100 m-0 pt-1px  px-2px"> 
+                <icono icono="cached" clase="letra-gray3-35" />
+            </div>
+            <!-- <div class="w-17px h-17px back-color-rojo2 position-absolute right-0px top-0px border-radius-50" v-if="mensajeNuevo" ></div> -->
         </div>
 
         <div class="col-auto my-auto px-1 boton-carrito h-100 position-relative" v-if="profile" @click="router.navigate('/mi_cuenta')">
@@ -34,7 +39,7 @@
     <template v-if="tipo=='inicio'">
     <div class="row m-0 justify-content-space-between px-3px nav-bar nav-inicio" :class="`${no_border?'':'border-b-gray0-1'}`">
 
-        <div class="w-13 boton-menu p-0">
+        <div class="w-13 boton-menu p-0" v-if="backs || emitBack" >
             <template v-if="backs">
                 <button type="button" class="button button-outline button-raised button-active-gray h-100 p-2px" @click="back()" >
                     <i class="f7-icons color-white letra-gray-5-5vw">chevron_left</i>
@@ -45,9 +50,11 @@
                     <i class="f7-icons color-white letra-gray-5-5vw">chevron_left</i>
                 </button>
             </template>
-            <template v-else-if="customBack">
+        </div>
+        <div class="w-21 boton-menu p-0" v-else-if="customBack" >
+            <template >
                 <button type="button" class="button button-outline button-raised button-active-gray h-100 p-2px" @click="back()">
-                    <div class="row w-100 m-0 letra-gray3-16 ">Cancel</div>
+                    <div class="row w-100 m-0 letra-gray-4-8vw ">Cancelar</div>
                 </button>
             </template>
         </div>
@@ -167,7 +174,7 @@
             </div>
         </div> -->
 
-        <div class="col-auto px-1 " v-if="borrar">
+        <div class="col-auto px-1 " v-if="borrar && 0">
             <div class="row w-9vw h-9vw m-0 mx-auto my-auto p-5px text-center" @click="$emit('toBlock')">
                 <icono icono="close" clase="letra-gray2-30" />
             </div>
@@ -196,6 +203,7 @@
         props: [
             'ios', 
             'tipo', 
+            'clase', 
             'routerView',
             'title', 
             'fix', 
@@ -239,6 +247,10 @@
             },
             goTo(ruta){
                 this.router.navigate(ruta);
+            },
+            refresh(){
+                this.$store.dispatch('synchronizeData');
+                swal("","Información actulizada","success");
             },
             sync(){
                 this.$store.dispatch('synchronizeData');

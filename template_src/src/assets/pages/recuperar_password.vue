@@ -16,7 +16,7 @@
             </div>
             <div class="row w-100 m-0 justify-content-center mt-5 pt-2">
                 <div class="col-12">
-                    <botonApp @click="post()" tipo="verde" texto="Enviar" radius="30px" />
+                    <botonApp @click="post()" tipo="azul" texto="Enviar" radius="30px" />
                 </div>
             </div>
         </div>

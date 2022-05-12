@@ -1,5 +1,5 @@
 <template>
-    <img :class="`h-100 w-100 ${clase?clase:''} ${!nofit?'object-fit':''}`" :id="`img_${id}`"  :src="imagen" :alt="`alt_${id}`" @click="showImage()">
+    <img :class="` h-100 w-100 ${clase?clase:''} ${!nofit?'object-fit':''}`" :id="`img_${id} `"  :src="imagen" :alt="`alt_${id}`" @click="showImage()">
 </template>
 <script>
 export default {
@@ -35,22 +35,28 @@ export default {
         session(){return this.$store.getters.getSession;},
         imagenUrl(){
             if(this.size){
-                return `${this.baseUrl}img/render/${this.src}/${this.size}/${this.size}/foto.jpg`
+                return `${this.baseUrl}img/directrender/${this.src}/${this.size}/${this.size}/foto.jpg`
             }
-            return `${this.baseUrl}img/render/${this.src}/foto.jpg`
+            return `${this.baseUrl}img/directrender/${this.src}/foto.jpg`
         },
         imagen(){
             if(this.logo) {
                 if(this.logo == 2){
-                    return `${this.baseImg}hl.svg`;
+                    return `${this.baseImg}ll1.svg`;
                 }
                 if(this.logo == 3){
-                    return `${this.baseImg}lc3.svg`;
+                    return `${this.baseImg}ll2.svg`;
                 }
                 if(this.logo == 4){
-                    return `${this.baseImg}fo1.png`;
+                    return `${this.baseImg}ll3.svg`;
                 }
-                return `${this.baseImg}log.svg`;
+                if(this.logo == 5){
+                    return `${this.baseImg}ll4.svg`;
+                }
+                if(this.logo == 6){
+                    return `${this.baseImg}lh1.svg`;
+                }
+                return `${this.baseImg}ll3.svg`;
             }
             if(this.icono) {
                 if(this.formato){
@@ -75,31 +81,34 @@ export default {
             if(this.user){
                 return `${this.baseImg}perfil.png`;
             }
-            return require('../../images/l3.svg');
+            return `${this.baseImg}l3.svg`;
         },
 
     },
-    created() {
+    mounted() {
         this.getDatos();
     },
     methods:{
         getDatos(){
             this.load = document.createElement('img');
             if(this.show){
-                this.load.src = `${this.baseUrl}img/render/${this.show}/foto.jpg`;
+                this.load.src = `${this.baseUrl}img/directrender/${this.show}/foto.jpg`;
                 if(this.load){
                     this.load.onload = ()=>{
                         this.height = this.load.height*5;
                         this.width = this.load.width*5;
+                        // console.log("TOTAL LOAD, ", this.height,this.width );
                     };
                 }
             }
         },
+        
         showImage(){
             if(this.show){
-                console.log("SHOWING APP", this.show);
+                // console.log("TO SHOW HW", this.show, this.height, this.width);
                 if(this.height && this.width){
-                    this.$store.dispatch('showImage',[`${this.baseUrl}img/render/${this.show}/foto.jpg`, this.height, this.width]);
+                    // console.log("SHOWING APP", this.show, `${this.baseUrl}img/render/${this.show}/foto.jpg`);
+                    this.$store.dispatch('showImage',[`${this.baseUrl}img/directrender/${this.show}/foto.jpg`, this.height, this.width]);
                 }
             }
             else{

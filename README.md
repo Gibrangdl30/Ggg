@@ -6,12 +6,20 @@ keytool -genkey -v -keystore namee-key.jks -keyalg RSA -keysize 2048 -validity 1
 
 nuevo modulo de chat para servicio en proceso
 
+33000012769551
+33000012769551
+
+sudo n 8.11.3
+sudo n 12.16.1
+
+
+
 remplazar UIApplication.openSettingsURLString por UIApplicationOpenSettingsURLString
 en platforms/ios/Proyecto/Plugins/.....qrscaneer/.....swift
 
 superlargacontraseña
 
-cordova build android --release -- --keystore=./namee-key.jks --storePassword=sustam --alias=namee-key --password=sustam --packageType=bundle
+cordova build android --release -- --keystore=./axit-key.jks --storePassword=sustam --alias=axit-key --password=sustam --packageType=bundle
 
 For Android 
 cordova plugin rm cordova-plugin-keyboard 

@@ -7,7 +7,7 @@
             <div class="row w-100 m-0 mt-5 back-color-azulapp py-3 border-radius-15px" @click.self="closeModal()">
                 <div class="row w-100 m-0" @click.self="closeModal()">
                      <div class="row w-100 m-0 justify-content-around">
-                        <div class="col-6 m-0 w-100 p-0 my-auto border-r-blanco-1">
+                        <div class="col-6 m-0 w-100 p-0 my-auto " :class="`${!onlyCam?'border-r-blanco-1':''}`" >
                             <button class="button h-100 boton-transparente" @click="takePhoto()">
                                 <div class="row m-0 h-100 justify-content-center">
                                     <div class="col-12 px-2">
@@ -16,7 +16,7 @@
                                 </div>
                             </button>
                         </div>
-                        <div class="col-6 m-0 w-100 p-0 my-auto">
+                        <div class="col-6 m-0 w-100 p-0 my-auto" v-if="!onlyCam">
                              <button class="button h-100 boton-transparente" @click="takePicture()">
                                 <div class="row m-0 h-100 justify-content-center">
                                     <div class="col-12 px-2">
@@ -26,6 +26,14 @@
                                 </div>
                             </button>
                         </div>
+                    </div>
+                </div>
+
+                <div class="row w-100 m-0 py-5"></div>
+
+                <div class="row w-100 m-0" v-if="asignado && asignado.id">
+                    <div class="col-12 px-0 mx-auto" @click="cancelar()">
+                        <botonApp tipo="gris" texto="Ya no quiero ser paparatz" radius="30px" />
                     </div>
                 </div>
             </div>
@@ -46,6 +54,14 @@ export default {
     computed:{
         state(){return this.$store.getters.getModal(this.name)},
         funcion(){return this.$store.getters.getFuncion},
+
+        session(){return this.$store.getters.getSession;},
+        onlyCam(){return this.$store.getters.onlyCam;},
+        
+        posts(){return this.$store.getters.postStateArray('posts')},
+
+        asignado(){return this.posts.find(x=>{return  x.type == 's' && x.papara.some(w=> w.usuarios_id == this.session.id ) }) ||  {}},
+        user(){return this.asignado.usuario ||  {}},
     },
     methods:{
         takePhoto(){
@@ -66,6 +82,13 @@ export default {
         },
         closeModal(){
             this.$store.commit('closeModal', [this.name]);
+        },
+
+        cancelar(){
+            let form = this.asignado;
+            form.cancelar = 1;
+            this.$store.dispatch('userPostCrearPost',[ form ]);
+            this.closeModal();
         },
     },
 }

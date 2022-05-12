@@ -38,11 +38,11 @@
 }
 
 input:checked + .slider {
-  background-color:  #00c8a3;
+  background-color:  black;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px  #00c8a3;
+  box-shadow: 0 0 1px  black;
 }
 
 input:checked + .slider:before {
@@ -64,11 +64,21 @@ input:checked + .slider:before {
 
 <template>
 <div class="row w-100 m-0">
-    <label class="switch m-0">
-        <input type="checkbox" v-if="auto" :checked="checked"  @change="change">
-        <input type="checkbox" v-else :checked="value == v"  @change="change">
-        <span class="slider round"></span>
-    </label>
+
+  <div class="row w-100 m-0" v-if="icon">
+      <div class="w-auto" @click="$emit('input', value == v?f:v )" >
+        <icono clase="letra-negro-30" icono="radio_button_checked" v-if="value == v" />
+        <icono clase="letra-gray3-30" icono="radio_button_unchecked" v-else  />
+      </div>
+  </div>
+
+  <div class="row w-100 m-0" v-else>
+      <label class="switch m-0">
+          <input type="checkbox" v-if="auto" :checked="checked"  @change="change">
+          <input type="checkbox" v-else :checked="value == v"  @change="change">
+          <span class="slider round"></span>
+      </label>
+  </div>
 </div>
 </template>
 
@@ -81,12 +91,13 @@ export default {
     },
 
     props:[    
-      'auto',
-      'value',
-      'check',
-      'checked',
-      'v',
-      'f',
+		'auto',
+		'value',
+		'icon',
+		'check',
+		'checked',
+		'v',
+		'f',
     ],
 
     computed:{

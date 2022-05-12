@@ -14,6 +14,8 @@ const initialState = {
         telefono:   null,
         password:   null,
     },
+    ready: 0,
+    login: 0,
 };
 const state = JSON.parse(JSON.stringify(initialState));
 
@@ -24,6 +26,7 @@ const getters = {
    chofer(state){return state.session.tipo == 'chofer'},
    coor(state){return state.session.tipo == 'coordinador'},
    maestro(state){return state.session.tipo == 'maestro'},
+   login:(state)=>{return state.login;},
    getMetodos:(state)=>{return state.metodos_pago.a;},
    getMetodoPago:(state)=>(id)=>{return state.metodos_pago.a.find(m=>{return m.id == id}) || {};},
    getFormRegistro(state){return state.registro}, 
@@ -38,6 +41,13 @@ const mutations = {
         };
         console.log("TOKESN", data, state.session, this.getters.getSession);
         localStorage.setItem(storage,JSON.stringify(state.session));
+    },
+
+    setLogin(state, val){
+        if(!state.ready || !val){
+            state.ready = 1;
+            state.login = val;
+        }
     },
 
     setSession(state, data){
@@ -94,10 +104,11 @@ const actions = {
     postRegistro({ commit, state }, form){
         this.dispatch('postPromiseLoader', ['usuarios/registro', form, true]).then(
             res => {
-                this.commit('setToken', res.data)
+                this.commit('setToken', res.data);
+                this.commit('setLogin', 1);
                 this.dispatch('synchronizeData',true);
                 this.commit('changeView', 'usuario');
-                swal(`Thanks for login ${form.nombre}`,"Explore Jocose! and optimize your process arround patients and data saving.","success");
+                swal(`Bienvenido ${form.nombre}`,"","success");
             },error=>{});
     },
 
@@ -105,6 +116,7 @@ const actions = {
          this.dispatch('postPromiseLoader', ['usuarios/login', data]).then(
             res => {
                 this.commit('setToken', res.data);
+                this.commit('setLogin', 1);
                 this.dispatch('synchronizeData', true);
                 this.commit('initVista');
                 this.commit('changeViewByTipe');
@@ -139,7 +151,7 @@ const actions = {
         this.dispatch('postPromiseLoader', ['usuarios/edit', data]).then(
             res => {
                 this.dispatch('synchronizeData');
-                swal("","Profile updated","success");
+                swal("","Datos guardados","success");
                 if(back){
                     this.getters.getRouter.back();
                 }

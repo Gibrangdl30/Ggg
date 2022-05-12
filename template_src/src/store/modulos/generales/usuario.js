@@ -17,7 +17,9 @@ const initialState = {
     amigos:{a:[]},
     lastrequest:{a:[]},
     request:{a:[]},
+
     takePhoto: false,
+    notShow:[],
 
     tel: null,
     tipo: null,
@@ -25,6 +27,7 @@ const initialState = {
     
     formPost:{
         imagen: null,
+        para_id: null,
         publico: 1,
         url: null,
         usuarios: [],
@@ -66,6 +69,9 @@ const mutations={
         if('lastrequest' in data){
            state.lastrequest = {a: data.lastrequest};
         }
+        if('notShow' in data){
+           state.notShow = data.notShow;
+        }
         
         if('request' in data){
            state.request = data.request;
@@ -89,6 +95,50 @@ const mutations={
 };
 
 const actions={
+
+    userReportPost({ commit, state }, [ post ]){
+        let data = {
+            post,
+        };
+
+        let finish = (res)=>{
+           
+        };
+
+        let load = { 
+            url: 'datos/reportar_post', 
+            data: data,
+            alert: 0,
+        };
+
+        this.dispatch('superPostLoader', load).then(
+        res => {
+            finish(res);
+        },error=>{});
+    },
+
+    userGetImg({ commit, state }, [ imagen ]){
+        let data = {
+            imagen,
+        };
+
+        let finish = (res)=>{
+            console.log("RES RES", res.data.imagen );
+            if(res.data && res.data.imagen){
+                this.dispatch('saveGallery', res.data);
+            }
+        };
+
+        let load = { 
+            url: 'chats/get_img', 
+            data: data,
+            alert: 0,
+        };
+        this.dispatch('superPostLoader', load).then(
+        res => {
+            finish(res);
+        },error=>{});
+    },
 
     userSaveContacs({ commit, state }, [ contactos ]){
         let data = {
@@ -184,9 +234,49 @@ const actions={
         let load = { 
             url: 'servicios/crear_post', 
             data: data,
-            back: true,
+            back: !form.cal?1:0,
             toBack: '/inicio',
-            alert:0,
+            alert:1,
+            customSwal:{
+                title: '',
+                text: 'res',
+                button: 'entendido',
+                icon: 'success'
+            },
+        }
+        this.dispatch('superPostLoader', load).then(
+        res => {
+            finish(res);
+        },error=>{});
+    },
+
+    userPostBorrarPost({ commit, state }, [ form ]){
+        let data = {
+            form,
+        };
+        let finish = ()=>{
+
+        }
+        let load = { 
+            url: 'servicios/crear_post', 
+            data: data,
+        }
+        this.dispatch('superPostLoader', load).then(
+        res => {
+            finish(res);
+        },error=>{});
+    },
+
+    userPostBorrarVariosPost({ commit, state }, [ posts ]){
+        let data = {
+            posts,
+        };
+        let finish = ()=>{
+
+        }
+        let load = { 
+            url: 'servicios/borrar_post', 
+            data: data,
         }
         this.dispatch('superPostLoader', load).then(
         res => {

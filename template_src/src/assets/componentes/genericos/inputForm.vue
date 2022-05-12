@@ -1,22 +1,27 @@
 <template>
 <div class="input-component row w-100 m-0 justify-content-center">
     <div class="col-12 my-auto p-0" v-if="textarea">
-        <p :class="`letra-${textcolor?textcolor:'gray3'}-4-1vw m-0 mb-1 pl-1`">{{texto}}</p>
-        <textarea 
-            :id="id" 
-            :type="type" 
-            :rows="autorows" 
-            class="regular-textarea w-100 m-0" 
-            :class="clase"
-            :placeholder="placeholder" 
-            :maxlength="maxlength" 
-            :disabled="disabled" 
-            :value="value" 
-            @input="update" 
-            @change="update" 
-            @keypress="keyenter" 
-            @keyup.enter="enter()"
-        ></textarea>
+        <div class="row w-100 m-0 position-relative">
+            <div class="w-auto position-absolute top-13px right-5px z-200" v-if="copy" @click="pegar()">
+                <icono icono="attach_file" :clase="`letra-${ver?'negro':'gray3'}-26`" />
+            </div>
+            <p :class="`letra-${textcolor?textcolor:'gray3'}-4-1vw m-0 mb-1 pl-1`">{{texto}}</p>
+            <textarea 
+                :id="id" 
+                :type="type" 
+                :rows="autorows" 
+                class="regular-textarea w-100 m-0" 
+                :class="clase"
+                :placeholder="placeholder" 
+                :maxlength="maxlength" 
+                :disabled="disabled" 
+                :value="value" 
+                @input="update" 
+                @change="update" 
+                @keypress="keyenter" 
+                @keyup.enter="enter()"
+            ></textarea>
+        </div>
     </div>
     <div class="col-12 my-auto p-0" v-else-if="date">
 
@@ -56,7 +61,7 @@
         <p :class="`letra-${textcolor?textcolor:'gray3'}-4-1vw m-0 mb-1 pl-1`" v-if="texto">{{texto}}</p>
         <div class="row w-100 m-0 position-relative">
             <div class="w-auto position-absolute top-9px right-5px z-200" @click="ver = !ver">
-                <icono icono="visibility" :clase="`letra-${ver?'rojo2':'gray3'}-26`" />
+                <icono icono="visibility" :clase="`letra-${ver?'negro':'gray3'}-26`" />
             </div>
             <input :id="id" :type="ver?'text':'password'" :class="`${input?input:'regular'}-input w-100 m-0 ${password?'pr-26px':''} ${clase?clase:''}`" 
             :placeholder="placeholder" :maxlength="maxlength"  
@@ -83,6 +88,7 @@ export default {
         'input',
         'password',
         'clase',
+        'copy',
         'noNumeros',
         'placeholder',
         'maxlength',
@@ -111,6 +117,7 @@ export default {
             conteo: 10,
         };
     },
+    
     computed:{
         meses(){return this.$store.getters.getCatalogo('meses')},
         years(){
@@ -128,6 +135,7 @@ export default {
             return false;
         },
     },
+
     created() {
         console.log("LOADHS", _.uniqueId("kasd"));
         if(this.date){
@@ -144,8 +152,8 @@ export default {
         if(this.rows){
             this.autorows = this.rows;
         }
-
     },
+
     mounted() {
         setTimeout(
             ()=>{
@@ -182,6 +190,17 @@ export default {
                 this.elemento.blur();
                 this.$emit('enter');
             }
+        },
+
+        pegar(){
+            navigator.clipboard.readText()
+            .then(text => {
+                console.log('Pasted content: ', text);
+                this.$emit('input', (this.value || '')+text);
+            })
+            .catch(err => {
+                console.error('Failed to read clipboard contents: ', err);
+            });
         },
 
         focus(){

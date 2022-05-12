@@ -10,6 +10,7 @@ import modalCalificar from './modalCalificar.vue';
 import modalMensajeStatic from './modalMensajeStatic.vue';
 import modalQr from './modalQr.vue';
 import modalUsuario from './modalUsuario.vue';
+import modalSerFotografo from './modalSerFotografo.vue';
 
 
 function plugin(Vue) {
@@ -25,5 +26,6 @@ function plugin(Vue) {
     Vue.component('modalPickRangoFecha', modalPickRangoFecha);
     Vue.component('modalQr', modalQr);
     Vue.component('modalUsuario', modalUsuario);
+    Vue.component('modalSerFotografo', modalSerFotografo);
 }
 export default plugin

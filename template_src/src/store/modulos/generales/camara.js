@@ -1,12 +1,23 @@
 import axios from 'axios';
+
 const state = {
+    onlyCam: 0,
 };
-const getters = {};
-const mutations = {};
+
+const getters = {
+    onlyCam(state){ return state.onlyCam; }
+};
+
+const mutations = {
+    setOnlyCam(state, val){
+        state.onlyCam = val;
+    }
+};
+
 const actions = {
     getFotoFunction({state}, [fn]){
         let optionsCamera = {
-            quality: 50,
+            quality: 35,
             destinationType: Camera.DestinationType.FILE_URI,
             saveToPhotoAlbum: false,
             correctOrientation: true,
@@ -24,7 +35,7 @@ const actions = {
 
     selectFotoFunction({state}, [fn]){
         let optionsCamera = {
-            quality: 50,
+            quality: 35,
             destinationType: Camera.DestinationType.FILE_URI,
             allowEdit:false,
             sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
@@ -40,6 +51,51 @@ const actions = {
             }, 
             optionsCamera);
     },
+
+    checarPermisosLocation({state}, {callback}){
+        callback();
+        return;
+        
+        let permissions = cordova.plugins.permissions;
+        console.log("READY DEVICE", this.getters.deviceReady, typeof permissions, typeof permissions != 'undefined' ,  this.getters.deviceReady && typeof permissions != undefined  );
+        if( this.getters.deviceReady && typeof permissions != undefined ){
+            permissions.hasPermission(permissions.ACCESS_FINE_LOCATION, (status)=>{
+                console.log("ESTATUS ESTATUS", status);
+                if (!status.hasPermission) {
+                    swal("","Para continuar, debes activar tu ubicación", "");
+                }
+                else{
+                    callback();
+                }
+            }, ()=>{
+                console.log("NO SE OBTUVO INFORMACION");
+            });
+        }else{
+            callback();
+        }
+    },
+
+    saveGallery({state}, img){
+        let x = `https://paparatzapp.com/apiv1/api/img/directrender/${img.id}/foto.jpg`;
+        this.dispatch('openBrowser', x);
+
+        // let url = `data:${img.mime};base64,${img.base}`;
+        // console.log("INICIADNO DESCARGA", url);
+        // cordova.base64ToGallery(url, {
+        //         prefix: 'papara',
+        //     },
+        //     (path)=>{
+        //         console.log("SUCCESS");
+        //         console.log(path);
+        //     },
+        //     (err)=>{
+        //         console.log("ERROR");
+        //         console.log(err);
+        //         console.error(err);
+        //     }
+        // );
+    },
+
     reviewPermissions({state},[callback]){
         if (!!cordova.plugins.permissions){
             let permissions = cordova.plugins.permissions;

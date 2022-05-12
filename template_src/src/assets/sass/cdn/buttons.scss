@@ -56,14 +56,14 @@ button.boton-app
 }
 
 button.boton-azul{
-    background: linear-gradient(136.67deg, #14bfe4 0%, #47a9be 100%) !important;
-    border: 1px solid #14bfe4  !important;
+    background: linear-gradient(136.67deg, #0a0a0a 0%, #444 100%) !important;
+    border: 1px solid #0a0a0a  !important;
 
     &.active-state,:hover{
         .row{
             color: white !important;
         }
-        background: #00738d  !important;      
+        background: #8d8d8d  !important;      
     }
 }
 

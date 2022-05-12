@@ -1,13 +1,15 @@
 import swal from 'sweetalert';
-
 const moment = require('moment');
+
 const initialState = {
     usuarios: {arreglo: []},
     chats:{arreglo:[]},
     mensajeNuevo: 0,
     chat:{id:null},
+    
 };
 const state = JSON.parse(JSON.stringify(initialState));
+
 const getters = { 
     getChats(state){return state.chats.arreglo;},
     mensajeNuevo(state){return state.mensajeNuevo; },
@@ -53,19 +55,19 @@ const mutations = {
         if(data.chats) {
             state.chats = {arreglo:data.chats};
             state.chats = {arreglo: state.chats.arreglo.sort((a,b)=>{
-                let date_b = (b.mensajes.length)?b.mensajes[b.mensajes.length-1].fecha:0;
-                let date_a = (a.mensajes.length)?a.mensajes[a.mensajes.length-1].fecha:0;
+                let date_b = (b.mensajes.length)?b.mensajes[b.mensajes.length-1].fecha:b.creado;
+                let date_a = (a.mensajes.length)?a.mensajes[a.mensajes.length-1].fecha:a.creado;
                 return moment(date_b).diff(date_a)})};
             state.mensajeNuevo = 0;
             state.chats.arreglo.map(c=>{
-                c.leido = false;
                 c.notificacion = 0;
                 c.mensajes.map(m=>{
                     if(m.usuarios_id != this.getters.getSession.id){
                         c.notificacion++;
                     }
                 });
-                if(( c.mensajes[ c.mensajes.length - 1 ] || {} ).usuarios_id && ( c.mensajes[ c.mensajes.length - 1 ] || {} ).usuarios_id != this.getters.getSession.id){
+
+                if( ( c.mensajes[ c.mensajes.length - 1 ] || {} ).usuarios_id && ( c.mensajes[ c.mensajes.length - 1 ] || {} ).leido == null && ( c.mensajes[ c.mensajes.length - 1 ] || {} ).usuarios_id != this.getters.getSession.id ){
                     state.mensajeNuevo = state.mensajeNuevo + 1;
                 }
             });
@@ -158,6 +160,21 @@ const mutations = {
 };
 const actions = {
 
+    postLeerMsn({ commit, state }, [ msn ]){
+        let data = {
+            msn: msn,
+        };
+
+        let finish = (res)=>{
+            this.dispatch('synchronizeData');
+        };
+
+        this.dispatch('postPromiseNoError', ['chats/leer_mensaje', data]).then(
+        res => {
+            finish(res);
+        },error=>{});
+    },
+
     postSaveMsn({ commit, state }, [msn, tipo = '0']){
         let data = {
             mensaje: msn,
@@ -173,11 +190,15 @@ const actions = {
             tipo: tipo,
             usuarios_id: this.getters.getSession.id,
         };
-        this.commit('insertMsn',[insert]);
+        if(tipo != 3){
+            this.commit('insertMsn',[insert]);
+        }
         this.dispatch('postPromise', ['chats/save_msn', data]).then(
         res => {
-            let mensaje = res.data.msn;
-            this.dispatch('sendDataUser',[this.getters.getChat.usuario.id, {mensaje: mensaje}]);
+            if(tipo != 3){
+                let mensaje = res.data.msn;
+                this.dispatch('sendDataUser',[this.getters.getChat.usuario.id, {mensaje: mensaje}]);
+            }
             this.dispatch('synchronizeData');
         },
         error=>{});
@@ -213,9 +234,9 @@ const actions = {
         this.dispatch('postPromiseLoader', ['chats/borrar_conversacion', data]).then(
             res => {
                 this.dispatch('synchronizeData');
+                swal("",res.msg,"success");
+                this.getters.getRouter.back();
                 if(block){
-                    swal("",res.msg,"success");
-                    this.getters.getRouter.back();
                 }
             },
             error=>{});

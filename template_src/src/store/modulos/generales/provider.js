@@ -15,25 +15,25 @@ const actions={
     }catch(e){};
   }, 
   sendWhatsapp({state},tel){
-    let url = `https://api.whatsapp.com/send?phone=${tel}`;
-    console.log("CORDOVA OPEN", url);
-    try{
-      cordova.InAppBrowser.open(url, '_system');
-    }catch(e){};
+		let url = `https://api.whatsapp.com/send?phone=${tel}`;
+			console.log("CORDOVA OPEN", url);
+		try{
+			cordova.InAppBrowser.open(url, '_system');
+		}catch(e){};
   }, 
-  mailto({state},tel){
-    let url = `mailto:${tel}`;
-    console.log("CORDOVA OPEN", url);
-    try{
-      cordova.InAppBrowser.open(url, '_system');
-    }catch(e){};
-  }, 
-  openBrowser({state},url){
-    console.log("CORDOVA OPEN", url);
-    try{
-      cordova.InAppBrowser.open(url, '_system');
-    }catch(e){};
-  }, 
+ 	mailto({state},tel){
+		let url = `mailto:${tel}`;
+			console.log("CORDOVA OPEN", url);
+		try{
+			cordova.InAppBrowser.open(url, '_system');
+		}catch(e){};
+  	}, 
+  	openBrowser({state},url){
+    	console.log("CORDOVA OPEN", url);
+		try{
+			cordova.InAppBrowser.open(url, '_system');
+		}catch(e){};
+  	}, 
   abrirNavegador({state},destination){
     console.log("Navigator launch", destination);
     try{
@@ -65,29 +65,30 @@ const actions={
     file = 'https://lh3.googleusercontent.com/vrDJFSHsBbpPACSfYQjU2hW6Q0TBEFv4ZfFlnJ6lq2ivN_mFxwkWSgwuAVa4jXIPbuh0=w1475-h846-rw';
     window.plugins.socialsharing.share((options.message), (options.subject), file, onSuccess, onError);
   },
-  showImage({state},[imagen, h, w]){
-    let img = [{src: imagen, h:  h || 500, w: w || 600}];
-    var pswpElement = document.querySelectorAll('.pswp')[0];
-    var options = {
-        loop: false,
-        maxSpreadZoom: 5,
-        pinchToClose: false,
-        closeEl:true,
-        captionEl: false,
-        fullscreenEl: false,
-        zoomEl: false,
-        shareEl: false,
-        counterEl: false,
-        arrowEl: false,
-        preloaderEl: true,
-    };
-    var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, img, options);
-    gallery.listen('close', () => {
-        this.commit('setClosePreview');
-    });
-    this.commit('setOpenPreview',gallery);
-    gallery.init();
-  },
+  	showImage({state},[imagen, h, w]){
+		console.log("SHOWING");
+		let img = [{src: imagen, h:  h || 500, w: w || 600}];
+		var pswpElement = document.querySelectorAll('.pswp')[0];
+		var options = {
+			loop: false,
+			maxSpreadZoom: 5,
+			pinchToClose: false,
+			closeEl:true,
+			captionEl: false,
+			fullscreenEl: false,
+			zoomEl: false,
+			shareEl: false,
+			counterEl: false,
+			arrowEl: false,
+			preloaderEl: true,
+		};
+		var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, img, options);
+		gallery.listen('close', () => {
+			this.commit('setClosePreview');
+		});
+		this.commit('setOpenPreview',gallery);
+		gallery.init();
+  	},
   verImagenes({state},[galeria,index=0]){
     let img = [];
     galeria.forEach( p => {img.push({src: p.src, h:  p.h || 1000, w: p.w || 720})});

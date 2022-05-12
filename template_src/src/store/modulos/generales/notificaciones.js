@@ -93,9 +93,9 @@ const actions = {
     
     postSaveToken({state}){
         if(this.getters.getSession.token){
-            let data ={
+            let data = {
                 app_version:    '1.10.0',
-                app_identifier: 'com.namee.namee',
+                app_identifier: 'com.paparatz.paparatz',
                 type:           'usuarios',
                 type_name:      'token',
                 type_id:        this.getters.getSession.token,

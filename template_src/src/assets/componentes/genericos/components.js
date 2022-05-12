@@ -32,6 +32,7 @@ import toggle from './toggle.vue';
 import calendario from './calendario.vue';
 import categorias from './categorias.vue';
 import scollX from './scollX.vue';
+import rating from './rating.vue';
 
 
 
@@ -65,6 +66,7 @@ function plugin(Vue) {
     Vue.component('calendario', calendario);
     Vue.component('categorias', categorias);
     Vue.component('scollX', scollX);
+    Vue.component('rating', rating);
   
 }
 

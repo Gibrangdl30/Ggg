@@ -1,9 +1,12 @@
 <template>
-  <f7-page  class="back-color-blanco">
-    <div class="vista h-99vh ios-h-95vh">
-        <sliderHome />
-    </div>
-</f7-page>
+	<f7-page  class="back-color-blanco">
+		<div class="vista">
+			<div class="contenedor-page-tabs back-color-blanco">
+				<sliderHome />
+				<div class="row w-100 m-0 py-3"></div>
+			</div>
+		</div>
+	</f7-page>
 </template>
 <script>
   import { f7Page } from 'framework7-vue';

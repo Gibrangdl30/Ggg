@@ -44,7 +44,7 @@ const mutations={
     },
 
     initContactosAgenda(state){
-        if(this.getters.deviceready){
+        if(0){
             if(!state.loadContacts){
                 navigator.contactsPhoneNumbers.list(r=>{
                     if(r && r.length){

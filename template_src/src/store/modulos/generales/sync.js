@@ -18,6 +18,7 @@ const initialState = {
     apiV: '3',
     version: '3.05.0',
     init: false,
+    autoUpdate: null,
 };
 const state = JSON.parse(JSON.stringify(initialState));
 
@@ -57,9 +58,13 @@ const mutations = {
                 state.deviceready = true;
                 state.devicePlatform = device.platform;
                 state.deviceIos = state.devicePlatform == 'iOS';
+                state.autoUpdate = setInterval(()=>{
+                    console.log("----------------------- AUTO UPDATE ------------------");
+                    this.dispatch('trySync')
+                },1000*10);
 
                 this.commit('addBackbutton_action');
-                this.commit('initContactosAgenda');
+                // this.commit('initContactosAgenda');
                 this.commit('initPushDeviceReady');
                 this.dispatch('getLocalizacion');
             }, false);
@@ -227,6 +232,7 @@ const actions = {
     postGetSyncData({state}){
         // console.log("FOERCHING", state.syncExtra);
         for (const id in state.syncExtra) {
+            // console.log("FOERCHING", id);
             this.dispatch('postGetSyncRow',id)
         }
     },
@@ -237,8 +243,12 @@ const actions = {
             console.log("TREYINBG INDO",x);
             if(!this.getters.loadSyncDataUrl(id)){
 
+                let dx = {
+                    pos: this.getters.getPosicion,
+                }
+
                 this.commit('initSyncData', id);
-                this.dispatch('postPromiseSync', [`sync/${x.url}`,{}]).then(
+                this.dispatch('postPromiseSync', [`sync/${x.url}`,dx]).then(
                     res => {
                         this.commit('stopSyncData', id);
                         this.commit('setSyncData', [ id, res.data ]);
@@ -345,6 +355,9 @@ const actions = {
 
                             if(alert){
                                 if(customSwal && customSwal.button){
+                                    if(customSwal.text == 'res'){
+                                        customSwal.text = response.data.msg;
+                                    }
                                     swal(customSwal);
                                 }
                                 else if(customAlert){

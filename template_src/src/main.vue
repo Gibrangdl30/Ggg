@@ -12,8 +12,6 @@
 
         <f7-view url="/views" :main="true" class="ios-edges"></f7-view>
 
-        
-
         <modalCalificar />
         <modalNotificacion />
         <globalMsn />

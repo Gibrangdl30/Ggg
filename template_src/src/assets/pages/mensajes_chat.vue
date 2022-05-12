@@ -3,7 +3,7 @@
         <modalUsuario 
             v-if="show"
             @close="show = false"
-            :usuario="chat.usuario" 
+            :usuario="chat.usuario"
         />
 
         <modalMensaje v-if="tipo==1"
@@ -12,7 +12,7 @@
             @click="$store.dispatch('userleaveGroup',[chat])"
         />
         <modalMensaje v-if="tipo==2"
-            :texto="`Are you sure you want to delete this conversation`"
+            :texto="`¿Estas seguro de borrar esta conversación?`"
             :boton="'Accept'"
             @click="borrar()"
         />
@@ -22,7 +22,7 @@
             @click="block()"
         />
 
-        <div class="vista" v-vistak v-chatss >
+        <div class="vista" v-chatss >
             <nav-bar 
                 tipo="chat" 
                 v-if="chat.tipo == 'solo'" 
@@ -38,21 +38,21 @@
             <nav-bar tipo="chat" v-else :backs="true"  :title="chat.nombre" :borrar="true" @borrar="tipo=1; $store.commit('openM')" />
 
             <div class="contenedor-page-tabs pb-10px" :id="'mensajes_'+chat.id">
-                <template v-for="m of chat.mensajes">
+                <template v-for="m of chat.mensajes" >
                     <mensajeComponent :key="m.id" :data="m" :info="chat" />
                 </template>
             </div>
 
             <div class="row w-100 m-0 py-2 pb-ios-5 back-color-blanco border-t-gray0-1 ">
                 <div class="row w-100 m-0 pb-3 pt-3 position-relative">
-                    <div class="w-16vw h-16vw position-absolute top--50px left-42 z-index-10000">
+                    <div class="w-16vw h-16vw position-absolute top--50px left-42 z-index-10000" v-if="0" >
                         <uploadImagen :custom="true" @save="saveImagen" />
                     </div>
                     <div class="col px-1">
-                        <inputForm clase="back-color-gray00" :textarea="true" :rows="1" :auto="true" type="text" placeholder="" input="form" v-model="mensaje" :fixed="true" @enter="enviarMensaje()" />
+                        <inputForm clase="back-color-gray00" :copy="1" :textarea="true" :rows="1" :auto="true" type="text" placeholder="" input="form" v-model="mensaje" :fixed="true" @enter="enviarMensaje()" />
                     </div>
                     <div class="col-auto my-auto pl-0 pr-1">
-                        <div class="w-45px h-45px back-color-verde2 border-radius-50" @click="enviarMensaje()">
+                        <div class="w-45px h-45px back-color-negro border-radius-50" @click="enviarMensaje()">
                             <div class="row w-100 m-0 pt-7px justify-content-center text-center ">
                                <icono icono="send" clase="letra-blanco-30" /> 
                             </div>

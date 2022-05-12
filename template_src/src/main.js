@@ -60,7 +60,7 @@ Vue.use(VueCurrencyFilter,{
 
 // MOMENT
 const moment = require('moment');
-// require('moment/locale/es-do');
+require('moment/locale/es-do');
 Vue.use(require('vue-moment'), {moment});
 
 Vue.filter('timestamp', (fecha) => {

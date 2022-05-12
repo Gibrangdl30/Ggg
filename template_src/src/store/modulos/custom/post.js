@@ -7,8 +7,13 @@ const initialState = {
     posts:{a:[]},
     privados:{a:[]},
     favoritos:{a:[]},
+    misposts:{a:[]},
+    mispaparatz:{a:[]},
+    misclientes:{a:[]},
     fa:{a:[]},
     post: null,
+    paparatz: null,
+    msn: null,
 };
 
 const state=JSON.parse(JSON.stringify(initialState));
@@ -16,6 +21,7 @@ const getters={
     postStateArray:(state)=>(obj)=>{return state[obj].a},
     postStateObject:(state)=>(obj)=>{return state[obj]},
     postStateFind:(state)=>(obj,data)=>{return state[obj].a.find(a=>{return a.id == state[data]})},
+    postStateFindKey:(state)=>(obj,data,key)=>{return state[obj].a.find(a=>{return a[key] == state[data]})},
     postStateFindInside:(state)=>(obj,data,key,id)=>{return state[obj].a.find(a=>{return a.id == state[data]})[key].find(x=>{return x.id == state[id]})},
     
 };
@@ -30,6 +36,15 @@ const mutations={
         }
         if('favoritos' in data){
             state.favoritos = { a: data.favoritos };
+        }
+        if('misposts' in data){
+            state.misposts = { a: data.misposts };
+        }
+        if('mispaparatz' in data){
+            state.mispaparatz = { a: data.mispaparatz };
+        }
+        if('misclientes' in data){
+            state.misclientes = { a: data.misclientes };
         }
     },
     

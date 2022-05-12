@@ -1,49 +1,68 @@
 <template>
     <f7-page id="inicio">
         <div class="vista" v-vistak>
-            <nav-bar tipo="inicio" :backs="true" :title="'Sing up for free account'"/>
+            <nav-bar tipo="inicio" :backs="true" :title="'Crear una cuenta'" :fix="1"  />
             <div class="contenedor-page-tabs back-color-blanco">
                 <div class="row w-100 m-0 mt-3">
-                    <div class="col-12 text-center pt-2 mb-3 position-relative">
-                        <div class="w-30vw h-30vw mx-auto border-radius-30px border-blanco-3 overflow-hidden position-relative">
-                            <uploadImagen class="border-radius-50 border-rojo-3" :user="false" v-model="form.foto" />
+                    <div class="col-12 pt-2 ">
+                        <div class="row w-100 m-0 letra-gray4-18 justify-content-center text-center">Crea una nueva cuenta</div>
+                        <div class="row w-100 m-0 px-4 pt-2 letra-gray3-16 justify-content-center text-center">Llena los campos siguientes para conocer mas de ti</div>
+                    </div>
+                    <div class="col-12 text-center pt-3 mb-3 position-relative">
+                        <div class="w-30vw h-30vw mx-auto border-blanco-3 overflow-hidden position-relative">
+                            <uploadImagen class="border-radius-10px border-negro-2" :user="false" v-model="form.foto" />
                         </div>
-                        <div class="col-12 py-2 letra-gray3-14 text-center">Add a profile photo or image</div>
+                        <div class="col-12 py-2 letra-gray3-14 text-center">Agrega una foto de perfil</div>
                     </div>
                     <div class="row w-100 m-0 px-3">
                         <div class="col-12 mt-4">
-                            <inputForm type="text" texto="Name:" placeholder="" v-model="form.nombre" />
+                            <inputForm type="text" texto="Nombre:" placeholder="" v-model="form.nombre" />
                         </div>
                         <div class="col-12 mt-4">
-                            <inputForm type="email" texto="Email:" placeholder="" v-model="form.email" />
+                            <inputForm type="email" texto="Correo:" placeholder="" v-model="form.email" />
                         </div>
                         <div class="col-12 mt-4">
-                            <inputForm type="tel" texto="Phone:" placeholder="" v-model="form.telefono" :maxlength="10" />
+                            <inputForm type="text" texto="Codigo de referido (si agregas uno ganaras 50 puntos):" placeholder="" v-model="form.codigodereferido" />
                         </div>
                         <div class="col-12 mt-4">
-                            <selectForm type="text" texto="Hospital/HealthCare Facility:" nombre="name" :opciones="health" v-model="form.hospital_id" />
+                            <inputForm type="tel" texto="Telefono:" placeholder="" v-model="form.telefono" :maxlength="10" />
                         </div>
                         <div class="col-12 mt-4">
-                            <inputForm type="password" texto="Password:" placeholder="" v-model="form.password" />
+                            <inputForm type="password" :password="true"  texto="Contraseña:" placeholder="" v-model="form.password" />
                         </div>
                         <div class="col-12 mt-4">
-                            <inputForm type="password" texto="Confirm password:" placeholder="" v-model="confirm_password" />
+                            <inputForm :textarea="1" :rows="4" type="text" texto="Sobre ti:" placeholder="" v-model="form.descripcion" />
+                        </div>
+                        <div class="col-12 mt-4" v-if="0">
+                            <inputForm type="password" :password="true"  texto="Confirma Contraseña:" placeholder="" v-model="confirm_password" />
                         </div>
                         
                     </div>
                 </div>
 
                 <div class="row m-0 w-100 px-3 mt-4">
-                    <div class="col my-auto letra-gray3-16 p-0 pl-3">Accept polices and privacy</div>
-                    <!-- <div class="col my-auto letra-gray4-13 p-0 pl-3">He leído y acepto los <a class="color-azul1" href="/terminos_condiciones" >Términos y Condiciones</a> y el <a class="color-azul1" href="/aviso_privacidad" >Aviso de privacidad</a> de SocialFlow</div> -->
+                    <div class="col my-auto letra-gray4-13 p-0 pl-3">He leído y acepto los <a class="color-azul1" href="/terminos_condiciones" >Términos y Condiciones</a> y el <a class="color-azul1" href="/aviso_privacidad" >Aviso de privacidad</a> de Paparatz</div>
                     <div class="col-auto my-auto px-0 pl-3 pr-2 my-auto" >
-                        <toggle :auto="true" :checked="acepto" @change="acepto = !acepto" />
+                        <toggle :icon="1"  :auto="0" v-model="acepto" :v="1" :f="0" />
                     </div>
                 </div>
+                <div class="row m-0 w-100 px-3 mt-4">
+                    <div class="col my-auto letra-gray4-13 p-0 pl-3">Acepto los <a class="color-azul1" href="/terminos_privacidad" >Términos de privacidad</a> de Paparatz</div>
+                    <div class="col-auto my-auto px-0 pl-3 pr-2 my-auto" >
+                        <toggle :icon="1"  :auto="0" v-model="acepto2" :v="1" :f="0" />
+                    </div>
+                </div>
+                <div class="row m-0 w-100 px-3 mt-4">
+                    <div class="col my-auto letra-gray4-13 p-0 pl-3">Acepto las <a class="color-azul1" href="/concidencias" >Condiciones de operación</a> de Paparatz</div>
+                    <div class="col-auto my-auto px-0 pl-3 pr-2 my-auto" >
+                        <toggle :icon="1"  :auto="0" v-model="acepto3" :v="1" :f="0" />
+                    </div>
+                </div>
+                
 
                 <div class="row w-100 m-0 justify-content-center mt-4 pb-5">
                     <div class="col-12 py-2">
-                        <botonApp tipo="rojo" texto="Sing up for free" radius="30px" @click="save" />
+                        <botonApp tipo="azul" texto="Crea una cuenta" radius="30px" @click="save" />
                     </div>
                 </div>
             </div>
@@ -64,16 +83,18 @@ import Swiper from 'swiper';
                     { id: 'femenino', nombre: 'Femenino'},
                 ],
                 form:{
-                    foto:  null,
-                    nombre:     this.$store.getters.getFormRegistro.nombre,
-                    email:      this.$store.getters.getFormRegistro.email,
-                    telefono:   this.$store.getters.getFormRegistro.telefono,
-                    password:   this.$store.getters.getFormRegistro.password,
-                    genero:   'femenino',
-                    hospital_id:   null,
+                    foto:           null,
+                    nombre:         this.$store.getters.getFormRegistro.nombre,
+                    email:          this.$store.getters.getFormRegistro.email,
+                    telefono:       this.$store.getters.getFormRegistro.telefono,
+                    password:       this.$store.getters.getFormRegistro.password,
+                    genero:         null,
+                    descripcion:    null,
                 },
                 confirm_password: null,
                 acepto: false,
+                acepto2: false,
+                acepto3: false,
             }
         },
         computed: {
@@ -83,20 +104,24 @@ import Swiper from 'swiper';
         methods:{
             save(){
                 if(!this.form.nombre || !this.form.email || !this.form.password){
-                    swal("","Please fill all fields","");
+                    swal("","Llena todos los campos","");
                     return;
                 }
-                if( !this.form.hospital_id ){
-                    swal("","You must select a hospital","");
-                    return;
-                }
-
-                if(this.form.password != this.confirm_password){
-                    swal("", "Passwords do not match","");
-                    return;
-                }
+                // if(this.form.password != this.confirm_password){
+                //     swal("", "Passwords do not match","");
+                //     return;
+                // }
                 if(!this.acepto){
-                    swal("", "You must agree polices and privacy","");
+                    swal("", "Debes aceptar los terminos y condiciones","");
+                    return;
+                }
+                
+                if(!this.acepto2){
+                    swal("", "Debes aceptar los terminos de privacidad","");
+                    return;
+                }
+                if(!this.acepto3){
+                    swal("", "Debes aceptar las condiciones de operación","");
                     return;
                 }
                 

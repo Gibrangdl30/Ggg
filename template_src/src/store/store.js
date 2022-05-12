@@ -60,9 +60,9 @@ const modules = {
 
 const state = {
     base:   { 
-        url:    "https://namee.club/apiv1/api/",
-        img:    "https://namee.club/apiv1/img/",
-        iconos: "https://namee.club/apiv1/iconos/",
+        url:    "https://paparatzapp.com/apiv1/api/",
+        img:    "https://paparatzapp.com/apiv1/img/",
+        iconos: "https://paparatzapp.com/apiv1/iconos/",
     },
     procesando: false,
     api: '3'

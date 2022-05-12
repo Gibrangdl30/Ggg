@@ -7,7 +7,7 @@
         <div class="row w-100 m-0px px-5 justify-content-center">
             <div class="row w-100 m-0  py-3 border-radius-15px justify-content-center">
                 <div class="my-auto text-center px-3" :class="{'col-12':!landscape, 'col-5':landscape}">
-                    <imagen :logo="3"  />
+                    <imagen :logo="1"  />
                 </div>
                 <div class="col-12 p-0 my-auto text-center">
                     <div class="lds-css ng-scope text-center"><div style="width:100%;height:100%" class="lds-ellipsis mx-auto"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>
@@ -73,27 +73,27 @@ export default {
   .lds-ellipsis div:nth-child(1) div {
     -webkit-animation: lds-ellipsis2 1.3s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
     animation: lds-ellipsis2 1.3s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
-    background: #47a9be ;
+    background: black ;
   }
   .lds-ellipsis div:nth-child(2) div {
     -webkit-animation-delay: -0.65s;
     animation-delay: -0.65s;
-    background: #47a9be ;
+    background: black ;
   }
   .lds-ellipsis div:nth-child(3) div {
     -webkit-animation-delay: -0.325s;
     animation-delay: -0.325s;
-    background: #47a9be ;
+    background: black ;
   }
   .lds-ellipsis div:nth-child(4) div {
     -webkit-animation-delay: 0s;
     animation-delay: 0s;
-    background: #47a9be ;
+    background: black ;
   }
   .lds-ellipsis div:nth-child(5) div {
     -webkit-animation: lds-ellipsis3 1.3s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
     animation: lds-ellipsis3 1.3s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
-    background: #47a9be ;
+    background: black ;
   }
   .lds-ellipsis {
     width: 65px !important;

@@ -1,7 +1,7 @@
 <template>
     <f7-page class="" id="inicio">
         <div class="vista">
-            <nav-bar tipo="inicio" title="New post" :customBack="true" :fix="1"   />
+            <nav-bar tipo="inicio" title="Nuevo post" :customBack="true" :fix="1"   />
 
             <div class="contenedor-page-tabs back-color-blanco">
                 <div class="row w-100 m-0">
@@ -9,7 +9,7 @@
                         <imagen :create="true" :src="formPost.imagen" />
                     </div>
                 </div>
-                <div class="row w-100 m-0 border-b-gray0-2 ">
+                <div class="row w-100 m-0 border-b-gray0-2 " v-if="0" >
                     <div class="row w-100 m-0 py-3 ">
                         <div class="col px-0 pl-3 ">
                             <busquedaInput v-model="b" :scroll="1" :offset="200" />
@@ -29,10 +29,18 @@
                     </div>
                 </div>
 
-                <div class="row w-100 m-0 pt-2 px-3">
-                    <div class="row w-100 m-0 letra-gray4-18">Select friends</div>
-                    <div class="row w-100 m-0" v-for="a of filtrado" :key="a.id">
-                        <amigosRow :data="a" v-model="formPost" :check="formPost.usuarios.some(x=>x.id == a.id)" @set="set"  />
+                <div class="row w-100 m-0 pt-2 px-3" v-if="1" >
+                    <div class="row w-100 m-0 letra-gray4-18">Selecciona el usuario al que le tomaste foto</div>
+                    <!-- <div class="row w-100 m-0" v-for="a of filtrado" :key="a.id">
+                        <amigosRow :data="a" v-model="formPost" :check="formPost.para_id == a.id" @set="formPost.para_id = a.id"  />
+                    </div> -->
+                    <div class="row w-100 m-0" v-for="a of amigos" :key="a.id">
+                        <!-- :solicitud="a" -->
+                        <amigosRow 
+                            :data="a" 
+                            :selectable="1"
+                            :check="formPost.para_id == a.id"
+                            @set="formPost.para_id = a.id"  />
                     </div>
                 </div>
 
@@ -40,7 +48,7 @@
 
             <div class="row w-100 m-0 px-2 py-2">
                 <div class="row w-100 m-0 px-3 py-2 pb-3" @click="save()">
-                    <botonApp texto="Share post" tipo="azul" radius="30px" />
+                    <botonApp texto="Enviar" tipo="azul" radius="30px" />
                 </div>
             </div>
 
@@ -67,7 +75,9 @@ const moment = require('moment-timezone');
             router(){return this.$store.getters.getRouter;},
             session(){return this.$store.getters.getSession;},
             formPost(){return this.$store.getters.userStateObject('formPost');},
-            amigos(){return this.$store.getters.userStateArray('amigos');},
+            posts(){return this.$store.getters.postStateArray('posts')},
+            share(){return this.posts.filter(s=>s.type == 's' && s.usuarios_id != this.session.id)},
+            amigos(){return this.$store.getters.userStateArray('amigos').filter(a=>a.fotos_horario == 'todo');},
             filtrado(){
                 if(this.b){
                     return this.amigos.filter(x => { return x.nombre.toLowerCase().includes(this.b.toLowerCase()) || x.telefono.toLowerCase().includes(this.b.toLowerCase()) } )
