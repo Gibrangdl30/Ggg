@@ -4,17 +4,17 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div class="row w-100 m-0 justify-content-center">
-                        <imagen clase="" :src="imagen('oc2.png')" /> 
+                        <imagen clase="" :src="imagen('w1.png')" /> 
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="row w-100 m-0 justify-content-center">
-                        <imagen clase="" :src="imagen('oc1.png')" /> 
+                        <imagen clase="" :src="imagen('w2.png')" /> 
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="row w-100 m-0 justify-content-center">
-                        <imagen clase="" :src="imagen('oc3.png')" /> 
+                        <imagen clase="" :src="imagen('w3.png')" /> 
                     </div>
                 </div>
             </div>

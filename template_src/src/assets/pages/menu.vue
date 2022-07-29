@@ -1,46 +1,93 @@
 <template>
-    <f7-page class="back-color-rojo">
-        <div class="vista h-100 back-color-rojo">
-            <div class="contenedor-page back-color-rojo pb-10vh">
+    <f7-page class="back-color-blanco">
+        <div class="vista h-100 back-color-blanco">
+            <div class="contenedor-page back-color-blanco pb-10vh">
 
                 <div class="row w-100 m-0 pt-4 pb-4">
                     <div class="row w-100 m-0 pt-3 pb-3">
-                        <div class="col-5 mx-auto px-3">
-                            <imagen :logo="3" />
+                        <div class="h-29vw w-29vw mx-auto">
+                            <imagen clase="border-radius-50 overflow-hidden" :fit="true" :perfil="true" alt="" />
                         </div>
                     </div>
                 </div>
 
                 <div class="row m-0 justify-content-center">
+                    <template v-if="!session.token">
+                        <div class="row w-100 m-0 px-3 py-2" @click="tologin()" >
+                            <div class="col-auto px-0 my-auto">
+                                <icono icono="person_outline" clase="letra-gray3-30" />
+                            </div>
+                            <div class="col px-0 mb-auto pl-3">
+                                <div class="row m-0 w-100 letra-gray3-20 fw-600">Iniciar sesión</div>
+                            </div>
+                        </div>
+                    </template>
                     <template v-if="session.token">
-                        <div class="row w-100 m-0 p-0 py-2 border-t-blanco-1 border-b-blanco-1" @click="main('/inicio')" >
-                            <div class="row m-0 w-100 py-2 letra-blanco-20 fw-600 justify-content-center text-center">Patients</div>
+                        <div class="row w-100 m-0 px-3 py-2" @click="goTo('/mi_cuenta')" >
+                            <div class="col-auto px-0 my-auto">
+                                <icono icono="person_outline" clase="letra-gray3-30" />
+                            </div>
+                            <div class="col px-0 mb-auto pl-3">
+                                <div class="row m-0 w-100 letra-gray3-20 fw-600">Mi cuenta</div>
+                            </div>
+                        </div>
+                        <div class="row w-100 m-0 px-3 py-2" @click="goTo('/comunicados')" >
+                            <div class="col-auto px-0 my-auto">
+                                <icono icono="chat" clase="letra-gray3-30" />
+                            </div>
+                            <div class="col px-0 mb-auto pl-3">
+                                <div class="row m-0 w-100 letra-gray3-20 fw-600">Comunicados</div>
+                            </div>
                         </div>
 
-                        <div class="row w-100 m-0 p-0 py-2 border-b-blanco-1" @click="goTo('/pacientes_desactivados')" >
-                            <div class="row m-0 w-100 py-2 letra-blanco-20 fw-600 justify-content-center text-center">Discharged patients</div>
+                        <div class="row w-100 m-0 px-3 py-2" @click="goTo('/favoritos')" >
+                            <div class="col-auto px-0 my-auto">
+                                <icono icono="favorite_border" clase="letra-gray3-30" />
+                            </div>
+                            <div class="col px-0 mb-auto pl-3">
+                                <div class="row m-0 w-100 letra-gray3-20 fw-600">Favoritos</div>
+                            </div>
                         </div>
 
-                        <div class="row w-100 m-0 p-0 py-2 border-b-blanco-1" @click="goTo('/chats')" >
-                            <div class="row m-0 w-100 py-2 letra-blanco-20 fw-600 justify-content-center text-center">Chats</div>
+                        <div class="row w-100 m-0 px-3 py-2" @click="goTo('/solicitud_fotografo')" >
+                            <div class="col-auto px-0 my-auto">
+                                <icono icono="headset_mic" clase="letra-gray3-30" />
+                            </div>
+                            <div class="col px-0 mb-auto pl-3">
+                                <div class="row m-0 w-100 letra-gray3-20 fw-600">Contacto</div>
+                            </div>
                         </div>
 
-                        <div class="row w-100 m-0 p-0 py-2 border-b-blanco-1" @click="goTo('/acercade')" >
-                            <div class="row m-0 w-100 py-2 letra-blanco-20 fw-600 justify-content-center text-center">About us</div>
+                        <div class="row w-100 m-0 px-3 py-2" @click="goTo('/terminos_condiciones')" >
+                            <div class="col-auto px-0 my-auto">
+                                <icono icono="library_books" clase="letra-gray3-30" />
+                            </div>
+                            <div class="col px-0 mb-auto pl-3">
+                                <div class="row m-0 w-100 letra-gray3-20 fw-600">Terminos y condiciones</div>
+                            </div>
                         </div>
 
-                        <div class="row w-100 m-0 p-0 py-2 border-b-blanco-1" @click="goTo('/mi_cuenta')" >
-                            <div class="row m-0 w-100 py-2 letra-blanco-20 fw-600 justify-content-center text-center">My profile</div>
+                        <div class="row w-100 m-0 border-b-gray1-1 "></div>
+
+                        <div class="row w-100 m-0 pt-2 px-3 py-2" @click="logout()" >
+                            <div class="col-auto px-0 my-auto">
+                                <div class="w-30px">
+                                    <imagen icono="1" src="logout" />
+                                </div>
+                            </div>
+                            <div class="col px-0 mb-auto pl-3">
+                                <div class="row m-0 w-100 letra-rojo-20 fw-600">Cerrar session</div>
+                            </div>
                         </div>
-                       
+
                     </template>
 
-                    <div class="row w-100 m-0 p-0 py-2 border-b-blanco-1">
-                        <div class="row m-0 w-100 py-2 letra-blanco-20 justify-content-center text-center font-italics" @click="logout()">Logout</div>
+                    <!-- <div class="row w-100 m-0 p-0 py-2 border-b-negro-1">
+                        <div class="row m-0 w-100 py-2 letra-negro-20 justify-content-center text-center font-italics" @click="logout()">Logout</div>
                     </div>
                     <div class="row w-100 m-0 mt-3 py-3">
-                        <div class="row w-100 m-0 letra-blanco-18 justify-content-center py-2">Jocose V.{{vr}}</div>
-                    </div>
+                        <div class="row w-100 m-0 letra-negro-18 justify-content-center py-2">Jocose V.{{vr}}</div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -69,6 +116,12 @@ import Swiper from 'swiper';
                 this.$f7.panel.close('right', true);
                 // this.$store.commit('openMenuRight');
             },
+
+            tologin(){
+                this.close();
+                this.$store.commit('changeView','login');
+            },
+
             main(ruta){
                 this.router.back(ruta,{force:true});
                 this.close();

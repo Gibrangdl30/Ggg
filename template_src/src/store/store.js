@@ -60,9 +60,9 @@ const modules = {
 
 const state = {
     base:   { 
-        url:    "https://paparatzapp.com/apiv1/api/",
-        img:    "https://paparatzapp.com/apiv1/img/",
-        iconos: "https://paparatzapp.com/apiv1/iconos/",
+        url:    "https://grupoargestioninmobiliaria.online/apiv1/api/",
+        img:    "https://grupoargestioninmobiliaria.online/apiv1/img/",
+        iconos: "https://grupoargestioninmobiliaria.online/apiv1/iconos/",
     },
     procesando: false,
     api: '3'

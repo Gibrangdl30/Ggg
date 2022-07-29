@@ -29,17 +29,20 @@
                     />
                 </div>
 
-                <div class="col-11 mt-3 letra-azul1-4-1vw text-right"  @click="router.navigate('/recuperar_password')">¿Olvidaste tu contraseña?</div>
+                <!-- <div class="col-11 mt-3 letra-azul1-4-1vw text-right"  @click="router.navigate('/recuperar_password')">¿Olvidaste tu contraseña?</div> -->
 
                 <div class="col-11 mt-5"  >
                     <div class="row w-100 m-0 mt-1 justify-content-center " @click="router.navigate('/registro')">
-                        <div class="col-auto px-0 pr-1 letra-gray3-18">¿Nuevo por aqui?</div>
-                        <div class="col-auto px-0 letra-azul1-18">Crea una cuenta</div>
+                        <div class="col-auto px-0 pr-1 letra-gray3-18">¿No estas registrado?</div>
+                        <div class="col-auto px-0 letra-gray4-18">Crea una cuenta</div>
                     </div>
                 </div>
 
                 <div class="col-11 mt-5 " @click="enter()">
                    <botonApp texto="Comenzar" tipo="azul" radius="30px" />
+                </div>
+                <div class="col-11 mt-3 " @click="entrar()" >
+                   <botonApp texto="Explorar" tipo="rojo" radius="30px" />
                 </div>
                 
             </div>

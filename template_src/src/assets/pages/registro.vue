@@ -1,19 +1,23 @@
 <template>
     <f7-page id="inicio">
+        
         <div class="vista" v-vistak>
+
             <nav-bar tipo="inicio" :backs="true" :title="'Crear una cuenta'" :fix="1"  />
+
             <div class="contenedor-page-tabs back-color-blanco">
+
                 <div class="row w-100 m-0 mt-3">
-                    <div class="col-12 pt-2 ">
+                    <!-- <div class="col-12 pt-2 ">
                         <div class="row w-100 m-0 letra-gray4-18 justify-content-center text-center">Crea una nueva cuenta</div>
                         <div class="row w-100 m-0 px-4 pt-2 letra-gray3-16 justify-content-center text-center">Llena los campos siguientes para conocer mas de ti</div>
-                    </div>
-                    <div class="col-12 text-center pt-3 mb-3 position-relative">
+                    </div> -->
+                    <!-- <div class="col-12 text-center pt-3 mb-3 position-relative">
                         <div class="w-30vw h-30vw mx-auto border-blanco-3 overflow-hidden position-relative">
                             <uploadImagen class="border-radius-10px border-negro-2" :user="false" v-model="form.foto" />
                         </div>
                         <div class="col-12 py-2 letra-gray3-14 text-center">Agrega una foto de perfil</div>
-                    </div>
+                    </div> -->
                     <div class="row w-100 m-0 px-3">
                         <div class="col-12 mt-4">
                             <inputForm type="text" texto="Nombre:" placeholder="" v-model="form.nombre" />
@@ -22,16 +26,10 @@
                             <inputForm type="email" texto="Correo:" placeholder="" v-model="form.email" />
                         </div>
                         <div class="col-12 mt-4">
-                            <inputForm type="text" texto="Codigo de referido (si agregas uno ganaras 50 puntos):" placeholder="" v-model="form.codigodereferido" />
-                        </div>
-                        <div class="col-12 mt-4">
                             <inputForm type="tel" texto="Telefono:" placeholder="" v-model="form.telefono" :maxlength="10" />
                         </div>
                         <div class="col-12 mt-4">
                             <inputForm type="password" :password="true"  texto="Contraseña:" placeholder="" v-model="form.password" />
-                        </div>
-                        <div class="col-12 mt-4">
-                            <inputForm :textarea="1" :rows="4" type="text" texto="Sobre ti:" placeholder="" v-model="form.descripcion" />
                         </div>
                         <div class="col-12 mt-4" v-if="0">
                             <inputForm type="password" :password="true"  texto="Confirma Contraseña:" placeholder="" v-model="confirm_password" />
@@ -41,24 +39,11 @@
                 </div>
 
                 <div class="row m-0 w-100 px-3 mt-4">
-                    <div class="col my-auto letra-gray4-13 p-0 pl-3">He leído y acepto los <a class="color-azul1" href="/terminos_condiciones" >Términos y Condiciones</a> y el <a class="color-azul1" href="/aviso_privacidad" >Aviso de privacidad</a> de Paparatz</div>
+                    <div class="col my-auto letra-gray4-13 p-0 pl-3">He leído y acepto los <a class="color-azul1" href="/terminos_condiciones" >Términos y Condiciones</a> y el <a class="color-azul1" href="/aviso_privacidad" >Aviso de privacidad</a> de Grupo AR</div>
                     <div class="col-auto my-auto px-0 pl-3 pr-2 my-auto" >
                         <toggle :icon="1"  :auto="0" v-model="acepto" :v="1" :f="0" />
                     </div>
                 </div>
-                <div class="row m-0 w-100 px-3 mt-4">
-                    <div class="col my-auto letra-gray4-13 p-0 pl-3">Acepto los <a class="color-azul1" href="/terminos_privacidad" >Términos de privacidad</a> de Paparatz</div>
-                    <div class="col-auto my-auto px-0 pl-3 pr-2 my-auto" >
-                        <toggle :icon="1"  :auto="0" v-model="acepto2" :v="1" :f="0" />
-                    </div>
-                </div>
-                <div class="row m-0 w-100 px-3 mt-4">
-                    <div class="col my-auto letra-gray4-13 p-0 pl-3">Acepto las <a class="color-azul1" href="/concidencias" >Condiciones de operación</a> de Paparatz</div>
-                    <div class="col-auto my-auto px-0 pl-3 pr-2 my-auto" >
-                        <toggle :icon="1"  :auto="0" v-model="acepto3" :v="1" :f="0" />
-                    </div>
-                </div>
-                
 
                 <div class="row w-100 m-0 justify-content-center mt-4 pb-5">
                     <div class="col-12 py-2">
@@ -84,12 +69,10 @@ import Swiper from 'swiper';
                 ],
                 form:{
                     foto:           null,
-                    nombre:         this.$store.getters.getFormRegistro.nombre,
-                    email:          this.$store.getters.getFormRegistro.email,
-                    telefono:       this.$store.getters.getFormRegistro.telefono,
-                    password:       this.$store.getters.getFormRegistro.password,
-                    genero:         null,
-                    descripcion:    null,
+                    nombre:         null,
+                    email:          null,
+                    telefono:       null,
+                    password:       null,
                 },
                 confirm_password: null,
                 acepto: false,
@@ -115,16 +98,6 @@ import Swiper from 'swiper';
                     swal("", "Debes aceptar los terminos y condiciones","");
                     return;
                 }
-                
-                if(!this.acepto2){
-                    swal("", "Debes aceptar los terminos de privacidad","");
-                    return;
-                }
-                if(!this.acepto3){
-                    swal("", "Debes aceptar las condiciones de operación","");
-                    return;
-                }
-                
                 this.$store.dispatch('postRegistro',this.form);
             }
           

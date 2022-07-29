@@ -16,10 +16,11 @@ const initialState = {
     deviceIos: true,
     syncError: 0,
     apiV: '3',
-    version: '3.05.0',
+    version: '2.15.0',
     init: false,
     autoUpdate: null,
 };
+
 const state = JSON.parse(JSON.stringify(initialState));
 
 const getters = {   
@@ -38,6 +39,9 @@ const getters = {
 
 const mutations = {
     setData(state, [data]){
+        if(data.version){
+            state.version = data.version;
+        }
         this.commit('setSession', data);
         this.commit('initApirtc', data);
         this.commit('setVersion', data);
@@ -238,7 +242,7 @@ const actions = {
     },
 
     postGetSyncRow({state}, id){
-        if(this.getters.getSession.token){
+        if(this.getters.getSession.token || 1){
             const x = this.getters.syncData(id);
             console.log("TREYINBG INDO",x);
             if(!this.getters.loadSyncDataUrl(id)){

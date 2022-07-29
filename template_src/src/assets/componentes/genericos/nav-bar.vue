@@ -1,35 +1,18 @@
 <template>
-<div class="nav-bar-component template w-100 " :class="clase?clase:'pt-20px'" @click="sync">
+<div class="nav-bar-component template w-100 " :class="clase?clase:'pt-10px'" @click="sync">
 
     <template v-if="tipo=='logo'">
     <div class="row m-0 justify-content-space-between px-3px nav-bar nav-inicio" :class="`${no_border?'':'border-b-gray0-1'}`">
 
-        <div class="w-32 my-auto mr-auto">
+        <div class="w-13 my-auto mr-auto">
            <div class="row w-100 m-0">
-               <imagen :logo="6" />
+               <imagen :logo="1" />
            </div>
         </div>
 
-        <div class="w-15 boton-carrito h-100 position-relative" @click="router.navigate('/chats')" >
-           
-        </div>
-
-        <div class="w-11 my-auto position-relative" @click="router.navigate('/chats')" v-if="1" >
+        <div class="w-11 my-auto position-relative" @click="openRightMenu()" v-if="1" >
             <div class="row w-100 m-0 pt-1px  px-2px"> 
-                <icono icono="chat_bubble" clase="letra-gray3-35" />
-            </div>
-            <div class="w-17px h-17px back-color-rojo2 position-absolute right-0px top-0px border-radius-50" v-if="mensajeNuevo" ></div>
-        </div>
-        <div class="w-11 my-auto position-relative" @click="refresh()" v-if="1" >
-            <div class="row w-100 m-0 pt-1px  px-2px"> 
-                <icono icono="cached" clase="letra-gray3-35" />
-            </div>
-            <!-- <div class="w-17px h-17px back-color-rojo2 position-absolute right-0px top-0px border-radius-50" v-if="mensajeNuevo" ></div> -->
-        </div>
-
-        <div class="col-auto my-auto px-1 boton-carrito h-100 position-relative" v-if="profile" @click="router.navigate('/mi_cuenta')">
-            <div class="w-45px h-45px border-radius-50 overflow-hidden">
-                <imagen clase=" " :fit="true" :perfil="true" />
+                <icono icono="menu" clase="letra-gray3-35" />
             </div>
         </div>
 

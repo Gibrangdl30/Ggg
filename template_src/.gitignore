@@ -269,5 +269,3 @@ Network Trash Folder
 Temporary Items
 .apdisk
 !/webpack/configs/
-/plugins/
-/platforms/

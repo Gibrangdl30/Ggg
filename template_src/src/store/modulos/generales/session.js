@@ -95,7 +95,7 @@ const mutations = {
     },
     initVista(state){
         this.getters.getRouterView('usuario').navigate('/inicio',{reloadCurrent:true});
-        this.getters.getRouterView('coor').navigate('/inicio_coor',{force:true});
+        // this.getters.getRouterView('coor').navigate('/inicio_coor',{force:true});
     }
 };
 

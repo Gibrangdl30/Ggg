@@ -58,6 +58,11 @@ const general = [
 
 //usuario
 import inicio from './assets/pages/usuario/inicio.vue';
+import inicio_mapa from './assets/pages/usuario/inicio_mapa.vue';
+import favoritos from './assets/pages/usuario/favoritos.vue';
+import comunicados from './assets/pages/usuario/comunicados.vue';
+import comunicado_detalle from './assets/pages/usuario/comunicado_detalle.vue';
+
 import crear_post from './assets/pages/usuario/crear_post.vue';
 import post_comentarios from './assets/pages/usuario/post_comentarios.vue';
 import iniciar_chat_amigo from './assets/pages/usuario/iniciar_chat_amigo.vue';
@@ -71,8 +76,15 @@ import fotos_tomadas from './assets/pages/usuario/fotos_tomadas.vue';
 import fotos_de_paparatz from './assets/pages/usuario/fotos_de_paparatz.vue';
 import fotos_de_cliente from './assets/pages/usuario/fotos_de_cliente.vue';
 
+
 const usuario = [
   {path: '/inicio',component: inicio},
+  {path: '/inicio_mapa',component: inicio_mapa},
+  {path: '/favoritos',component: favoritos},
+  {path: '/comunicados',component: comunicados},
+  {path: '/comunicado_detalle',component: comunicado_detalle},
+
+  
   {path: '/crear_post',component: crear_post},
   {path: '/post_comentarios',component: post_comentarios},
   {path: '/iniciar_chat_amigo',component: iniciar_chat_amigo},

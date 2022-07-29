@@ -1,47 +1,29 @@
 cordova build android --prod --release
 
-keytool -genkey -v -keystore namee-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias namee-key
+keytool -genkey -v -keystore grupoar-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias grupoar-key
  /Users/alonso/Library/Android/sdk/build-tools/27.0.3/zipalign -v -p 4 app-release-unsigned.apk app-zip.apk
- /Users/alonso/Library/Android/sdk/build-tools/27.0.3/apksigner sign --ks namee-key.jks --out namee.apk app-zip.apk
+ /Users/alonso/Library/Android/sdk/build-tools/27.0.3/apksigner sign --ks geo-key.jks --out geo.apk app-zip.apk
+
+cordova build android --release -- --keystore=./grupoar-key.jks --storePassword=sustam --alias=grupoar-key --password=sustam --packageType=bundle
 
 nuevo modulo de chat para servicio en proceso
-
-33000012769551
-33000012769551
 
 sudo n 8.11.3
 sudo n 12.16.1
 
-
-
-remplazar UIApplication.openSettingsURLString por UIApplicationOpenSettingsURLString
+remplazar UIApplication.openSettingsURLString por UIApplicationOpenSettingsURLString 
 en platforms/ios/Proyecto/Plugins/.....qrscaneer/.....swift
 
-superlargacontraseña
+hola@marcoramos.com.mx
 
-cordova build android --release -- --keystore=./axit-key.jks --storePassword=sustam --alias=axit-key --password=sustam --packageType=bundle
 
-For Android 
-cordova plugin rm cordova-plugin-keyboard 
-cordova plugin add cordova-plugin-ionic-keyboard
+$2y$10$0SbqcybN4q1id6tdkWKf/u6IhJcrD6UWp98KqiKPte5mhVIYccfQ.
 
-For ios
-cordova plugin rm cordova-plugin-ionic-keyboard 
-cordova plugin add cordova-plugin-keyboard 
+1832
 
-2132.96
-426.59
+TECNOCASA
 
-4947
-132*20
-2640
-TWLIO
-alonso7109torres@gmail.com
-sustamapps2021$1
-
-3339548526
-
-1500x2415
-500x800
-
-e10adc3949ba59abbe56e057f20f883e
+javier.garciareyes@hotmail.com
+  gbt cxno 
+4178490022214036
+4178490022214036

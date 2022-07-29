@@ -97,6 +97,23 @@ const actions={
         },error=>{});
     },
 
+    postPostSaveMensaje({ commit, state }, [ mensaje ]){
+        let data = {
+            mensaje,
+        };
+        let finish = ()=>{};
+
+        let load = {
+            url: 'datos/save_mensaje',
+            data: data,
+            back: 1,
+        }
+        this.dispatch('superPostLoader', load).then(
+        res => {
+            finish(res);
+        },error=>{});
+    },
+
     postPostSaveFav({ commit, state }, [ post ]){
         let data = {
             post: post,

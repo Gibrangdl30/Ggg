@@ -117,6 +117,27 @@ const actions={
         },error=>{});
     },
 
+    postAddFavorito({ commit, state }, form){
+        let data = {
+            data: form,
+        };
+
+        let finish = (res)=>{
+            this.dispatch('synchronizeData');
+            swal({
+                title:"Inmueble agregado a tus favoritos",
+                text:"",
+                icon:"success",
+                button: 'Entendido',
+            });
+        };
+
+        this.dispatch('postPromiseLoader', ['datos/add_favorito', data]).then(
+        res => {
+            finish(res);
+        },error=>{});
+    },
+
     userGetImg({ commit, state }, [ imagen ]){
         let data = {
             imagen,

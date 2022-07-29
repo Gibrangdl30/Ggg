@@ -92,7 +92,7 @@ button.boton-naranja
 }
 
 button.boton-negro{
-    background-color: #000000 !important;
+    background-color: linear-gradient(136.67deg, #646f7e 0%, #343b45 100%) !important;
     border: 1px solid #000000  !important;
     &.active-state,:hover{
         .row{

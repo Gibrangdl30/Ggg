@@ -54,7 +54,7 @@ export default {
         android(){
             // console.log("ANDORIDNG", this.$store.getters.deviceready);
             if(this.$store.getters.deviceready){
-                return device.platform == 'Android'
+                return typeof device != 'undefined' && device.platform == 'Android'
             }
             return false;
         },

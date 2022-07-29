@@ -108,7 +108,7 @@ export default {
         takePhoto(){return this.$store.getters.userStateObject('takePhoto');},
         emulador(){
             if(this.$store.getters.deviceready){
-                return device.platform == 'browser' || device.platform == null;
+                return typeof device == 'undefined' || (device.platform == 'browser' || device.platform == null);
             }
             return true;
         },

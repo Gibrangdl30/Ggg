@@ -82,7 +82,7 @@
 </template>
 <script>
 import { f7Page } from 'framework7-vue';
-const moment = require('moment-timezone');
+const moment = require('moment');
 
     export default{
         components:{

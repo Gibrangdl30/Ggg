@@ -95,7 +95,7 @@ const actions = {
         if(this.getters.getSession.token){
             let data = {
                 app_version:    '1.10.0',
-                app_identifier: 'com.paparatz.paparatz',
+                app_identifier: 'com.grupoar.grupoar',
                 type:           'usuarios',
                 type_name:      'token',
                 type_id:        this.getters.getSession.token,

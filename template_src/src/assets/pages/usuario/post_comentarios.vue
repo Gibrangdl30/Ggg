@@ -2,61 +2,69 @@
     <f7-page class="" id="inicio">
 
         <div class="vista">
-            <nav-bar tipo="inicio" title="Comments" :fix="1" :backs="true"   />
+            <nav-bar tipo="inicio" title="Detalle de propiedad" :fix="1" :backs="true"   />
 
             <div class="contenedor-page-tabs back-color-blanco">
-
-                <div class="row w-100 m-0">
-                    <postCard :data="post" :notComment="1" />
-                </div>
-                <div class="row w-100 m-0">
-                    <div class="row w-100 m-0 px-14px">
-                        <div class="col px-0 px-1" @click="t=1">
-                            <div class="row w-100 m-0 py-5px border-azul1-1 justify-content-center text-center border-radius-30px " 
-                                :class="(t==1?'back-color-azul1 letra-blanco-18':'letra-azul1-18')" >Comments</div>
-                        </div>
-                        <div class="col px-0 px-1" @click="t=2">
-                            <div class="row w-100 m-0 py-5px border-azul1-1 justify-content-center text-center border-radius-30px position-relative " 
-                                :class="(t==2?'back-color-azul1 letra-blanco-18':'letra-azul1-18')" >
-                                <div class="row w-100 m-0 justify-content-center text-center ">likes</div>
-                                <div class="row w-100 m-0 justify-content-end text-end position-absolute top-4px right-15px " v-if="likes.length" >{{likes.length}}</div>
+                <div class="row w-100 m-0 px-3 pt-3">
+                    <div class="row w-100 m-0 border-radius-10px overflow-hidden position-relative">
+                        <sliderFotos :fotos="fotos" />
+                        <div @click.stop="$store.dispatch('postAddFavorito',post)" class="w-45px h-45px back-color-gray4 border-bl-radius-10px position-absolute top-0px right-0px z-10000000 ">
+                            <div class="row w-100 m-0 pt-6px justify-content-center text-center " >
+                                <icono :icono="post.fav?'favorite':'favorite_border'" class="letra-blanco-30" />
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <template v-if="t==1">
-                    <div class="row w-100 m-0 px-14px" v-for="(c,x) of comentarios" :key="x" >
-                        <comenatarioRow :data="c" />
-                    </div>
-                </template>
+                <div class="row w-100 m-0">
+                    <div class="row w-100 m-0 px-3 pt-3" >
+                        <div class="row w-100 m-0 letra-negro-22 fw-600 " >{{post.nombre}}</div>
+                        <div class="row w-100 m-0 pt-3 letra-negro-20  " >{{post.direccion}} {{post.colonia}}</div>
+                        <div class="row w-100 m-0 letra-negro-20" >{{post.ciudad}}, {{post.estado}}, CP.{{post.codigo_postal}}</div>
 
-                <template v-if="t==2">
-                    <div class="row w-100 m-0 px-14px" v-for="(c,x) of likes" :key="x" >
-                        <comenatarioRow :like="true" :data="c" />
-                    </div>
-                </template>
+                        <div class="row w-100 m-0 pt-2">
+                            <div class="col-auto px-0 letra-gray2-16 ">{{[post.created_at, 'YYYY-MM-DD HH:mm:ss'] |  moment('DD/MM/YY') }}</div>
+                        </div>
+                        <div class="row w-100 m-0 pt-3">
+                            <div class="col-auto px-0 letra-negro-23 fw-600">{{post.precio | currency }} {{post.moneda}}</div>
+                        </div>
+                        <div class="row w-100 m-0 pt-1">
+                            <div class="col-auto px-0 letra-negro-19 ">{{post.metros_cuadrados }} MTS cuadrados de area</div>
+                            <div class="col-auto px-0 letra-negro-19 ">{{post.m2_construccion }} MTS cuadrados de construcción</div>
+                        </div>
+                        <div class="row w-100 m-0 pt-3 letra-blanco-19 fw-600 ">
+                            <div class="col-auto back-color-verde border-radius-5px py-2px px-5px" v-if="post.tipo=='renta_venta'" >Venta/Renta</div>
+                            <div class="col-auto back-color-verde border-radius-5px py-2px px-5px" v-else-if="post.tipo=='venta'" >Venta</div>
+                            <div class="col-auto back-color-azul border-radius-5px py-2px px-5px" v-else >Renta</div>
+                        </div>
 
-            </div>
+                        <div class="row w-100 m-0 pt-3 letra-gray3-19 justify-content-start " >
+                            <div class="row w-100 m-0 ">{{post.habitaciones}} habitaciones,</div>
+                            <div class="row w-100 m-0 " v-if="post.cocina=='1'">Cocina</div>
+                            <div class="row w-100 m-0  ">{{post.banios}} baños,</div>
+                            <div class="row w-100 m-0 " v-if="post.patio_servicio=='1'">Patio de servicio</div>
+                            <div class="row w-100 m-0 " v-if="post.terraza=='1'">Terraza</div>
+                            <div class="row w-100 m-0  ">{{post.estacionamientos}} cajon de estacionamiento,</div>
+                            <div class="row w-100 m-0  " v-if="post.sala_comedor=='2'">Sala, Comedor</div>
+                            <div class="row w-100 m-0 " v-if="post.sala_comedor=='1'">Sala/comedor</div>
+                            <div class="row w-100 m-0 " v-if="post.areas_verdes=='1'">Areas verdes, patios o jardinez</div>
+                        </div>
 
-            <div class="row w-100 m-0 border-t-gray0-1 ">
-                <div class="row w-100 m-0 pb-3 pt-3 ">
-                    <div class="col-9 my-auto px-1 ">
-                        <inputForm  :textarea="true" :rows="1" :auto="true" type="text" placeholder="" :fixed="true" input="form" v-model="mensaje" @enter="sendComentario()" />
-                    </div>
-                    <div class="col-3 my-auto pl-0 pr-1">
-                        <botonApp tipo="azul" @click="sendComentario()" texto="Send" radius="35px" />
+                        <div class="row w-100 m-0 pt-3 letra-gray3-19 justify-content-start " v-if="post.descripcion" >
+                            <div class="col-auto px-0" v-html="post.descripcion" ></div>
+                        </div>
                     </div>
                 </div>
+            
             </div>
-
         </div>
 
     </f7-page>
 </template>
 <script>
+
 import { f7Page } from 'framework7-vue';
-const moment = require('moment-timezone');
+const moment = require('moment');
 
     export default{
         components:{
@@ -66,39 +74,21 @@ const moment = require('moment-timezone');
             return{
                 t:1,
                 mensaje: null,
-                zona: moment.tz.guess(),
             } 
         },
         computed: {
             router(){return this.$store.getters.getRouter;},
             session(){return this.$store.getters.getSession;},
+            
             posts(){return this.$store.getters.postStateArray('posts')},
             post(){return this.$store.getters.postStateFind('posts','post')},
-            comentarios(){return this.post.comentarios || []},
+            fotos(){return this.post.fotos || []},
+
             likes(){return this.post.likes || []},
         },
 
         mounted(){
             this.$store.dispatch('synchronizeData');
-        },
-
-        created() {
-            if(this.$store.getters.deviceReady){
-                if(device.platform == 'iOS'){
-                    console.log("TECLADO PARA CHATS IOS");
-                    Keyboard.shrinkView(true);
-                }
-            }
-        },
-
-        destroyed() {
-            if(this.$store.getters.deviceReady){
-                if(device.platform == 'iOS'){
-                    console.log("DESACTIVO TECLADO PARA CHATS IOS");
-                    Keyboard.disableScrollingInShrinkView(false);
-                    Keyboard.shrinkView(false);
-                }
-            }
         },
 
         methods:{

@@ -7,6 +7,7 @@
                     <imagen clase="my-auto" :logo="true"  />
                 </div>
             </div>
+            
             <div class="row w-100 m-0 mt-4">
                 <div class="col-10 mx-auto letra-gray3-18 mb-3 pl-3 text-center">Ingresa tu correo y te enviaremos instrucciones para recuperarla.</div>
                 <div class="col-12 my-auto">

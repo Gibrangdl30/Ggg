@@ -1,9 +1,14 @@
 <template>
     <f7-page id="mi_cuenta">
-        <modalMensaje
+        <modalMensaje v-if= "m==1"
             :texto="`¿Estas seguro de cerrar sesión?`"
             :boton="'Aceptar'"
             @click="$store.commit('logout', $f7router)"
+        />
+        <modalMensaje v-if="m==2"
+            :texto="`¿Estas seguro de eliminar tu cuenta?`"
+            :boton="'Aceptar'"
+            @click="$store.commit('logout', $f7router); borrardo(); "
         />
         <modalMensajeStatic
             v-if="modal"
@@ -12,6 +17,7 @@
             :boton="'Aceptar'"
             @close="modal=0"
         />
+
     <div class="vista">
         <nav-bar tipo="inicio" title="Mi cuenta" :backs="true" :fix="1" />
         
@@ -20,19 +26,8 @@
                 <div class="row w-100 m-0 justify-content-center">
                         <div class="col-12 px-0 pt-4">
                             <div class="row w-100 m-0 justify-content-center text-center">
-                                <!-- <div class="w-40vw h-40vw">
-                                    <imagen clase="border-radius-50 overflow-hidden" :fit="true" :perfil="true" alt="" />
-                                </div> -->
                                 <div class="w-40vw h-40vw">
-                                    <uploadImagen 
-                                        rad="50"
-                                        bcolor="azul1"
-                                        bsize="3"
-                                        :user="false" 
-                                        v-model="form.foto" 
-                                        :imagen="foto" 
-                                        @end="save"
-                                        />
+                                    <imagen clase="border-radius-50 overflow-hidden" :fit="true" :perfil="true" alt="" />
                                 </div>
                             </div>
                         </div>
@@ -40,7 +35,6 @@
                             <div class="row m-0 w-100 letra-azul1-23 justify-content-center">{{session.nombre}}</div>
                             <div class="row m-0 w-100 letra-gray4-19 justify-content-center">{{session.email}}</div>
                             <div class="row m-0 w-100 letra-gray3-18 justify-content-center">{{session.telefono}}</div>
-                            <div class="row m-0 w-100 letra-gray3-18 justify-content-center">Codigo: {{session.codigoparareferir}}</div>
                         </div>
                 </div>
                 
@@ -48,46 +42,6 @@
 
                 
                 <div class="col-12 p-0">
-                    <div class="row w-100 m-0 px-2">
-                        <div class="col px-1 my-auto " @click="router.navigate('/fotos_para_mi')"  >
-                            <div class="row w-100 m-0 px-2 py-2 border-negro-1 back-color-negro  border-radius-5px justify-content-center text-center ">
-                                <div class="col-auto my-auto px-0 letra-blanco-15">Fotos para mi</div>
-                                <div class="col-auto my-auto px-0 ml-auto" >
-                                    <div class="w-33px h-33px back-color-blanco border-radius-50" v-if="mias" >
-                                        <div class="row w-100 m-0 letra-negro-18 pt-2px justify-content-center text-center fw-600">{{mias}}</div>
-                                    </div>
-                                     <div class="w-33px h-33px back-color-negro border-radius-50" v-else ></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col px-1 my-auto " @click="router.navigate('/fotos_de_cliente')" >
-                            <div class="row w-100 m-0 px-2 py-2 border-gray4-1 back-color-gray4  border-radius-5px justify-content-center text-center ">
-                                <div class="col-auto my-auto px-0 letra-blanco-15">Fotos tomadas</div>
-                                <div class="col-auto my-auto px-0 ml-auto" >
-                                    <div class="w-33px h-33px back-color-blanco border-radius-50" v-if="tom" >
-                                        <div class="row w-100 m-0 letra-gray4-18 pt-2px justify-content-center text-center fw-600">{{tom}}</div>
-                                    </div>
-                                    <div class="w-33px h-33px back-color-gray4 border-radius-50" v-else >
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 p-0">
-
-                        <div class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1">
-                            <button type="button" class="button button-outline button-raised button-active-gray px-3 py-2 text-left">
-                                <div class="row m-0 w-100 justify-content-between">
-                                    <div class="col-auto my-auto letra-gray3-5-1vw p-0">Puntos</div>
-                                    <div class="col-auto px-0 pl-3" @click="modal = 1" >
-                                        <icono icono="help_outline" clase="letra-gray3-30" />
-                                    </div>
-                                    <div class="col-auto px-0 ml-auto my-auto letra-negro-22 fw-600">{{50 + puntos + extraPuntos + referidos }} pts</div>
-                                </div>
-                            </button>
-                        </div>
 
                         <div class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1">
                             <button type="button" class="button button-outline button-raised button-active-gray px-3 py-2 text-left" @click="goTo('/editar_perfil')">
@@ -100,51 +54,6 @@
                             </button>
                         </div>
 
-                        <div class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1">
-                            <button type="button" class="button button-outline button-raised button-active-gray px-3 py-2 text-left" @click="goTo('/editar_galeria')">
-                                <div class="row m-0 w-100 justify-content-between">
-                                    <div class="col my-auto letra-gray3-5-1vw p-0">Mi galeria</div>
-                                    <div class="col-auto p-0">
-                                        <icono icono="chevron_right" clase="letra-gray3-30" />
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
-
-                        <div class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1"  >
-                            <button type="button" class="button button-outline button-raised button-active-gray px-3 py-2 text-left" @click="goTo('/chats')">
-                                <div class="row m-0 w-100 justify-content-between">
-                                    <div class="col my-auto letra-gray3-5-1vw p-0">Chats</div>
-                                    <div class="col-auto p-0">
-                                        <icono icono="chevron_right" clase="letra-gray3-30" />
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
-
-                        <!-- <div class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1"  >
-                            <button type="button" class="button button-outline button-raised button-active-gray px-3 py-2 text-left" @click="router.navigate('/acercade')">
-                                <div class="row m-0 w-100 justify-content-between">
-                                    <div class="col my-auto letra-gray3-5-1vw p-0">Mis fotos</div>
-                                    <div class="col-auto p-0">
-                                        <icono icono="chevron_right" clase="letra-gray3-30" />
-                                    </div>
-                                </div>
-                            </button>
-                        </div> -->
-
-                        
-
-                        <div class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1"  >
-                            <button type="button" class="button button-outline button-raised button-active-gray px-3 py-2 text-left" @click="router.navigate('/acercade')">
-                                <div class="row m-0 w-100 justify-content-between">
-                                    <div class="col my-auto letra-gray3-5-1vw p-0">Sobre nosotros</div>
-                                    <div class="col-auto p-0">
-                                        <icono icono="chevron_right" clase="letra-gray3-30" />
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
 
                         <div class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1"  >
                             <button type="button" class="button button-outline button-raised button-active-gray px-3 py-2 text-left" @click="router.navigate('/terminos_condiciones')">
@@ -160,7 +69,7 @@
                         <div class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1"  >
                             <button type="button" class="button button-outline button-raised button-active-gray px-3 py-2 text-left" @click="router.navigate('/aviso_privacidad')">
                                 <div class="row m-0 w-100 justify-content-between">
-                                    <div class="col my-auto letra-gray3-5-1vw p-0">Aviso de privacidad</div>
+                                    <div class="col my-auto letra-gray3-5-1vw p-0">Privacidad</div>
                                     <div class="col-auto p-0">
                                         <icono icono="chevron_right" clase="letra-gray3-30" />
                                     </div>
@@ -168,43 +77,21 @@
                             </button>
                         </div>
 
-                        <div class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1"  >
-                            <button type="button" class="button button-outline button-raised button-active-gray px-3 py-2 text-left" @click="router.navigate('/terminos_privacidad')">
-                                <div class="row m-0 w-100 justify-content-between">
-                                    <div class="col my-auto letra-gray3-5-1vw p-0">Terminos de privacidad</div>
-                                    <div class="col-auto p-0">
-                                        <icono icono="chevron_right" clase="letra-gray3-30" />
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
-
-                        <div class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1"  >
-                            <button type="button" class="button button-outline button-raised button-active-gray px-3 py-2 text-left" @click="router.navigate('/concidencias')">
-                                <div class="row m-0 w-100 justify-content-between">
-                                    <div class="col my-auto letra-gray3-5-1vw p-0">Condiciones de operación</div>
-                                    <div class="col-auto p-0">
-                                        <icono icono="chevron_right" clase="letra-gray3-30" />
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
-
-                        <div v-if="0" class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1"  >
-                            <button type="button" class="button button-outline button-raised button-active-gray px-3 py-2 text-left" @click="router.navigate('/acercade')">
-                                <div class="row m-0 w-100 justify-content-between">
-                                    <div class="col my-auto letra-gray3-5-1vw p-0">Ajustes de seguridad</div>
-                                    <div class="col-auto p-0">
-                                        <icono icono="chevron_right" clase="letra-gray3-30" />
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
-
-                        <div class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1"  @click="$store.commit('openM')" >
+                        <div class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1"  @click=" m=1; $store.commit('openM')" >
                             <button type="button" class="button button-outline button-raised button-active-gray px-3 py-2 text-left" >
                             <div class="row m-0 w-100 justify-content-between">
                                 <div class="col my-auto letra-gray3-5-1vw p-0">Cerrar sesion</div>
+                                <div class="col-auto p-0">
+                                    <icono icono="chevron_right" clase="letra-gray3-30" />
+                                </div>
+                            </div>
+                            </button>
+                        </div>
+
+                        <div class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1"   @click="borrar()" >
+                            <button type="button" class="button button-outline button-raised button-active-gray px-3 py-2 text-left" >
+                            <div class="row m-0 w-100 justify-content-between">
+                                <div class="col my-auto letra-gray3-5-1vw p-0">Eliminar cuenta</div>
                                 <div class="col-auto p-0">
                                     <icono icono="chevron_right" clase="letra-gray3-30" />
                                 </div>
@@ -227,6 +114,7 @@ import { f7Page } from 'framework7-vue';
         },
         data(){
             return{
+                m:1,
                 show: false,
                 modal: false,
                 form:{
@@ -273,6 +161,15 @@ import { f7Page } from 'framework7-vue';
                 }
                 this.$store.dispatch('postEditCuenta', [this.form, this.fotoUpdate, false]);
             },
+
+            borrar(){
+                this.m=2; 
+                this.$store.commit('openM');
+            },
+            borrardo(){
+                swal("Cuenta eliminada","","success");
+            },
+
             openBrowser(url){
                 this.$store.dispatch('openBrowser',url);
             }

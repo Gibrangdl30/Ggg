@@ -1,5 +1,5 @@
 <template>
-    <img :class="` h-100 w-100 ${clase?clase:''} ${!nofit?'object-fit':''}`" :id="`img_${id} `"  :src="imagen" :alt="`alt_${id}`" @click="showImage()">
+    <img :class="` h-100 w-100 ${clase?clase:''} ${!nofit?'object-fit':''}`" :id="`img_${id} `" :onload="verload()"  :src="imagen" :alt="`alt_${id}`" @click="showImage()">
 </template>
 <script>
 export default {
@@ -42,21 +42,9 @@ export default {
         imagen(){
             if(this.logo) {
                 if(this.logo == 2){
-                    return `${this.baseImg}ll1.svg`;
+                    return `${this.baseImg}ll.png`;
                 }
-                if(this.logo == 3){
-                    return `${this.baseImg}ll2.svg`;
-                }
-                if(this.logo == 4){
-                    return `${this.baseImg}ll3.svg`;
-                }
-                if(this.logo == 5){
-                    return `${this.baseImg}ll4.svg`;
-                }
-                if(this.logo == 6){
-                    return `${this.baseImg}lh1.svg`;
-                }
-                return `${this.baseImg}ll3.svg`;
+                return `${this.baseImg}ll.png`;
             }
             if(this.icono) {
                 if(this.formato){
@@ -89,6 +77,12 @@ export default {
         this.getDatos();
     },
     methods:{
+
+        verload($event){
+            console.log("LODEANDO XXx");
+            this.$emit('load');
+        },
+
         getDatos(){
             this.load = document.createElement('img');
             if(this.show){

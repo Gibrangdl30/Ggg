@@ -1,0 +1,49 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-custom-config": {
+      "PACKAGE_NAME": "com.example.template"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.example.template"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.example.template"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.example.template"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "com.example.template"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.example.template"
+    },
+    "cordova-plugin-keyboard": {
+      "PACKAGE_NAME": "com.example.template"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.example.template"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.example.template"
+    },
+    "cordova-plugin-wkwebview-engine": {
+      "PACKAGE_NAME": "com.example.template"
+    },
+    "cordova-plugin-geolocation": {
+      "GPS_REQUIRED": "true",
+      "PACKAGE_NAME": "com.midoq.midoq"
+    },
+    "phonegap-plugin-push": {
+      "PACKAGE_NAME": "com.grupoar.grupoar"
+    }
+  },
+  "dependent_plugins": {}
+}
