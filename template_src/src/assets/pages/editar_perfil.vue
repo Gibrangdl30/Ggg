@@ -2,7 +2,7 @@
     <f7-page id="inicio">
         <div class="vista" v-vistak>
             <nav-bar tipo="inicio" :backs="true" :title="'Editar perfil'" :fix="1" />
-            <div class="contenedor-page-tabs back-color-blanco">
+            <div class="contenedor-page-tabs back-color-negro " >
                 <div class="row w-100 m-0">
 
                     <div class="row w-100 m-0 mt-3 px-3 justify-content-center">
@@ -79,7 +79,7 @@
                 </div>
                 <div class="row w-100 m-0 py-4 justify-content-center">
                     <div class="col-12 px-4 pt-4 pb-4">
-                        <botonApp tipo="azul" texto="Guardar" @click="save" radius="30px" />
+                        <botonApp tipo="app" texto="Guardar" @click="save" radius="30px" />
                     </div>
                 </div>
             </div>

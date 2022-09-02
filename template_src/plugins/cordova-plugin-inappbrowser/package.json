@@ -1,19 +1,19 @@
 {
-  "_from": "cordova-plugin-inappbrowser@4.1.0",
+  "_from": "cordova-plugin-inappbrowser@^4.1.0",
   "_id": "cordova-plugin-inappbrowser@4.1.0",
   "_inBundle": false,
   "_integrity": "sha512-jPvcwDx2/L5ZbVG69NT2xmlG1E+MljRxkdsFpgj/5aoaF4oPqxg44J/bYxJNWgQtGnRSRWoqCRmU7FgmmMNMxA==",
   "_location": "/cordova-plugin-inappbrowser",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
+    "type": "range",
     "registry": true,
-    "raw": "cordova-plugin-inappbrowser@4.1.0",
+    "raw": "cordova-plugin-inappbrowser@^4.1.0",
     "name": "cordova-plugin-inappbrowser",
     "escapedName": "cordova-plugin-inappbrowser",
-    "rawSpec": "4.1.0",
+    "rawSpec": "^4.1.0",
     "saveSpec": null,
-    "fetchSpec": "4.1.0"
+    "fetchSpec": "^4.1.0"
   },
   "_requiredBy": [
     "#USER",
@@ -21,8 +21,8 @@
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-inappbrowser/-/cordova-plugin-inappbrowser-4.1.0.tgz",
   "_shasum": "6010809d1cd813c546f65e4e41dc2b9ed97179e4",
-  "_spec": "cordova-plugin-inappbrowser@4.1.0",
-  "_where": "/Users/alonso/resplados/PARATRANSFERRIR/midoq_new/template_src",
+  "_spec": "cordova-plugin-inappbrowser@^4.1.0",
+  "_where": "/Users/alonso/repositorios/sedestage_app_new/template_src",
   "author": {
     "name": "Apache Software Foundation"
   },

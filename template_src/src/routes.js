@@ -58,10 +58,28 @@ const general = [
 
 //usuario
 import inicio from './assets/pages/usuario/inicio.vue';
-import inicio_mapa from './assets/pages/usuario/inicio_mapa.vue';
+import eventos from './assets/pages/usuario/eventos.vue';
+import eventos_zonas from './assets/pages/usuario/eventos_zonas.vue';
+import eventos_boletos from './assets/pages/usuario/eventos_boletos.vue';
+import eventos_seleccionar_boletos from './assets/pages/usuario/eventos_seleccionar_boletos.vue';
+import eventos_pago from './assets/pages/usuario/eventos_pago.vue';
+
 import favoritos from './assets/pages/usuario/favoritos.vue';
+import consumos from './assets/pages/usuario/consumos.vue';
+import producto from './assets/pages/usuario/producto.vue';
+import carrito from './assets/pages/usuario/carrito.vue';
+import confirmacion_carrito from './assets/pages/usuario/confirmacion_carrito.vue';
+
+
 import comunicados from './assets/pages/usuario/comunicados.vue';
 import comunicado_detalle from './assets/pages/usuario/comunicado_detalle.vue';
+import mis_boletos from './assets/pages/usuario/mis_boletos.vue';
+import mi_boleto_detalle from './assets/pages/usuario/mi_boleto_detalle.vue';
+import boleto_detalle from './assets/pages/usuario/boleto_detalle.vue';
+
+import mis_consumos from './assets/pages/usuario/mis_consumos.vue';
+import mis_consumos_detalle from './assets/pages/usuario/mis_consumos_detalle.vue';
+import consumo_detalle from './assets/pages/usuario/consumo_detalle.vue';
 
 import crear_post from './assets/pages/usuario/crear_post.vue';
 import post_comentarios from './assets/pages/usuario/post_comentarios.vue';
@@ -79,12 +97,31 @@ import fotos_de_cliente from './assets/pages/usuario/fotos_de_cliente.vue';
 
 const usuario = [
   {path: '/inicio',component: inicio},
-  {path: '/inicio_mapa',component: inicio_mapa},
+  {path: '/eventos',component: eventos},
+  {path: '/eventos_zonas',component: eventos_zonas},
+  {path: '/eventos_boletos',component: eventos_boletos},
+  {path: '/eventos_seleccionar_boletos',component: eventos_seleccionar_boletos},
+  {path: '/eventos_pago',component: eventos_pago},
+
+
   {path: '/favoritos',component: favoritos},
+  {path: '/consumos',component: consumos},
+  {path: '/producto',component: producto},
+  {path: '/carrito',component: carrito},
+  {path: '/confirmacion_carrito',component: confirmacion_carrito},
+
   {path: '/comunicados',component: comunicados},
   {path: '/comunicado_detalle',component: comunicado_detalle},
 
   
+  {path: '/mis_boletos',component: mis_boletos },
+  {path: '/mi_boleto_detalle',component: mi_boleto_detalle },
+  {path: '/boleto_detalle',component: boleto_detalle },
+  
+  {path: '/mis_consumos',component: mis_consumos },
+  {path: '/mis_consumos_detalle',component: mis_consumos_detalle },
+  {path: '/consumo_detalle',component: consumo_detalle },
+
   {path: '/crear_post',component: crear_post},
   {path: '/post_comentarios',component: post_comentarios},
   {path: '/iniciar_chat_amigo',component: iniciar_chat_amigo},

@@ -2,6 +2,12 @@ html, body, #app,.views, .view, .view-main, #view-scanner
 {
     background: transparent !important;
 } 
+
+.page-previous.transparent{
+    background: transparent !important;
+    display: none;
+}
+
 .scanner
 {
     background: white;

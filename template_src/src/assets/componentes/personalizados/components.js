@@ -4,6 +4,9 @@ import comenatarioRow from './comenatarioRow.vue';
 import postPrivadosSlider from './postPrivadosSlider.vue';
 import postRequestSlider from './postRequestSlider.vue';
 import contactosRow from './contactosRow.vue';
+import eventosComponent from './eventosComponent.vue';
+import asientosComponent from './asientosComponent.vue';
+import productoComponent from './productoComponent.vue';
 
 
 function plugin(Vue) {
@@ -13,5 +16,8 @@ function plugin(Vue) {
     Vue.component('postPrivadosSlider', postPrivadosSlider);
     Vue.component('postRequestSlider', postRequestSlider);
     Vue.component('contactosRow', contactosRow);
+    Vue.component('eventosComponent', eventosComponent);
+    Vue.component('asientosComponent', asientosComponent);
+    Vue.component('productoComponent', productoComponent);
 }
 export default plugin

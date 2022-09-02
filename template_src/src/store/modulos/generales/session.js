@@ -1,6 +1,7 @@
 import axios from 'axios';
 import _ from 'lodash';
-const storage = 'nameeSlotXW1';
+
+const storage = 'sedestageSlotXW1';
 
 const initialState = {
     session : JSON.parse(localStorage.getItem(storage)) || {token: null, tipo: 'usuario'},
@@ -17,6 +18,7 @@ const initialState = {
     ready: 0,
     login: 0,
 };
+
 const state = JSON.parse(JSON.stringify(initialState));
 
 const getters = {   

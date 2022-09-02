@@ -1,7 +1,7 @@
 <template>
-	<f7-page  class="back-color-blanco">
+	<f7-page  class="back-color-negro">
 		<div class="vista">
-			<div class="contenedor-page-tabs back-color-blanco">
+			<div class="contenedor-page-tabs back-color-negro">
 				<sliderHome />
 				<div class="row w-100 m-0 py-3"></div>
 			</div>

@@ -62,13 +62,16 @@ const mutations={
         }
     },
 
-    addProductoCarrito(state, prod){
+    addProductoCarrito(state, {prod, callback = null}){
         console.log("producto", prod);
         if(!prod.cantidad){
             prod.cantidad = 1;
         }
         state.desgloce.carrito.push(prod);
         this.commit('calcularTotal');
+        if(callback){
+            callback();
+        }
     },
 
     removeProductoCarrito(state, prod){
@@ -85,31 +88,20 @@ const mutations={
         state.desgloce.comision = 0;
         state.desgloce.total = 0;
         state.desgloce.costoEnvio = 0;
-        state.desgloce.cambio = this.getters.catalogoGetObject('cambioUSD');
-        state.desgloce.cambioIva = this.getters.catalogoGetObject('cambioIva');
+        state.desgloce.cambioIva = 0.16;
+
+        console.log("CARRRITO CARRITO", state.desgloce.carrito );
 
         state.desgloce.carrito.map(x=>{
-            if(x.currency == 'USD'){
-                state.desgloce.subtotal = state.desgloce.subtotal + ( Number(x.precio) * Number(x.cantidad) * Number(state.desgloce.cambio) ) ;
-            }
-            else{
-                state.desgloce.subtotal = state.desgloce.subtotal + ((Number(x.precio) * Number(x.cantidad)) );
-            }
-            state.desgloce.costoEnvio = state.desgloce.costoEnvio + Number(x.shipping_cost);
+            state.desgloce.subtotal = state.desgloce.subtotal + ((Number(x.precio) * Number(x.cantidad)) );
         });
-
-        if( state.desgloce.carrito.filter(x=>{return x.type == 'coopera'}).length == state.desgloce.carrito.length ){
-            state.desgloce.costoEnvio = 0;
-        }
-
-        if( state.desgloce.carrito.every(x=>{return x.product_type == '2'}) ){
-            state.desgloce.costoEnvio = 0;
-        }
 
         state.desgloce.comision = state.desgloce.subtotal * 0;
         state.desgloce.iva = state.desgloce.subtotal * state.desgloce.cambioIva;
         state.desgloce.ivaEnvio = state.desgloce.costoEnvio * state.desgloce.cambioIva;
+
         state.desgloce.total = (state.desgloce.subtotal + state.desgloce.iva) + (state.desgloce.costoEnvio + state.desgloce.ivaEnvio);
+
         console.log("TOTALS ", state.desgloce.subtotal, state.desgloce.iva, state.desgloce.costoEnvio, state.desgloce.ivaEnvio, state.desgloce.total );
         state.desgloce = JSON.parse(JSON.stringify(state.desgloce));
     },
@@ -133,12 +125,39 @@ const actions={
 
     postCrearPedido({ commit, state },[qr]){
         let data = {
+            carrito:    state.desgloce,
+            metodo:     state.metodo_pago,
+            evento:     this.getters.dataFind('eventos', 'evento'),
+            zona:       this.getters.dataFindLeve1('eventos', 'evento', 'zonas', 'zona') ,
+            boletos:    this.getters.infoObj('boletos'),
+        };
+
+        if( !state.metodo_pago ){
+            swal("","Selecciona un metodo de pago","");
+            return;
+        }
+
+        let finish = (res)=>{
+            this.dispatch('synchronizeData');
+            this.dispatch('sendDataAllUsers',[{servicio:true}]);
+            this.getters.getRouter.navigate('/inicio');
+            this.commit('cleanCarrito');
+            this.commit('openMsn',[
+            `¡Boleto(s) comprado(s).!\nEl ID de tu operación es ${res.data.id}\nRecibirás 1 correo de confirmación de esta compra.\nSi tienes cualquier duda o comentario escríbenos a ayuda@sedestage.com.mx`,'Entendido',true,false]);
+        };
+
+        this.dispatch('postPromiseLoader', ['pedidos/crear_pedido', data]).then(
+        res => {
+            finish(res);
+        },error=>{});
+    },
+    
+    postCrearPedidoConsumo({ commit, state },[qr]){
+        let data = {
             carrito: state.desgloce,
             qr: qr,
-            domicilio: this.getters.carritoFind('domicilios','domicilio'),
             metodo: state.metodo_pago,
-            para_usuarios_id: state.para_usuarios_id,
-            listas_id: state.listas_id,
+            // domicilio: this.getters.carritoFind('domicilios','domicilio'),
         };
 
         // if(!data.domicilio || !data.domicilio.id){
@@ -154,12 +173,13 @@ const actions={
         let finish = (res)=>{
             this.dispatch('synchronizeData');
             this.dispatch('sendDataAllUsers',[{servicio:true}]);
-            this.getters.getRouter.navigate('/historial_compras');
+            this.getters.getRouter.navigate('/inicio');
+            // this.getters.getRouter.navigate('/historial_compras');
             this.commit('cleanCarrito');
             this.commit('openMsn',['¡Listo!\nTu pedido ha sido realizado con éxito.\nPuedes verlo en tu cuenta','Ok',true,false]);
         };
 
-        this.dispatch('postPromiseLoader', ['pedidos/crear_new', data]).then(
+        this.dispatch('postPromiseLoader', ['pedidos/crear_consumo', data]).then(
         res => {
             finish(res);
         },error=>{});

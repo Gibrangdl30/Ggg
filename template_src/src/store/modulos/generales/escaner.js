@@ -15,6 +15,7 @@ const getters={
 };
 
 const mutations={
+
     openEscaner(state){
         state.status.active = true;
         this.commit('changeView','escaner');
@@ -30,6 +31,7 @@ const mutations={
         }
         QRScanner.show();
     },
+
     cerrarEscaner(state){
         state.status.active = false;
         state.status.ready = false;
@@ -38,6 +40,7 @@ const mutations={
             console.log("DESTRUYENDO escan",status);
         });
     },
+    
     scan(state){
         state.status.ready = true;
         let callback = (err, text)=> {
@@ -70,10 +73,29 @@ const mutations={
             console.log("DESTRUYENDO escan",status);
         });
     },
+
     scanComplete(state,texto){
+        console.log("ESCANEDO ESCANEDO ESCANEDAIO", texto);
         state.status.ready = false;
-        this.dispatch('postCarritoGetServicio',[texto]);
-       
+        let cons = this.getters.info('allConsumos');
+        let boletos = this.getters.info('allBoletos');
+        let router = this.getters.getRouter;
+
+        let index = cons.find(s=>s.codigo == texto);
+        if(index){
+            swal("","Pedido correcto","success");
+            this.commit('setStData', ['id', index.id ] );
+            router.navigate('/consumo_detalle');
+            return;
+        }
+        index = boletos.find(s=>s.codigo == texto);
+        if(index){
+            swal("","Boleto válido","success");
+            this.commit('setStData', ['id', index.id ] );
+            router.navigate('/boleto_detalle');
+            return;
+        }
+        swal("","No se encontro el código","");
     }
 };
 

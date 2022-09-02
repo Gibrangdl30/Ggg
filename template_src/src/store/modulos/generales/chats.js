@@ -1,15 +1,13 @@
 import swal from 'sweetalert';
-const moment = require('moment');
 
+const moment = require('moment');
 const initialState = {
     usuarios: {arreglo: []},
     chats:{arreglo:[]},
     mensajeNuevo: 0,
     chat:{id:null},
-    
 };
 const state = JSON.parse(JSON.stringify(initialState));
-
 const getters = { 
     getChats(state){return state.chats.arreglo;},
     mensajeNuevo(state){return state.mensajeNuevo; },
@@ -30,16 +28,6 @@ const getters = {
         else if (moment(fecha).diff(now, 'days')==-1) moment(fecha).format('[ayer] hh:mm a');
         else return moment(fecha).format('DD/MM/YY hh:mm a');
     },
-
-    getMensajeNuevoChat: (state, getters)=>(usuarios_id)=>{
-        let chat = state.chats.arreglo.find(c => {return c.usuario.id == usuarios_id});
-        if(chat){
-            if(( chat.mensajes[ chat.mensajes.length - 1 ] || {} ).usuarios_id && ( chat.mensajes[ chat.mensajes.length - 1 ] || {} ).usuarios_id != getters.getSession.id){
-                return true;
-            }
-        }
-        return false;
-    },
     getUsuarios(state){return state.usuarios.arreglo},
     getUsuarioBloqueado: (state) => (id)=> {
         return state.usuarios_bloqueados.arreglo.find(u=>{return u.bloqueado_id == id}) != undefined;
@@ -55,11 +43,12 @@ const mutations = {
         if(data.chats) {
             state.chats = {arreglo:data.chats};
             state.chats = {arreglo: state.chats.arreglo.sort((a,b)=>{
-                let date_b = (b.mensajes.length)?b.mensajes[b.mensajes.length-1].fecha:b.creado;
-                let date_a = (a.mensajes.length)?a.mensajes[a.mensajes.length-1].fecha:a.creado;
+                let date_b = (b.mensajes.length)?b.mensajes[b.mensajes.length-1].fecha:0;
+                let date_a = (a.mensajes.length)?a.mensajes[a.mensajes.length-1].fecha:0;
                 return moment(date_b).diff(date_a)})};
             state.mensajeNuevo = 0;
             state.chats.arreglo.map(c=>{
+                c.leido = false;
                 c.notificacion = 0;
                 c.mensajes.map(m=>{
                     if(m.usuarios_id != this.getters.getSession.id){
@@ -67,9 +56,14 @@ const mutations = {
                     }
                 });
 
-                if( ( c.mensajes[ c.mensajes.length - 1 ] || {} ).usuarios_id && ( c.mensajes[ c.mensajes.length - 1 ] || {} ).leido == null && ( c.mensajes[ c.mensajes.length - 1 ] || {} ).usuarios_id != this.getters.getSession.id ){
-                    state.mensajeNuevo = state.mensajeNuevo + 1;
+                let last = ( c.mensajes[ c.mensajes.length - 1 ] || {} );
+
+                if( last.usuarios_id && last.usuarios_id != this.getters.getSession.id){
+                    if(last.leido == null){
+                        state.mensajeNuevo = state.mensajeNuevo + 1;
+                    }
                 }
+                
             });
         }
         
@@ -126,15 +120,13 @@ const mutations = {
             this.getters.getRouter.navigate('/mensajes_chat');
         }
         else{
-            this.dispatch('postCreateChatFromUsuario',[user_id]);
+            if(this.getters.user){
+                this.dispatch('postCreateChatFromUsuario',[user_id]);
+            }
         }
     },
 
     goToChatPadre(state, [user_id]){
-        if(!user_id){
-            swal("","No se recibio el usaurio","");
-            return;
-        }
         if(user_id == this.getters.getSession.id){
             swal("","Usuario invalido","");
             return;
@@ -160,7 +152,7 @@ const mutations = {
 };
 const actions = {
 
-    postLeerMsn({ commit, state }, [ msn ]){
+    postLeerMsn({ commit, state }, [ msn, lectura_notificacion = 0]){
         let data = {
             msn: msn,
         };
@@ -169,17 +161,17 @@ const actions = {
             this.dispatch('synchronizeData');
         };
 
-        this.dispatch('postPromiseNoError', ['chats/leer_mensaje', data]).then(
+        this.dispatch('postPromiseNoError', [lectura_notificacion?'chats/leer_noti' : 'chats/leer_mensaje', data]).then(
         res => {
             finish(res);
         },error=>{});
+
     },
 
-    postSaveMsn({ commit, state }, [msn, tipo = '0']){
+    postSaveMsn({ commit, state }, [msn]){
         let data = {
             mensaje: msn,
             chats_id: state.chat.id,
-            tipo: tipo,
         }
         let insert = {
             chats_id: state.chat.id,
@@ -187,18 +179,13 @@ const actions = {
             id: `chat_${state.chat.id}_${_.uniqueId('temp_')}_${moment().format('X')}`,
             leido: null,
             mensaje: msn,
-            tipo: tipo,
             usuarios_id: this.getters.getSession.id,
         };
-        if(tipo != 3){
-            this.commit('insertMsn',[insert]);
-        }
+        this.commit('insertMsn',[insert]);
         this.dispatch('postPromise', ['chats/save_msn', data]).then(
         res => {
-            if(tipo != 3){
-                let mensaje = res.data.msn;
-                this.dispatch('sendDataUser',[this.getters.getChat.usuario.id, {mensaje: mensaje}]);
-            }
+            let mensaje = res.data.msn;
+            this.dispatch('sendDataUser',[this.getters.getChat.usuario.id, {mensaje: mensaje}]);
             this.dispatch('synchronizeData');
         },
         error=>{});
@@ -226,22 +213,6 @@ const actions = {
         error=>{});
     },
 
-    postBorrarConversacion({ commit, state }, [ chat, block = false ]){
-        let data = {
-            chat: chat,
-            block: block,
-        };
-        this.dispatch('postPromiseLoader', ['chats/borrar_conversacion', data]).then(
-            res => {
-                this.dispatch('synchronizeData');
-                swal("",res.msg,"success");
-                this.getters.getRouter.back();
-                if(block){
-                }
-            },
-            error=>{});
-    },
-
     postCreateChatFromUsuario({ commit, state }, [amigos_id, tipo = 'usuario']){
         let data = {
             id: amigos_id,
@@ -249,7 +220,12 @@ const actions = {
         };
         this.dispatch('postPromiseLoaderSync', ['chats/create_chat', data, false]).then(
             res => {
-                this.commit('goToChat',[amigos_id]);
+                if(tipo == 'padre'){
+                    this.commit('goToChatPadre',[ amigos_id ]);
+                }else{
+
+                    this.commit('goToChat',[amigos_id]);
+                }
             },
             error=>{});
     },

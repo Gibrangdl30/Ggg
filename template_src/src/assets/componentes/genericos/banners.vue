@@ -4,7 +4,7 @@
         <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="i of galleria" :key="i.id" >
                 <div class="row w-100 m-0 justify-content-center">
-                    <img class="w-100 h-100" :src="i.banner" alt="foto_producto">
+                    <imagen :create="1" :src="i.imagen" alt="foto_producto" />
                 </div>
             </div>
         </div>
@@ -22,7 +22,9 @@ export default {
             slider:null,
         };
     },
-    props: ['fotos'],
+    props: [
+        'fotos'
+        ],
     computed: {
         galleria(){return this.fotos || []},
     },

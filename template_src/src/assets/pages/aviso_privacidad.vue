@@ -2,19 +2,21 @@
     <f7-page>
     <div class="vista">
     <nav-bar tipo="inicio" :backs="true" :fix="1" :title="'Aviso de privacidad'" />
-    <div class="contenedor-page-tabs back-color-blanco ">
-        <div class="row w-100 m-0  ">
-            <div class="row w-100 m-0 py-2 justify-content-center">
-                <div class="col-12 text-justify mt-2" >
-                    <!-- <div class="row w-100 m-0 p-0 letra-gray3-25 white-space-preline text-justify py-3 justify-content-center">AVISO DE PRIVACIDAD</div> -->
-                    <div class="row w-100 m-0 letra-gray3-30 white-space-preline justify-content-center">
-                        PROXIMAMENTE
+        <div class="contenedor-page-tabs back-color-negro ">
+
+                <div class="row w-100 m-0 py-2 justify-content-center">
+
+                    <div class="col-12 text-justify mt-2" >
+                        <div class="row w-100 m-0 letra-blanco-30 white-space-preline justify-content-center">
+                            PROXIMAMENTE
+                        </div>
                     </div>
+
                 </div>
-            </div>
+
         </div>
+        
     </div>
-</div>
     </f7-page>
 </template>
 <script>

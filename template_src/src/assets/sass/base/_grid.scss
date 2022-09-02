@@ -1,11 +1,16 @@
+
+.page{
+    background: black !important;
+}
+
 .md{
     .vista{
-        background-color: white !important;
+        background-color: black !important;
         overflow-x: hidden;
         overflow-y: hidden;
         height: 100%;
         width: 100% !important;
-        background: #F9FAFC;
+        background: black;
         display: flex;
         flex-direction: column;
     }
@@ -14,7 +19,7 @@
         overflow-y: scroll;
         height: 100%;
         width: 100%;
-        background: #F9FAFC;
+        background: black;
         padding-bottom: 4vh;
     }
     .contenedor-page-tabs{
@@ -22,19 +27,19 @@
         overflow-y: scroll;
         height: 100%;
         width: 100%;
-        background: #F9FAFC;
+        background: black;
         padding-bottom: 4vh;
     }
 }
 .ios{
-    background-color: white;
+    background-color: black;
     .vista{
-        background-color: white;
+        background-color: black;
         overflow-x: hidden;
         overflow-y: hidden;
         height: 100%;
         width: 100% !important;
-        background: #F9FAFC;
+        background: black;
         display: flex;
         flex-direction: column;
     }
@@ -43,7 +48,7 @@
         overflow-y: scroll;
         height: 100%;
         width: 100%;
-        background: #F9FAFC;
+        background: black;
         padding-bottom: 10vh;
     }
     .contenedor-page-tabs{
@@ -51,20 +56,20 @@
         overflow-y: scroll;
         height: 100%;
         width: 100%;
-        background: #F9FAFC;
+        background: black;
         padding-bottom: 10vh;
     }
 }
 
 .ios.device-iphone-x{
-    background-color: white;
+    background-color: black;
     .vista{
-        background-color: white;
+        background-color: black;
         overflow-x: hidden;
         overflow-y: hidden;
         height: 100%;
         width: 100% !important;
-        background: #F9FAFC;
+        background: black;
         display: flex;
         flex-direction: column;
     }

@@ -37,14 +37,14 @@ export default {
             if(this.size){
                 return `${this.baseUrl}img/directrender/${this.src}/${this.size}/${this.size}/foto.jpg`
             }
-            return `${this.baseUrl}img/directrender/${this.src}/foto.jpg`
+            return `${this.baseUrl}img/render/${this.src}/renderfoto.jpg`
         },
         imagen(){
             if(this.logo) {
                 if(this.logo == 2){
-                    return `${this.baseImg}ll.png`;
+                    return `${this.baseImg}log.png`;
                 }
-                return `${this.baseImg}ll.png`;
+                return `${this.baseImg}log.png`;
             }
             if(this.icono) {
                 if(this.formato){
@@ -64,12 +64,15 @@ export default {
                 if(this.create){
                     return this.imagenUrl;
                 }
+                if(!this.src.includes('http')){
+                    return this.imagenUrl;
+                }
                 return this.src;
             }
             if(this.user){
                 return `${this.baseImg}perfil.png`;
             }
-            return `${this.baseImg}l3.svg`;
+            return `${this.baseImg}log.png`;
         },
 
     },
@@ -86,7 +89,7 @@ export default {
         getDatos(){
             this.load = document.createElement('img');
             if(this.show){
-                this.load.src = `${this.baseUrl}img/directrender/${this.show}/foto.jpg`;
+                this.load.src = this.imagen;
                 if(this.load){
                     this.load.onload = ()=>{
                         this.height = this.load.height*5;
@@ -99,10 +102,8 @@ export default {
         
         showImage(){
             if(this.show){
-                // console.log("TO SHOW HW", this.show, this.height, this.width);
                 if(this.height && this.width){
-                    // console.log("SHOWING APP", this.show, `${this.baseUrl}img/render/${this.show}/foto.jpg`);
-                    this.$store.dispatch('showImage',[`${this.baseUrl}img/directrender/${this.show}/foto.jpg`, this.height, this.width]);
+                    this.$store.dispatch('showImage',[this.imagen, this.height, this.width]);
                 }
             }
             else{

@@ -3,15 +3,15 @@
     <template v-if="outline">
     <button class="button boton p-0 mx-auto w-auto border-radius-10px border-gray3-1 p-1" @click="$emit('click')">
         <div class="row w-100 m-0 justify-content-center">
-            <i class="material-icons letra-gray3-8-8vw">{{icono || 'add'}}</i>
+            <i class="material-icons letra-blanco-8-8vw">{{icono || 'add'}}</i>
         </div>
     </button>
     </template>
     <template v-else-if="noborder">
     <button class="button button-noborder p-0 mx-auto w-100" @click="$emit('click')">
         <slot v-if="custom"></slot>
-        <div class="row w-100 m-0 justify-content-center letra-gray3-4-8vw" v-else>
-            <i class="material-icons color-white letra-gray3-7-5vw">{{icono || 'add'}}</i>
+        <div class="row w-100 m-0 justify-content-center letra-blanco-4-8vw" v-else>
+            <i class="material-icons color-white letra-blanco-7-5vw">{{icono || 'add'}}</i>
         </div>
     </button>
     </template>

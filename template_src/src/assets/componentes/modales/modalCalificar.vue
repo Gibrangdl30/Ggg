@@ -36,7 +36,7 @@
                     <div class="row w-100 m-0 pt-2" v-if="false">
                         <div class="row w-100 m-0 px-1 py-2 text-center letra-gray3-4-1vw">Deseas agregar propina al servicio:</div>
                         <div class="row w-100 m-0">
-                            <scollX cantidad="auto">
+                            <scollX cantidad="auto" >
                                 <div class="swiper-slide w-auto px-1 text-center" v-for="c of cantidades" :key="c" @click="propina = c" >
                                     <div class="w-auto px-1 py-1 border-radius-50px">
                                         <div class="w-auto" >

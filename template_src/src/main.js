@@ -70,6 +70,34 @@ Vue.filter('timestamp', (fecha) => {
     return null;
 });
 
+Vue.filter('fechaE', ([fecha, hora]) => {
+    if(fecha){
+      return moment(`${fecha} ${hora}`,'YYYY-MM-DD HH:mm:ss').format('DD / MM / YYYY, HH:mm [hrs]');
+    }
+    return null;
+});
+
+Vue.filter('fechaD', (fecha) => {
+    if(fecha){
+      return moment(`${fecha}`,'YYYY-MM-DD').format('DD / MM / YYYY');
+    }
+    return null;
+});
+
+Vue.filter('fechaM', (fecha) => {
+    if(fecha){
+      return moment(`${fecha}`,'YYYY-MM-DD').format('DD / MMMM / YYYY');
+    }
+    return null;
+});
+
+Vue.filter('horaH', (hora) => {
+    if(hora){
+      return moment(`${hora}`,'HH:mm:ss').format('HH:mm [hrs]');
+    }
+    return null;
+});
+
 
 
 // Init Vue App

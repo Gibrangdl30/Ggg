@@ -1,1 +1,13 @@
-{"background_color":"#FFF","display":"standalone","name":"Grupo AR","short_name":"Grupo AR","version":"com.grupoar.grupoar","description":"Grupo AR","author":"Sustam Apps","icons":[],"orientation":"portrait","start_url":"index.html","theme_color":"#ffffff","gcm_sender_id":"996231231186"}
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Sede Stage",
+  "short_name": "Sede Stage",
+  "version": "com.sede.stage",
+  "description": "Sede Stage",
+  "author": "Sustam Apps",
+  "icons": [],
+  "orientation": "portrait",
+  "start_url": "index.html",
+  "theme_color": "#ffffff"
+}

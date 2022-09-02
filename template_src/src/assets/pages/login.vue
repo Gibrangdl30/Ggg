@@ -1,7 +1,7 @@
 <template>
     <f7-page id="inicio">
         <div class="vista">
-        <div class="contenedor-page-tabs back-color-blanco position-relative">
+        <div class="contenedor-page-tabs back-color-negro position-relative">
 
             <div class="row w-100 m-0 pt-5 mt-3 justify-content-center">
                 <div class="col-6 px-0 mx-auto">
@@ -33,13 +33,13 @@
 
                 <div class="col-11 mt-5"  >
                     <div class="row w-100 m-0 mt-1 justify-content-center " @click="router.navigate('/registro')">
-                        <div class="col-auto px-0 pr-1 letra-gray3-18">¿No estas registrado?</div>
-                        <div class="col-auto px-0 letra-gray4-18">Crea una cuenta</div>
+                        <div class="col-auto px-0 pr-1 letra-blanco-18">¿No estas registrado?</div>
+                        <div class="col-auto px-0 letra-blanco-18">Crea una cuenta y compra boletos, bebidas y alimentos.</div>
                     </div>
                 </div>
 
                 <div class="col-11 mt-5 " @click="enter()">
-                   <botonApp texto="Comenzar" tipo="azul" radius="30px" />
+                   <botonApp texto="Comenzar" tipo="app" radius="30px" />
                 </div>
                 <div class="col-11 mt-3 " @click="entrar()" >
                    <botonApp texto="Explorar" tipo="rojo" radius="30px" />

@@ -1,8 +1,17 @@
 <template>
     <f7-page id="inicio">
         <div class="vista">
-        <nav-bar tipo="inicio" :backs="true" :title="'Nueva tarjeta'"></nav-bar>
-            <div class="contenedor-page-tabs back-color-blanco">
+            
+        <nav-bar tipo="inicio" :backs="true" :title="'Nueva tarjeta'" :fix="1" />
+
+            <div class="contenedor-page-tabs back-color-negro">
+
+                <div class="row w-100 m-0 pt-4 px-3">
+                    <div class="row w-100 m-0 px-3 letra-blanco-19 justify-content-center text-center ">
+                    Los datos de tu tarjeta de credito o debito se almacenan de manera encriptada por medio de la tecnologia de STRIPE y no se comparten con ningún tercero.
+El agregar una tarjeta te permitira comprar entradas a eventos y bebidas y alimentos en menos de un minuto de forma segura.</div>
+                </div>
+
                 <div class="row w-100 m-0 mt-3 px-3">
                     <div class="row w-100 m-0 my-auto py-1 px-4">
                         <div class="col px-0">
@@ -25,13 +34,14 @@
                         <inputForm type="number" texto="CVV" placeholder="***" v-model="card.cvv" maxlength="4"  />
                     </div>
                 </div>
-                <div class="row w-100 m-0 justify-content-center px-3 pt-3">
-                    <div class="col-12 px-0">
+                <div class="row w-100 m-0 justify-content-center px-3 pt-5">
+                    <div class="col-11 mx-auto px-0">
                         <boton-app @click="check()" texto="Agregar tarjeta" radius="35px"></boton-app>
                     </div>
                 </div>
             </div>
         </div>
+
     </f7-page>
 </template>
 <script>
@@ -51,15 +61,18 @@ const moment = require('moment');
             } 
         },
         computed: {
-            router(){return this.$store.getters.getRouter;},
-            deviceReady(){return this.$store.getters.deviceready;},
-            device(){return device.platform == 'browser' || device.platform == null},
+            router(){ return this.$store.getters.getRouter;},
+            deviceReady(){ return this.$store.getters.deviceready;},
+            device(){ return typeof device == 'undefined' || device.platform == 'browser' },
         },
         methods:{
             check(){   
                 if(this.device){
-                    this.card.expiracion = '2021-07';
+                    if(!this.card.expiracion){
+                        this.card.expiracion = '2025-07';
+                    }
                 }
+                
                 if(!this.card.number || !this.card.expiracion || !this.card.cvv){
                     swal("Debe llenar todos los campos","","info");
                     return;

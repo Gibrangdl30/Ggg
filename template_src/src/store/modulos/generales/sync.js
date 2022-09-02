@@ -43,11 +43,12 @@ const mutations = {
             state.version = data.version;
         }
         this.commit('setSession', data);
+        this.commit('setRootData', data);
         this.commit('initApirtc', data);
         this.commit('setVersion', data);
         this.commit('initStripeData',data);
         this.commit('updateServicioState', data);
-        this.commit('setCatalogos', data);
+        this.commit('updateRestauranteState', data);
         this.commit('setCatalogos', data);
         this.commit('setChats', data);
         
@@ -60,8 +61,9 @@ const mutations = {
 
                 console.log("============> DEVICE READY ");
                 state.deviceready = true;
-                state.devicePlatform = device.platform;
-                state.deviceIos = state.devicePlatform == 'iOS';
+                state.devicePlatform = typeof device == 'undefined'?'undefined':device.platform;
+                state.deviceIos = (state.devicePlatform == 'iOS');
+                
                 state.autoUpdate = setInterval(()=>{
                     console.log("----------------------- AUTO UPDATE ------------------");
                     this.dispatch('trySync')
@@ -82,7 +84,7 @@ const mutations = {
     },
 
     setSyncData(state, [id, data]){
-        this.commit('initPostState', data);
+        this.commit('setRootExtraData', data);
     },
 
     initSync(state){

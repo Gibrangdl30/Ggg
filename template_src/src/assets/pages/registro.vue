@@ -1,11 +1,11 @@
 <template>
     <f7-page id="inicio">
         
-        <div class="vista" v-vistak>
+        <div class="vista back-color-negro" v-vistak>
 
             <nav-bar tipo="inicio" :backs="true" :title="'Crear una cuenta'" :fix="1"  />
 
-            <div class="contenedor-page-tabs back-color-blanco">
+            <div class="contenedor-page-tabs back-color-negro ">
 
                 <div class="row w-100 m-0 mt-3">
                     <!-- <div class="col-12 pt-2 ">
@@ -39,7 +39,8 @@
                 </div>
 
                 <div class="row m-0 w-100 px-3 mt-4">
-                    <div class="col my-auto letra-gray4-13 p-0 pl-3">He leído y acepto los <a class="color-azul1" href="/terminos_condiciones" >Términos y Condiciones</a> y el <a class="color-azul1" href="/aviso_privacidad" >Aviso de privacidad</a> de Grupo AR</div>
+                    <div class="col my-auto letra-blanco-13 p-0 pl-3">He leído y acepto los <a class="color-blanco fw-600" href="/terminos_condiciones" >Términos y Condiciones</a> y el 
+                    <a class="color-blanco fw-600" href="/aviso_privacidad" >Aviso de privacidad</a> de Sede Stage</div>
                     <div class="col-auto my-auto px-0 pl-3 pr-2 my-auto" >
                         <toggle :icon="1"  :auto="0" v-model="acepto" :v="1" :f="0" />
                     </div>
@@ -47,9 +48,11 @@
 
                 <div class="row w-100 m-0 justify-content-center mt-4 pb-5">
                     <div class="col-12 py-2">
-                        <botonApp tipo="azul" texto="Crea una cuenta" radius="30px" @click="save" />
+                        <botonApp tipo="app" texto="Crea una cuenta" radius="30px" @click="save" />
                     </div>
                 </div>
+
+                <div class="row w-100 m-0 py-3"></div>
             </div>
         </div>
     </f7-page>

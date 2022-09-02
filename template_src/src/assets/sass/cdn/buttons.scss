@@ -45,13 +45,13 @@ button.boton-verde
 
 button.boton-app
 {
-    background: linear-gradient(136.67deg, #14bfe4 0%, #47a9be 100%) !important;
-    border: 1px solid #14bfe4  !important;
+    background: linear-gradient(136.67deg, #b85409 0%, #d96113 100%) !important;
+    border: 1px solid #d96113  !important;
     &.active-state,:hover{
         .row{
             color: white !important;
         }
-        background: #031c1f !important;      
+        background: #fab88b !important;      
     }
 }
 

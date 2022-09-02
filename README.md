@@ -1,5 +1,14 @@
 cordova build android --prod --release
 
+Node version: v12.16.1
+Cordova version: 8.1.0
+<engine name="browser" spec="^5.0.4" />
+<engine name="android" spec="^8.1.0" />
+
+cordova-support-google-services
+phonegap-plugin-push
+
+
 keytool -genkey -v -keystore grupoar-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias grupoar-key
  /Users/alonso/Library/Android/sdk/build-tools/27.0.3/zipalign -v -p 4 app-release-unsigned.apk app-zip.apk
  /Users/alonso/Library/Android/sdk/build-tools/27.0.3/apksigner sign --ks geo-key.jks --out geo.apk app-zip.apk
@@ -10,6 +19,15 @@ nuevo modulo de chat para servicio en proceso
 
 sudo n 8.11.3
 sudo n 12.16.1
+
+export ANDROID_SDK_ROOT=/Users/alonso/Library/Android/sdk/  
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools/
+export PATH=$PATH:$ANDROID_SDK_ROOT/build-tools/latest/bin/
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator/
+
+cp /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/lib/tools.jar /Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/lib/tools.jar
+
+sudo rm -rf /Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin
 
 remplazar UIApplication.openSettingsURLString por UIApplicationOpenSettingsURLString 
 en platforms/ios/Proyecto/Plugins/.....qrscaneer/.....swift

@@ -4,12 +4,14 @@ const moment = require('moment');
 
 const initialState = {
     restaurantes: {a:[]},
+    productos: {a:[]},
     restaurante: null,
     platillo: null,
     usuario: null,
 };
 
 const state=JSON.parse(JSON.stringify(initialState));
+
 const getters={   
     restaurantesObject:(state)=>(obj)=>{return state[obj]},
     restaurantesArray:(state)=>(obj)=>{return state[obj].a},
@@ -18,19 +20,24 @@ const getters={
     restaurantesFindId:(state)=>(obj,id)=>{ return state[obj].a.find(a=>{return a.id == id}) },
     restaurantePlatillo(state,getters){return getters.restaurantesFind('restaurantes','restaurante').foods.find(x=>{return x.foods.find(a=>{return a.id == state.platillo}) != undefined}).foods.find(b=>{return b.id == state.platillo})},
 };
+
 const mutations={
     updateRestauranteState(state,data){
         if(data.restaurants){
             if(data.restaurants.all){
                 state.restaurantes = { a: _.orderBy(data.restaurants.all, ['distancia'], ['asc']) };
-                console.log("RES", state.restaurantes.a);
             }
         }
+        if(data.productos){
+            state.productos = { a: data.productos };
+        }
     },
+
     setRestauranteState(state,[key,data]){
         state[key] = data;
     }
 };
+
 const actions={
     postBuscarContacto({ commit, state }, form){
         let data = {

@@ -1,18 +1,23 @@
 <template>
     <f7-page id="inicio">
-        <div class="vista">
-            <nav-bar tipo="inicio" :backs="true" :title="'Métodos de pago'"></nav-bar>
-            <div class="contenedor-page padding-bottom-90">
-                <div class="row m-0 w-100 back-color-blanco">
-                    <div class="row w-100 m-0 back-color-blanco">
+        <div class="vista back-color-negro ">
+            <nav-bar tipo="inicio" :backs="true" :title="'Métodos de pago'" :fix="1" />
+
+            <div class="contenedor-page back-color-negro padding-bottom-90">
+                <div class="row m-0 w-100 ">
+
+                    <div class="row w-100 m-0 back-color-negro ">
+
                         <div class="col-12 p-0">
                             
-                            <div class="row m-0 border-botom-gray border-b-gray0-1" v-for="m of tarjetas" :key="m.id" >
+                            <div class="row m-0 border-botom-gray border-b-blanco-1" v-for="m of tarjetas" :key="m.id" >
                                 <div class="row m-0 w-100 justify-content-between py-2">
-                                    <div class="col-2 my-auto p-0" @click="click(m.id)"><img class="w-100 h-100" :src="require('../iconos/'+m.brand.toLowerCase()+'.svg')" alt=""></div>
-                                    <div class="col my-auto letra-gray3-5-1vw px-2" @click="click(m.id)">**** {{m.ending}}</div>
-                                    <div class="col-auto my-auto px-0">
-                                        <toggle :checked="metodo_pago == m.id" @change="set(m.id)" />
+                                    <div class="col-2 my-auto p-0" @click="click(m.id)">
+                                        <imagen  :src="m.brand.toLowerCase()" icono="1" />
+                                    </div>
+                                    <div class="col my-auto letra-blanco-5-1vw px-2" @click="click(m.id)">**** {{m.ending}}</div>
+                                    <div class="col-auto my-auto px-0 pt-3px">
+                                        <toggle :icon="1" :checked="metodo_pago == m.id" @change="set(m.id)" />
                                     </div>
                                     <div class="col-2 my-auto p-0">
                                         <boton-icono @click="eliminarMetodoPago(m)" :noborder="true" icono="delete"/>
@@ -20,11 +25,11 @@
                                 </div>
                             </div>
 
-                            <div class="row m-0 border-botom-gray border-b-gray0-1" @click="goTo('/agregar_metodo_pago')">
+                            <div class="row m-0 border-botom-gray border-b-blanco-1" @click="goTo('/agregar_metodo_pago')">
                                 <div class="row m-0 w-100 justify-content-between py-2">
-                                    <div class="col my-auto letra-gray3-5-1vw p-0 pl-3">Agregar método de pago</div>
-                                    <div class="col-1 p-0">
-                                        <img class="w-100 h-100" src="../iconos/ch_left.svg" alt="">
+                                    <div class="col my-auto letra-blanco-5-1vw p-0 pl-3">Agregar método de pago</div>
+                                    <div class="w-50px px-0">
+                                        <imagen  src="ch_left" :icono="1" />
                                     </div>
                                 </div>
                             </div>
@@ -45,7 +50,7 @@
                     </div>
                 </div>
             </div>
-            <tabs />
+
         </div>
     </f7-page>
 </template>

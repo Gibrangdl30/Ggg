@@ -2,7 +2,7 @@
 
 platform :ios, '10.0'
 
-target 'Grupo AR' do
-	project 'Grupo AR.xcodeproj'
-	pod 'FirebaseMessaging', '~> 2.0.0'
+target 'Sede Stage' do
+	project 'Sede Stage.xcodeproj'
+
 end

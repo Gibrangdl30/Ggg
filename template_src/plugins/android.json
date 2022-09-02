@@ -8,52 +8,47 @@
   },
   "installed_plugins": {
     "cordova-custom-config": {
-      "PACKAGE_NAME": "com.jobusco.jobusco"
+      "PACKAGE_NAME": "com.sede.stage"
     },
     "cordova-plugin-camera": {
       "ANDROID_SUPPORT_V4_VERSION": "27.+",
-      "PACKAGE_NAME": "com.jobusco.jobusco"
+      "PACKAGE_NAME": "com.sede.stage"
     },
     "cordova-plugin-device": {
-      "PACKAGE_NAME": "com.jobusco.jobusco"
+      "PACKAGE_NAME": "com.sede.stage"
     },
     "cordova-plugin-file": {
-      "PACKAGE_NAME": "com.jobusco.jobusco"
+      "PACKAGE_NAME": "com.sede.stage"
     },
     "cordova-plugin-file-transfer": {
-      "PACKAGE_NAME": "com.jobusco.jobusco"
+      "PACKAGE_NAME": "com.sede.stage"
     },
     "cordova-plugin-geolocation": {
       "GPS_REQUIRED": "true",
-      "PACKAGE_NAME": "com.jobusco.jobusco"
+      "PACKAGE_NAME": "com.sede.stage"
     },
     "cordova-plugin-inappbrowser": {
-      "PACKAGE_NAME": "com.jobusco.jobusco"
+      "PACKAGE_NAME": "com.sede.stage"
     },
     "cordova-plugin-keyboard": {
-      "PACKAGE_NAME": "com.jobusco.jobusco"
+      "PACKAGE_NAME": "com.sede.stage"
+    },
+    "cordova-plugin-qrscanner": {
+      "PACKAGE_NAME": "com.sede.stage"
     },
     "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "com.jobusco.jobusco"
+      "PACKAGE_NAME": "com.sede.stage"
     },
     "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.jobusco.jobusco"
+      "PACKAGE_NAME": "com.sede.stage"
     },
     "cordova-plugin-wkwebview-engine": {
-      "PACKAGE_NAME": "com.jobusco.jobusco"
-    },
-    "phonegap-plugin-push": {
-      "ANDROID_SUPPORT_V13_VERSION": "27.+",
-      "FCM_VERSION": "17.0.+",
-      "PACKAGE_NAME": "com.grupoar.grupoar"
+      "PACKAGE_NAME": "com.sede.stage"
     }
   },
   "dependent_plugins": {
-    "cordova-support-google-services": {
-      "PACKAGE_NAME": "com.grupoar.grupoar"
-    },
-    "phonegap-plugin-multidex": {
-      "PACKAGE_NAME": "com.grupoar.grupoar"
+    "cordova-plugin-add-swift-support": {
+      "PACKAGE_NAME": "com.sede.stage"
     }
   }
 }

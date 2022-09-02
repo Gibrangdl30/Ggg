@@ -1,5 +1,6 @@
 <template>
-    <f7-page class="scanner" :class="{'transparent': status.active, 'back-color-blanco': !(status.active)}"> 
+    <f7-page class="scanner" :class="{'transparent': status.active, 'back-color-blanco': !(status.active)}" > 
+    
         <nav-bar tipo="inicio" :back="false" :emitBack="true" :title="'Escaner'" @back_click="cerrarEscaner()" />  
             <transition name="custom-classes-transition"
             enter-active-class="animated zoomIn fast"
@@ -18,7 +19,7 @@
             <div class="row m-0 w-100 row-opciones" v-if="status.active">
                 <div class="row w-100 m-0 justify-content-center" >
                     <div class="col-8 mt-2 p-0 text-center">
-                        <botonApp @click="scanComplete('codexr031')" texto="Probar" radius="20px" />
+                        <botonApp @click="scanComplete('7579f8e66298504')" texto="Probar" radius="20px" />
                     </div>
                     <div class="col-8 mt-2 p-0 text-center">
                         <boton-app @click="scan()" texto="Escanear" radius="20px"></boton-app>

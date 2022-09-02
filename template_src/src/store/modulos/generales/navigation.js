@@ -96,6 +96,7 @@ const mutations = {
             this.commit('setRouter');
             state.router_change = f7.view.current.router.on('routeChange',(nueva, anterior, router)=>{
                 state.ruta = {url: nueva.url};
+                // this.$store.dispatch('synchronizeData');
                 // console.log("router", nueva.url);
             });
         }

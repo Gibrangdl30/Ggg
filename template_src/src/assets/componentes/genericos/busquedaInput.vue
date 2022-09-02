@@ -1,5 +1,5 @@
 <template>
-<div class="row w-100 m-0 p-1px justify-content-center border-gray0-2 border-radius-30px">
+<div class="row w-100 m-0 p-1px justify-content-center border-gray0-2 border-radius-30px ">
     <div class="w-10vw text-right">
         <i class="material-icons letra-gray0-25 my-auto pt-5px">search</i>
     </div>

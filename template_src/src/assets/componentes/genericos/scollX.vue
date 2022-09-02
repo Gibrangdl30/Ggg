@@ -18,14 +18,22 @@ export default {
             slider:null,
         };
     },
-    props: ['objetos', 'cantidad'],
+    props: [
+        'objetos', 
+        'cantidad'
+    ],
+
     computed: {
     },
+
     mounted() {
         setTimeout(this.initSlider,300);
+        console.log("SWIPER SWIPER", Swiper)
     },
     methods:{
         initSlider(){
+        console.log("SWIPER SWIPER INIT INIT", Swiper)
+
             this.slider = new Swiper (`.${this.id}`, {
                     initialSlide: 0,
                     centeredSlides: false, 
@@ -33,7 +41,7 @@ export default {
                     observer: true,
                     observeParents: true,
                     observeSlideChildren: true,
-                    slidesPerView: this.cantidad || "auto",
+                    slidesPerView: this.cantidad || "auto",
                     // pagination: {
                     //     el: '.swiper-pagination',
                     //     type: 'bullets',

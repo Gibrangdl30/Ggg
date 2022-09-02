@@ -1,20 +1,20 @@
 <template>
-<div class="row w-100 px-0 m-0 contenedor-slide back-color-blanco">
+<div class="row w-100 px-0 m-0 contenedor-slide back-color-negro ">
       <div :class="`${id} swiper-container slider-container w-100 position-relative`">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div class="row w-100 m-0 justify-content-center">
-                        <imagen clase="" :src="imagen('w1.png')" /> 
+                        <imagen clase="" :src="imagen('w5.png')" /> 
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="row w-100 m-0 justify-content-center">
-                        <imagen clase="" :src="imagen('w2.png')" /> 
+                        <imagen clase="" :src="imagen('w5.png')" /> 
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="row w-100 m-0 justify-content-center">
-                        <imagen clase="" :src="imagen('w3.png')" /> 
+                        <imagen clase="" :src="imagen('w6.png')" /> 
                     </div>
                 </div>
             </div>
@@ -27,10 +27,10 @@
 
                 <div class="col-12 px-0 px-4" v-if="index==0" >
                     <div class="row w-100 m-0" @click="continuar()">
-                        <div class="row w-100 m-0 pb-12px letra-gray4-18 fw-600 justify-content-center text-center ">Siguiente</div>
+                        <div class="row w-100 m-0 pb-12px letra-blanco-18 fw-600 justify-content-center text-center ">Siguiente</div>
                     </div>
                     <div class="row w-100 m-0" @click="goLogin()">
-                        <botonApp tipo="azul" texto="Comenzar"  radius="30px" />
+                        <botonApp tipo="app" texto="Comenzar"  radius="30px" />
                     </div>
                 </div>
 
@@ -39,18 +39,18 @@
                         <div class="row w-100 m-0">
                             <div class="col px-0">
                                 <div class="row w-100 m-0" @click="regresar()">
-                                    <div class="row w-100 m-0 pb-12px letra-gray4-18 fw-600 justify-content-center text-center ">Anterior</div>
+                                    <div class="row w-100 m-0 pb-12px letra-blanco-18 fw-600 justify-content-center text-center ">Anterior</div>
                                 </div>
                             </div>
                             <div class="col px-0">
                                 <div class="row w-100 m-0" @click="continuar()">
-                                    <div class="row w-100 m-0 pb-12px letra-gray4-18 fw-600 justify-content-center text-center ">Siguiente</div>
+                                    <div class="row w-100 m-0 pb-12px letra-blanco-18 fw-600 justify-content-center text-center ">Siguiente</div>
                                 </div>
                             </div>
                         </div>
                         <div class="row w-100 m-0 pt-2" >
                             <div class="row w-100 m-0" @click="goLogin()">
-                                <botonApp tipo="azul" texto="Comenzar"  radius="30px" />
+                                <botonApp tipo="app" texto="Comenzar"  radius="30px" />
                             </div>
                         </div>
                     </div>
@@ -58,10 +58,10 @@
 
                 <div class="row w-100 m-0 px-4" v-if="index==2">
                     <div class="row w-100 m-0" @click="regresar()">
-                        <div class="row w-100 m-0 pb-12px letra-gray4-18 fw-600 justify-content-center text-center ">Anterior</div>
+                        <div class="row w-100 m-0 pb-12px letra-blanco-18 fw-600 justify-content-center text-center ">Anterior</div>
                     </div>
                     <div class="row w-100 m-0" @click="goLogin()">
-                        <botonApp tipo="azul" texto="Comenzar"  radius="30px" />
+                        <botonApp tipo="app" texto="Comenzar"  radius="30px" />
                     </div>
                 </div>
 

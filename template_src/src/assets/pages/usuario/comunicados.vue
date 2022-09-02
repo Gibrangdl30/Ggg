@@ -1,47 +1,14 @@
 <template>
     <f7-page class="" id="inicio">
-    <modalSerFotografo 
-        :data="activo"
-        :cancelado="1"
-        :state="modal"
-        @close="modal=false"
-    />
-
-    <modalMensajeStatic
-        texto="Para mejorar tu experiencia en Paparatz debes de activar tu geo localizacion para esta app."
-        oneButton="Acept"
-        boton="Aceptar"
-        v-if="0"
-        @close="$store.commit('setLogin', 0)"
-    />
-
-    <modalMensajeStatic
-        :texto="`¿Deseas dejar de ser paparatz de ${user.nombre}?`"
-        boton="Aceptar"
-        v-if="modal2"
-        @close="modal2=0"
-        @click="cancelar"
-    />
         <div class="vista">
             <nav-bar tipo="inicio" title="Comunicados" :fix="1" :backs="true"   />
 
-            <div class="row w-100 m-0 px-3 py-2 ">
-                <busquedaInput v-model="b" holder="Buscar inmueble" />
-            </div>
+           
 
-            <div class="contenedor-page-tabs back-color-blanco">
-
-                <div class="row w-100 m-0 pt-1 border-b-gray1-1 " v-if="0">
-                    <div class="row w-100 m-0 px-3">
-                        <div class="col-auto px-0 pb-1 letra-gray4-20 fw-600 mt-auto">Cerca de ti</div>
-                        <div class="col-4 px-0 pb-1" @click="back('/inicio_mapa')" >
-                            <botonApp texto="Ver Mapa" tipo="azul" radius="30px" />
-                        </div>
-                    </div>
-                </div>
+            <div class="contenedor-page-tabs back-color-negro">
 
                 <div class="row w-100 m-0 pt-2 pb-2"  >
-                    <div class="row w-100 m-0" v-for=" info of bus" :key="info.id">
+                    <div class="row w-100 m-0 px-3" v-for=" info of comunicados" :key="info.id">
                         <div  class="row w-100 m-0 my-2 border-gray0-1 border-radius-10px overflow-hidden "  @click="comentar(info)" >
                             <div class="row w-100 m-0 justify-content-center" :class="info.type == 's'?'app-degra ':''" >
                                 <div class="row w-100 m-0 py-5px px-2 " >
@@ -49,9 +16,9 @@
                                         <imagen clase="border-radius-10px" :src="info.imagen"  />
                                     </div>
                                     <div class="col px-0 pl-3 my-auto " >
-                                        <div class="row w-100 m-0 letra-negro-17 fw-600 " >{{info.titulo}}</div>
+                                        <div class="row w-100 m-0 letra-blanco-17 fw-600 " >{{info.titulo}}</div>
                                         <div class="row w-100 m-0  ">
-                                            <div class="col-auto px-0 letra-gray2-16 ">{{[info.creado, 'YYYY-MM-DD HH:mm:ss'] |  moment('from') }}</div>
+                                            <div class="col-auto px-0 letra-blanco-16 ">{{[info.creado, 'YYYY-MM-DD HH:mm:ss'] |  moment('from') }}</div>
                                         </div>
                                     </div>
 
@@ -63,6 +30,9 @@
 
             </div>
 
+
+
+            <tabs />
         </div>
 
     </f7-page>
@@ -89,31 +59,7 @@ const moment = require('moment');
             router(){return this.$store.getters.getRouter;},
             session(){return this.$store.getters.getSession;},
 
-            init(){return this.$store.getters.userStateObject('init');},
-            notShow(){return this.$store.getters.userStateObject('notShow');},
-
-            posts(){return this.session.comunicados || [] },
-            bus(){
-                if(this.b){
-                    console.log("B", this.b);
-                    return this.posts.filter( s=>s.nombre.toLowerCase().includes( this.b.toLowerCase() ) || s.direccion.toLowerCase().includes( this.b.toLowerCase() ) || s.colonia.toLowerCase().includes( this.b.toLowerCase() ) );
-                }
-                return this.posts;
-            },
-
-            solicitudes(){return this.posts.filter(p=>p.type == 's')},
-            cards(){return this.posts.filter(p=>p.type != 's')},
-
-
-            data(){return this.$store.getters.postStateArray('posts') },
-            activo(){return this.data.find(x=>{return x.usuarios_id == this.session.id && x.type == 's'}) ||  {}},
-            papa(){return this.activo.papa ||  {}},
-
-            asignado(){return this.data.find(x=>{return  x.type == 's' && x.papara.some(w=> w.usuarios_id == this.session.id ) }) ||  {}},
-            user(){return this.asignado.usuario ||  {}},
-
-            privados(){return this.$store.getters.postStateArray('privados')},
-            lastrequest(){return this.$store.getters.userStateArray('lastrequest')},
+            comunicados(){return this.$store.getters.info('comunicados') },
         },
 
         mounted(){
@@ -132,7 +78,7 @@ const moment = require('moment');
             },
 
             comentar(x){
-                this.$store.commit('setPostState', ['post', x.id ] );
+                this.$store.commit('setStData', ['comunicado', x.id ] );
                 this.router.navigate('/comunicado_detalle');
             },
 

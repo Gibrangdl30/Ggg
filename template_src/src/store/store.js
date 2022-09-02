@@ -7,6 +7,7 @@ const moment = require('moment');
 
 //  GENERALES
 import apirtc from './modulos/generales/apirtc.js';
+import data from './modulos/generales/data.js';
 import camara from './modulos/generales/camara.js';
 import carrito from './modulos/generales/carrito.js';
 import catalogos from './modulos/generales/catalogos.js';
@@ -21,9 +22,11 @@ import servicio from './modulos/generales/servicio.js';
 import session from './modulos/generales/session.js';
 import sync from './modulos/generales/sync.js';
 import usuario from './modulos/generales/usuario.js';
+
 Vue.use(Vuex);
 const general = {
     apirtc,
+    data,
     camara,
     carrito,
     catalogos,
@@ -60,10 +63,11 @@ const modules = {
 
 const state = {
     base:   { 
-        url:    "https://grupoargestioninmobiliaria.online/apiv1/api/",
-        img:    "https://grupoargestioninmobiliaria.online/apiv1/img/",
-        iconos: "https://grupoargestioninmobiliaria.online/apiv1/iconos/",
+        url:    "https://sedestage.website/apiv1/api/",
+        img:    "https://sedestage.website/apiv1/img/",
+        iconos: "https://sedestage.website/apiv1/iconos/",
     },
+
     procesando: false,
     api: '3'
 };

@@ -260,36 +260,35 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
+      "id": "cordova-plugin-qrscanner.QRScanner",
+      "file": "plugins/cordova-plugin-qrscanner/www/www.min.js",
+      "pluginId": "cordova-plugin-qrscanner",
+      "clobbers": [
+        "QRScanner"
+      ]
+    },
+    {
       "id": "cordova-plugin-splashscreen.SplashScreen",
       "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
       "pluginId": "cordova-plugin-splashscreen",
       "clobbers": [
         "navigator.splashscreen"
       ]
-    },
-    {
-      "id": "phonegap-plugin-push.PushNotification",
-      "file": "plugins/phonegap-plugin-push/www/push.js",
-      "pluginId": "phonegap-plugin-push",
-      "clobbers": [
-        "PushNotification"
-      ]
     }
   ];
   module.exports.metadata = {
-    "cordova-custom-config": "5.1.0",
+    "cordova-custom-config": "5.1.1",
+    "cordova-plugin-add-swift-support": "2.0.2",
     "cordova-plugin-camera": "4.1.0",
-    "cordova-plugin-device": "2.0.3",
+    "cordova-plugin-device": "2.1.0",
     "cordova-plugin-file": "6.0.2",
     "cordova-plugin-file-transfer": "1.7.1",
     "cordova-plugin-geolocation": "4.1.0",
     "cordova-plugin-inappbrowser": "4.1.0",
     "cordova-plugin-keyboard": "1.2.0",
-    "cordova-plugin-splashscreen": "6.0.0",
+    "cordova-plugin-qrscanner": "3.0.1",
+    "cordova-plugin-splashscreen": "6.0.2",
     "cordova-plugin-whitelist": "1.3.5",
-    "cordova-plugin-wkwebview-engine": "1.2.2",
-    "cordova-support-google-services": "1.3.2",
-    "phonegap-plugin-multidex": "1.0.0",
-    "phonegap-plugin-push": "2.3.0"
+    "cordova-plugin-wkwebview-engine": "1.2.2"
   };
 });
