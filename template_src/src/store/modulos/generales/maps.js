@@ -65,7 +65,7 @@ const actions = {
 
     getLocalizacion({state}){
         if(state.track){
-            if(this.getters.deviceready) {
+            if(this.getters.deviceready || typeof device == 'undefined') {
                 if (navigator.geolocation){
                     if(!state.GPSWatcher){
                         // console.log("INIT POSITION");

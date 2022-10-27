@@ -41,7 +41,7 @@ const mutations = {
             token: data.token, 
             tipo: data.tipo || 'usuario',
         };
-        console.log("TOKESN", data, state.session, this.getters.getSession);
+        // console.log("TOKESN", data, state.session, this.getters.getSession);
         localStorage.setItem(storage,JSON.stringify(state.session));
     },
 
@@ -110,7 +110,12 @@ const actions = {
                 this.commit('setLogin', 1);
                 this.dispatch('synchronizeData',true);
                 this.commit('changeView', 'usuario');
-                swal(`Bienvenido ${form.nombre}`,"","success");
+                swal({
+                    title:`Bienvenido ${form.nombre}`,
+                    text:"En PADEL + podrás reservar en 1 minuto y comprar productos y accesorios de forma segura.",
+                    icon:"success",
+                    button: 'Entendido'
+                });
             },error=>{});
     },
 
@@ -179,7 +184,7 @@ const actions = {
             res => {
                 this.dispatch('synchronizeData');
                 this.getters.getRouter.back();
-                swal(res.msg,"","success");
+                swal({title:res.msg,text:"",icon:"success", button: 'Entendido'});
             },
             error=>{});
     },

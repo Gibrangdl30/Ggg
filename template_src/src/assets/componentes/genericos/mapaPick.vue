@@ -4,13 +4,13 @@
 
     <div class="w-50px h-50px border-radius-50 back-color-blanco position-absolute top-5px right-5px z-index-10000 text-center carta" @click="search()">
         <div class="w-100 h-100 text-center">
-            <icono class="mt-9px" icono="search" clase="letra-negro-7-8vw" />
+            <icono class="mt-9px" icono="search" clase="letra-rojo-7-8vw" />
         </div>
     </div>
     
     <div class="w-50px h-50px border-radius-50 back-color-blanco position-absolute bottom-5px right-5px z-index-10000 text-center carta" @click="centrar()">
         <div class="row w-100 m-0 justify-content-center text-center">
-            <icono class="mt-8px" icono="my_location" clase="letra-negro-30 " />
+            <icono class="mt-8px" icono="my_location" clase="letra-rojo-30 " />
         </div>
     </div>
 </div>

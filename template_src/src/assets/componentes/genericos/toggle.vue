@@ -67,8 +67,8 @@ input:checked + .slider:before {
 
   <div class="row w-100 m-0" v-if="icon">
       <div class="w-auto" @click="$emit('input', value == v?f:v )" >
-        <icono clase="letra-blanco-30" icono="radio_button_checked" v-if="value == v" />
-        <icono clase="letra-blanco-30" icono="radio_button_unchecked" v-else  />
+        <icono clase="letra-gray3-30" icono="radio_button_checked" v-if="value == v" />
+        <icono clase="letra-gray3-30" icono="radio_button_unchecked" v-else  />
       </div>
   </div>
 

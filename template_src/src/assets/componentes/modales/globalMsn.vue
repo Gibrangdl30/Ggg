@@ -6,10 +6,10 @@
 
         <div class="row w-100 m-0px mt-60px px-3 pt-40px" @click.self="closeModal()">
 
-            <div class="row w-100 m-0 mt-5 back-color-gray4 pt-3 border-radius-8px overflow-hidden position-relative">
+            <div class="row w-100 m-0 mt-5 back-color-blanco pt-3 border-radius-8px overflow-hidden position-relative">
 
             <div class="w-auto position-absolute top-8px right-8px" @click="closeModal()">
-                <icono icono="clear" clase="letra-blanco-30" />
+                <icono icono="clear" clase="letra-gray4-30" />
             </div>
 
 
@@ -23,12 +23,12 @@
                 </div>
                 <div class="row w-100 m-0 px-0">
                     <div class="row w-100 m-0 justify-content-center py-2">
-                       <div class="row w-100 m-0 px-3 letra-blanco-17 justify-content-center text-center white-space-preline">{{a.texto}}</div>
+                       <div class="row w-100 m-0 px-3 letra-gray4-17 justify-content-center text-center white-space-preline">{{a.texto}}</div>
                     </div>
                 </div>
             </div>
 
-            <div class="row w-100 m-0 back-color-gray4">
+            <div class="row w-100 m-0 ">
                 <div class="row w-100 m-0 justify-content-center pb-3" v-if="a.one">
                     <div class="col-11 px-0" @click="click()">
                         <botonApp radius="30px" py="py-9px" :texto="a.boton" />
@@ -36,7 +36,7 @@
                 </div>
                 <div class="row w-100 m-0" v-else-if="a.cuenta">
                     <div class="col-6 pl-0 pr-2" @click="registro()">
-                        <boton-app clase="back-color-blanco" :outline="true" texto="Crea una cuenta" radius="30px"></boton-app>
+                        <boton-app clase="" :outline="true" texto="Crea una cuenta" radius="30px"></boton-app>
                     </div>
                     <div class="col-6 pl-2 pr-0" @click="logout()">
                         <boton-app texto="Inicia sesión" radius="30px"></boton-app>
@@ -44,10 +44,10 @@
                 </div>
                 <div class="row w-100 m-0 px-3 pb-4" v-else-if="a.boton=='Pagar y recibir'">
                     <div class="col-10 px-2 mx-auto " @click="closeModal()">
-                        <botonApp clase="back-color-blanco" tipo="gris" py="py-8px" texto="Agregar mas" radius="10px" />
+                        <botonApp clase="" tipo="gris" py="py-8px" texto="Agregar mas" radius="10px" />
                     </div>
                     <div class="col-10 px-2 pt-3 mx-auto " @click="goCarrito()">
-                        <botonApp tipo="app" texto="Pagar y recibir en el evento" py="py-8px" radius="10px" />
+                        <botonApp tipo="app" texto="Pagar y recibir" py="py-8px" radius="10px" />
                     </div>
                 </div>
                 <div class="row w-100 m-0" v-else>

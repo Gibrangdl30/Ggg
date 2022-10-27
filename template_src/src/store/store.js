@@ -63,9 +63,9 @@ const modules = {
 
 const state = {
     base:   { 
-        url:    "https://sedestage.website/apiv1/api/",
-        img:    "https://sedestage.website/apiv1/img/",
-        iconos: "https://sedestage.website/apiv1/iconos/",
+        url:    "https://padelplus.com.mx/apiv1/api/",
+        img:    "https://padelplus.com.mx/apiv1/img/",
+        iconos: "https://padelplus.com.mx/apiv1/iconos/",
     },
 
     procesando: false,
@@ -137,8 +137,8 @@ const actions = {
                         response=>{
                             this.commit('closeModal',['loader']);
                             if(!response.data.status){
-                                if(response.data.msg == 'Incorrect password') {
-                                    swal({title: response.data.msg, text:"", icon:"error", button: 'Try again'});
+                                if(response.data.msg == 'Usuario no encontrado' || response.data.msg == 'Usuario o contraseña incorrecta') {
+                                    swal({title: response.data.msg, text:"", icon:"error", button: 'Reintentar'});
                                 }
                                 else if(response.data.msg != 'Usuario inexistente') {
                                     swal(response.data.msg, "", "error");

@@ -69,7 +69,7 @@ import Swiper from 'swiper';
             session(){return this.$store.getters.getSession;},
         },
         beforeMount(){
-            console.log("LOGENADO",this.session.token);
+            // console.log("LOGENADO",this.session.token);
             if(this.session.token){
                 this.$store.commit('changeViewByTipe');
             }

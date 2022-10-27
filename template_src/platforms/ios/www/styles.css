@@ -13160,7 +13160,7 @@ input:checked + .slider:before {
    width: 40px;
    height: 40px;
    border-radius: 50%;
-   background: #d96113;
+   background: #803bed;
    position: absolute;
    top: 100px;
    left: 32px;
@@ -13170,27 +13170,27 @@ input:checked + .slider:before {
 .lds-ellipsis div:nth-child(1) div {
    -webkit-animation: lds-ellipsis2 1.3s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
    animation: lds-ellipsis2 1.3s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
-   background: #d96113 ;
+   background: #803bed ;
 }
 .lds-ellipsis div:nth-child(2) div {
    -webkit-animation-delay: -0.65s;
    animation-delay: -0.65s;
-   background: #d96113 ;
+   background: #803bed ;
 }
 .lds-ellipsis div:nth-child(3) div {
    -webkit-animation-delay: -0.325s;
    animation-delay: -0.325s;
-   background: #d96113 ;
+   background: #803bed ;
 }
 .lds-ellipsis div:nth-child(4) div {
    -webkit-animation-delay: 0s;
    animation-delay: 0s;
-   background: #d96113 ;
+   background: #803bed ;
 }
 .lds-ellipsis div:nth-child(5) div {
    -webkit-animation: lds-ellipsis3 1.3s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
    animation: lds-ellipsis3 1.3s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
-   background: #d96113 ;
+   background: #803bed ;
 }
 .lds-ellipsis {
    width: 65px !important;

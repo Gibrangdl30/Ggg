@@ -77,14 +77,26 @@
                         <boton-app texto="Inicia sesión" radius="30px"></boton-app>
                     </div>
                 </div>
-                <div class="row w-100 m-0" v-else-if="boton=='status'" >
-                    <div class="col-12 px-3" @click="click()">
-                        <botonApp tipo="rojo" texto="Change patient facility" radius="30px" />
+
+                <div class="row w-100 m-0" v-else-if="boton=='twooptions'" >
+                    <div class="col-12 px-3" @click="$emit('set1'); closeModal();" >
+                        <botonApp tipo="app" texto="Comunidad" radius="30px" />
                     </div>
-                    <div class="col-12 px-3 pt-4 pb-3" @click="$emit('set')">
-                        <botonApp tipo="verde" texto="Change status" radius="30px" />
+                    <div class="col-12 px-3 pt-4 pb-3" @click="$emit('set2'); closeModal();">
+                        <botonApp tipo="app" texto="Compartir resultado" radius="30px" />
+                    </div>
+                </div> 
+                
+                <div class="row w-100 m-0" v-else-if="boton=='tworeports'" >
+                    <div v-if="!borrar" class="col-12 px-3 pb-3" @click="$emit('set2'); closeModal();">
+                        <botonApp tipo="app" texto="Borrar post" radius="30px" />
+                    </div>
+
+                    <div class="col-12 px-3 pb-3" v-else  @click="$emit('set1'); closeModal();" >
+                        <botonApp tipo="app" texto="Reportar post" radius="30px" />
                     </div>
                 </div>
+
                 <div class="row w-100 m-0" v-else-if="boton=='changestatus'" >
                     <div class="col-12 px-3" @click="$emit('set')">
                         <botonApp tipo="verde" texto="Discharge" radius="30px" />
@@ -103,7 +115,7 @@
                 </div>
                 <div class="row w-100 m-0" v-else>
                     <div class="col-6 px-1" @click="closeModal()">
-                        <botonApp tipo="gris" texto="Cancel" radius="30px" />
+                        <botonApp tipo="gris" texto="Cancelar" radius="30px" />
                     </div>
                     <div class="col-6 px-1" @click="click()">
                         <botonApp :texto="boton" tipo="rojo" radius="30px" />
@@ -134,6 +146,7 @@ export default {
         'info',
         'descripcion',
         'boton',
+        'borrar',
         'cuenta',
         'oneButton',
         'custom',

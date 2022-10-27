@@ -1,5 +1,5 @@
 <template>
-<div class="row w-100 m-0 platillo-card back-color-negro "> 
+<div class="row w-100 m-0 platillo-card "> 
 
     <modalStaticMensaje 
         v-if="modal"
@@ -13,7 +13,7 @@
 
         <div class="row w-100 m-0" v-if="full">
             
-            <div class="row w-100 m-0 back-color-negro " >
+            <div class="row w-100 m-0  " >
                 <div class="row w-100 m-0 position-relative">
                     <div class="w-auto position-absolute left-10px top-33px z-1000000" @click="router.back()">
                         <div class="row w-100 m-0">
@@ -27,34 +27,30 @@
                         </div>
                     </div> -->
                     <!-- <sliderPlatillo :info="info" /> -->
-                    <imagen clase="h-max-50vh" :fit="true" :src="info.foto_platillo_id" />
+                    <imagen clase="h-max-50vh" :fit="true" :src="info.imagen" />
                 </div>
             </div>
 
-            <div class="row w-100 m-0 px-3 py-3 back-color-negro">
+            <div class="row w-100 m-0 px-3 py-3 ">
                 <div class="col px-0">
                     <div class="row w-100 m-0 pt-1 pb-1">
-                        <div class="col px-0 letra-blanco-22 fw-600" >{{info.platillo}}</div>
+                        <div class="col px-0 letra-gray4-22 fw-600" >{{info.nombre}}</div>
                     </div> 
                     
                     <div class="row w-100 m-0 pt-1 pb-1">
-                        <div class="col px-0 letra-blanco-18" v-if="info.contenido" >Contenido: {{info.contenido}}</div>
+                        <div class="col px-0 letra-gray3-18" v-if="info.descripcion" >{{info.descripcion}}</div>
                     </div>
                
-                    <div class="row w-100 m-0">
-                        <div class="col px-0 letra-blanco-16">{{info.descripcion}}</div>
-                    </div>
-
                 </div>
             </div>
 
-            <div class="row w-100 m-0 back-color-negro " v-if="0" >
+            <div class="row w-100 m-0  " v-if="0" >
                 <div class="row w-100 m-0" v-if="info.tipo=='calendario'">
                     <div class="row w-100 m-0 px-3">
                         <inputForm texto="Fecha del evento:" type="date" placeholder="" v-model="form.fecha" />
                     </div>
                 </div>
-                <div class="row w-100 m-0 px-3 py-3 back-color-negro ">
+                <div class="row w-100 m-0 px-3 py-3  ">
                     <div class="row w-100 m-0 letra-blanco-15">Comentarios:</div>
                     <div class="row w-100 m-0 pt-2">
                         <inputForm clase="border-radius-15px" :textarea="true" :offset="500" rows="5" texto="" type="text" placeholder="" v-model="form.comentarios" />
@@ -62,14 +58,14 @@
                 </div>
             </div>
 
-            <div class="row w-100 m-0 px-3 py-2 pb-3 back-color-negro " v-if="1">
+            <div class="row w-100 m-0 px-3 py-2 pb-3  " v-if="1">
                 <div class="col my-auto px-0">
                     <div class="row w-100 m-0">
-                        <div class="col my-auto px-0 letra-blanco-15 text-capitalize">¿Agrega los que nececitas?</div>
+                        <div class="col my-auto px-0 letra-gray3-15 text-capitalize">¿Agrega los que nececitas?</div>
                     </div>
                 </div>
                 <div class="col-auto my-auto px-1 pl-2">
-                    <div class="row w-100 m-0 px-1 justify-content-left  back-color-gray4 border-radius-30px " >
+                    <div class="row w-100 m-0 px-1 justify-content-left back-color-rojo1 border-radius-30px " >
 
                         <div class="col-auto px-0 py-1 my-auto" @click="remove()">
                             <icono  icono="remove" clase="letra-blanco-40 pt-6px"/>
@@ -85,7 +81,7 @@
                 </div>
             </div>
 
-            <div class="row w-100 m-0 back-color-negro " v-if="0">
+            <div class="row w-100 m-0  " v-if="0">
                 <div class="row w-100 m-0 px-3 pb-2 letra-gray3-18">Productos relacionados: </div>
                 <div class="row w-100 m-0">
                     <scollX  cantidad="auto" >
@@ -123,20 +119,20 @@
             </div>
         </div>
 
-        <div class="row w-100 m-0 py-2 back-color-negro border-b-gray1-1" v-else @click="click()">
+        <div class="row w-100 m-0 py-2 carta border-gray01-1  border-radius-15px" v-else @click="click()">
             <div class="row w-100 m-0 px-3 ">
                 <template>
                     <div class="col-auto my-auto px-0">
                         <div class="h-20vw w-20vw border-radius-10px overflow-hidden">
-                            <imagen :fit="true" :create="1" :src="info.foto_platillo_id" />
+                            <imagen :fit="true" :create="1" :src="info.imagen" />
                         </div>
                     </div>
                 </template>
                 <div class="col my-auto px-0 pl-2">
                     <div class="row w-100 m-0">
-                        <div class="row w-100 m-0 letra-blanco-16 text-capitalize">{{info.platillo}}</div>
-                        <div class="row w-100 m-0 letra-blanco-16 text-capitalize" v-if="info.contenido">Contenido: {{info.contenido}}</div>
-                        <div class="row w-100 m-0 letra-rojo2-18">{{info.precio | currency}}</div>
+                        <div class="row w-100 m-0 letra-gray4-16 text-capitalize">{{info.nombre}}</div>
+                        <div class="row w-100 m-0 letra-gray3-14 text-capitalize" v-if="info.descripcion">{{info.descripcion}}</div>
+                        <div class="row w-100 m-0 letra-rojo1-18 fw-800 ">{{info.precio | currency}}</div>
                     </div>
                     <template v-if="res">
                         <div class="row w-100 m-0" v-if="info.restaurante && info.restaurante.restaurant_nombre" >
@@ -242,8 +238,8 @@ export default {
             this.form.tipo = this.info.tipo;
             this.form.restaurantes_id = this.info.restaurantes_id;
             this.form.tipo = this.info.tipo;
-            this.form.nombre = this.info.platillo;
-            this.form.contenido = this.info.contenido;
+            this.form.nombre = this.info.nombre;
+            this.form.descripcion = this.info.descripcion;
             this.form.descripcion = this.info.descripcion;
             this.form.platillo = this.info;
             this.form.precio = Number(this.info.precio);

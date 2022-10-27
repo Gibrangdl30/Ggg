@@ -105,7 +105,7 @@ const mutations = {
     addBackbutton_action(state){
         let procesador = (e)=> {  
             // e.preventDefault();
-            console.log( "ROUTER BACK", this.getters.getRouter.back() );
+            // console.log( "ROUTER BACK", this.getters.getRouter.back() );
             // let view = state.f7.view.current;
             // let ruta = state.f7.view.current.router.url;               
             // switch(ruta){
@@ -131,7 +131,7 @@ const mutations = {
                             console.log("ERR",err);
                         }
                     },false);
-                    console.log("F7 BACK BUTTTON ", state.backbutton_action);
+                    // console.log("F7 BACK BUTTTON ", state.backbutton_action);
                 }
             }
 
@@ -165,7 +165,7 @@ const mutations = {
     },
 
     changeViewByTipe(state){
-        console.log("------------TIPO",this.getters.getSession.tipo);
+        // console.log("------------TIPO",this.getters.getSession.tipo);
         switch(this.getters.getSession.tipo){
             case 'usuario':
                 this.commit('changeView','usuario');

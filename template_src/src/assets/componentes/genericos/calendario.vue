@@ -6,12 +6,12 @@
                     <div class="row w-100 m-0" >
                         <div class="row w-100 m-0 mb-2">
                             <div class="row w-100 m-0">
-                                 <div class="col-auto my-auto pl-0 pr-2" @click="lastMonth()">
-                                    <icono icono="chevron_left" clase="letra-verde-45" />
+                                 <div class="col-auto my-auto pl-0 pr-2" @click="lastMonth(); set();">
+                                    <icono icono="chevron_left" clase="letra-rojo1-45" />
                                 </div>
                                 <div class="col my-auto px-0 text-center letra-gray4-21 fw-800">{{mes.mes}} {{year}}</div>
-                                <div class="col-auto my-auto pl-0 pr-2" @click="nextMonth()">
-                                    <icono icono="chevron_right" clase="letra-verde-45" />
+                                <div class="col-auto my-auto pl-0 pr-2" @click="nextMonth(); set();">
+                                    <icono icono="chevron_right" clase="letra-rojo1-45" />
                                 </div>
                             </div>
                         </div>
@@ -26,13 +26,23 @@
                                     <div class="w-14 my-auto " v-for="d of predias" :key="d.id">
                                         <div class="row w-100 m-0 justify-content-center border-radius-30px letra-blanco-17 py-9px" >{{dia}}</div>
                                     </div>
-                                    <div class="w-14 my-auto px-8px position-relative" v-for="d of dias" :key="d.dia" @click="dia = d.dia, set(); " :class="(dia == d.dia)?'':''">
+                                    <div class="w-14 my-auto px-8px position-relative" 
+                                        v-for="d of dias" :key="d.dia" @click="setX(d.dia) " 
+                                        :class="(mes.numero == mesReal && diaReal > d.dia)?'back-color-gray0':''"
+                                    >
                                         <div class="row w-100 m-0 justify-content-center border-radius-30px "
-                                        :class="(dia == d.dia)?'back-color-verde letra-blanco-17 fw-800 py-6px':'letra-gray3-17 py-9px'" >{{d.dia}}</div>
+                                        :class="( dia == d.dia)?'back-color-rojo1 letra-blanco-17 fw-800 py-6px':'letra-gray3-17 py-9px'" >{{d.dia}}</div>
 
                                         <div class="w-12px h-12px back-color-rojo border-radius-50 position-absolute top-3px right-3px" v-if=" evento(d.dia) "></div>
+                                        <div class="w-12px h-12px back-color-ama border-radius-50 position-absolute top-3px right-3px" v-else-if=" eventoE(d.dia) "></div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+
+                        <div class="row w-100 m-0">
+                            <div class="row w-100 m-0">
+                                <horas v-model="value" :campo="data" />
                             </div>
                         </div>
                     </div>
@@ -55,18 +65,25 @@ export default {
     data(){
         return {
             name: 'modalFecha',
-            year: moment(this.value,'YYYY-MM-DD').format('YYYY'),
-            month: moment(this.value,'YYYY-MM-DD').format('MM'),
-            dia: moment(this.value,'YYYY-MM-DD').format('DD'),
+            year: moment(this.value.fecha,'YYYY-MM-DD').format('YYYY'),
+            month: moment(this.value.fecha,'YYYY-MM-DD').format('MM'),
+            dia: moment(this.value.fecha,'YYYY-MM-DD').format('DD'),
+            mesReal: moment().format('MM'),
+            diaReal: moment().format('DD'),
             semana: ['D','L','M','M','J','V','S'],
         };
     },
     computed: {
 
-        eventos(){ return this.data || [] },
+        eventos(){ return [] },
         evento(){
             return (dia) =>{
-                return this.eventos.find(x=>{return x.fecha == moment(`${this.year}-${this.month}-${dia}`, 'YYYY-MM-DD' ).format( 'YYYY-MM-DD' ) }) != undefined;
+                return this.eventos.find(x=>{return !(x.invitacion && x.invitacion.id) && x.fecha == moment(`${this.year}-${this.month}-${dia}`, 'YYYY-MM-DD' ).format( 'YYYY-MM-DD' ) }) != undefined;
+            }
+        },
+        eventoE(){
+            return (dia) =>{
+                return this.eventos.find(x=>{return  x.fecha == moment(`${this.year}-${this.month}-${dia}`, 'YYYY-MM-DD' ).format( 'YYYY-MM-DD' ) }) != undefined;
             }
         },
 
@@ -79,7 +96,7 @@ export default {
             for(let x = 0; x < m.day(); x++){
                 d.push({dia: x, id: _.uniqueId('x_')});
             }
-            console.log("Preduas", m.day());
+            // console.log("Preduas", m.day());
             return d;
         },
         dias(){
@@ -105,6 +122,13 @@ export default {
         closeModal(){
             this.$store.commit('closeModal', [this.name]);
         },
+        setX(dia){
+            if(!(this.mes.numero == this.mesReal && this.diaReal > dia)){
+                this.dia = dia;
+                this.set();
+            }
+        },
+        
         lastYear(){
             if(Number(this.year) > 2020){
                 this.year = Number(this.year) - 1;
@@ -113,12 +137,19 @@ export default {
         nextYear(){
             this.year = Number(this.year) + 1;
         },
+
         lastMonth(){
-            this.month = moment(this.month,'MM').subtract(1,'months').format('MM');
+            let m = moment(`${this.month}-${this.year}`,'MM-YYYY').subtract(1,'months');
+            this.month = m.format('MM');
+            this.year = m.format('YYYY');
         },
+
         nextMonth(){
-            this.month = moment(this.month,'MM').add(1,'months').format('MM');
+            let m = moment(`${this.month}-${this.year}`,'MM-YYYY').add(1,'months');
+            this.month = m.format('MM');
+            this.year = m.format('YYYY');
         },
+        
         ocupado(dia){
              if(this.talento){
                 if(this.talento.dias && this.talento.dias.length){
@@ -141,8 +172,9 @@ export default {
                 swal("","Selecciona una fecha válida","");
                 return;
             }
-            console.log("SET FINAL", hh);
-            this.$emit('input',hh);
+            // console.log("SET FINAL", hh);
+            this.value.fecha = hh;
+            this.$emit('input',this.value);
             this.closeModal();
         }
     },

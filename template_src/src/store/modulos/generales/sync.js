@@ -49,6 +49,7 @@ const mutations = {
         this.commit('initStripeData',data);
         this.commit('updateServicioState', data);
         this.commit('updateRestauranteState', data);
+        this.commit('updateCarritosState', data);
         this.commit('setCatalogos', data);
         this.commit('setChats', data);
         
@@ -65,7 +66,7 @@ const mutations = {
                 state.deviceIos = (state.devicePlatform == 'iOS');
                 
                 state.autoUpdate = setInterval(()=>{
-                    console.log("----------------------- AUTO UPDATE ------------------");
+                    // console.log("----------------------- AUTO UPDATE ------------------");
                     this.dispatch('trySync')
                 },1000*10);
 
@@ -152,6 +153,7 @@ const actions = {
             this.commit('initSync');
             
             let data = {};
+            data.pos = this.getters.getPosicion;
             this.dispatch('postPromiseSync', ['sync/get',data]).then(
                 res => {
                     if(!state.init && this.getters.getSession.token){
@@ -188,6 +190,7 @@ const actions = {
         if(!state.sync || force){
             this.commit('initSync');
             let data = {};
+
             // console.log("sync",moment().format('HH:mm:ss'),this.getters.syncError);
             this.dispatch('postPromiseSync', ['sync/get',data]).then(
                 res => {
@@ -221,7 +224,9 @@ const actions = {
         if(!state.syncProd){
             this.commit('initSyncAll');
             // console.log("all",moment().format('HH:mm:ss'));
-            this.dispatch('postPromiseSync', ['sync/get_extra',{}]).then(
+            let data = {};
+            data.pos = this.getters.getPosicion;
+            this.dispatch('postPromiseSync', ['sync/get_extra', data]).then(
                 res => {
                     this.commit('stopSyncAll');
                     this.commit('setExtraData', [res.data]);
@@ -246,7 +251,7 @@ const actions = {
     postGetSyncRow({state}, id){
         if(this.getters.getSession.token || 1){
             const x = this.getters.syncData(id);
-            console.log("TREYINBG INDO",x);
+            // console.log("TREYINBG INDO",x);
             if(!this.getters.loadSyncDataUrl(id)){
 
                 let dx = {

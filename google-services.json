@@ -1232,6 +1232,42 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:80519246540:android:4086cd7bfdf60d0dc1c869",
+        "android_client_info": {
+          "package_name": "com.padel.plus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "80519246540-dpp9h9k603u6t0qvm6fe58f01hrcto3j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqLbJ9gUEODv47380-yTx3ZFvL5iMir5A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "80519246540-dpp9h9k603u6t0qvm6fe58f01hrcto3j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "80519246540-0nou653rjr8m6ioodf4m54nqbs2l2nc7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.megabiker.riders"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:80519246540:android:d6c32915fde80ce4c1c869",
         "android_client_info": {
           "package_name": "com.paparatz.paparatz"
@@ -1379,6 +1415,42 @@
         "mobilesdk_app_id": "1:80519246540:android:795d0c14e2f24bd5c1c869",
         "android_client_info": {
           "package_name": "com.secupay.secupay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "80519246540-dpp9h9k603u6t0qvm6fe58f01hrcto3j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqLbJ9gUEODv47380-yTx3ZFvL5iMir5A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "80519246540-dpp9h9k603u6t0qvm6fe58f01hrcto3j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "80519246540-0nou653rjr8m6ioodf4m54nqbs2l2nc7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.megabiker.riders"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:80519246540:android:37e751566cea2b38c1c869",
+        "android_client_info": {
+          "package_name": "com.sede.stage"
         }
       },
       "oauth_client": [

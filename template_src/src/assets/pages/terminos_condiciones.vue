@@ -3,7 +3,7 @@
     <div class="vista">
         <nav-bar tipo="inicio" :backs="true" :title="'Terminos y condiciones'" :fix="1"></nav-bar>
 
-        <div class="contenedor-page-tabs back-color-negro">
+        <div class="contenedor-page-tabs ">
             <div class="row w-100 m-0 ">
                 <div class="row w-100 m-0 py-2 justify-content-center">
                     <div class="col-12 text-justify mt-2" >

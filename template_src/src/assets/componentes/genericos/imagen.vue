@@ -42,9 +42,9 @@ export default {
         imagen(){
             if(this.logo) {
                 if(this.logo == 2){
-                    return `${this.baseImg}log.png`;
+                    return `${this.baseImg}2l.svg`;
                 }
-                return `${this.baseImg}log.png`;
+                return `${this.baseImg}1l.svg`;
             }
             if(this.icono) {
                 if(this.formato){
@@ -61,7 +61,7 @@ export default {
                 return `${this.baseImg}perfil.png`;
             }
             if(this.src && this.src != '0'){
-                if(this.create){
+                if(typeof this.src == 'number' || !this.src.includes('http')){
                     return this.imagenUrl;
                 }
                 if(!this.src.includes('http')){
@@ -72,7 +72,7 @@ export default {
             if(this.user){
                 return `${this.baseImg}perfil.png`;
             }
-            return `${this.baseImg}log.png`;
+            return `${this.baseImg}2l.svg`;
         },
 
     },
@@ -82,7 +82,7 @@ export default {
     methods:{
 
         verload($event){
-            console.log("LODEANDO XXx");
+            // console.log("LODEANDO XXx");
             this.$emit('load');
         },
 

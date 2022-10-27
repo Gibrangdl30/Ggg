@@ -1,11 +1,11 @@
 <template>
     <f7-page id="inicio">
         <div class="vista">
-        <div class="contenedor-page-tabs back-color-negro position-relative">
+        <div class="contenedor-page-tabs position-relative">
 
             <div class="row w-100 m-0 pt-5 mt-3 justify-content-center">
                 <div class="col-6 px-0 mx-auto">
-                    <imagen clase="my-auto" :logo="1"  />
+                    <imagen clase="my-auto" :logo="2"  />
                 </div>
             </div>
 
@@ -29,19 +29,19 @@
                     />
                 </div>
 
-                <!-- <div class="col-11 mt-3 letra-azul1-4-1vw text-right"  @click="router.navigate('/recuperar_password')">¿Olvidaste tu contraseña?</div> -->
+                <div class="col-11 mt-3 letra-rojo1-18 text-left"  @click="router.navigate('/recuperar_password')">¿Olvidaste tu contraseña?</div>
 
                 <div class="col-11 mt-5"  >
                     <div class="row w-100 m-0 mt-1 justify-content-center " @click="router.navigate('/registro')">
-                        <div class="col-auto px-0 pr-1 letra-blanco-18">¿No estas registrado?</div>
-                        <div class="col-auto px-0 letra-blanco-18">Crea una cuenta y compra boletos, bebidas y alimentos.</div>
+                        <div class="col-auto px-0 pr-1 letra-gray3-18">¿No estas registrado?</div>
+                        <div class="col-auto px-0 letra-gray3-18">Crea una cuenta.</div>
                     </div>
                 </div>
 
                 <div class="col-11 mt-5 " @click="enter()">
                    <botonApp texto="Comenzar" tipo="app" radius="30px" />
                 </div>
-                <div class="col-11 mt-3 " @click="entrar()" >
+                <div class="col-11 mt-3 " v-if="0" @click="entrar()" >
                    <botonApp texto="Explorar" tipo="rojo" radius="30px" />
                 </div>
                 
@@ -70,7 +70,7 @@ import Swiper from 'swiper';
             session(){return this.$store.getters.getSession;},
         },
         beforeMount(){
-            console.log("LOGENADO",this.session.token);
+            // console.log("LOGENADO",this.session.token);
             if(this.session.token){
                 this.$store.commit('changeViewByTipe');
             }

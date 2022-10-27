@@ -1,7 +1,7 @@
 <template>
-	<f7-page  class="back-color-negro">
+	<f7-page  class="">
 		<div class="vista">
-			<div class="contenedor-page-tabs back-color-negro">
+			<div class="contenedor-page-tabs ">
 				<sliderHome />
 				<div class="row w-100 m-0 py-3"></div>
 			</div>
@@ -24,7 +24,7 @@
         router(){return this.$store.getters.getRouter;},
     },
     beforeMount(){
-        console.log("LOGENADO SLIDER",this.session.token);
+        // console.log("LOGENADO SLIDER",this.session.token);
         if(this.session.token){
             this.$store.commit('changeViewByTipe');
         }

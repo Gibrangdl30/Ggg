@@ -2,28 +2,29 @@
     <f7-page class="" id="inicio">
 
         <div class="vista">
-            <nav-bar tipo="logo" :no_border="1" title="Inicio" :backs="false" :logo="false" :profile="true"  />
+            <nav-bar tipo="logo" :no_border="1" title="" :backs="false" :logo="false" :profile="true"  />
 
-            <div class="row w-100 m-0 px-3 py-2 " v-if="0" >
-                <busquedaInput v-model="b" holder="Buscar inmueble" />
+            <div class="row w-100 m-0 px-3 py-2 " v-if="1" >
+                <busquedaInput v-model="b" holder="Buscar... " />
             </div>
 
-            <div class="contenedor-page-tabs back-color-negro">
-                <div class="row w-100 m-0" v-if="banners && banners.length" >
-                    <div class="row w-100 m-0">
-                        <banners :fotos="banners" />
+            <div class="contenedor-page-tabs ">
+                <template v-if="0" >
+                    <div class="row w-100 m-0" v-if="banners && banners.length" >
+                        <div class="row w-100 m-0">
+                            <banners :fotos="banners" />
+                        </div>
                     </div>
-                </div>
-
+                </template>
                 <div class="row w-100 m-0 pt-2 pb-2"  >
-                    <div class="row w-100 m-0 px-3" v-for=" (e) of eventos" :key="e.id">
+                    <div class="row w-100 m-0 px-3 to-eventos_zonas" v-for=" (e) of instalciones" :key="e.id">
                         <div class="row w-100 m-0 py-2" >
-                            <eventosComponent :row="1"  :data="e"  />
+                            <instalcionesComponent :row="1"  :data="e"  />
                         </div>
                     </div>
                 </div>
-
             </div>
+            
             <tabs />
         </div>
 
@@ -52,7 +53,12 @@ const moment = require('moment');
             session(){return this.$store.getters.getSession;},
 
             banners(){return this.$store.getters.info('banners') },
-            eventos(){return this.$store.getters.info('eventos') },
+            instalciones(){
+                if(this.b){
+                    return this.$store.getters.info('instalciones').filter(w=>w.name_field.toLowerCase().includes( this.b.toLowerCase() ));
+                }
+                return this.$store.getters.info('instalciones') 
+            },
         },
 
         mounted(){

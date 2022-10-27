@@ -77,6 +77,14 @@ Vue.filter('fechaE', ([fecha, hora]) => {
     return null;
 });
 
+
+Vue.filter('fechaS', ([fecha]) => {
+    if(fecha){
+      return moment(`${fecha}`,'YYYY-MM-DD HH:mm:ss').format('DD / MM / YYYY');
+    }
+    return null;
+});
+
 Vue.filter('fechaD', (fecha) => {
     if(fecha){
       return moment(`${fecha}`,'YYYY-MM-DD').format('DD / MM / YYYY');

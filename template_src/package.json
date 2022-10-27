@@ -19,6 +19,11 @@
     "cheerio": "^1.0.0-rc.3",
     "chokidar": "^3.1.1",
     "clean-webpack-plugin": "^3.0.0",
+    "cordova-android": "^8.1.0",
+    "cordova-browser": "^6.0.0",
+    "cordova-ios": "^5.1.1",
+    "cordova-plugin-ionic-keyboard": "^2.2.0",
+    "cordova-plugin-statusbar": "^3.0.0",
     "css-loader": "^3.2.0",
     "current-device": "^0.10.0",
     "epipebomb": "^1.0.0",
@@ -47,9 +52,7 @@
     "@fortawesome/fontawesome-free": "^5.11.1",
     "axios": "^0.24.0",
     "bootstrap-vue": "^2.21.2",
-    "cordova-browser": "^5.0.4",
     "cordova-custom-config": "^5.1.1",
-    "cordova-ios": "^5.1.1",
     "cordova-plugin-add-swift-support": "^2.0.2",
     "cordova-plugin-camera": "^4.1.0",
     "cordova-plugin-device": "^2.1.0",
@@ -96,12 +99,13 @@
       "cordova-plugin-geolocation": {
         "GPS_REQUIRED": "true"
       },
-      "cordova-plugin-qrscanner": {}
+      "cordova-plugin-qrscanner": {},
+      "cordova-plugin-statusbar": {}
     },
     "platforms": [
       "browser",
-      "ios",
-      "android"
+      "android",
+      "ios"
     ]
   }
 }

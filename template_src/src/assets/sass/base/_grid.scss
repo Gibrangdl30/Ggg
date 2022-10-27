@@ -1,16 +1,16 @@
 
 .page{
-    background: black !important;
+    background: white !important;
 }
 
 .md{
     .vista{
-        background-color: black !important;
+        background-color: white !important;
         overflow-x: hidden;
         overflow-y: hidden;
         height: 100%;
         width: 100% !important;
-        background: black;
+        background: white;
         display: flex;
         flex-direction: column;
     }
@@ -19,7 +19,7 @@
         overflow-y: scroll;
         height: 100%;
         width: 100%;
-        background: black;
+        background: white;
         padding-bottom: 4vh;
     }
     .contenedor-page-tabs{
@@ -27,19 +27,19 @@
         overflow-y: scroll;
         height: 100%;
         width: 100%;
-        background: black;
+        background: white;
         padding-bottom: 4vh;
     }
 }
 .ios{
-    background-color: black;
+    background-color: white;
     .vista{
-        background-color: black;
+        background-color: white;
         overflow-x: hidden;
         overflow-y: hidden;
         height: 100%;
         width: 100% !important;
-        background: black;
+        background: white;
         display: flex;
         flex-direction: column;
     }
@@ -48,7 +48,7 @@
         overflow-y: scroll;
         height: 100%;
         width: 100%;
-        background: black;
+        background: white;
         padding-bottom: 10vh;
     }
     .contenedor-page-tabs{
@@ -56,20 +56,20 @@
         overflow-y: scroll;
         height: 100%;
         width: 100%;
-        background: black;
+        background: white;
         padding-bottom: 10vh;
     }
 }
 
 .ios.device-iphone-x{
-    background-color: black;
+    background-color: white;
     .vista{
-        background-color: black;
+        background-color: white;
         overflow-x: hidden;
         overflow-y: hidden;
         height: 100%;
         width: 100% !important;
-        background: black;
+        background: white;
         display: flex;
         flex-direction: column;
     }
@@ -108,7 +108,7 @@
     height: 100%;
     width: 100%;
     opacity: .5;
-    background-color: black;
+    background-color: white;
 
 }
 .after-color::after{

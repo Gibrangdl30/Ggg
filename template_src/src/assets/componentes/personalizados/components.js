@@ -7,6 +7,7 @@ import contactosRow from './contactosRow.vue';
 import eventosComponent from './eventosComponent.vue';
 import asientosComponent from './asientosComponent.vue';
 import productoComponent from './productoComponent.vue';
+import instalcionesComponent from './instalcionesComponent.vue';
 
 
 function plugin(Vue) {
@@ -19,5 +20,6 @@ function plugin(Vue) {
     Vue.component('eventosComponent', eventosComponent);
     Vue.component('asientosComponent', asientosComponent);
     Vue.component('productoComponent', productoComponent);
+    Vue.component('instalcionesComponent', instalcionesComponent);
 }
 export default plugin

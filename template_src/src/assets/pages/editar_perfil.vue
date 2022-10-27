@@ -2,7 +2,7 @@
     <f7-page id="inicio">
         <div class="vista" v-vistak>
             <nav-bar tipo="inicio" :backs="true" :title="'Editar perfil'" :fix="1" />
-            <div class="contenedor-page-tabs back-color-negro " >
+            <div class="contenedor-page-tabs " >
                 <div class="row w-100 m-0">
 
                     <div class="row w-100 m-0 mt-3 px-3 justify-content-center">
@@ -22,6 +22,10 @@
 
                     <div class="col-12 mt-3">
                         <inputForm type="text" texto="Nombre:" placeholder="" v-model="form.nombre" />
+                    </div>
+                    
+                    <div class="col-12 mt-3">
+                        <inputForm type="text" texto="Telefono:" placeholder="" v-model="form.telefono" />
                     </div>
 
                     <div class="col-12 mt-4" v-if="0" >

@@ -3,14 +3,14 @@
     <div class="col-12 my-auto p-0" v-if="textarea">
         <div class="row w-100 m-0 position-relative">
             <div class="w-auto position-absolute top-13px right-5px z-200" v-if="copy" @click="pegar()">
-                <icono icono="attach_file" :clase="`letra-${ver?'negro' :'blanco'}-26`" />
+                <icono icono="attach_file" :clase="`letra-${ver?'negro' :'gray2'}-26`" />
             </div>
-            <p :class="`letra-${textcolor?textcolor :'blanco'}-4-1vw m-0 mb-1 pl-1`">{{texto}}</p>
+            <p :class="`letra-${textcolor?textcolor :'gray2'}-4-1vw m-0 mb-1 pl-1`">{{texto}}</p>
             <textarea 
                 :id="id" 
                 :type="type" 
                 :rows="autorows" 
-                class="regular-textarea w-100 m-0 color-blanco " 
+                class="regular-textarea w-100 m-0 color-gray3 " 
                 :class="clase"
                 :placeholder="placeholder" 
                 :maxlength="maxlength" 
@@ -28,16 +28,16 @@
 
         <div class="row w-100 m-0" v-if="android">
             <label class="w-100">
-                <p :class="`letra-${textcolor?textcolor :'blanco'}-4-1vw m-0 mb-1 pl-1`" v-if="texto">{{texto}}</p>
+                <p :class="`letra-${textcolor?textcolor :'gray2'}-4-1vw m-0 mb-1 pl-1`" v-if="texto">{{texto}}</p>
                 <div type="text" class="regular-input w-100 m-0 " v-if="value">{{value | moment('MM/YY')}}</div>
                 <div type="text" class="regular-input w-100 m-0 " v-else>{{placeholder}}</div>
-                <input :id="id" type="month" class="regular-input-hidden m-0 w-0px h-0px p-0 border-0 color-blanco " :placeholder="placeholder" :value="value" @input="update" @change="update" @keyup.enter="enter()">
+                <input :id="id" type="month" class="regular-input-hidden m-0 w-0px h-0px p-0 border-0 color-gray3 " :placeholder="placeholder" :value="value" @input="update" @change="update" @keyup.enter="enter()">
             </label>
         </div>
 
         <div class="row w-100 m-0" v-else >
             <div class="col-6 px-1">
-                <p :class="`letra-${textcolor?textcolor :'blanco'}-4-1vw m-0 mb-1 pl-1`">Mes:</p>
+                <p :class="`letra-${textcolor?textcolor :'gray2'}-4-1vw m-0 mb-1 pl-1`">Mes:</p>
                 <select class="regular-input w-100 white-space-preline" :id="id" :disabled="disabled" v-model="mes" @change="updateMes" >
                     <option :value="null" selected disabled>{{'Mes'}}</option>
                     <template v-for="e of meses">
@@ -46,7 +46,7 @@
                 </select>
             </div>
             <div class="col-6 px-1">
-                <p :class="`letra-${textcolor?textcolor :'blanco'}-4-1vw m-0 mb-1 pl-1`">Año:</p>
+                <p :class="`letra-${textcolor?textcolor :'gray2'}-4-1vw m-0 mb-1 pl-1`">Año:</p>
                 <select class="regular-input w-100 white-space-preline" :id="id" :disabled="disabled" v-model="year" @change="updateYear" >
                     <option :value="null" selected disabled>{{'Año'}}</option>
                     <template v-for="e of years">
@@ -59,12 +59,12 @@
     </div>
 
     <div class="col-12 my-auto p-0" v-else-if="password" >
-        <p :class="`letra-${textcolor?textcolor :'blanco'}-4-1vw m-0 mb-1 pl-1`" v-if="texto">{{texto}}</p>
+        <p :class="`letra-${textcolor?textcolor :'gray2'}-4-1vw m-0 mb-1 pl-1`" v-if="texto">{{texto}}</p>
         <div class="row w-100 m-0 position-relative">
             <div class="w-auto position-absolute top-9px right-5px z-200" @click="ver = !ver">
-                <icono icono="visibility" :clase="`letra-${ver?'negro' :'blanco'}-26`" />
+                <icono icono="visibility" :clase="`letra-${ver?'negro' :'gray2'}-26`" />
             </div>
-            <input :id="id" :type="ver?'text' :'password'" :class="`${input?input :'regular'}-input w-100 m-0 color-blanco ${password?'pr-26px' :''} ${clase?clase :''}`" 
+            <input :id="id" :type="ver?'text' :'password'" :class="`${input?input :'regular'}-input w-100 m-0 color-gray3 ${password?'pr-26px' :''} ${clase?clase :''}`" 
             :placeholder="placeholder" :maxlength="maxlength"  
             :disabled="disabled" :value="value" 
             @input="update" @change="update"  @keypress="keyenter" @keyup.enter="enter()" >
@@ -72,8 +72,8 @@
     </div>
 
     <div class="col-12 my-auto p-0" v-else >
-        <p :class="`letra-${textcolor?textcolor :'blanco'}-4-1vw m-0 mb-1 pl-1`" v-if="texto" >{{texto}}</p>
-        <input  :id="id" :type="type" :class="`${input?input :'regular'}-input w-100 m-0 color-blanco ${clase}`" 
+        <p :class="`letra-${textcolor?textcolor :'gray2'}-4-1vw m-0 mb-1 pl-1`" v-if="texto" >{{texto}}</p>
+        <input  :id="id" :type="type" :class="`${input?input :'regular'}-input w-100 m-0 color-gray3 ${clase}`" 
                 :placeholder="placeholder" :maxlength="maxlength" :disabled="disabled" :value="value" 
                 @input="update" @change="update"  @keypress="keyenter" @keyup.enter="enter()" >
     </div>
@@ -143,7 +143,7 @@ export default {
     },
 
     created() {
-        console.log("LOADHS", _.uniqueId("kasd"));
+        // console.log("LOADHS", _.uniqueId("kasd"));
         if(this.date){
             if(this.value){
                 this.mes = moment(this.value,'YYYY-MM').format('MM');
@@ -201,7 +201,7 @@ export default {
         pegar(){
             navigator.clipboard.readText()
             .then(text => {
-                console.log('Pasted content: ', text);
+                // console.log('Pasted content: ', text);
                 this.$emit('input', (this.value || '')+text);
             })
             .catch(err => {
@@ -215,7 +215,7 @@ export default {
                     $(`#${this.id}`).focus(()=>{
                         setTimeout(()=>{
                             const offset = this.offset || 450;
-                            console.log("SETING OFFSET", offset);
+                            // console.log("SETING OFFSET", offset);
                             if(this.contendorId){
                                 $(`#${this.contendorId}`).animate({ scrollTop: offset }, 330);
                             }

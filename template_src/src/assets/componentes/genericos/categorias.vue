@@ -1,26 +1,33 @@
 <template>
 <div class="row w-100 m-0 slider-component">
     <div :class="id +' swiper-container slider-container w-100'">
+
         <div class="swiper-wrapper">
-            <div class="swiper-slide px-1 text-center">
 
+            <div class="swiper-slide w-auto px-1 text-center">
                 <div class="w-auto text-center">
-                    <div class="w-18vw h-18vw mx-auto border-radius-15px back-color-verde3" :class="categoria==null?'border-rojo2-2':''" @click="update(null)">
-                        <!-- <imagen clase="p-12px" :logo="true" /> -->
+                    <div class="w-30vw h-23vw mx-auto border-radius-15px overflow-hidden position-relative  " :class="value==null?'border-rojo2-1':''" @click="update(null)" >
+                        <imagen clase="" :fit="true" :logo="1" />
+                        <div class="h-100 w-100 position-absolute top-0px left-0px back-color-negro1  ">
+                            <div class="row w-100 h-100 m-0 fw-600 align-content-center letra-blanco-20 justify-content-center text-center">Todas</div>
+                        </div>
                     </div>
-                    <div class="row w-100 m-0 h-40px align-content-center letra-verde3-3-2vw py-1 text-capitalize justify-content-center text-center">Todas</div>
                 </div>
-
             </div>
-            <div class="swiper-slide px-1 text-center"  v-for="i of categorias" :key="i.x" @click="update(i.id)">
+
+            <div class="swiper-slide w-auto px-1 text-center"  v-for="i of categorias" :key="i.x" @click="update(i.id)">
                 <div class="w-auto text-center">
-                    <div class="w-18vw h-18vw mx-auto border-radius-15px overflow-hidden" :class="categoria==i.id?'border-rojo2-2':''">
-                        <!-- <imagen clase="" :fit="true" :src="i.imagenes_id" /> -->
+                    <div class="w-30vw h-23vw mx-auto border-radius-15px overflow-hidden position-relative  " :class="value==i.id?'border-rojo2-2':''">
+                        <imagen clase="" :fit="true" :src="i.imagen" />
+                        <div class="h-100 w-100 position-absolute top-0px left-0px back-color-negro1  ">
+                            <div class="row w-100 h-100 m-0 fw-600 align-content-center letra-blanco-20 justify-content-center text-center">{{i.nombre}}</div>
+                        </div>
                     </div>
-                    <div class="row w-100 m-0 h-40px align-content-center letra-verde3-3-2vw pt-2 text-capitalize justify-content-center text-center">{{i.categoria}}</div>
+                    <!-- <div class="row w-100 m-0 h-40px align-content-center letra-verde3-3-2vw pt-2 text-capitalize justify-content-center text-center">{{i.nombre}}</div> -->
                 </div>
             </div>
         </div>
+        
     </div>
 </div>
 </template>
@@ -35,13 +42,20 @@ export default {
             slider:null,
         };
     },
-    props: [],
+    props: [
+        'value',
+    ],
     computed: {
         categoria(){return this.$store.getters.catalogoGetObject('categoria') || null;},
         categorias(){return this.$store.getters.getCatalogo('categorias');}
     },
+    watch:{
+        categorias(){
+            this.initSlider();
+        }
+    },
     mounted() {
-        console.log("CATEGORIAS", this.categoria, this.categorias);
+        // console.log("CATEGORIAS", this.categoria, this.categorias);
         setTimeout(this.initSlider,300);
     },
     methods:{
@@ -54,7 +68,7 @@ export default {
                         observer: true,
                         observeParents: true,
                         observeSlideChildren: true,
-                        slidesPerView: 4.5,
+                        slidesPerView: 'auto',
                         // pagination: {
                         //     el: '.swiper-pagination',
                         //     type: 'bullets',
@@ -66,7 +80,8 @@ export default {
             }
         },
         update(id){
-            this.$store.commit('updateCatalogosState',['categoria', id])
+            this.$emit('input', id);
+            // this.$store.commit('updateCatalogosState',['categoria', id]);
         }
 
     },

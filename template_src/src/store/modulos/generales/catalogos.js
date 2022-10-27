@@ -22,6 +22,7 @@ const initialState = {
 
     contactos:  { a:[] },
     comunicados:  { a:[] },
+    categorias:  { a:[] },
     motivos:  { a:[] },
     tipos_familia:  { a:[] },
 
@@ -77,6 +78,9 @@ const mutations={
     setCatalogos(state,data){
         if(data.comunicados){
             state.comunicados  = {a:data.comunicados};
+        } 
+        if(data.categorias){
+            state.categorias  = {a:data.categorias};
         } 
         if(data.motivos){
             state.motivos  = {a:data.motivos};

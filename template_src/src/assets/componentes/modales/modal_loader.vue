@@ -2,7 +2,7 @@
 <transition name="custom"
             enter-active-class="animated fadeIn faster"
             leave-active-class="animated fadeOut faster">
-    <div class="modal_loader w-100 m-0 p-0 justify-content-center back-color-negro " v-if="state">
+    <div class="modal_loader w-100 m-0 p-0 justify-content-center  " v-if="state">
         <div class="row w-100 m-0px mt-10vh px-5 justify-content-center">
         <div class="row w-100 m-0px px-5 justify-content-center">
             <div class="row w-100 m-0  py-3 border-radius-15px justify-content-center">
@@ -65,7 +65,7 @@ export default {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #d96113;
+    background: #803bed;
     position: absolute;
     top: 100px;
     left: 32px;
@@ -76,30 +76,30 @@ export default {
   .lds-ellipsis div:nth-child(1) div {
     -webkit-animation: lds-ellipsis2 1.3s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
     animation: lds-ellipsis2 1.3s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
-    background: #d96113 ;
+    background: #803bed ;
   }
 
   .lds-ellipsis div:nth-child(2) div {
     -webkit-animation-delay: -0.65s;
     animation-delay: -0.65s;
-    background: #d96113 ;
+    background: #803bed ;
   }
 
   .lds-ellipsis div:nth-child(3) div {
     -webkit-animation-delay: -0.325s;
     animation-delay: -0.325s;
-    background: #d96113 ;
+    background: #803bed ;
   }
 
   .lds-ellipsis div:nth-child(4) div {
     -webkit-animation-delay: 0s;
     animation-delay: 0s;
-    background: #d96113 ;
+    background: #803bed ;
   }
   .lds-ellipsis div:nth-child(5) div {
     -webkit-animation: lds-ellipsis3 1.3s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
     animation: lds-ellipsis3 1.3s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
-    background: #d96113 ;
+    background: #803bed ;
   }
   .lds-ellipsis {
     width: 65px !important;

@@ -50,14 +50,14 @@ const mutations = {
         if(state.enable){
             if(this.getters.deviceready){
                 if(this.getters.getSession.token){
-                    console.log("VOY INICIANDO PUSH");
+                    // console.log("VOY INICIANDO PUSH");
                     if(!state.push){
                         let init = ()=>{
-                            console.log("REGISTRANDO PUSH READY");
+                            // console.log("REGISTRANDO PUSH READY");
                             state.push = PushNotification.init(state.opciones);
                             PushNotification.hasPermission(data => {
                                 if (data.isEnabled) {
-                                    console.log('>>>>PUSH is Enabled');
+                                    // console.log('>>>>PUSH is Enabled');
                                 }
                             });
                             let processNotificacion = (data)=>{

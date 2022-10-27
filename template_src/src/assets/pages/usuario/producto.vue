@@ -2,24 +2,24 @@
     <div class="page " id="inicio">
     <div class="page-content position-relative">
 
-        <div class="vista" v-vistak>
-            <div class="row w-100 m-0 back-color-blanco" v-if="false">
+        <div class="vista h-100" v-vistak>
+            <div class="row w-100 m-0  " v-if="false">
                 <div class="row w-100 m-0  position-relative">
                     <div class="w-auto position-absolute left-10px top-37px" @click="router.back()">
                         <div class="row w-100 m-0">
                             <i class="f7-icons color-white letra-rojo2-30" >chevron_left</i>
                         </div>
                     </div>
-                    <imagen clase="h-max-50vh" :fit="true" :src="platillo.foto_platillo" />
+                    <imagen clase="h-max-50vh" :fit="true" :src="platillo.imagen" />
                 </div>
             </div>
 
-            <div class="contenedor-page-tabs back-color-negro pb-0 scroll-y ">
+            <div class="contenedor-page-tabs  pb-0 scroll-y ">
                 <div class="row w-100 m-0">
                     <productoComponent :full="true" :data="platillo" @set="set"/>
                 </div>
             </div>
-            <div class="row w-100 m-0 back-color-rojo" v-if="1" @click="add()">
+            <div class="row w-100 m-0 back-color-rojo1" v-if="1" @click="add()">
                 <div class="row w-100 m-0 pt-3 pb-4 px-3">
                     <div class="row w-100 m-0 px-3">
                         <div class="col my-auto px-0 letra-blanco-22 fw-600 " >Ordenar</div>

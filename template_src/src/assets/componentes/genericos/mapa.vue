@@ -109,7 +109,7 @@ export default {
 
                   
                     s.pin.addListener("click", () => {
-                        console.log("C PIN", s);
+                        // console.log("C PIN", s);
                         this.s = s;
                         this.$store.commit('setPostState', ['post', s.id ] );
                         this.router.navigate('/post_comentarios');
@@ -119,7 +119,7 @@ export default {
 
                     if(this.type){
                         if(s.pin){
-                            console.log("TYOE TYPE ", this.type, s.tipo);
+                            // console.log("TYOE TYPE ", this.type, s.tipo);
                             if(this.type == 1){
                                 if(s.tipo == 'renta'){
                                     s.pin.setMap(null);

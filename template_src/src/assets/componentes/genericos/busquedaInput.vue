@@ -10,7 +10,7 @@
                 <icono icono="clear" :clase=" `letra-gray3-26` " />
             </div> -->
             <input  :id="id" type="text" class="busqueda-input w-100 p-0 pl-1 pr-4 border-radius-28px" 
-                    :placeholder="holder || 'Search ...'" 
+                    :placeholder="holder || 'Buscar ...'" 
                     :value="value" 
                     @input="$emit('input',$event.target.value)" 
                     @change="$emit('change', $event.target.value)"
@@ -84,7 +84,7 @@ export default {
                     $(`#${this.id}`).focus(()=>{
                         setTimeout(()=>{
                             const offset = this.offset || 450;
-                            console.log("SETING OFFSET", offset);
+                            // console.log("SETING OFFSET", offset);
                             if(this.contendorId){
                                 $(`#${this.contendorId}`).animate({ scrollTop: offset }, 330);
                             }

@@ -31,30 +31,31 @@
                                 <div class="row m-0 w-100 letra-gray3-20 fw-600">Mi cuenta</div>
                             </div>
                         </div>
-                        <div class="row w-100 m-0 px-3 py-2" @click="goTo('/comunicados')" >
+
+                        <div class="row w-100 m-0 px-3 py-2" @click="goTo('/metodos_pago')" >
                             <div class="col-auto px-0 my-auto">
-                                <icono icono="chat" clase="letra-gray3-30" />
+                                <icono icono="credit_card" clase="letra-gray3-30" />
                             </div>
                             <div class="col px-0 mb-auto pl-3">
-                                <div class="row m-0 w-100 letra-gray3-20 fw-600">Comunicados</div>
+                                <div class="row m-0 w-100 letra-gray3-20 fw-600">Mis métodos de pago</div>
                             </div>
                         </div>
-
-                        <div class="row w-100 m-0 px-3 py-2" @click="goTo('/favoritos')" >
+                        
+                        <div class="row w-100 m-0 px-3 py-2" @click="goTo('/mis_boletos')" >
                             <div class="col-auto px-0 my-auto">
-                                <icono icono="favorite_border" clase="letra-gray3-30" />
+                                <icono icono="event" clase="letra-gray3-30" />
                             </div>
                             <div class="col px-0 mb-auto pl-3">
-                                <div class="row m-0 w-100 letra-gray3-20 fw-600">Favoritos</div>
+                                <div class="row m-0 w-100 letra-gray3-20 fw-600">Mis reservaciones</div>
                             </div>
-                        </div>
-
-                        <div class="row w-100 m-0 px-3 py-2" @click="goTo('/solicitud_fotografo')" >
+                        </div> 
+                        
+                        <div class="row w-100 m-0 px-3 py-2" @click="goTo('/mis_compras')" >
                             <div class="col-auto px-0 my-auto">
-                                <icono icono="headset_mic" clase="letra-gray3-30" />
+                                <icono icono="shopping_bag" clase="letra-gray3-30" />
                             </div>
                             <div class="col px-0 mb-auto pl-3">
-                                <div class="row m-0 w-100 letra-gray3-20 fw-600">Contacto</div>
+                                <div class="row m-0 w-100 letra-gray3-20 fw-600">Mis compras</div>
                             </div>
                         </div>
 
@@ -72,7 +73,7 @@
                         <div class="row w-100 m-0 pt-2 px-3 py-2" @click="logout()" >
                             <div class="col-auto px-0 my-auto">
                                 <div class="w-30px">
-                                    <imagen icono="1" src="logout" />
+                                    <imagen icono="1" src="logou" />
                                 </div>
                             </div>
                             <div class="col px-0 mb-auto pl-3">

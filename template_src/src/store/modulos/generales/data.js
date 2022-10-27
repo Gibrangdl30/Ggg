@@ -7,7 +7,8 @@ const initialState = {
 
     },
     evento: null,
-    zona: null,
+    instalacion: null,
+    campo: null,
     fila: null,
     asiento: null,
     boletos: null,
@@ -36,11 +37,11 @@ const mutations={
 
     setRootData(state, data){
         state.data = {...state.data, ...data};
-        console.log("--------------------->>>>>>>>>>>>SET ROOT DATA", state.data);
+        // console.log("--------------------->>>>>>>>>>>>SET ROOT DATA", state.data);
     },
     setRootExtraData(state, data){
         state.data = {...state.data, ...data};
-        console.log(" >>>>>>>>>>>>>>>EEEEXTRA SET ROOT DATA", state.data);
+        // console.log(" >>>>>>>>>>>>>>>EEEEXTRA SET ROOT DATA", state.data);
     },
     
     setVersion(state,data){

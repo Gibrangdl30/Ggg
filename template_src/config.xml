@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.sede.stage" version="2.41.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.padel.plus" version="2.20.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <hook src="hooks/hookers.js" type="before_prepare"/>
     <hook src="hooks/beforedep.js" type="before_deploy"/>
-    <name>Sede Stage</name>
+    <name>Padel Plus</name>
     <description>
-        Sede Stage
+        Padel Plus
     </description>
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Sustam Apps
@@ -136,6 +136,5 @@
         <variable name="GPS_REQUIRED" value="true"/>
     </plugin>
     <plugin name="cordova-plugin-qrscanner" spec="^3.0.1"/>
-    <engine name="browser" spec="^5.0.4"/>
-    <engine name="ios" spec="^5.1.1"/>
+    <plugin name="cordova-plugin-statusbar" spec="^3.0.0"/>
 </widget>

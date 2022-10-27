@@ -87,7 +87,7 @@ const mutations={
         state.desgloce.subtotal = 0;
         state.desgloce.comision = 0;
         state.desgloce.total = 0;
-        state.desgloce.costoEnvio = 0;
+        state.desgloce.costoEnvio = 150;
         state.desgloce.cambioIva = 0.16;
 
         console.log("CARRRITO CARRITO", state.desgloce.carrito );
@@ -143,7 +143,7 @@ const actions={
             this.getters.getRouter.navigate('/inicio');
             this.commit('cleanCarrito');
             this.commit('openMsn',[
-            `¡Boleto(s) comprado(s).!\nEl ID de tu operación es ${res.data.id}\nRecibirás 1 correo de confirmación de esta compra.\nSi tienes cualquier duda o comentario escríbenos a ayuda@sedestage.com.mx`,'Entendido',true,false]);
+            `Compra realizada\nEl ID de tu operación es ${res.data.id}\nRecibirás 1 correo de confirmación de esta compra.\n`,'Entendido',true,false]);
         };
 
         this.dispatch('postPromiseLoader', ['pedidos/crear_pedido', data]).then(
@@ -151,20 +151,13 @@ const actions={
             finish(res);
         },error=>{});
     },
-    
+
     postCrearPedidoConsumo({ commit, state },[qr]){
         let data = {
-            carrito: state.desgloce,
-            qr: qr,
-            metodo: state.metodo_pago,
-            // domicilio: this.getters.carritoFind('domicilios','domicilio'),
+            carrito:    state.desgloce,
+            metodo:     state.metodo_pago,
         };
 
-        // if(!data.domicilio || !data.domicilio.id){
-        //     swal("","Hubo un error con el domicilio","");
-        //     return;
-        // }
-        
         if( !state.metodo_pago ){
             swal("","Selecciona un metodo de pago","");
             return;
@@ -174,12 +167,46 @@ const actions={
             this.dispatch('synchronizeData');
             this.dispatch('sendDataAllUsers',[{servicio:true}]);
             this.getters.getRouter.navigate('/inicio');
-            // this.getters.getRouter.navigate('/historial_compras');
             this.commit('cleanCarrito');
-            this.commit('openMsn',['¡Listo!\nTu pedido ha sido realizado con éxito.\nPuedes verlo en tu cuenta','Ok',true,false]);
+            this.commit('openMsn',[
+            `Compra realizada\nEl ID de tu operación es ${res.data.id}\nRecibirás 1 correo de confirmación de esta compra.\n`,'Entendido',true,false]);
         };
 
-        this.dispatch('postPromiseLoader', ['pedidos/crear_consumo', data]).then(
+
+        this.dispatch('postPromiseLoader', ['pedidos/crear_pedido', data]).then(
+        res => {
+            finish(res);
+        },error=>{});
+    },
+    
+    postCrearReservacion({ commit, state }, {form} ){
+        let data = {
+            form,
+        };
+
+        let finish = (res)=>{
+            this.dispatch('synchronizeData');
+            this.getters.getRouter.navigate('/inicio');
+            this.commit('openMsn',[`¡Listo!\nReservacion realizado con exito.\nEl id de tu reservación es ${res.id}\nPuedes verlo en tu cuenta`,'Entendido',true,false]);
+        };
+
+        this.dispatch('postPromiseLoader', ['pedidos/crear_reservacion', data]).then(
+        res => {
+            finish(res);
+        },error=>{});
+    },
+    
+    postBorrarRes({ commit, state }, {reserva} ){
+        let data = {
+            reserva,
+        };
+
+        let finish = (res)=>{
+            this.dispatch('synchronizeData');
+            swal("","Reserva eliminada","success");
+        };
+
+        this.dispatch('postPromiseLoader', ['pedidos/borrar_reservacion', data]).then(
         res => {
             finish(res);
         },error=>{});

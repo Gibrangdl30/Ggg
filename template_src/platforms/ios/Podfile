@@ -2,7 +2,7 @@
 
 platform :ios, '10.0'
 
-target 'Sede Stage' do
-	project 'Sede Stage.xcodeproj'
+target 'Padel Plus' do
+	project 'Padel Plus.xcodeproj'
 
 end

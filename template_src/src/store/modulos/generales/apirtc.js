@@ -64,7 +64,7 @@ const mutations={
         
         state.localId = {id:apiCC.session.apiCCId};
         state.init =    {status : 2};
-        console.log(">>>>>Tu session APIRTC >>>",apiCC.session.apiCCId);
+        // console.log(">>>>>Tu session APIRTC >>>",apiCC.session.apiCCId);
     },
 
     closeAllModals(state, llamada=false){
@@ -79,7 +79,7 @@ const mutations={
         state.init ={status:null};
     },
     reciveDirections(state, info){
-        console.log(">>>>>>>>>>>>>>>>>>>>>>> recive Data", info.detail.data);
+        // console.log(">>>>>>>>>>>>>>>>>>>>>>> recive Data", info.detail.data);
         let data = info.detail.data;
         if(data.instruccion){
             state.indicaciones[data.instruccion] = true;
@@ -98,7 +98,7 @@ const mutations={
             this.dispatch('synchronizeData');
         }
         else {
-            console.log(">>>>>>>>>>>>>>>>>>>>>>> ME ACTUALIZO", data);
+            // console.log(">>>>>>>>>>>>>>>>>>>>>>> ME ACTUALIZO", data);
             this.dispatch('synchronizeData');
         }
     },

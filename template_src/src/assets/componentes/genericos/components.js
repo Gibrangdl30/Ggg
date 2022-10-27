@@ -33,8 +33,9 @@ import calendario from './calendario.vue';
 import categorias from './categorias.vue';
 import scollX from './scollX.vue';
 import rating from './rating.vue';
-
-
+import amenidades from './amenidades.vue';
+import horas from './horas.vue';
+import carruselFotos from './carruselFotos.vue';
 
 function plugin(Vue) {
     Vue.component('statusbar', statusbar);
@@ -67,6 +68,9 @@ function plugin(Vue) {
     Vue.component('categorias', categorias);
     Vue.component('scollX', scollX);
     Vue.component('rating', rating);
+    Vue.component('amenidades', amenidades);
+    Vue.component('horas', horas);
+    Vue.component('carruselFotos', carruselFotos);
   
 }
 

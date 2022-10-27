@@ -14,6 +14,11 @@ const initialState = {
     post: null,
     paparatz: null,
     msn: null,
+
+    user_equipo:null,
+    user_rival1:null,
+    user_rival2:null,
+    campo: null,
 };
 
 const state=JSON.parse(JSON.stringify(initialState));
@@ -49,13 +54,32 @@ const mutations={
     },
     
     setPostState(state,[campo,id]){
-        console.log("SET SATTE", state);
+        console.log("SET SATTE", campo, id);
         state[campo] = id;
     },
   
 };
 
 const actions={
+
+    postPostCrearPost({ commit, state }, [ form, callback = null]){
+        let data = {
+            form,
+        };
+        let finish = ()=>{
+            if(callback){
+                callback();
+            }
+        }
+        let load = { 
+            url: 'posts/crear_post', 
+            data: data,
+        }
+        this.dispatch('superPostLoader', load).then(
+        res => {
+            finish(res);
+        },error=>{});
+    },
 
     postPostReportar({ commit, state }, [ comentario, full = true, razon = '', fn = ()=>{} ]){
         let data = {
@@ -124,6 +148,21 @@ const actions={
             data: data,
             loader: false,
             alert: false,
+        }
+        this.dispatch('superPostLoader', load).then(
+        res => {
+            finish(res);
+        },error=>{});
+    },
+    
+    postBorrarPost({ commit, state }, [ post ]){
+        let data = {
+            post: post,
+        };
+        let finish = ()=>{}
+        let load = {
+            url: 'posts/borrar_post',
+            data: data,
         }
         this.dispatch('superPostLoader', load).then(
         res => {

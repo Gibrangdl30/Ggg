@@ -1,11 +1,11 @@
 <template>
     <f7-page  >
 
-        <div class="vista back-color-negro ">
+        <div class="vista  ">
 
-            <nav-bar tipo="inicio" :backs="true" :color="false" :title="'Confirmar pedido'" />
+            <nav-bar tipo="inicio" :backs="true" :color="false" :fix="1" :title="'Confirmar pedido'" />
 
-            <div id="car789" class="contenedor-page-tabs back-color-negro ">
+            <div id="car789" class="contenedor-page-tabs  ">
                 <div class="row w-100 m-0">
 
                     <!-- <div class="row w-100 m-0 back-color-rojo py-10px ">
@@ -16,16 +16,18 @@
                         <div class="row w-100 m-0 py-2" v-for="p of productos" :key="p.id">
                             <div class="row w-100 m-0">
                                 <div class="row w-100 m-0 border-b-gray00-1 py-2 px-3">
-                                    <div class="row w-100 m-0 letra-blanco-15">{{p.nombre}}</div>
-                                    <div class="row w-100 m-0 letra-blanco-15" v-if="p.contenido">Contenido: {{p.contenido}}</div></div>
+                                    <div class="row w-100 m-0 letra-gray4-15">{{p.nombre}}</div>
+                                    <div class="row w-100 m-0 letra-gray3-15" >{{p.descripcion}}</div>
                                 </div>
+                            </div>
                                 <div class="row w-100 m-0 border-b-gray00-1">
                                     <div class="row w-100 m-0 px-3 py-2 justify-content-start">
-                                        <div class="col-auto my-auto px-0 letra-blanco-15">{{p.cantidad}} {{(p.cantidad>1)?'piezas':'pieza'}} </div>
-                                        <div class="col-auto my-auto px-0 letra-blanco-15 pl-2">{{p.precio | currency}}</div>
-                                        <div class="col-auto my-auto px-0 ml-auto letra-rojo-15 fw-800">{{p.total | currency}}</div>
+                                        <div class="col-auto my-auto px-0 letra-gray3-15">{{p.cantidad}} {{(p.cantidad>1)?'piezas':'pieza'}} </div>
+                                        <div class="col-auto my-auto px-0 letra-gray3-15 pl-2">{{p.precio | currency}}</div>
+                                        <div class="col-auto my-auto px-0 ml-auto letra-rojo1-15 fw-800">{{p.total | currency}}</div>
                                     </div>
                                 </div>
+
                                 <div class="row w-100 m-0 border-b-gray00-1" v-if="p.comentarios">
                                     <div class="row w-100 m-0 px-3 py-2 justify-content-start">
                                         <div class="row w-100 m-0 letra-blanco-16">Instrucciones:</div>
@@ -36,15 +38,16 @@
                         </div>
                     </div>
 
-
-                    <template v-if="0" >
+                    <template v-if="1" >
                         <div class="row w-100 m-0 py-10px mt-3 px-3">
                             <div class="row w-100 m-0 letra-rojo-16 fw-600 text-capitalize">dirección de envío</div>
                         </div>
                         <div class="row w-100 m-0 px-3">
+
                             <div class="row w-100 m-0 py-2 " @click="router.navigate('/mis_domicilios')">
                                 <div class="row w-100 m-0 px-3">
-                                    <div class="col-auto mx-auto text-right px-0 letra-blanco-16">{{domicilio.calle}} {{domicilio.numero}}</div>
+                                    <div v-if="domicilio && domicilio.id" class="col-auto mr-auto px-0 letra-gray3-16">{{domicilio.calle}} {{domicilio.numero}}</div>
+                                    <div v-else class="col-auto mr-auto px-0 letra-gray3-16">Selecciona una dirección</div>
                                 </div>
 
                                 <div class="row w-100 m-0" v-if="data.programada == '0'" >
@@ -126,12 +129,12 @@
                                             <imagen :icono="true" :src="metodo_pago.brand.toLowerCase()" />
                                         </div>
                                     </div>
-                                    <div class="col my-auto px-0 letra-blanco-20">**** {{metodo_pago.ending}}</div>
+                                    <div class="col my-auto px-0 letra-gray3-20">**** {{metodo_pago.ending}}</div>
                                 </div>
                             </template>
 
                             <div class="row w-100 m-0 px-3" v-else>
-                                <div class="col-auto my-auto px-0 py-2 letra-blanco-16">Seleccionar metodo de pago</div>
+                                <div class="col-auto my-auto px-0 py-2 letra-gray3-16">Seleccionar metodo de pago</div>
                             </div>
                         </div>
                     </template>

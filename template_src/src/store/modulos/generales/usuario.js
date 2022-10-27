@@ -144,7 +144,7 @@ const actions={
         };
 
         let finish = (res)=>{
-            console.log("RES RES", res.data.imagen );
+            // console.log("RES RES", res.data.imagen );
             if(res.data && res.data.imagen){
                 this.dispatch('saveGallery', res.data);
             }

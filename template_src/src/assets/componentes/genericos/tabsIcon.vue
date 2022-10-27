@@ -170,7 +170,7 @@ export default {
 
     },
     created(){
-        console.log("UISER", this.user);
+        // console.log("UISER", this.user);
     },
     methods:{
         goTo(ruta){

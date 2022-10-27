@@ -45,13 +45,13 @@ button.boton-verde
 
 button.boton-app
 {
-    background: linear-gradient(136.67deg, #b85409 0%, #d96113 100%) !important;
-    border: 1px solid #d96113  !important;
+    background: linear-gradient(136.67deg, #803bed 0%, #803bed 100%) !important;
+    border: 1px solid #803bed  !important;
     &.active-state,:hover{
         .row{
             color: white !important;
         }
-        background: #fab88b !important;      
+        background: #bb99f0 !important;      
     }
 }
 
@@ -79,15 +79,14 @@ button.boton-marino
     }
 }
 
-button.boton-naranja
-{
-    background-color: #9b2e00 !important;
-    border: 1px solid #9b2e00  !important;
+button.boton-naranja{
+    background: linear-gradient(136.67deg, #fd7a20 0%, #fc392a 100%) !important;
+    border: 1px solid #fc392a  !important;
     &.active-state,:hover{
         .row{
             color: white !important;
         }
-        background: #000000  !important;      
+        background: #e8938d  !important;      
     }
 }
 

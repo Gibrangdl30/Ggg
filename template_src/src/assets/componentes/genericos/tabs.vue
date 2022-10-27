@@ -1,6 +1,6 @@
 <template>
-<div class="row m-0 w-100 pt-8px pb-10px justify-content-space-between border-t-blanco-1 back-color-negro " >
-    <div class="row w-100 m-0 pb-3 pb-ios-20px">
+<div class="row m-0 w-100 pt-8px pb-10px justify-content-space-between border-t-blanco-1 back-color-blanco " >
+    <div class="row w-100 m-0 pb-11px">
 
         <div class="row w-100 m-0" v-if="user">
 
@@ -10,54 +10,38 @@
                 </div>
                 <div class="row w-100 m-0 position-relative z-200">
                     <div class="row w-100 m-0 justify-content-center">
-                        <icono icono="home" :clase="(tabVisible==1)?'letra-rojo3-30' :'letra-blanco-30'" />
+                        <icono icono="home" :clase="(tabVisible==1)?'letra-rojo3-30' :'letra-gray3-30'" />
                     </div>
                     <div class="row w-100 m-0 justify-content-center " v-if="!onlyIcon">
-                        <div :class="(tabVisible==1)?'letra-rojo3-2-6vw' :'letra-blanco-2-6vw'" class="row w-100 m-0  m-0 text-center justify-content-center w-100"  >Inicio</div>
+                        <div :class="(tabVisible==1)?'letra-rojo3-2-6vw' :'letra-gray3-2-6vw'" class="row w-100 m-0  m-0 text-center justify-content-center w-100"  >Inicio</div>
                     </div>
                 </div>
             </div>
 
-            <div class="col p-0 h-100" @click="goTo('/eventos')">
+            <div v-if="1" class="col p-0 h-100" @click="goTo('/compras')">
                 <div class="row w-100 m-0 position-absolute left-0px top--6px z-10 justify-content-center" v-if="circle">
                     <div class="w-60px h-60px mx-auto back-color-azul1 border-radius-50 " v-if="tabVisible==2"></div>
                 </div>
                 <div class="row w-100 m-0 position-relative z-200">
                     <div class="row w-100 m-0 justify-content-center">
-                        <icono icono="theaters" :clase="(tabVisible==2)?'letra-rojo3-30 pt-2px' :'letra-blanco-30 pt-2px'" />
+                        <icono icono="store" :clase="(tabVisible==2)?'letra-rojo3-30' :'letra-gray3-30'" />
                     </div>
                     <div class="row w-100 m-0 justify-content-center " v-if="!onlyIcon">
-                        <div :class="(tabVisible==2)?'letra-rojo3-2-6vw' :'letra-blanco-2-6vw'" class="row w-100 m-0 text-capitalize text-center justify-content-center w-100"  >eventos</div>
+                        <div :class="(tabVisible==2)?'letra-rojo3-2-6vw' :'letra-gray3-2-6vw'" class="row w-100 m-0  m-0 text-center justify-content-center w-100"  >Tienda</div>
                     </div>
                 </div>
             </div>
-
-            <div class="col p-0 h-100" @click="goTo('/comunicados')">
+            
+            <div v-if="1" class="col p-0 h-100" @click="goTo('/posts')">
                 <div class="row w-100 m-0 position-absolute left-0px top--6px z-10 justify-content-center" v-if="circle">
                     <div class="w-60px h-60px mx-auto back-color-azul1 border-radius-50 " v-if="tabVisible==3"></div>
                 </div>
-
                 <div class="row w-100 m-0 position-relative z-200">
                     <div class="row w-100 m-0 justify-content-center">
-                        <icono icono="chat_bubble_outline" :clase="(tabVisible==3)?'letra-rojo3-30' :'letra-blanco-30'" />
+                        <icono icono="people" :clase="(tabVisible==3)?'letra-rojo3-30' :'letra-gray3-30'" />
                     </div>
                     <div class="row w-100 m-0 justify-content-center " v-if="!onlyIcon">
-                        <div :class="(tabVisible==3)?'letra-rojo3-2-6vw' :'letra-blanco-2-6vw'" class="row w-100 m-0 text-capitalize text-center justify-content-center w-100"  >Comunicados</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col p-0 h-100" @click="goTo('/consumos')">
-                <div class="row w-100 m-0 position-absolute left-0px top--6px z-10 justify-content-center" v-if="circle">
-                    <div class="w-60px h-60px mx-auto back-color-azul1 border-radius-50 " v-if="tabVisible==4"></div>
-                </div>
-
-                <div class="row w-100 m-0 position-relative z-200">
-                    <div class="row w-100 m-0 justify-content-center">
-                        <icono icono="local_bar" :clase="(tabVisible==4)?'letra-rojo3-30' :'letra-blanco-30'" />
-                    </div>
-                    <div class="row w-100 m-0 justify-content-center " v-if="!onlyIcon">
-                        <div :class="(tabVisible==4)?'letra-rojo3-2-6vw' :'letra-blanco-2-6vw'" class="row w-100 m-0 text-capitalize text-center justify-content-center w-100"  >Consumos</div>
+                        <div :class="(tabVisible==3)?'letra-rojo3-2-6vw' :'letra-gray3-2-6vw'" class="row w-100 m-0  m-0 text-center justify-content-center w-100"  >Comunidad</div>
                     </div>
                 </div>
             </div>
@@ -69,10 +53,10 @@
                 
                 <div class="row w-100 m-0 position-relative z-200">
                     <div class="row w-100 m-0 justify-content-center">
-                        <icono icono="person_outline" :clase="(tabVisible==5)?'letra-rojo3-30' :'letra-blanco-30'" />
+                        <icono icono="person_outline" :clase="(tabVisible==5)?'letra-rojo3-30' :'letra-gray3-30'" />
                     </div>
                     <div class="row w-100 m-0 justify-content-center " v-if="!onlyIcon">
-                        <div :class="(tabVisible==5)?'letra-rojo3-2-6vw' :'letra-blanco-2-6vw'" class="row w-100 m-0 text-capitalize text-center justify-content-center w-100" >Perfil</div>
+                        <div :class="(tabVisible==5)?'letra-rojo3-2-6vw' :'letra-gray3-2-6vw'" class="row w-100 m-0 text-capitalize text-center justify-content-center w-100" >Perfil</div>
                     </div>
                 </div>
             </div>
@@ -86,10 +70,10 @@
 
                 <div class="row w-100 m-0 position-relative z-200">
                     <div class="row w-100 m-0 justify-content-center">
-                        <icono icono="sync_alt" :clase="(tabVisible==1)?'letra-rojo3-30' :'letra-blanco-30'" />
+                        <icono icono="sync_alt" :clase="(tabVisible==1)?'letra-rojo3-30' :'letra-gray3-30'" />
                     </div>
                     <div class="row w-100 m-0 justify-content-center " v-if="!onlyIcon">
-                        <div :class="(tabVisible==1)?'letra-rojo3-2-6vw' :'letra-blanco-2-6vw'" class="row w-100 m-0 text-capitalize text-center justify-content-center w-100" >Entradas y salidas</div>
+                        <div :class="(tabVisible==1)?'letra-rojo3-2-6vw' :'letra-gray3-2-6vw'" class="row w-100 m-0 text-capitalize text-center justify-content-center w-100" >Entradas y salidas</div>
                     </div>
                 </div>
             </div>
@@ -101,10 +85,10 @@
 
                 <div class="row w-100 m-0 position-relative z-200">
                     <div class="row w-100 m-0 justify-content-center">
-                        <icono icono="edit" :clase="(tabVisible==2)?'letra-rojo3-30' :'letra-blanco-30'" />
+                        <icono icono="edit" :clase="(tabVisible==2)?'letra-rojo3-30' :'letra-gray3-30'" />
                     </div>
                     <div class="row w-100 m-0 justify-content-center " v-if="!onlyIcon">
-                        <div :class="(tabVisible==2)?'letra-rojo3-2-6vw' :'letra-blanco-2-6vw'" class="row w-100 m-0 text-capitalize text-center justify-content-center w-100" >Alumnos</div>
+                        <div :class="(tabVisible==2)?'letra-rojo3-2-6vw' :'letra-gray3-2-6vw'" class="row w-100 m-0 text-capitalize text-center justify-content-center w-100" >Alumnos</div>
                     </div>
                 </div>
             </div>
@@ -116,10 +100,10 @@
                 
                 <div class="row w-100 m-0 position-relative z-200">
                     <div class="row w-100 m-0 justify-content-center">
-                        <icono icono="person_outline" :clase="(tabVisible==5)?'letra-rojo3-30' :'letra-blanco-30'" />
+                        <icono icono="person_outline" :clase="(tabVisible==5)?'letra-rojo3-30' :'letra-gray3-30'" />
                     </div>
                     <div class="row w-100 m-0 justify-content-center " v-if="!onlyIcon">
-                        <div :class="(tabVisible==5)?'letra-rojo3-2-6vw' :'letra-blanco-2-6vw'" class="row w-100 m-0 text-capitalize text-center justify-content-center w-100" >Mi Cuenta</div>
+                        <div :class="(tabVisible==5)?'letra-rojo3-2-6vw' :'letra-gray3-2-6vw'" class="row w-100 m-0 text-capitalize text-center justify-content-center w-100" >Mi Cuenta</div>
                     </div>
                 </div>
             </div>
@@ -132,10 +116,10 @@
                 </div>
                 <div class="row w-100 m-0 position-relative z-200">
                     <div class="row w-100 m-0 justify-content-center">
-                        <icono icono="home" :clase="(tabVisible==1)?'letra-rojo3-30' :'letra-blanco-30'" />
+                        <icono icono="home" :clase="(tabVisible==1)?'letra-rojo3-30' :'letra-gray3-30'" />
                     </div>
                     <div class="row w-100 m-0 justify-content-center " v-if="!onlyIcon">
-                        <div :class="(tabVisible==1)?'letra-rojo3-2-6vw' :'letra-blanco-2-6vw'" class="row w-100 m-0  m-0 text-center justify-content-center w-100"  >Inicio</div>
+                        <div :class="(tabVisible==1)?'letra-rojo3-2-6vw' :'letra-gray3-2-6vw'" class="row w-100 m-0  m-0 text-center justify-content-center w-100"  >Inicio</div>
                     </div>
                 </div>
             </div>
@@ -148,10 +132,10 @@
 
                 <div class="row w-100 m-0 position-relative z-200">
                     <div class="row w-100 m-0 justify-content-center">
-                        <icono icono="edit" :clase="(tabVisible==2)?'letra-rojo3-30' :'letra-blanco-30'" />
+                        <icono icono="edit" :clase="(tabVisible==2)?'letra-rojo3-30' :'letra-gray3-30'" />
                     </div>
                     <div class="row w-100 m-0 justify-content-center " v-if="!onlyIcon">
-                        <div :class="(tabVisible==2)?'letra-rojo3-2-6vw' :'letra-blanco-2-6vw'" class="row w-100 m-0 text-capitalize text-center justify-content-center w-100" >Alumnos</div>
+                        <div :class="(tabVisible==2)?'letra-rojo3-2-6vw' :'letra-gray3-2-6vw'" class="row w-100 m-0 text-capitalize text-center justify-content-center w-100" >Alumnos</div>
                     </div>
                 </div>
             </div>
@@ -163,10 +147,10 @@
 
                 <div class="row w-100 m-0 position-relative z-200">
                     <div class="row w-100 m-0 justify-content-center">
-                        <icono icono="chat_bubble_outline" :clase="(tabVisible==3)?'letra-rojo3-30' :'letra-blanco-30'" />
+                        <icono icono="chat_bubble_outline" :clase="(tabVisible==3)?'letra-rojo3-30' :'letra-gray3-30'" />
                     </div>
                     <div class="row w-100 m-0 justify-content-center " v-if="!onlyIcon">
-                        <div :class="(tabVisible==3)?'letra-rojo3-2-6vw' :'letra-blanco-2-6vw'" class="row w-100 m-0 text-capitalize text-center justify-content-center w-100"  >Inbox</div>
+                        <div :class="(tabVisible==3)?'letra-rojo3-2-6vw' :'letra-gray3-2-6vw'" class="row w-100 m-0 text-capitalize text-center justify-content-center w-100"  >Inbox</div>
                     </div>
                 </div>
             </div>
@@ -178,10 +162,10 @@
                 
                 <div class="row w-100 m-0 position-relative z-200">
                     <div class="row w-100 m-0 justify-content-center">
-                        <icono icono="person_outline" :clase="(tabVisible==5)?'letra-rojo3-30' :'letra-blanco-30'" />
+                        <icono icono="person_outline" :clase="(tabVisible==5)?'letra-rojo3-30' :'letra-gray3-30'" />
                     </div>
                     <div class="row w-100 m-0 justify-content-center " v-if="!onlyIcon">
-                        <div :class="(tabVisible==5)?'letra-rojo3-2-6vw' :'letra-blanco-2-6vw'" class="row w-100 m-0 text-capitalize text-center justify-content-center w-100" >Mi Cuenta</div>
+                        <div :class="(tabVisible==5)?'letra-rojo3-2-6vw' :'letra-gray3-2-6vw'" class="row w-100 m-0 text-capitalize text-center justify-content-center w-100" >Mi Cuenta</div>
                     </div>
                 </div>
             </div>
@@ -223,10 +207,12 @@ export default {
                     this.active = 1;
                     break;
                 case '/eventos': 
+                case '/compras': 
                     this.active = 2;
                     break;
                 case '/chats': 
                 case '/comunicados': 
+                case '/posts': 
                     this.active = 3;
                     break;
                 case '/rutas': 
@@ -242,7 +228,7 @@ export default {
 
     },
     created(){
-        console.log("UISER", this.user);
+        // console.log("UISER", this.user);
     },
     methods:{
         goTo(ruta){

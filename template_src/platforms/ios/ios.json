@@ -34,7 +34,7 @@
           "CFBundleVersion": [
             {
               "xml": "<string>11</string>",
-              "count": 9
+              "count": 6
             }
           ]
         }
@@ -43,15 +43,15 @@
         "parents": {
           "/*": [
             {
-              "xml": "<feature name=\"CDVWKWebViewEngine\"><param name=\"ios-package\" value=\"CDVWKWebViewEngine\" /></feature>",
+              "xml": "<feature name=\"Camera\"><param name=\"ios-package\" value=\"CDVCamera\" /></feature>",
               "count": 1
             },
             {
-              "xml": "<preference name=\"CordovaWebViewEngine\" value=\"CDVWKWebViewEngine\" />",
+              "xml": "<preference name=\"CameraUsesGeolocation\" value=\"false\" />",
               "count": 1
             },
             {
-              "xml": "<feature name=\"InAppBrowser\"><param name=\"ios-package\" value=\"CDVWKInAppBrowser\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
               "count": 1
             },
             {
@@ -63,11 +63,15 @@
               "count": 1
             },
             {
-              "xml": "<feature name=\"Camera\"><param name=\"ios-package\" value=\"CDVCamera\" /></feature>",
+              "xml": "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>",
               "count": 1
             },
             {
-              "xml": "<preference name=\"CameraUsesGeolocation\" value=\"false\" />",
+              "xml": "<feature name=\"InAppBrowser\"><param name=\"ios-package\" value=\"CDVWKInAppBrowser\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"CDVIonicKeyboard\"><param name=\"ios-package\" onload=\"true\" value=\"CDVIonicKeyboard\" /></feature>",
               "count": 1
             },
             {
@@ -75,11 +79,27 @@
               "count": 1
             },
             {
-              "xml": "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>",
+              "xml": "<feature name=\"QRScanner\"><param name=\"ios-package\" value=\"QRScanner\" /></feature>",
               "count": 1
             },
             {
-              "xml": "<feature name=\"QRScanner\"><param name=\"ios-package\" value=\"QRScanner\" /></feature>",
+              "xml": "<feature name=\"StatusBar\"><param name=\"ios-package\" value=\"CDVStatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<preference name=\"StatusBarOverlaysWebView\" value=\"true\" />",
+              "count": 1
+            },
+            {
+              "xml": "<preference name=\"StatusBarStyle\" value=\"lightcontent\" />",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"CDVWKWebViewEngine\"><param name=\"ios-package\" value=\"CDVWKWebViewEngine\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<preference name=\"CordovaWebViewEngine\" value=\"CDVWKWebViewEngine\" />",
               "count": 1
             }
           ]
@@ -88,16 +108,16 @@
     }
   },
   "installed_plugins": {
-    "cordova-plugin-whitelist": {
+    "cordova-custom-config": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
-    "cordova-plugin-wkwebview-engine": {
+    "cordova-plugin-add-swift-support": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
-    "cordova-plugin-inappbrowser": {
+    "cordova-plugin-camera": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
-    "cordova-plugin-splashscreen": {
+    "cordova-plugin-device": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
     "cordova-plugin-file": {
@@ -106,50 +126,75 @@
     "cordova-plugin-file-transfer": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
-    "cordova-custom-config": {
+    "cordova-plugin-geolocation": {
+      "GPS_REQUIRED": "true",
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
-    "cordova-plugin-camera": {
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-ionic-keyboard": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
     "cordova-plugin-keyboard": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
-    "cordova-plugin-geolocation": {
-      "GPS_REQUIRED": "true",
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    },
-    "cordova-plugin-add-swift-support": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    },
     "cordova-plugin-qrscanner": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-wkwebview-engine": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     }
   },
   "dependent_plugins": {},
   "modules": [
     {
-      "id": "cordova-plugin-wkwebview-engine.ios-wkwebview-exec",
-      "file": "plugins/cordova-plugin-wkwebview-engine/src/www/ios/ios-wkwebview-exec.js",
-      "pluginId": "cordova-plugin-wkwebview-engine",
+      "id": "cordova-plugin-camera.Camera",
+      "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
+      "pluginId": "cordova-plugin-camera",
       "clobbers": [
-        "cordova.exec"
+        "Camera"
       ]
     },
     {
-      "id": "cordova-plugin-wkwebview-engine.ios-wkwebview",
-      "file": "plugins/cordova-plugin-wkwebview-engine/src/www/ios/ios-wkwebview.js",
-      "pluginId": "cordova-plugin-wkwebview-engine",
+      "id": "cordova-plugin-camera.CameraPopoverOptions",
+      "file": "plugins/cordova-plugin-camera/www/CameraPopoverOptions.js",
+      "pluginId": "cordova-plugin-camera",
       "clobbers": [
-        "window.WkWebView"
+        "CameraPopoverOptions"
       ]
     },
     {
-      "id": "cordova-plugin-inappbrowser.inappbrowser",
-      "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
-      "pluginId": "cordova-plugin-inappbrowser",
+      "id": "cordova-plugin-camera.camera",
+      "file": "plugins/cordova-plugin-camera/www/Camera.js",
+      "pluginId": "cordova-plugin-camera",
       "clobbers": [
-        "cordova.InAppBrowser.open"
+        "navigator.camera"
+      ]
+    },
+    {
+      "id": "cordova-plugin-camera.CameraPopoverHandle",
+      "file": "plugins/cordova-plugin-camera/www/ios/CameraPopoverHandle.js",
+      "pluginId": "cordova-plugin-camera",
+      "clobbers": [
+        "CameraPopoverHandle"
+      ]
+    },
+    {
+      "id": "cordova-plugin-device.device",
+      "file": "plugins/cordova-plugin-device/www/device.js",
+      "pluginId": "cordova-plugin-device",
+      "clobbers": [
+        "device"
       ]
     },
     {
@@ -342,46 +387,6 @@
       ]
     },
     {
-      "id": "cordova-plugin-camera.Camera",
-      "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
-      "pluginId": "cordova-plugin-camera",
-      "clobbers": [
-        "Camera"
-      ]
-    },
-    {
-      "id": "cordova-plugin-camera.CameraPopoverOptions",
-      "file": "plugins/cordova-plugin-camera/www/CameraPopoverOptions.js",
-      "pluginId": "cordova-plugin-camera",
-      "clobbers": [
-        "CameraPopoverOptions"
-      ]
-    },
-    {
-      "id": "cordova-plugin-camera.camera",
-      "file": "plugins/cordova-plugin-camera/www/Camera.js",
-      "pluginId": "cordova-plugin-camera",
-      "clobbers": [
-        "navigator.camera"
-      ]
-    },
-    {
-      "id": "cordova-plugin-camera.CameraPopoverHandle",
-      "file": "plugins/cordova-plugin-camera/www/ios/CameraPopoverHandle.js",
-      "pluginId": "cordova-plugin-camera",
-      "clobbers": [
-        "CameraPopoverHandle"
-      ]
-    },
-    {
-      "id": "cordova-plugin-keyboard.keyboard",
-      "file": "plugins/cordova-plugin-keyboard/www/keyboard.js",
-      "pluginId": "cordova-plugin-keyboard",
-      "clobbers": [
-        "window.Keyboard"
-      ]
-    },
-    {
       "id": "cordova-plugin-geolocation.Coordinates",
       "file": "plugins/cordova-plugin-geolocation/www/Coordinates.js",
       "pluginId": "cordova-plugin-geolocation",
@@ -414,26 +419,77 @@
       ]
     },
     {
+      "id": "cordova-plugin-inappbrowser.inappbrowser",
+      "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+      "pluginId": "cordova-plugin-inappbrowser",
+      "clobbers": [
+        "cordova.InAppBrowser.open"
+      ]
+    },
+    {
+      "id": "cordova-plugin-ionic-keyboard.keyboard",
+      "file": "plugins/cordova-plugin-ionic-keyboard/www/ios/keyboard.js",
+      "pluginId": "cordova-plugin-ionic-keyboard",
+      "clobbers": [
+        "window.Keyboard"
+      ]
+    },
+    {
+      "id": "cordova-plugin-keyboard.keyboard",
+      "file": "plugins/cordova-plugin-keyboard/www/keyboard.js",
+      "pluginId": "cordova-plugin-keyboard",
+      "clobbers": [
+        "window.Keyboard"
+      ]
+    },
+    {
       "id": "cordova-plugin-qrscanner.QRScanner",
       "file": "plugins/cordova-plugin-qrscanner/www/www.min.js",
       "pluginId": "cordova-plugin-qrscanner",
       "clobbers": [
         "QRScanner"
       ]
+    },
+    {
+      "id": "cordova-plugin-statusbar.statusbar",
+      "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+      "pluginId": "cordova-plugin-statusbar",
+      "clobbers": [
+        "window.StatusBar"
+      ]
+    },
+    {
+      "id": "cordova-plugin-wkwebview-engine.ios-wkwebview-exec",
+      "file": "plugins/cordova-plugin-wkwebview-engine/src/www/ios/ios-wkwebview-exec.js",
+      "pluginId": "cordova-plugin-wkwebview-engine",
+      "clobbers": [
+        "cordova.exec"
+      ]
+    },
+    {
+      "id": "cordova-plugin-wkwebview-engine.ios-wkwebview",
+      "file": "plugins/cordova-plugin-wkwebview-engine/src/www/ios/ios-wkwebview.js",
+      "pluginId": "cordova-plugin-wkwebview-engine",
+      "clobbers": [
+        "window.WkWebView"
+      ]
     }
   ],
   "plugin_metadata": {
-    "cordova-plugin-whitelist": "1.3.5",
-    "cordova-plugin-wkwebview-engine": "1.2.2",
-    "cordova-plugin-inappbrowser": "4.1.0",
-    "cordova-plugin-splashscreen": "6.0.2",
+    "cordova-custom-config": "5.1.1",
+    "cordova-plugin-add-swift-support": "2.0.2",
+    "cordova-plugin-camera": "4.1.0",
+    "cordova-plugin-device": "2.1.0",
     "cordova-plugin-file": "6.0.2",
     "cordova-plugin-file-transfer": "1.7.1",
-    "cordova-custom-config": "5.1.1",
-    "cordova-plugin-camera": "4.1.0",
-    "cordova-plugin-keyboard": "1.2.0",
     "cordova-plugin-geolocation": "4.1.0",
-    "cordova-plugin-add-swift-support": "2.0.2",
-    "cordova-plugin-qrscanner": "3.0.1"
+    "cordova-plugin-inappbrowser": "4.1.0",
+    "cordova-plugin-ionic-keyboard": "2.2.0",
+    "cordova-plugin-keyboard": "1.2.0",
+    "cordova-plugin-qrscanner": "3.0.1",
+    "cordova-plugin-splashscreen": "6.0.2",
+    "cordova-plugin-statusbar": "3.0.0",
+    "cordova-plugin-whitelist": "1.3.5",
+    "cordova-plugin-wkwebview-engine": "1.2.2"
   }
 }

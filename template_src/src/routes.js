@@ -70,6 +70,10 @@ import producto from './assets/pages/usuario/producto.vue';
 import carrito from './assets/pages/usuario/carrito.vue';
 import confirmacion_carrito from './assets/pages/usuario/confirmacion_carrito.vue';
 
+import compras from './assets/pages/usuario/compras.vue';
+import mis_domicilios from './assets/pages/usuario/mis_domicilios.vue';
+import nuevo_domicilio from './assets/pages/usuario/nuevo_domicilio.vue';
+
 
 import comunicados from './assets/pages/usuario/comunicados.vue';
 import comunicado_detalle from './assets/pages/usuario/comunicado_detalle.vue';
@@ -77,11 +81,17 @@ import mis_boletos from './assets/pages/usuario/mis_boletos.vue';
 import mi_boleto_detalle from './assets/pages/usuario/mi_boleto_detalle.vue';
 import boleto_detalle from './assets/pages/usuario/boleto_detalle.vue';
 
+import mis_compras from './assets/pages/usuario/mis_compras.vue';
+import posts from './assets/pages/usuario/posts.vue';
+
 import mis_consumos from './assets/pages/usuario/mis_consumos.vue';
 import mis_consumos_detalle from './assets/pages/usuario/mis_consumos_detalle.vue';
 import consumo_detalle from './assets/pages/usuario/consumo_detalle.vue';
 
 import crear_post from './assets/pages/usuario/crear_post.vue';
+import crear_post_res from './assets/pages/usuario/crear_post_res.vue';
+
+
 import post_comentarios from './assets/pages/usuario/post_comentarios.vue';
 import iniciar_chat_amigo from './assets/pages/usuario/iniciar_chat_amigo.vue';
 import seleccionar_amigo_request from './assets/pages/usuario/seleccionar_amigo_request.vue';
@@ -93,6 +103,7 @@ import fotos_para_mi from './assets/pages/usuario/fotos_para_mi.vue';
 import fotos_tomadas from './assets/pages/usuario/fotos_tomadas.vue';
 import fotos_de_paparatz from './assets/pages/usuario/fotos_de_paparatz.vue';
 import fotos_de_cliente from './assets/pages/usuario/fotos_de_cliente.vue';
+import seleccionar_usuario_post from './assets/pages/usuario/seleccionar_usuario_post.vue';
 
 
 const usuario = [
@@ -109,6 +120,9 @@ const usuario = [
   {path: '/producto',component: producto},
   {path: '/carrito',component: carrito},
   {path: '/confirmacion_carrito',component: confirmacion_carrito},
+  
+  {path: '/mis_domicilios',component: mis_domicilios},
+  {path: '/nuevo_domicilio',component: nuevo_domicilio},
 
   {path: '/comunicados',component: comunicados},
   {path: '/comunicado_detalle',component: comunicado_detalle},
@@ -118,11 +132,20 @@ const usuario = [
   {path: '/mi_boleto_detalle',component: mi_boleto_detalle },
   {path: '/boleto_detalle',component: boleto_detalle },
   
+  {path: '/mis_compras',component: mis_compras },
+
+  {path: '/compras',component: compras },
+  {path: '/posts',component: posts },
+  
   {path: '/mis_consumos',component: mis_consumos },
   {path: '/mis_consumos_detalle',component: mis_consumos_detalle },
   {path: '/consumo_detalle',component: consumo_detalle },
 
   {path: '/crear_post',component: crear_post},
+  {path: '/crear_post_res',component: crear_post_res},
+  
+  {path: '/seleccionar_usuarios_post',component: seleccionar_usuario_post},
+
   {path: '/post_comentarios',component: post_comentarios},
   {path: '/iniciar_chat_amigo',component: iniciar_chat_amigo},
   {path: '/seleccionar_amigo_request',component: seleccionar_amigo_request},
