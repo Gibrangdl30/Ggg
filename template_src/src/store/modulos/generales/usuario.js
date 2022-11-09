@@ -125,7 +125,7 @@ const actions={
         let finish = (res)=>{
             this.dispatch('synchronizeData');
             swal({
-                title:"Inmueble agregado a tus favoritos",
+                title:"Producto agregado a tus favoritos",
                 text:"",
                 icon:"success",
                 button: 'Entendido',

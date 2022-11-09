@@ -58,17 +58,6 @@
 
 
                         <div class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1"  >
-                            <button type="button" class="button button-outline button-raised button-active-gray px-3 py-2 text-left" @click="router.navigate('/mis_boletos')" >
-                                <div class="row m-0 w-100 justify-content-between">
-                                    <div class="col my-auto letra-gray3-5-1vw p-0">Mis reservaciones</div>
-                                    <div class="col-auto p-0">
-                                        <icono icono="chevron_right" clase="letra-gray3-30" />
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
-                        
-                        <div class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1"  >
                             <button type="button" class="button button-outline button-raised button-active-gray px-3 py-2 text-left" @click="router.navigate('/mis_compras')" >
                                 <div class="row m-0 w-100 justify-content-between">
                                     <div class="col my-auto letra-gray3-5-1vw p-0">Mis compras</div>
@@ -93,7 +82,7 @@
                         <div class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1"  >
                             <button type="button" class="button button-outline button-raised button-active-gray px-3 py-2 text-left" @click="router.navigate('/mis_domicilios')" >
                                 <div class="row m-0 w-100 justify-content-between">
-                                    <div class="col my-auto letra-gray3-5-1vw p-0">Direcciones de entega</div>
+                                    <div class="col my-auto letra-gray3-5-1vw p-0">Direcciones de entrega</div>
                                     <div class="col-auto p-0">
                                         <icono icono="chevron_right" clase="letra-gray3-30" />
                                     </div>
@@ -112,10 +101,10 @@
                             </button>
                         </div>
 
-                        <div class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1"  >
+                        <div v-if="1" class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1"  >
                             <button type="button" class="button button-outline button-raised button-active-gray px-3 py-2 text-left" @click="router.navigate('/aviso_privacidad')">
                                 <div class="row m-0 w-100 justify-content-between">
-                                    <div class="col my-auto letra-gray3-5-1vw p-0">Privacidad</div>
+                                    <div class="col my-auto letra-gray3-5-1vw p-0">Aviso de privacidad</div>
                                     <div class="col-auto p-0">
                                         <icono icono="chevron_right" clase="letra-gray3-30" />
                                     </div>
@@ -124,7 +113,7 @@
                         </div>
 
 
-                        <div class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1"  >
+                        <div v-if="0" class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1"  >
                             <button type="button" class="button button-outline button-raised button-active-gray px-3 py-2 text-left" @click="$store.dispatch('sendWhatsapp', session.soporte)" >
                                 <div class="row m-0 w-100 justify-content-between">
                                     <div class="col my-auto letra-gray3-5-1vw p-0">Contacto</div>

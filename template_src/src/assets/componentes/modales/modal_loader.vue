@@ -65,7 +65,7 @@ export default {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #803bed;
+    background: #e91f78;
     position: absolute;
     top: 100px;
     left: 32px;
@@ -76,30 +76,30 @@ export default {
   .lds-ellipsis div:nth-child(1) div {
     -webkit-animation: lds-ellipsis2 1.3s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
     animation: lds-ellipsis2 1.3s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
-    background: #803bed ;
+    background: #e91f78 ;
   }
 
   .lds-ellipsis div:nth-child(2) div {
     -webkit-animation-delay: -0.65s;
     animation-delay: -0.65s;
-    background: #803bed ;
+    background: #e91f78 ;
   }
 
   .lds-ellipsis div:nth-child(3) div {
     -webkit-animation-delay: -0.325s;
     animation-delay: -0.325s;
-    background: #803bed ;
+    background: #e91f78 ;
   }
 
   .lds-ellipsis div:nth-child(4) div {
     -webkit-animation-delay: 0s;
     animation-delay: 0s;
-    background: #803bed ;
+    background: #e91f78 ;
   }
   .lds-ellipsis div:nth-child(5) div {
     -webkit-animation: lds-ellipsis3 1.3s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
     animation: lds-ellipsis3 1.3s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
-    background: #803bed ;
+    background: #e91f78 ;
   }
   .lds-ellipsis {
     width: 65px !important;

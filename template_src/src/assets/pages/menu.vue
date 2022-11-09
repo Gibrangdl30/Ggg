@@ -1,18 +1,19 @@
 <template>
     <f7-page class="back-color-blanco">
         <div class="vista h-100 back-color-blanco">
-            <div class="contenedor-page back-color-blanco pb-10vh">
+            <div class="contenedor-page back-color-negro pb-10vh">
 
-                <div class="row w-100 m-0 pt-4 pb-4">
-                    <div class="row w-100 m-0 pt-3 pb-3">
+                <div class="row w-100 m-0 pt-4 pb-4" v-if="0">
+                    <div class="row w-100 m-0 pt-3">
                         <div class="h-29vw w-29vw mx-auto">
-                            <imagen clase="border-radius-50 overflow-hidden" :fit="true" :perfil="true" alt="" />
+                            <imagen clase="border-radius-50 overflow-hidden carta" :fit="true" :perfil="true" alt="" />
                         </div>
                     </div>
+                    <div class="row w-100 m-0 pt-2 letra-gray4-20 justify-content-center text-center fw-800">{{session.nombre}}</div>
                 </div>
 
-                <div class="row m-0 justify-content-center">
-                    <template v-if="!session.token">
+                <div class="row m-0 w-100 pt-4 justify-content-center">
+                    <template v-if="!session.token && 0">
                         <div class="row w-100 m-0 px-3 py-2" @click="tologin()" >
                             <div class="col-auto px-0 my-auto">
                                 <icono icono="person_outline" clase="letra-gray3-30" />
@@ -22,7 +23,31 @@
                             </div>
                         </div>
                     </template>
-                    <template v-if="session.token">
+
+                    <template >
+                        <div v-for="c of categorias" :key="c.id" class="row w-100 m-0  "  >
+                            <div class="row w-100 m-0 px-1 pr-2 py-2 border-b-gray01-1">
+                                <div v-if="0" class="w-11vw h-11vw carta border-radius-50 overflow-hidden position-relative  " >
+                                    <imagen clase="" :fit="true" :src="c.imagen" />
+                                </div>
+                                <div class="col px-0 mb-auto pl-3" @click="set(c.id)">
+                                    <div class="row m-0 w-100 letra-blanco-20 fw-600">{{c.name}}</div>
+                                </div>
+                                <div class="col-auto px-0 pt-3px" v-if="c.subcat && c.subcat.length" @click="show = c.id">
+                                    <icono :icono="show == c.id?'expand_less':'expand_more'" clase="letra-blanco-30" />
+                                </div>
+                            </div>
+                            <div class="row w-100 m-0" v-if="show == c.id">
+                                <div @click="set(c.id)" class="row w-100 m-0 px-3 py-5px back-color-gray4 border-b-gray01-1 " v-for="s of c.subcat">
+                                    <div class="col px-0 mb-auto pl-3">
+                                        <div class="row m-0 w-100 letra-blanco-20 fw-600">{{s.name}}</div>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div> 
+                    </template>
+                        
+                    <template v-if="session.token && 0">
                         <div class="row w-100 m-0 px-3 py-2" @click="goTo('/mi_cuenta')" >
                             <div class="col-auto px-0 my-auto">
                                 <icono icono="person_outline" clase="letra-gray3-30" />
@@ -103,10 +128,13 @@ import Swiper from 'swiper';
         },
         data(){
             return{
+                show: null,
             } 
         },
         computed: {
             router(){return this.$store.getters.getRouter;},
+            categorias(){return this.$store.getters.info('categorias') },
+
             vr(){return this.$store.getters.vr;},
             session(){return this.$store.getters.getSession;},
             saldo(){return this.$store.getters.enviosObject('saldo');},
@@ -116,6 +144,11 @@ import Swiper from 'swiper';
                 console.log("CLOSING");
                 this.$f7.panel.close('right', true);
                 // this.$store.commit('openMenuRight');
+            },
+
+            set(id){
+                this.$store.commit('updateCatalogosState',['cat', id]);
+                this.close();
             },
 
             tologin(){

@@ -40,6 +40,7 @@ const actions={
       launchnavigator.navigate(destination, {});
     }catch(e){};
   }, 
+
   openWebPage({state}, url){
     url = url.replace(/\s/g, '');
     if(!url.includes('http') && !url.includes('https')){
@@ -48,6 +49,7 @@ const actions={
     console.log("OPEN URL", url);
     cordova.InAppBrowser.open(url, '_system');
   }, 
+
   shareApp({state}){
     var msg = [],file,          
     options = {

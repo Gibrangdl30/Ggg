@@ -63,9 +63,9 @@ const modules = {
 
 const state = {
     base:   { 
-        url:    "https://padelplus.com.mx/apiv1/api/",
-        img:    "https://padelplus.com.mx/apiv1/img/",
-        iconos: "https://padelplus.com.mx/apiv1/iconos/",
+        url:    "https://mexicolimited.com/apiv1/api/",
+        img:    "https://mexicolimited.com/apiv1/img/",
+        iconos: "https://mexicolimited.com/apiv1/iconos/",
     },
 
     procesando: false,

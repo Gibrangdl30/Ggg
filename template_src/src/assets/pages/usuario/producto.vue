@@ -2,8 +2,9 @@
     <div class="page " id="inicio">
     <div class="page-content position-relative">
 
-        <div class="vista h-100" v-vistak>
-            <div class="row w-100 m-0  " v-if="false">
+        <div class="vista " >
+
+            <div class="row w-100 m-0  " v-if="false" >
                 <div class="row w-100 m-0  position-relative">
                     <div class="w-auto position-absolute left-10px top-37px" @click="router.back()">
                         <div class="row w-100 m-0">
@@ -14,19 +15,21 @@
                 </div>
             </div>
 
-            <div class="contenedor-page-tabs  pb-0 scroll-y ">
+            <div class=" contenedor-page-tabs ">
                 <div class="row w-100 m-0">
                     <productoComponent :full="true" :data="platillo" @set="set"/>
                 </div>
             </div>
-            <div class="row w-100 m-0 back-color-rojo1" v-if="1" @click="add()">
+
+            <div class="row w-100 m-0 back-color-rojo1 " v-if="1" @click="add()">
                 <div class="row w-100 m-0 pt-3 pb-4 px-3">
                     <div class="row w-100 m-0 px-3">
-                        <div class="col my-auto px-0 letra-blanco-22 fw-600 " >Ordenar</div>
+                        <div class="col my-auto px-0 letra-blanco-22 fw-600 " >Agregar</div>
                         <div class="col-auto my-auto px-0 letra-blanco-25 fw-800 ">{{total | currency}}</div>
                     </div>
                 </div>
             </div>
+
         </div>
 
     </div>
@@ -49,7 +52,7 @@ const moment = require('moment')
             router(){return this.$store.getters.getRouter;},
             session(){return this.$store.getters.getSession;},
             restaurante(){return this.$store.getters.restaurantesFind('restaurantes','restaurante') || {};},
-            platillo(){return this.$store.getters.restaurantesFind('productos','platillo') || {}},
+            platillo(){return this.$store.getters.carritoObject('prod') || {}},
         },
 
         mounted(){

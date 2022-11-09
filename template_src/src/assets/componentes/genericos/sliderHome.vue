@@ -4,17 +4,17 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div class="row w-100 m-0 justify-content-center">
-                        <imagen clase="" :src="imagen('on1.png')" /> 
+                        <imagen clase="" :src="imagen('ob1.jpg')" /> 
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="row w-100 m-0 justify-content-center">
-                        <imagen clase="" :src="imagen('on2.png')" /> 
+                        <imagen clase="" :src="imagen('ob2.jpg')" /> 
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="row w-100 m-0 justify-content-center">
-                        <imagen clase="" :src="imagen('on3.png')" /> 
+                        <imagen clase="" :src="imagen('ob3.jpg')" /> 
                     </div>
                 </div>
             </div>
@@ -28,10 +28,10 @@
 
                 <div class="col-12 px-0 px-4" v-if="index==0" >
                     <div class="row w-100 m-0" @click="continuar()">
-                        <div class="row w-100 m-0 pb-12px letra-rojo1-18 fw-600 justify-content-center text-center ">Siguiente</div>
+                        <div class="row w-100 m-0 pb-12px letra-rojo-18 fw-600 justify-content-center text-center ">Siguiente</div>
                     </div>
                     <div class="row w-100 m-0" @click="goLogin()">
-                        <botonApp tipo="app" texto="Comenzar"  radius="30px" />
+                        <botonApp tipo="negro" texto="Comenzar"  radius="30px" />
                     </div>
                 </div>
 
@@ -40,18 +40,18 @@
                         <div class="row w-100 m-0">
                             <div class="col px-0">
                                 <div class="row w-100 m-0" @click="regresar()">
-                                    <div class="row w-100 m-0 pb-12px letra-rojo1-18 fw-600 justify-content-center text-center ">Anterior</div>
+                                    <div class="row w-100 m-0 pb-12px letra-rojo-18 fw-600 justify-content-center text-center ">Anterior</div>
                                 </div>
                             </div>
                             <div class="col px-0">
                                 <div class="row w-100 m-0" @click="continuar()">
-                                    <div class="row w-100 m-0 pb-12px letra-rojo1-18 fw-600 justify-content-center text-center ">Siguiente</div>
+                                    <div class="row w-100 m-0 pb-12px letra-rojo-18 fw-600 justify-content-center text-center ">Siguiente</div>
                                 </div>
                             </div>
                         </div>
                         <div class="row w-100 m-0 pt-2" >
                             <div class="row w-100 m-0" @click="goLogin()">
-                                <botonApp tipo="app" texto="Comenzar"  radius="30px" />
+                                <botonApp tipo="negro" texto="Comenzar"  radius="30px" />
                             </div>
                         </div>
                     </div>
@@ -59,10 +59,10 @@
 
                 <div class="row w-100 m-0 px-4" v-if="index==2">
                     <div class="row w-100 m-0" @click="regresar()">
-                        <div class="row w-100 m-0 pb-12px letra-rojo1-18 fw-600 justify-content-center text-center ">Anterior</div>
+                        <div class="row w-100 m-0 pb-12px letra-rojo-18 fw-600 justify-content-center text-center ">Anterior</div>
                     </div>
                     <div class="row w-100 m-0" @click="goLogin()">
-                        <botonApp tipo="app" texto="Comenzar"  radius="30px" />
+                        <botonApp tipo="negro" texto="Comenzar"  radius="30px" />
                     </div>
                 </div>
 

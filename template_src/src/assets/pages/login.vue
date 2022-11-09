@@ -4,7 +4,7 @@
         <div class="contenedor-page-tabs position-relative">
 
             <div class="row w-100 m-0 pt-5 mt-3 justify-content-center">
-                <div class="col-6 px-0 mx-auto">
+                <div class="col-10 px-0 mx-auto">
                     <imagen clase="my-auto" :logo="2"  />
                 </div>
             </div>

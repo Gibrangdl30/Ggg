@@ -34,13 +34,14 @@
                         <div class="col-12 mt-4" v-if="0">
                             <inputForm type="password" :password="true"  texto="Confirma Contraseña:" placeholder="" v-model="confirm_password" />
                         </div>
-                        
+
                     </div>
                 </div>
 
                 <div class="row m-0 w-100 px-3 mt-4">
                     <div class="col my-auto letra-gray3-13 p-0 pl-3">He leído y acepto los <a class="color-gray3 fw-600" href="/terminos_condiciones" >Términos y Condiciones</a> y el 
-                    <a class="color-gray3 fw-600" href="/aviso_privacidad" >Aviso de privacidad</a> de Padel+</div>
+                    <a class="color-gray3 fw-600" href="/aviso_privacidad" >Aviso de privacidad</a> de México Limited</div>
+
                     <div class="col-auto my-auto px-0 pl-3 pr-2 my-auto" >
                         <toggle :icon="1"  :auto="0" v-model="acepto" :v="1" :f="0" />
                     </div>

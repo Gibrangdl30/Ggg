@@ -18,21 +18,15 @@
                         <div class="row w-100 m-0  letra-blanco-15">A 10 MIN</div>
                     </div>
                 </div>
-                <div class="col px-0 pl-3">
-                    <div class="row w-100 m-0 letra-gray4-18 fw-600">{{info.name_field}}</div>
-                    <div class="row w-100 m-0 letra-gray3-16 text-capitalize " v-if="info.address"> {{info.address}}</div>
-                    <div class="row w-100 m-0 letra-gray3-16 text-capitalize " v-else-if="dire && dire.street"> {{dire.street}} {{ dire.num_ext }}, {{ dire.neighborhood }} </div>
-                    <!-- <div class="row w-100 m-0 letra-gray4-17 ">{{campos.length?campos.length+' canchas disponibles':'Sin canchas disponibles'}}</div> -->
-                    <div class="row w-100 m-0 pt-1 letra-gray3-17 ">
+                <div class="col my-auto px-0 pl-3">
+                    <div class="row w-100 m-0 letra-gray4-18 fw-600">{{info.name}}</div>
+                    <div class="row w-100 m-0 letra-gray3-16 text-capitalize "> {{info.cat}}</div>
+                    <div class="row w-100 m-0 letra-rojo-19 text-capitalize fw-800 "> {{info.precio | currency}} MXN</div>
+                    <div v-if="0" class="row w-100 m-0 pt-1 letra-gray3-17 ">
                         <div class="col px-0">A {{(info.tiempo || 25)}} min de ti</div>
                         <div class="col-auto ml-auto px-0 pr-3">{{(info.distancia || 15)}} Km</div>
                     </div>
                     <!-- <div class="row w-100 m-0 letra-gray3-16 ">{{[info.fecha, info.hora] | fechaE}}</div> -->
-                </div>
-            </div>
-            <div class="row w-100 m-0 pt-2 ">
-                <div class="row w-100 m-0 back-color-rojo1 justify-content-center ">
-                   <horas :value="form" :red="1" :campo="campoX" />
                 </div>
             </div>
         </div>
@@ -208,7 +202,7 @@ export default {
         info(){return this.data || {}},
         dire(){return this.info.dire || {}},
         campos(){return this.info.campos || [] },
-        campoX(){return this.info.campos.find(s=>1) },
+        campoX(){return {}},
         pres(){return this.info.presentador || {}},
         lugar(){return this.info.lugar || {}},
         
@@ -227,8 +221,8 @@ export default {
 
         set1(){
             console.log("NAVEGANDO TO RUTA");
-            this.$store.commit('setStData',['instalacion', this.info.id]);
-            this.router.navigate('/eventos_zonas');
+            this.$store.commit('setCarritosState',['prod', this.info]);
+            this.router.navigate('/producto');
             this.$store.dispatch('synchronizeData');
         },
 

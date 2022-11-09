@@ -9,22 +9,22 @@
                 
                 <template v-if="1" >
                     <div class="row w-100 m-0 pt-4" v-if="!productos || !productos.length">
-                        <div class="row w-100 m-0 px-4 pt-4 letra-gray3-20 justify-content-center text-center">Tu carrito no tiene bebidas ni alimentos. ¡Agrégale!</div>
+                        <div class="row w-100 m-0 px-4 pt-4 letra-gray3-20 justify-content-center text-center">Tu carrito no tiene productos. ¡Agrégale!</div>
                     </div>
                 </template>
 
                 <div class="row w-100 m-0">
-                    <div class="row w-100 m-0 py-2" v-for="p of productos" :key="p.id">
+                    <div class="row w-100 m-0 py-2" v-for="p of productos" :key="p.id" >
                         <div class="row w-100 m-0 ">
                             <div class="row w-100 m-0 pb-2  border-b-gray00-1 pt-2 px-3">
-                                <div class="col px-0 ">
-                                    <div class="row w-100 m-0 letra-gray4-17 ">{{p.nombre}}</div>
-                                    <!-- <div class="row w-100 m-0 letra-rojo1-15 " v-if="p.tipo == 'e'" >Experiencia</div> -->
-                                    <div class="row w-100 m-0 letra-gray3-15 " v-if="p.descripcion">{{p.descripcion}}</div>
+                                <div class="w-16vw h-16vw">
+                                    <imagen clase="border-radius-10px border-rojo-1" :create="true" :src="p.info.imagen" />
                                 </div>
-                                <!-- <div class="col-auto my-auto px-0 letra-blanco-16">
-                                    <div class="row w-100 m-0" @click="goRestaurante()" >{{restaurante.restaurant_nombre}}</div>
-                                </div> -->
+                                <div class="col my-auto px-0 pl-3 ">
+                                    <div class="row w-100 m-0 letra-gray4-19 fw-600">{{p.nombre}}</div>
+                                    <div class="row w-100 m-0 letra-gray3-15 " v-if="p.cat">{{p.cat}}</div>
+                                </div>
+                               
                                 <div class="w-10 px-0 ml-auto overflow-hidden text-center pt-9px" @click="$store.commit('removeProductoCarrito',p)" >
                                     <icono icono="cancel" clase="letra-rojo1-30 " />
                                 </div>

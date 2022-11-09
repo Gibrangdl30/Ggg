@@ -20,12 +20,14 @@
                             <i class="f7-icons color-white letra-rojo2-30" >chevron_left</i>
                         </div>
                     </div>
-                    <!-- <div class="w-auto position-absolute right-30px top-32px z-1000000" @click="$store.dispatch('postAddFavorito',info)" v-if="1" >
+
+                    <div class="w-auto position-absolute right-30px top-32px z-1000000" @click="$store.dispatch('postAddFavorito',info)" v-if="1" >
                         <div class="row w-100 m-0" >
-                            <icono icono="favorite" clase="letra-rojo2-35" v-if="$store.getters.userStateFindFieldId('favoritos','menu_id',info.id)" />
+                            <icono icono="favorite" clase="letra-rojo2-35" v-if="$store.getters.stateDataFindFieldId('favoritos','producto_id', info.id)" />
                             <icono icono="favorite_border" clase="letra-rojo2-35" v-else />
                         </div>
-                    </div> -->
+                    </div>
+
                     <!-- <sliderPlatillo :info="info" /> -->
                     <imagen clase="h-max-50vh" :fit="true" :src="info.imagen" />
                 </div>
@@ -34,11 +36,32 @@
             <div class="row w-100 m-0 px-3 py-3 ">
                 <div class="col px-0">
                     <div class="row w-100 m-0 pt-1 pb-1">
-                        <div class="col px-0 letra-gray4-22 fw-600" >{{info.nombre}}</div>
+                        <div class="col px-0 letra-rojo1-28 fw-600" >{{info.name}}</div>
+                    </div>
+                    
+                    <div class="row w-100 m-0 pt-1 pb-1">
+                        <div class="col px-0 letra-gray3-20 fw-600" >Clave Articulo {{info.sku}}</div>
+                    </div> 
+                    
+                    <div class="row w-100 m-0 pt-1 pb-3">
+                        <div class="col-auto px-0">
+                            <div class="row w-100 m-0 px-3 pb-1 pt-7px border-rojo-1 border-radius-10px">
+                                <div class="col-auto px-0">
+                                    <icono icono="storefront" clase="letra-rojo-30" />
+                                </div>
+                                <div class="col-auto px-0 letra-rojo-20 fw-600" > {{info.brand}}</div>
+                            </div>
+                        </div>
+                    </div> 
+
+                    <div class="row w-100 m-0 pt-1 pb-1 pb-4">
+                        <div class="col-12 px-0 letra-gray4-18 fw-600" >Tiempo de entrega</div>
+                        <div class="col-12 px-0 letra-rojo1-24 fw-600 text-capitalize " >{{entrega}}</div>
+
                     </div> 
                     
                     <div class="row w-100 m-0 pt-1 pb-1">
-                        <div class="col px-0 letra-gray3-18" v-if="info.descripcion" >{{info.descripcion}}</div>
+                        <div class="row w-100 m-0 px-0 letra-gray3-18" v-if="info.description" v-html="info.description" ></div>
                     </div>
                
                 </div>
@@ -61,11 +84,11 @@
             <div class="row w-100 m-0 px-3 py-2 pb-3  " v-if="1">
                 <div class="col my-auto px-0">
                     <div class="row w-100 m-0">
-                        <div class="col my-auto px-0 letra-gray3-15 text-capitalize">¿Agrega los que nececitas?</div>
+                        <div class="col my-auto px-0 letra-gray4-22 text-capitalize">Cantidad: </div>
                     </div>
                 </div>
                 <div class="col-auto my-auto px-1 pl-2">
-                    <div class="row w-100 m-0 px-1 justify-content-left back-color-rojo1 border-radius-30px " >
+                    <div class="row w-100 m-0 px-1 justify-content-left back-color-rojo border-radius-30px " >
 
                         <div class="col-auto px-0 py-1 my-auto" @click="remove()">
                             <icono  icono="remove" clase="letra-blanco-40 pt-6px"/>
@@ -81,9 +104,9 @@
                 </div>
             </div>
 
-            <div class="row w-100 m-0  " v-if="0">
-                <div class="row w-100 m-0 px-3 pb-2 letra-gray3-18">Productos relacionados: </div>
-                <div class="row w-100 m-0">
+            <div class="row w-100 m-0  " >
+                <div class="row w-100 m-0 px-3 pb-2 letra-gray4-18 fw-600">Productos relacionados: </div>
+                <div class="row w-100 m-0" v-if="0">
                     <scollX  cantidad="auto" >
                         <div class="swiper-slide w-auto px-2 text-center" v-for="xp of platillos" :key="xp.id" >
                             <div class="w-auto" >
@@ -132,7 +155,7 @@
                     <div class="row w-100 m-0">
                         <div class="row w-100 m-0 letra-gray4-16 text-capitalize">{{info.nombre}}</div>
                         <div class="row w-100 m-0 letra-gray3-14 text-capitalize" v-if="info.descripcion">{{info.descripcion}}</div>
-                        <div class="row w-100 m-0 letra-rojo1-18 fw-800 ">{{info.precio | currency}}</div>
+                        <div class="row w-100 m-0 letra-rojo1-18 ">{{info.precio | currency}}</div>
                     </div>
                     <template v-if="res">
                         <div class="row w-100 m-0" v-if="info.restaurante && info.restaurante.restaurant_nombre" >
@@ -186,6 +209,7 @@ export default {
     computed:{
         router(){return this.$store.getters.getRouter;},
         info(){return this.data || {}},
+        entrega(){return moment().add(this.info.tiempo || 5, 'days').format('dddd DD [de] MMMM')},
         totalProductos(){ return this.$store.getters.carritoObject('totalProductos') || 15;},
 
         aprox(){ return moment().add(55,'minutes').format('HH:mm [hrs]')},
@@ -238,10 +262,11 @@ export default {
             this.form.tipo = this.info.tipo;
             this.form.restaurantes_id = this.info.restaurantes_id;
             this.form.tipo = this.info.tipo;
-            this.form.nombre = this.info.nombre;
-            this.form.descripcion = this.info.descripcion;
-            this.form.descripcion = this.info.descripcion;
+            this.form.nombre = this.info.name;
+            this.form.description = this.info.description;
+            this.form.cat = this.info.cat;
             this.form.platillo = this.info;
+            this.form.info = this.info;
             this.form.precio = Number(this.info.precio);
             this.form.total = this.form.cantidad * Number(this.form.precio);
             this.$emit('set',this.form);

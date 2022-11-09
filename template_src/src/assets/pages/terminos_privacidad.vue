@@ -8,134 +8,101 @@
             
                 <div class="col-12 text-justify mt-2" >
                     <div class="row w-100 m-0 p-0 letra-gray3-25 white-space-preline text-justify py-3 justify-content-center text-uppercase">Terminos de privacidad</div>
+                    
                      <div class="row w-100 m-0 letra-gray3-16 white-space-preline ">
-                        Responsable de la protección de sus datos personales 
-ZYTRO TECHNOLOGY S.A.P.I. DE C.V., comercialmente conocido como PAPARATZ, con domicilio en Sierra Leona número 2145, Colonia Independiencia Infonavit, Guadalajara, Jalisco. CP 44240 y portal de internet www.paparatz.app es responsable del tratamiento de sus datos personales.
 
-¿Cómo contactarnos?
-Correo electrónico: legal@paparatz.app
-Dentro de los parámetros especificados en el capítulo “DERECHOS ARCO, ¿Cómo acceder o rectificar sus datos personales o cancelar u oponerse a su uso?” del presente Aviso de Privacidad.
+        El CONVENIO MERCANTIL QUE CELEBRAN POR UNA PARTE EL USUSARIO CREADOR AFILIADO A QUIEN A PARTIR DE ESTE DE MOMENTO Y DE AHORA EN ADELANTE SE LE DENOMINARA COMO “EL CREADOR” ; Y POR LA OTRA PARTE, LA PERSONA MORAL “SUM SHOP” SOCIEDAD ANONIMA PROMOTORA DE INVERSIÓN DE CAPITAL VARIABLE, TAMBIÉN RECONOCIDA CON DENOMINACIÓN COMERCIAL COMO “MÉXICOLIMITED” Y A QUIEN EN LO SUCESIVO SE LE RECONOCE DENTRO DEL PRESENTE CONVENIO CON DICHA DENOMINACIÓN, ACTO CONTINUO MANIFIESTAN AMBAS PARTES QUE ES SU INTERÉS CELEBRAR EL PRESENTE CONVENIO, POR LO QUE ESTARÁN SUJETAS A LAS SIGUIENTES, DECLARACIONES Y CLÁUSULAS:
+DECLARACIONES:
 
-¿Para qué fines recabamos y utilizamos sus datos personales?
-Sus datos personales serán utilizados para las siguientes finalidades:
-Registrar su usuario
-Identificación de usuario
-Realizar pagos y compras por medio de la aplicación.
-Comunicarnos con el usuario para hacerle saber actualizaciones de la plataforma o violación de nuestras políticas. 
-Cumplimiento a las diversa leyes y normas vigentes.
-Evaluar la calidad del servicio, y
-De manera adicional, utilizaremos su información personal para las siguientes finalidades secundarias que no son necesarias para el servicio solicitado, pero que nos permiten y facilitan brindarle una mejor atención:
-Mercadotecnia y ventas;
-Publicitarias;
-Prospección comercial; y,
-Realizar estudios internos sobre hábitos de consumo. 
+I.- “DEL CREADOR”.-
 
-¿Qué datos personales obtenemos y de dónde?
-Para las finalidades señaladas en el presente aviso de privacidad, podemos recabar sus datos personales de distintas formas: 
-Información y contenido que nos proporciona el usuario. Recopilamos el contenido, las comunicaciones y otros datos que proporciona el usuario cuando usa nuestra página web, plataformas, correos electrónicos y/o redes sociales; es decir, cuando te registras para crear una cuenta, creas o compartes contenido.
-Su uso. Recopilamos información sobre cómo el usuario usa nuestro software, como las funciones que utiliza, las acciones que lleva a cabo, los productos y hábitos de consumo, la hora, la frecuencia y la duración de sus actividades. 
-Información sobre transacciones realizadas en la aplicación. Al realizar pagos u otras transacciones financieras recopilamos información sobre dicha compra o transacción. Esto incluye información de pago, como puede ser el número de tarjeta de crédito o débito usada y otros datos de ésta.
+a).- “EL CREADOR”, manifiesta ser una persona (física o moral), con capacidad jurídica y patrimonio propio, que se encuentra en la posición de obligarse en los términos que se establezcan en el presente Convenio, y del cual reconoce su alcance, y que es su deseo llevar a cabo.
 
-ZYTRO TECHNOLOGY S.A.P.I. DE C.V. podrá recabar los Datos Personales al inicio de la relación jurídica o comercial con el Titular o bien, durante la vigencia y desarrollo de la misma; Cualquier Dato Personal que ZYTRO TECHNOLOGY S.A.P.I. DE C.V. recabe durante esta temporalidad será sujeto de Tratamiento conforme a lo señalado en el presente Aviso de Privacidad.
+b).- Como Representante legal, (en caso de ser apoderado) manifiesta que cuenta con el carácter en que comparece en términos de las facultades y poderes otorgados por su representada..
 
-Los datos que obtenemos por estos medios pueden ser, entre otros: 
-DATOS PERSONALES
-Nombre completo
-Edad
-Correo electrónico 
-Número de teléfono
-Nombre de usuario
-Contraseña de acceso
+c).- Manifiesta “EL CREADOR”, que su domicilio particular y su Registro Federal de Contribuyentes es el que se relaciona a su nombre y su correo registrado en sistema.
 
-DATOS FINANCIEROS
-Número de tarjeta de crédito
-CVV 
-Fecha de vencimiento de su tarjeta de crédito
-(para el registro de compras por internet)
-Datos personales sensibles
+d).- Que cuenta con todos los conocimientos técnicos, cuenta con los recursos, los cuales son de procedencia lícita, así mismo, que cuenta con los materiales y demás insumos necesarios para llevar a cabo los productos y mercancías disponibles para con la plataforma “MÉXICOLIMITED”.
 
-Le informamos que, para cumplir con las finalidades previstas en este aviso de privacidad, no es necesario recabar ni tratar datos personales sensibles, refiriéndonos a aquellos datos personales que afecten a la esfera más íntima de su titular, o cuya utilización indebida pueda dar origen a discriminación o conlleve un riesgo grave para éste. En particular, se consideran sensibles aquellos que puedan revelar aspectos como origen racial o étnico, estado de salud presente y futuro, información genética, creencias religiosas, filosóficas y morales, afiliación sindical, opiniones políticas, preferencia sexual y afines.
-De conformidad con lo que establece el artículo 9 de la Ley en cita, requerimos de su consentimiento expreso para el tratamiento de sus datos personales sensibles, por lo que, en caso de requerir de estos, se le hará llegar la modificación a nuestro aviso de privacidad y se le solicitará que indique si acepta o no el tratamiento.
+e).- “EL CREADOR”, manifiesta Bajo Protesta de decir verdad, que los productos que se encontraran dentro de la plataforma de “MÉXICOLIMITED”, son de Producción Mexicana, por artesanos, productores y demás personal que intervienen en el producto final disponible dentro de la página de “MÉXICOLIMITED”.
 
-¿Cómo puede limitar el uso o divulgación de sus datos personales?
-Usted puede dejar de recibir mensajes promocionales por teléfono fijo o celular, asimismo, puede dejar de recibir correo postal o bien correos electrónicos publicitarios, para ello, le ofrecemos el mecanismo señalado en el capítulo “DERECHOS ARCO; ¿Cómo acceder o 
-rectificar sus datos personales o cancelar u oponerse a su uso?” de este aviso de privacidad.
-Asimismo, en caso de que usted no desee recibir publicidad de nuestra parte, se podrá inscribir al Registro Público para Evitar Publicidad. Para mayor información se puede consultar el portal electrónico siguiente: http://repep.profeco.gob.mx/
+f).- Señala que es su interés utilizar los servicios virtuales en la plataforma “MÉXICOLIMITED”, ya que esta plataforma le dará el alcance e impulso que necesita para desarrollar sus productos para que lleguen a Distribuirse y conocerse de manera mundial
 
+g).- “EL CREADOR”, reconoce el apoyo que obtendrá en los términos del presente Convenio, así como la veracidad, certeza y exactitud de las declaraciones y garantías que realiza “EL CREADOR” a lo largo de este Convenio y que constituyen el motivo determinante de su voluntad para la celebración del presente Contrato, conforme a los términos y condiciones acordados más adelante.
 
-DERECHOS ARCO
-¿Cómo acceder o rectificar sus datos personales o cancelar u oponerse a su uso?
-Usted tiene derecho de acceder a sus datos personales que poseemos y a los detalles del tratamiento de los mismos (Acceso), así como a rectificarlos en caso de ser inexactos o incompletos (Rectificación); cancelarlos cuando considere que no se requieren para alguna de las finalidades señalados en el presente aviso de privacidad, estén siendo utilizados para finalidades no consentidas o haya finalizado la relación contractual o de servicio (Cancelación), o bien, oponerse al tratamiento de los mismos para fines específicos (Oposición).
+h).- Que cumple cabalmente con las leyes mexicanas, normas y ordenamientos vigentes y que sus prácticas comerciales son transparentes y están en contra de delitos en todas sus formas, ya sea fiscales, penales, etc.
 
-Los mecanismos que se han implementado para el ejercicio de dichos derechos son a través de la presentación de la solicitud respectiva en:
-legal@paparatz.app
+Como la corrupción, la extorsión, el soborno y se declara en contra de cualquier acción que pudiera constituir algún tipo de fraude en contra de “MÉXICOLIMITED”.
 
-Su solicitud deberá contener la siguiente información:
-Nombre del titular de los datos personales
-Identificación oficial con fotografía que lo acredite como el titular de los datos personales
-Correo electrónico o domicilio al cual quiere recibir la respuesta
-Los datos personales sobre los que se pretende ejercer alguno de los derechos ARCO
-El derecho ARCO que se pretende ejercer 
-Los plazos para atender su solicitud son los siguientes:
-Con un tiempo de respuesta aprox. 5 días hábiles y máximo 20 días; En un horario de Lunes Viernes de 08:00 AM a 5:00 PM.
+i).- Que desea celebrar con “MÉXICOLIMITED”, el presente Convenio, a efectos de establecer los términos y condiciones que regirán respecto a todos y cada uno de los Acuerdos Comerciales y de las órdenes de compra que “MÉXICOLIMITED” emita a “EL CREADOR” respecto a los productos comercializados por este último.
 
-¿Cómo puede revocar su consentimiento para el tratamiento de sus datos?
-En todo momento, usted podrá revocar el consentimiento que nos ha otorgado para el tratamiento de sus datos personales, a fin de que dejemos de hacer uso de los mismos. Para ello, es necesario que presente su petición de conformidad a los términos señalado en el capítulo “DERECHOS ARCO; ¿Cómo acceder o rectificar sus datos personales o cancelar u oponerse a su uso?”
+k).- Cuenta con la totalidad de los Permisos, Licencias, Marcas y Patentes vigentes, suficientes y necesarios para llevar a cabo las gestiones necesarias a su cargo de conformidad con lo establecido en el presente Convenio, los cuales fueron obtenidos en total cumplimiento de las Leyes Aplicables.
 
-Sobre la transferencia de sus datos
-Sus datos personales pueden ser transferidos y tratados dentro y fuera del país, por personas distintas a esta empresa. En ese sentido, nos aseguraremos de que los mismos tengan un nivel adecuado de protección a través de medidas de seguridad apropiadas para mantener la seguridad y confidencialidad de tus Datos Personales, mediante estrictos estándares y acuerdos legales.
+l).- “EL CREADOR” y las Personas Relacionadas, no se encuentran en ninguna lista de personas físicas y/o morales sancionadas por Autoridades Gubernamentales nacionales y/o extranjeras vinculadas a delitos de delincuencia organizada, lavado de dinero y/o terrorismo incluyendo las Listas Negras; y puede acreditar la legítima procedencia de sus recursos, en caso de que las Autoridades Gubernamentales así lo requieran.
 
-La transferencia de Datos Personales con terceros únicamente tendrá a lugar a fin de dar cumplimiento a cualquiera de las finalidades señaladas en el presente Aviso mediante terceros proveedores de productos o servicios en materia de marketing, publicidad, diseño y de sistemas de tecnología de información;  Consultores profesionales, tales como contadores, auditores o abogados; y en casos específicos a las autoridades competentes a fin de dar cumplimiento a cualquier obligación legal o jurídica.
+m).- Cuenta “EL CREADOR” con todas y cada una de las autorizaciones legales y gubernamentales exigidas y/o requeridas por cualquier Autoridad Gubernamental a nivel municipal, estatal o federal para llevar a cabo sus operaciones, mismas que, fueron obtenidas de manera legal sin la comisión de ningún delito ni actos de corrupción y garantiza mantener vigentes durante todo el tiempo en el que subsista cualquier tipo de relación con el Cliente.
 
-Modificaciones al aviso de privacidad
-Nos reservamos el derecho de efectuar en cualquier momento modificaciones o actualizaciones al presente aviso de privacidad, atendiendo a novedades legislativas, políticas internas o nuevos requerimientos para la prestación u ofrecimiento de nuestros servicios o productos. 
+II.- “MÉXICOLIMITED”.-
 
-Estas modificaciones estarán disponibles a los usuarios cada vez que intenten acceder a la app y el aviso haya sido cambiado o actualizado, para lo que se le volverá a solicitar su consentimiento o negación expresa. 
+ a).- Que manifiesta el Representante Legal de la moral señalada en líneas precedentes y reconocida como que es una sociedad mercantil constituida bajo las leyes Mexicanas, Constituida mediante el número de póliza 3123 del libro 3, pasada ante la fe del Licenciado Carlos Porcel Sastrias, titular de la Correduría Pública número setenta del Distrito Federal.
 
-Estas modificaciones estarán disponibles al público a través de nuestra página de Internet www.paparatz.app	en el aparto “Aviso de Privacidad”
-Uso de cookies y API’s
-Las cookies son archivos de texto que son descargados automáticamente y almacenados en el disco duro del equipo de cómputo del usuario al navegar en una página de Internet específica, que permiten recordar al servidor de Internet algunos datos sobre este usuario, entre ellos, sus preferencias para la visualización de las páginas en ese servidor, nombre y contraseña.
+b).- Que su representada le otorga los poderes y facultades para comparecer en este acto mediante el número de póliza 3123 del libro 3, pasada ante la fe del Licenciado Carlos Porcel Sastrias, titular de la Correduría Pública número setenta del Distrito Federal, dichas jurisdicciones no le han sido modificadas ni revocadas para comparecer dentro del presente Convenio.
 
-Las siglas API vienen del término en inglés Application Programming Interface. Una API es un conjunto de reglas y especificaciones que permite el intercambio de información controlada y segura entre distintas aplicaciones independientemente del lenguaje de programación bajo el cual se han desarrollado.
+c).- Que la moral cuenta con Registro Federal de Contribuyentes SSH160210AP0.
 
-Le informamos que utilizamos cookies y API’s de terceros para obtener información personal de usted, como la siguiente:
-Su tipo de navegador y sistema operativo.
-Las páginas de Internet que visita.
-Los vínculos que sigue.
-La dirección IP.
-El sitio que visitó antes de entrar al nuestro.
-Recordar su usuario y contraseña.
-Estas cookies y otras tecnologías pueden ser deshabilitadas. Para desactivarlas lea las siguientes instrucciones:
+d).- Que la moral es dueña de la patente de la marca, así que cuenta con el uso, goce y disfrute legítimo de la plataforma virtual denominada “MÉXICOLIMITED”,  con número de registro 2261040 dos, dos, seis, uno, cero, cuatro, cero, ante el Instituto Mexicano de la Propiedad Industrial a partir del día 23 veintitrés de Marzo del año 2021 dos mil veintiuno, en el que su principal actividad es la publicidad, gestión y la organización de negocios comerciales, ubicada en la página https://mexicolimited.com/, la cual estará a disposición bajo los lineamientos dentro del presente convenio.
 
-EN CHROME
-En la computadora, abre Chrome.
-En la esquina superior derecha, haz clic en Más Más y luego Configuración.
-En "Privacidad y seguridad", haz clic en Configuración del sitio.
-Haz clic en Cookies.
-Desde allí, puedes hacer lo siguiente:
-Activar las cookies: Junto a "Bloqueada", activa la opción.
-Desactivar las cookies: Desactiva la opción Permitir que los sitios guarden y lean datos de cookies.
-Obtén más información sobre cómo cambiar más opciones de configuración de las cookies en Chrome.
-EN FIREFOX
-Haz clic en el botón de menú de Firefox fx57menu y selecciona Bloqueo de contenido.
-Te redirigirá a la sección Bloqueo de contenido del panel Privacidad & Seguridad, en las Opciones de Firefox.
-Selecciona Personalizar para elegir qué quieres bloquear.
-Marca la casilla Cookies. La opción predeterminada es Rastreadores de terceros.
-Para bloquear todas las cookies de terceros, selecciona la opción Todas las cookies de terceros (puede que los sitios web dejen de funcionar correctamente).
-Cierra la página about: preferences. Cualquier cambio que hayas hecho se guardará automáticamente.
-EN INTERNET EXPLORER
-En Internet Explorer, seleccione el Tools botón herramientas y, a continuación, seleccione Opciones de Internet.
-Selecciona la pestaña Privacidad y, en Configuración, elige Opciones avanzadas y elige si quieres permitir o bloquear las cookies de origen y de terceros o si prefieres que te pregunten.
+e).- Que para los efectos del presente Convenio, “MÉXICOLIMITED”, señala como domicilio particular C. Juan Ruiz de Alarcón 139, Col Americana, Lafayette, 44160, Guadalajara, Jalisco.
 
-EN OTROS NAVEGADORES
-Para obtener instrucciones, consulta el sitio web de asistencia de tu navegador.
+f).- Que es su deseo darle el impulso a “EL CREADOR”, con el fin de brindarle el apoyo comercial para que sus productos sean conocidos y adquiridos a nivel mundial, así como brindarle el apoyo y soporte para desarrollarse en el ámbito virtual y poder llegar a posicionar sus productos a diferentes escalas.
 
-¿Ante quién puede presentar sus quejas y denuncias por el tratamiento indebido de sus datos personales?
+ 
 
-Si usted considera que su derecho de protección de datos personales ha sido lesionado por la aplicación o presume que en el tratamiento de sus datos personales existe alguna violación a las disposiciones previstas en la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, podrá interponer la queja o denuncia correspondiente ante el IFAI, para mayor información visite www.ifai.org.mx.
+g). - Que es su deseo llegar a realizar este acuerdo en los términos que se señalen para brindarle el impulso a “EL CREADOR”, y que pueda sentirse respaldado dentro de la página de “MÉXICOLIMITED”, recibirá además atención personalizada para el manejo y control de la plataforma a través de asesores especializados dentro de la materia.
 
-Última actualización: 24 de Marzo de 2022
+h).- “MEXICOLIMITED” Cuenta con la totalidad de los Permisos, Licencias, Marcas y Patentes vigentes, suficientes y necesarios para llevar a cabo las gestiones necesarias a su cargo de conformidad con lo establecido en el presente Convenio, los cuales fueron obtenidos en total cumplimiento de las Leyes Aplicables.
 
+i).- “MEXICOLIMITED”, manifiesta que las Personas Relacionadas no se encuentran en ninguna lista de personas físicas y/o morales sancionadas por Autoridades Gubernamentales nacionales y/o extranjeras vinculadas a delitos de delincuencia organizada, lavado de dinero y/o terrorismo incluyendo las Listas Negras; y puede acreditar la legítima procedencia de sus recursos, en caso de que las Autoridades Gubernamentales así lo requieran.
+
+Acto continuo, “LAS PARTES”, convienen que es su deseo la celebración del presente Convenio a efecto de establecer los lineamientos con los que se va a regir, los cuales serán respetados por ambas Partes, para efectos necesarios a que haya lugar. Por lo que de conformidad se señalan las siguientes:
+
+CLÁUSULAS:
+
+               PRIMERA. - DEL OBJETO.- El objeto del presente convenio es la utilización y explotación de la plataforma de “MÉXICOLIMITED”, potencializando la oferta de Productos elaborados por “EL CREADOR” cien por ciento mexicanos, hechos en México, materializando la promoción del producto en la venta masiva, este convenio será regulado por las Leyes y Códigos que emanen de la Constitución Política de los Estados Unidos Mexicanos y el Código de Comercio de la materia, las ventas y/u ofrecimientos de los productos serán realizados de acuerdo con el precio, términos y condiciones de pago que “EL CREADOR” pacte en este Convenio con “MÉXICOLIMITED”, quedando la obligación de “EL CREADOR” de retroalimentar de manera diaria por escrito o electrónico la disponibilidad de cada producto y siempre acatando el acuerdo de precio, término y condición de pago, para que “MÉXICOLIMITED” pueda de manera independiente y a través de su plataforma realizar la actividad encomendada; dichas condiciones estarán vigentes hasta que sean sustituidas expresamente por escrito mediante un instrumento o medio de comunicación posterior a la celebración del presente Convenio.
+
+               SEGUNDA.- DE LA PLATAFORMA. - El uso de la plataforma virtual “MÉXICOLIMITED”, queda a disposición para su uso en favor de “EL CREADOR”, con el fin de darle apoyo en cuanto a publicidad, espacio virtual y alcance en el territorio nacional e internacional, mediante el pleno Registro de Usuario y contraseña, la cual será adquirida mediante una membresía, la cual ambas partes acuerdan que sea clase membresía y tendrá un costo único de $200.00 (doscientos pesos 00/100 m.n), el cual puede variar en cualquier momento.
+
+               TERCERA. - DE LA ADQUISICIÓN DE MERCANCÍAS. - “LAS PARTES” manifiestan que a la celebración de este Convenio se establece que “EL CREADOR”, se encuentra en la disposición plena y absoluta de tener la disponibilidad de mercancía previamente cargadas en la plataforma de “MÉXICOLIMITED”, para una disposición inmediata en cualquier parte del territorio Nacional, a través de las guías de traslado y paquetería que le serán proporcionadas.
+
+ 
+
+               CUARTA. - DE LAS ÓRDENES DE COMPRA.- Queda establecido por ambas partes, que “MÉXICOLIMITED”, enviará a “EL CREADOR”, órdenes de compra una vez concretada la venta por la plataforma, misma orden de compra debe señalar las características, detalles y demás información necesaria para cumplir cabalmente con las solicitudes requeridas, observando en todo momento los precios pactados con anterioridad entre ambas partes
+
+               QUINTA. - DE LOS INVENTARIOS. - Las Partes reconocen y convienen que “EL CREADOR” mantendrá un inventario electrónico disponible diario y actualizado en la plataforma y/o en las bases de datos de “MÉXICOLIMITED”, esto con el fin de estar al día para recibir y dar despacho a órdenes de compra de los productos, a solicitud de la plataforma de “MÉXICOLIMITED”.
+
+               SEXTA.- DE LAS ENTREGAS. - “EL CREADOR” se compromete a mandar la mercancía a su destino los siguientes 02 dos a 07 siete días hábiles, a partir de la fecha de en que se libera el pago dentro de la página de “MÉXICOLIMITED”, sin que por ello se entienda que “MÉXICOLIMITED” tenga responsabilidad de cumplir las fechas señaladas anteriormente descritas.
+
+               SÉPTIMA. - DE LAS GARANTÍAS. - “EL CREADOR” garantiza que la mercancía solicitada dentro de la página de “MÉXICOLIMITED”, cuenta con 3 tres meses y/o el tiempo indicado en la página web a partir de la fecha de solicitud, Así mismo, el funcionamiento de los productos o mercancías solicitadas a “EL CREADOR” contarán con la garantía contra cualquier defecto en los materiales y mano de obra empleados para su fabricación. La garantía incluye la reparación, reposición, y/o cambio del producto, incluyendo mano de obra.
+
+               OCTAVA. - ENVÍOS ERRÓNEOS. - Queda estipulado por las partes que en caso de que “EL CREADOR” llegará a enviar un producto diverso al solicitado, queda bajo su responsabilidad llevar a cabo las gestiones para su cambio, cubriendo los gastos necesarios para su reposición para envío correcto por lo que “MÉXICOLIMITED” se deslinda de cualquier responsabilidad que conlleva el envío correcto de los productos hacia los consumidores.
+
+               NOVENA. - DATOS PERSONALES. - Queda establecido que “MÉXICOLIMITED” implementará las medidas de seguridad, técnicas, administrativas y físicas, necesarias para procurar la integridad de los datos personales de “EL CREADOR” y evitar su daño, pérdida, alteración, destrucción o el uso, acceso o tratamiento no autorizado. Únicamente el personal autorizado, que ha cumplido y observado los correspondientes requisitos de confidencialidad, podrá participar en el tratamiento de sus datos personales. El personal autorizado tiene prohibido permitir el acceso de personas no autorizadas y utilizar sus datos personales para fines distintos de Privacidad. La obligación de confidencialidad de las personas que participan en el tratamiento de sus datos personales subsiste aun después de terminada la relación con “MÉXICOLIMITED”, en el término de 5 cinco años posteriores.
+
+               DÉCIMA. - DE LA VIGENCIA. - Se tiene por establecido en este Convenio, que ambas partes manifiestan que no se cuenta con una relación limitativa conforme a disposición en un periodo o lapso de tiempo, esto es, que cualquiera de las partes, ya sea “EL CREADOR”, podrá bajar de la plataforma los productos o mercancías exhibidos, por lo que “MÉXICOLIMITED”, también se encuentra en la disposición de decidir plenamente que productos, mercancías o servicios puedan hacer uso de la plataforma virtual.
+
+               DÉCIMA PRIMERA. - COSTOS. Las partes señalan que los costos de cada producto cargados dentro de la plataforma de “MÉXICOLIMITED” serán establecidos por ellos, por lo que “EL CREADOR”, señalará costos base, los cuales tendrán un margen límite de costo, independientemente que “MÉXICOLIMITED” realice un aumento de los productos dentro de la plataforma para obtener un margen de costos limitado.
+
+DECIMA SEGUNDA.- DEL PAGO DE MERCANCÍA AL CREADOR. “MÉXICOLIMITED” hará el pago correspondiente a “EL CREADOR” via transferencia bancaria al numero de cuenta que este especifique dentr de su sesion, dentro de los 5 cinco días naturales siguientes al día en que haya sido entregada la mercancía al cliente y siempre y cuando no exista ninguna reclamacion por parte del cliente.
+
+               DÉCIMA TERCERA.- DE LAS PENALIDADES.-  En el caso de retraso por parte de “MÉXICOLIMITED” en el pago, para “EL CREADOR”, se obliga a pagar por concepto de mora, la cantidad equivalente al 2% (dos por ciento) de la mensualidad adeudada; la presente penalidad no aplicará en caso de que el retraso en el pago se deba a la obtención del efectivo para poder realizar el pago.
+
+               DÉCIMA CUARTA.- DE LA TERMINACIÓN. “LAS PARTES” acuerdan cumplir cabalmente y con toda oportunidad, todas las obligaciones derivadas del presente contrato, pudiendo dar por terminado el convenio, previo consentimiento por escrito de “LAS PARTES”, con un plazo mínimo de 15 días de anticipación, sin responsabilidad para ninguno de los comparecientes.
+
+               DÉCIMA QUINTA.- MODIFICACIONES. Las Partes acuerdan que todas las notificaciones, modificaciones, interpretaciones, ejecuciones que se deriven del presente Convenio, serán efectuadas por escrito en el término de 15 quince días anteriores, esto con el fin de no dejar en estado de indefensión a ninguna de las partes que participan en el presente.
+
+               DÉCIMA SEXTA. - Para el caso de interpretación, o en general cualquier controversia derivada de este Convenio, las Partes se someten expresa y terminantemente a las leyes federales aplicables y a la jurisdicción y competencia de los Tribunales de la ciudad de Zapopan, Jalisco, renunciando expresamente a cualquier otro fuero que les corresponda o llegue a corresponderles por razón de sus domicilios presentes o futuros o de cualquier otro que se pudiera inferir de las disposiciones del presente Convenio.
+
+Leído que fue el presente Convenio y enteradas las Partes de su contenido y alcance lo autorizan ambas partes en la fecha de registro por parte del creador en el sistema de https://mexicolimited.com/#/asociarse
 
                      </div>
                 </div>

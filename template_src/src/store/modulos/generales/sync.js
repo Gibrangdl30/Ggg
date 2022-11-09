@@ -16,7 +16,7 @@ const initialState = {
     deviceIos: true,
     syncError: 0,
     apiV: '3',
-    version: '2.15.0',
+    version: '1.05.0',
     init: false,
     autoUpdate: null,
 };
@@ -68,7 +68,7 @@ const mutations = {
                 state.autoUpdate = setInterval(()=>{
                     // console.log("----------------------- AUTO UPDATE ------------------");
                     this.dispatch('trySync')
-                },1000*10);
+                },1000*60);
 
                 this.commit('addBackbutton_action');
                 // this.commit('initContactosAgenda');

@@ -42,9 +42,9 @@ export default {
         imagen(){
             if(this.logo) {
                 if(this.logo == 2){
-                    return `${this.baseImg}2l.svg`;
+                    return `${this.baseImg}ellogo.svg`;
                 }
-                return `${this.baseImg}1l.svg`;
+                return `${this.baseImg}ellogocc1.svg`;
             }
             if(this.icono) {
                 if(this.formato){

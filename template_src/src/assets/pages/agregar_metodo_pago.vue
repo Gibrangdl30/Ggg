@@ -8,8 +8,7 @@
 
                 <div class="row w-100 m-0 pt-4 px-3">
                     <div class="row w-100 m-0 px-3 letra-gray3-19 justify-content-center text-center ">
-                    Los datos de tu tarjeta de credito o debito se almacenan de manera encriptada por medio de la tecnologia de STRIPE y no se comparten con ningún tercero.
-El agregar una tarjeta te permitira reservar canchas y demas, en menos de un minuto de forma segura.</div>
+                    Los datos de tu tarjeta de credito o debito se almacenan de manera encriptada por medio de la tecnologia de STRIPE y no se comparten con ningún tercero.</div>
                 </div>
 
                 <div class="row w-100 m-0 mt-3 px-3">

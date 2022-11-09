@@ -1,14 +1,27 @@
 <template>
 <div class="nav-bar-component template w-100 pt-15px pt-ios-25px" :class="clase?clase:'pt-10px'" @click="sync">
 
-    <template v-if="tipo=='logo'">
+    <template v-if="tipo=='logo'"> 
     <div class="row m-0 justify-content-space-between px-3px nav-bar nav-inicio " :class="`${no_border?'':'border-b-gray30-1'}`">
 
-        <div class="w-13 my-auto mr-auto">
-           <div class="row w-100 m-0">
-               <imagen :logo="1" />
-           </div>
+        
+        <div class="w-11 my-auto position-relative" @click="openRightMenu()" v-if="1" >
+            <div class="row w-100 m-0 pt-1px  px-2px"> 
+                <icono icono="menu" clase="letra-gray2-35" />
+            </div>
         </div>
+
+
+        <div class="w-50vw my-auto mx-auto">
+            <div class="row w-100 m-0">
+                <imagen :logo="1" />
+            </div>
+         </div>
+
+        <div v-if="title" class="col text-center title p-0">
+            <p class="m-0 letra-gray3-4-8vw my-auto" >{{title}}</p>
+        </div>
+
 
         <div class="col-auto px-1 boton-carrito h-100 position-relative" @click="router.navigate('/mi_cuenta')">
             <div class="w-45px h-45px">
@@ -16,15 +29,6 @@
             </div>
         </div>
 
-         <div class="col text-center title p-0">
-            <p class="m-0 letra-gray3-4-8vw my-auto" >{{title}}</p>
-        </div>
-
-        <div class="w-11 my-auto position-relative" @click="openRightMenu()" v-if="1" >
-            <div class="row w-100 m-0 pt-1px  px-2px"> 
-                <icono icono="menu" clase="letra-gray2-35" />
-            </div>
-        </div>
 
     </div>
     </template>

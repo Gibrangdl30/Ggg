@@ -18,45 +18,45 @@
                 </div>
             </div>
 
-            <div v-if="1" class="col p-0 h-100" @click="goTo('/compras')">
+            <div v-if="1" class="col p-0 h-100" @click="goTo('/favoritos')">
                 <div class="row w-100 m-0 position-absolute left-0px top--6px z-10 justify-content-center" v-if="circle">
                     <div class="w-60px h-60px mx-auto back-color-azul1 border-radius-50 " v-if="tabVisible==2"></div>
                 </div>
                 <div class="row w-100 m-0 position-relative z-200">
                     <div class="row w-100 m-0 justify-content-center">
-                        <icono icono="store" :clase="(tabVisible==2)?'letra-rojo3-30' :'letra-gray3-30'" />
+                        <icono icono="favorite_border" :clase="(tabVisible==2)?'letra-rojo3-30' :'letra-gray3-30'" />
                     </div>
                     <div class="row w-100 m-0 justify-content-center " v-if="!onlyIcon">
-                        <div :class="(tabVisible==2)?'letra-rojo3-2-6vw' :'letra-gray3-2-6vw'" class="row w-100 m-0  m-0 text-center justify-content-center w-100"  >Tienda</div>
+                        <div :class="(tabVisible==2)?'letra-rojo3-2-6vw' :'letra-gray3-2-6vw'" class="row w-100 m-0  m-0 text-center justify-content-center w-100"  >Favoritos</div>
                     </div>
                 </div>
             </div>
             
-            <div v-if="1" class="col p-0 h-100" @click="goTo('/posts')">
+            <div v-if="1" class="col p-0 h-100" @click="goTo('/carrito')">
                 <div class="row w-100 m-0 position-absolute left-0px top--6px z-10 justify-content-center" v-if="circle">
                     <div class="w-60px h-60px mx-auto back-color-azul1 border-radius-50 " v-if="tabVisible==3"></div>
                 </div>
                 <div class="row w-100 m-0 position-relative z-200">
                     <div class="row w-100 m-0 justify-content-center">
-                        <icono icono="people" :clase="(tabVisible==3)?'letra-rojo3-30' :'letra-gray3-30'" />
+                        <icono icono="shopping_cart" :clase="(tabVisible==3)?'letra-rojo3-30' :'letra-gray3-30'" />
                     </div>
                     <div class="row w-100 m-0 justify-content-center " v-if="!onlyIcon">
-                        <div :class="(tabVisible==3)?'letra-rojo3-2-6vw' :'letra-gray3-2-6vw'" class="row w-100 m-0  m-0 text-center justify-content-center w-100"  >Comunidad</div>
+                        <div :class="(tabVisible==3)?'letra-rojo3-2-6vw' :'letra-gray3-2-6vw'" class="row w-100 m-0  m-0 text-center justify-content-center w-100"  >Carrito</div>
                     </div>
                 </div>
             </div>
 
-            <div class="col p-0 h-100" @click="goTo('/mi_cuenta')">
+            <div class="col p-0 h-100" @click="open('https://mexicolimited.com/#/asociarse')">
                 <div class="row w-100 m-0 position-absolute left-0px top--6px z-10 justify-content-center" v-if="circle">
                     <div class="w-60px h-60px mx-auto back-color-azul1 border-radius-50 " v-if="tabVisible==5"></div>
                 </div>
                 
                 <div class="row w-100 m-0 position-relative z-200">
                     <div class="row w-100 m-0 justify-content-center">
-                        <icono icono="person_outline" :clase="(tabVisible==5)?'letra-rojo3-30' :'letra-gray3-30'" />
+                        <icono icono="desktop_windows" :clase="(tabVisible==5)?'letra-rojo3-30' :'letra-gray3-30'" />
                     </div>
                     <div class="row w-100 m-0 justify-content-center " v-if="!onlyIcon">
-                        <div :class="(tabVisible==5)?'letra-rojo3-2-6vw' :'letra-gray3-2-6vw'" class="row w-100 m-0 text-capitalize text-center justify-content-center w-100" >Perfil</div>
+                        <div :class="(tabVisible==5)?'letra-rojo3-2-6vw' :'letra-gray3-2-6vw'" class="row w-100 m-0 text-capitalize text-center justify-content-center w-100" >Afiliate</div>
                     </div>
                 </div>
             </div>
@@ -207,12 +207,12 @@ export default {
                     this.active = 1;
                     break;
                 case '/eventos': 
-                case '/compras': 
+                case '/favoritos': 
                     this.active = 2;
                     break;
                 case '/chats': 
                 case '/comunicados': 
-                case '/posts': 
+                case '/carrito': 
                     this.active = 3;
                     break;
                 case '/rutas': 
@@ -220,6 +220,7 @@ export default {
                     this.active = 4;
                     break;
                 case '/mi_cuenta': 
+                case '/afiliate': 
                     this.active = 5;
                     break;
             }
@@ -240,6 +241,10 @@ export default {
             }
             this.router.navigate(ruta, {reloadCurrent: true});
             this.$store.dispatch('synchronizeData');
+        },
+
+        open(url){
+            this.$store.dispatch('openWebPage', url);
         },
     },
     }

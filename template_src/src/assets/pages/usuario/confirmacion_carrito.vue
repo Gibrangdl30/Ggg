@@ -14,26 +14,32 @@
 
                     <div class="row w-100 m-0 px-3 pt-3 ">
                         <div class="row w-100 m-0 py-2" v-for="p of productos" :key="p.id">
-                            <div class="row w-100 m-0">
-                                <div class="row w-100 m-0 border-b-gray00-1 py-2 px-3">
-                                    <div class="row w-100 m-0 letra-gray4-15">{{p.nombre}}</div>
-                                    <div class="row w-100 m-0 letra-gray3-15" >{{p.descripcion}}</div>
+                            <div class="row w-100 m-0 border-b-gray00-1">
+                                <div class="w-16vw h-16vw">
+                                    <imagen clase="border-radius-10px border-rojo-1" :create="true" :src="p.info.imagen" />
+                                </div>
+                                <div class="col px-0 pl-3">
+                                    <div class="row w-100 m-0 ">
+                                        <div class="row w-100 m-0 letra-gray4-19 fw-600">{{p.nombre}}</div>
+                                        <div class="row w-100 m-0 letra-gray3-15 " v-if="p.cat">{{p.cat}}</div>
+                                    </div>
                                 </div>
                             </div>
-                                <div class="row w-100 m-0 border-b-gray00-1">
-                                    <div class="row w-100 m-0 px-3 py-2 justify-content-start">
-                                        <div class="col-auto my-auto px-0 letra-gray3-15">{{p.cantidad}} {{(p.cantidad>1)?'piezas':'pieza'}} </div>
-                                        <div class="col-auto my-auto px-0 letra-gray3-15 pl-2">{{p.precio | currency}}</div>
-                                        <div class="col-auto my-auto px-0 ml-auto letra-rojo1-15 fw-800">{{p.total | currency}}</div>
-                                    </div>
-                                </div>
 
-                                <div class="row w-100 m-0 border-b-gray00-1" v-if="p.comentarios">
-                                    <div class="row w-100 m-0 px-3 py-2 justify-content-start">
-                                        <div class="row w-100 m-0 letra-blanco-16">Instrucciones:</div>
-                                        <div class="row w-100 m-0 letra-blanco-16">{{p.comentarios}}</div>
-                                    </div>
+                            <div class="row w-100 m-0 border-b-gray00-1">
+                                <div class="row w-100 m-0 px-3 py-2 justify-content-start">
+                                    <div class="col-auto my-auto px-0 letra-gray3-18">{{p.cantidad}} {{(p.cantidad>1)?'piezas':'pieza'}}</div>
+                                    <div class="col-auto my-auto px-0 letra-gray3-18 pl-2">{{p.precio | currency}}</div>
+                                    <div class="col-auto my-auto px-0 ml-auto letra-rojo1-19 fw-800">{{p.total | currency}}</div>
                                 </div>
+                            </div>
+
+                            <div class="row w-100 m-0 border-b-gray00-1" v-if="p.comentarios">
+                                <div class="row w-100 m-0 px-3 py-2 justify-content-start">
+                                    <div class="row w-100 m-0 letra-blanco-16">Instrucciones:</div>
+                                    <div class="row w-100 m-0 letra-blanco-16">{{p.comentarios}}</div>
+                                </div>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -206,7 +212,7 @@ const moment = require('moment');
                             // return;
                         }
                     }
-                    this.$store.dispatch('postCrearPedidoConsumo',[null]);
+                    this.$store.dispatch('postCrearPedido',[null]);
                 }
             }
         }

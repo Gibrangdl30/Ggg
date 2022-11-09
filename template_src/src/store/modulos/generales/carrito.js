@@ -3,6 +3,7 @@ import swal from 'sweetalert';
 const moment = require('moment');
 
 const initialState = {
+    prod: null,
     producto: null,
     domicilios:{a:[]},
 
@@ -126,10 +127,8 @@ const actions={
     postCrearPedido({ commit, state },[qr]){
         let data = {
             carrito:    state.desgloce,
+            domicilio:  this.getters.carritoFind('domicilios','domicilio'),
             metodo:     state.metodo_pago,
-            evento:     this.getters.dataFind('eventos', 'evento'),
-            zona:       this.getters.dataFindLeve1('eventos', 'evento', 'zonas', 'zona') ,
-            boletos:    this.getters.infoObj('boletos'),
         };
 
         if( !state.metodo_pago ){

@@ -112,7 +112,7 @@ const actions = {
                 this.commit('changeView', 'usuario');
                 swal({
                     title:`Bienvenido ${form.nombre}`,
-                    text:"En PADEL + podrás reservar en 1 minuto y comprar productos y accesorios de forma segura.",
+                    text:"",
                     icon:"success",
                     button: 'Entendido'
                 });

@@ -270,14 +270,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cordova-plugin-ionic-keyboard.keyboard",
-      "file": "plugins/cordova-plugin-ionic-keyboard/www/ios/keyboard.js",
-      "pluginId": "cordova-plugin-ionic-keyboard",
-      "clobbers": [
-        "window.Keyboard"
-      ]
-    },
-    {
       "id": "cordova-plugin-keyboard.keyboard",
       "file": "plugins/cordova-plugin-keyboard/www/keyboard.js",
       "pluginId": "cordova-plugin-keyboard",
@@ -327,7 +319,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-file-transfer": "1.7.1",
     "cordova-plugin-geolocation": "4.1.0",
     "cordova-plugin-inappbrowser": "4.1.0",
-    "cordova-plugin-ionic-keyboard": "2.2.0",
     "cordova-plugin-keyboard": "1.2.0",
     "cordova-plugin-qrscanner": "3.0.1",
     "cordova-plugin-splashscreen": "6.0.2",

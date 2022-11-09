@@ -45,13 +45,14 @@ button.boton-verde
 
 button.boton-app
 {
-    background: linear-gradient(136.67deg, #803bed 0%, #803bed 100%) !important;
-    border: 1px solid #803bed  !important;
+    background: linear-gradient(136.67deg, #e91f78 0%, #e91f78 100%) !important;
+    border: 1px solid #e91f78  !important;
     &.active-state,:hover{
         .row{
             color: white !important;
         }
-        background: #bb99f0 !important;      
+        
+        background: #e49dbb !important;      
     }
 }
 
@@ -86,12 +87,13 @@ button.boton-naranja{
         .row{
             color: white !important;
         }
+
         background: #e8938d  !important;      
     }
 }
 
 button.boton-negro{
-    background-color: linear-gradient(136.67deg, #646f7e 0%, #343b45 100%) !important;
+    background-color: #000000 !important;
     border: 1px solid #000000  !important;
     &.active-state,:hover{
         .row{

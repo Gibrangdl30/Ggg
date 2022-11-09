@@ -11,7 +11,7 @@
                             <div class="row w-100 m-0 justify-content-center" :class="info.type == 's'?'app-degra ':''" >
                                 <div class="row w-100 m-0 py-5px px-2 " >
                                     <div class="w-23vw h-23vw my-auto mt-2">
-                                        <imagen clase="border-radius-10px border-rojo-1 p-2" :logo="1" />
+                                        <imagen clase="border-radius-10px border-rojo-1 py-30px px-5px" :logo="2" />
                                     </div>
                                     <div class="col px-0 pl-3 my-auto " >
                                         <div class="row w-100 m-0 letra-gray4-17 fw-600 " >Pedido #{{info.id}}</div>
@@ -21,7 +21,7 @@
                                             <!-- <div class="col-auto px-0 my-auto mr-auto ml-2 letra-rojo1-23" v-if="info.productos.length-1">+{{info.productos.length-1}}</div>    -->
                                         </div>
                                         <div class="row w-100 m-0  ">
-                                            <div class="col-auto px-0 ml-auto letra-gray3-16 ">{{ [info.creado, 'YYYY-MM-DD HH:mm:ss'] |  moment('HH:mm [hrs] DD/MM/YYYY') }}</div>
+                                            <div class="col-auto px-0 ml-auto letra-gray3-16 " v-if="info.creado">{{ [info.creado, 'YYYY-MM-DD HH:mm:ss'] |  moment('HH:mm [hrs] DD/MM/YYYY') }}</div>
                                         </div>
                                     </div>
 

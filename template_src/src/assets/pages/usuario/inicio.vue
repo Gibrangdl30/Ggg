@@ -9,18 +9,49 @@
             </div>
 
             <div class="contenedor-page-tabs ">
-                <template v-if="0" >
-                    <div class="row w-100 m-0" v-if="banners && banners.length" >
+                <template  >
+                    <div class="row w-100 m-0 pb-2" v-if="top && top.length" >
                         <div class="row w-100 m-0">
-                            <banners :fotos="banners" />
+                            <banners :fotos="top" />
+                        </div>
+                    </div>
+                    <div class="row w-100 m-0" v-if="left && left.length">
+                        <div class="col-6 px-1" v-for="a of left" >
+                            <div class="row w-100 m-0 pb-3"  >
+                                <div class="row w-100 m-0">
+                                    <imagen :src="a.imagen" />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </template>
+                
+                <template >
+                    <div class="row w-100 m-0" v-if="categorias && categorias.length" >
+                        <div class="row w-100 m-0">
+                            <categorias @input="input" :value="cat" :fotos="categorias" />
+                        </div>
+                    </div>
+                </template>
+
                 <div class="row w-100 m-0 pt-2 pb-2"  >
-                    <div class="row w-100 m-0 px-3 to-eventos_zonas" v-for=" (e) of instalciones" :key="e.id">
+                    <div class="row w-100 m-0 px-3 to-eventos_zonas" v-for=" (e,x) of instalciones" :key="e.id">
                         <div class="row w-100 m-0 py-2" >
                             <instalcionesComponent :row="1"  :data="e"  />
                         </div>
+
+                        <template v-if="x==4">
+                            <div class="row w-100 m-0 py-2" v-if="bottom && bottom.length">
+                                <div class="col-6 px-1" v-for="a of bottom" >
+                                    <div class="row w-100 m-0 pb-3"  >
+                                        <div class="row w-100 m-0">
+                                            <imagen :src="a.imagen" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+
                     </div>
                 </div>
             </div>
@@ -52,12 +83,27 @@ const moment = require('moment');
             router(){return this.$store.getters.getRouter;},
             session(){return this.$store.getters.getSession;},
 
+            cat(){return this.$store.getters.catalogoGetObject('cat') || null;},
+            categorias(){return this.$store.getters.info('categorias') },
+
             banners(){return this.$store.getters.info('banners') },
+            top(){return this.banners.filter(s=>    s.device == '1' && s.section == '0')},
+            left(){return this.banners.filter(s=>   s.section == '1')},
+            bottom(){return this.banners.filter(s=>   s.section == '2' )},
+
+            byCats(){
+                console.log("CATS", this.cat);
+
+                if(this.cat){
+                    return this.$store.getters.info('productos').filter(s=>s.categorias.some(c=>c.id == this.cat));
+                }
+                return this.$store.getters.info('productos');
+            },
             instalciones(){
                 if(this.b){
-                    return this.$store.getters.info('instalciones').filter(w=>w.name_field.toLowerCase().includes( this.b.toLowerCase() ));
+                    return this.byCats.filter(w=>w.name.toLowerCase().includes( this.b.toLowerCase() )).filter((a,x)=>x < 50);;
                 }
-                return this.$store.getters.info('instalciones') 
+                return this.byCats.filter((a,x)=>x < 50);
             },
         },
 
@@ -68,6 +114,10 @@ const moment = require('moment');
         methods:{
             go(ruta){
                 this.router.navigate(ruta);
+            },
+
+            input(id){
+                this.$store.commit('updateCatalogosState',['cat', id]);
             },
 
             back(ruta){

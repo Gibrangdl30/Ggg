@@ -4,7 +4,7 @@
 
         <div class="swiper-wrapper">
 
-            <div class="swiper-slide w-auto px-1 text-center">
+            <div class="swiper-slide w-auto px-1 text-center" v-if="0">
                 <div class="w-auto text-center">
                     <div class="w-30vw h-23vw mx-auto border-radius-15px overflow-hidden position-relative  " :class="value==null?'border-rojo2-1':''" @click="update(null)" >
                         <imagen clase="" :fit="true" :logo="1" />
@@ -17,10 +17,10 @@
 
             <div class="swiper-slide w-auto px-1 text-center"  v-for="i of categorias" :key="i.x" @click="update(i.id)">
                 <div class="w-auto text-center">
-                    <div class="w-30vw h-23vw mx-auto border-radius-15px overflow-hidden position-relative  " :class="value==i.id?'border-rojo2-2':''">
+                    <div class="w-40vw h-20vw mx-auto border-radius-15px overflow-hidden position-relative  " :class="value==i.id?'border-rojo1-3':''">
                         <imagen clase="" :fit="true" :src="i.imagen" />
-                        <div class="h-100 w-100 position-absolute top-0px left-0px back-color-negro1  ">
-                            <div class="row w-100 h-100 m-0 fw-600 align-content-center letra-blanco-20 justify-content-center text-center">{{i.nombre}}</div>
+                        <div class="h-100 w-100 position-absolute top-0px left-0px  " :class="value==i.id && 0?'back-color-verd1':'back-color-negro1 '" >
+                            <div class="row w-100 h-100 m-0 fw-600 align-content-center letra-blanco-17 justify-content-center text-center">{{i.name}}</div>
                         </div>
                     </div>
                     <!-- <div class="row w-100 m-0 h-40px align-content-center letra-verde3-3-2vw pt-2 text-capitalize justify-content-center text-center">{{i.nombre}}</div> -->
@@ -80,8 +80,11 @@ export default {
             }
         },
         update(id){
-            this.$emit('input', id);
-            // this.$store.commit('updateCatalogosState',['categoria', id]);
+            if(this.value == id){
+                this.$emit('input', null);
+            }else{
+                this.$emit('input', id);
+            }
         }
 
     },

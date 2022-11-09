@@ -23,6 +23,7 @@ const initialState = {
     contactos:  { a:[] },
     comunicados:  { a:[] },
     categorias:  { a:[] },
+    cat: null,
     motivos:  { a:[] },
     tipos_familia:  { a:[] },
 

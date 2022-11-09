@@ -3,6 +3,15 @@
         <div class="vista  ">
             <nav-bar tipo="inicio" :backs="true" :title="'Métodos de pago'" :fix="1" />
 
+            <div class="row w-100 m-0 back-color-rojo py-10px " @click="goTo('/agregar_metodo_pago')">
+                <div class="row w-100 m-0 px-3 letra-blanco-16 justify-content-center text-center ">
+                    <div class="col-auto my-auto pr-0 pl-25px ml-auto pb-5px">Nuevo método de pago</div>
+                    <div class="col-auto my-auto px-0 ml-auto"  >
+                        <icono icono="add" clase="letra-blanco-30 fw-600" />
+                    </div>
+                </div>
+            </div>
+
             <div class="contenedor-page  padding-bottom-90">
                 <div class="row m-0 w-100 ">
 
@@ -24,27 +33,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="row m-0 border-botom-gray border-b-gray3-1" @click="goTo('/agregar_metodo_pago')">
-                                <div class="row m-0 w-100 justify-content-between py-2">
-                                    <div class="col my-auto letra-gray3-5-1vw p-0 pl-3">Agregar método de pago</div>
-                                    <div class="w-50px px-0">
-                                        <imagen  src="ch_left" :icono="1" />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- <div class="row m-0 border-botom-gray border-b-gray0-1"  >
-                                <div class="row m-0 w-100 justify-content-between py-1">
-                                    <div class="col-2 my-auto p-0 px-1">
-                                        <img class="w-100 h-100" :src="require('../iconos/dolar.svg')" alt="">
-                                    </div>
-                                    <div class="col my-auto letra-gray3-5-1vw px-2">Efectivo</div>
-                                     <div class="col-auto my-auto px-0">
-                                        <toggle :checked="!metodo_id" @change="set(null)" />
-                                    </div>
-                                </div>
-                            </div> -->
 
                         </div>
                     </div>
