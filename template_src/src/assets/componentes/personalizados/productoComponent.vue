@@ -13,7 +13,7 @@
 
         <div class="row w-100 m-0" v-if="full">
             
-            <div class="row w-100 m-0  " >
+            <div class="row w-100 m-0 pt-26px " >
                 <div class="row w-100 m-0 position-relative">
                     <div class="w-auto position-absolute left-10px top-33px z-1000000" @click="router.back()">
                         <div class="row w-100 m-0">
@@ -28,8 +28,8 @@
                         </div>
                     </div>
 
-                    <!-- <sliderPlatillo :info="info" /> -->
-                    <imagen clase="h-max-50vh" :fit="true" :src="info.imagen" />
+                    <sliderPlatillo :info="info" />
+                    <!-- <imagen clase="h-max-50vh" :fit="true" :src="info.imagen" /> -->
                 </div>
             </div>
 
@@ -43,8 +43,8 @@
                         <div class="col px-0 letra-gray3-20 fw-600" >Clave Articulo {{info.sku}}</div>
                     </div> 
                     
-                    <div class="row w-100 m-0 pt-1 pb-3">
-                        <div class="col-auto px-0">
+                    <div class="row w-100 m-0 pt-1 pb-3" >
+                        <div class="col-auto px-0" @click="goTienda()" >
                             <div class="row w-100 m-0 px-3 pb-1 pt-7px border-rojo-1 border-radius-10px">
                                 <div class="col-auto px-0">
                                     <icono icono="storefront" clase="letra-rojo-30" />
@@ -61,6 +61,10 @@
                     </div> 
                     
                     <div class="row w-100 m-0 pt-1 pb-1">
+                        <div class="row w-100 m-0 px-0 letra-gray4-18" v-if="info.short_description" v-html="info.short_description" ></div>
+                    </div>
+                    
+                    <div class="row w-100 m-0 pt-4 pb-1">
                         <div class="row w-100 m-0 px-0 letra-gray3-18" v-if="info.description" v-html="info.description" ></div>
                     </div>
                
@@ -106,14 +110,22 @@
 
             <div class="row w-100 m-0  " >
                 <div class="row w-100 m-0 px-3 pb-2 letra-gray4-18 fw-600">Productos relacionados: </div>
-                <div class="row w-100 m-0" v-if="0">
-                    <scollX  cantidad="auto" >
+                <div class="row w-100 m-0" v-if="0" >
+                    <scollX cantidad="auto" >
                         <div class="swiper-slide w-auto px-2 text-center" v-for="xp of platillos" :key="xp.id" >
                             <div class="w-auto" >
-                                <platilloMenuCard :createImagen="1" :card="true" :data="xp" />
+                                <instalcionesComponent :row="1"  :data="xp"  />
                             </div>
                         </div>
                     </scollX>
+                </div>
+
+                <div class="row w-100 m-0">
+                    <div class="row w-100 m-0 py-2 px-3" v-for="xp of platillos" :key="xp.id" >
+                        <div class="row w-100 m-0" >
+                            <instalcionesComponent :row="1"  :data="xp"  />
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -195,6 +207,7 @@ export default {
                 total: 0,
             },
             show: false,
+            detalle: null,
         };
     },
     props:[
@@ -208,19 +221,23 @@ export default {
     ],
     computed:{
         router(){return this.$store.getters.getRouter;},
-        info(){return this.data || {}},
+        prod(){return this.detalle || null},
+        info(){return this.prod || this.data || {} },
         entrega(){return moment().add(this.info.tiempo || 5, 'days').format('dddd DD [de] MMMM')},
         totalProductos(){ return this.$store.getters.carritoObject('totalProductos') || 15;},
 
         aprox(){ return moment().add(55,'minutes').format('HH:mm [hrs]')},
         restaurante(){return this.$store.getters.restaurantesFind('restaurantes','restaurante') || {};},
-        platillos(){return (this.restaurante.platillos || [] ).filter(f=>f.id != this.info.id).slice(0,5) },
+        platillos(){return (this.info.platillos || [] ).filter(f=>f.id != this.info.id).slice(0,5) },
 
     },
     
     mounted(){
-        this.set();
-        // console.log("RES RES", this.restaurante, this.platillos);
+        this.$store.dispatch('postDetalleProd',[this.info.id, (p)=>{
+            console.log("GET DETALLE", this.info, p);
+            this.detalle = p;
+            this.set();
+        }])
     },
 
     methods:{
@@ -233,6 +250,12 @@ export default {
             this.$store.commit('setRestauranteState',['restaurante',this.info.restaurantes_id]);
             this.$store.commit('setRestauranteState',['platillo',this.info.id]);
             this.router.navigate('/producto');
+        },
+
+        goTienda(){
+            console.log("GO TIENDA", this.info.user);
+            this.$store.commit('setRestauranteState',['tienda', this.info.user]);
+            this.router.navigate('/tienda_productos');
         },
 
         clickX(){

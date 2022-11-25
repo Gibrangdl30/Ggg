@@ -41,8 +41,8 @@
                 <div class="col-11 mt-5 " @click="enter()">
                    <botonApp texto="Comenzar" tipo="app" radius="30px" />
                 </div>
-                <div class="col-11 mt-3 " v-if="0" @click="entrar()" >
-                   <botonApp texto="Explorar" tipo="rojo" radius="30px" />
+                <div class="col-11 mt-3 " v-if="1" @click="entrar()" >
+                   <botonApp texto="Explorar" tipo="gris" radius="30px" />
                 </div>
                 
             </div>

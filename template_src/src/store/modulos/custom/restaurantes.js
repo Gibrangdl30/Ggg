@@ -8,6 +8,7 @@ const initialState = {
     restaurante: null,
     platillo: null,
     usuario: null,
+    tienda: null,
 };
 
 const state=JSON.parse(JSON.stringify(initialState));

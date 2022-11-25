@@ -1,20 +1,33 @@
 <template>
-<div class="nav-bar-component template w-100 pt-15px pt-ios-25px" :class="clase?clase:'pt-10px'" @click="sync">
+<div class="nav-bar-component template w-100 pt-15px pt-ios-35px " :class="`${clase?clase:'pt-10px'} ${tipo=='logo'?'back-color-negro':''}`" @click="sync">
 
     <template v-if="tipo=='logo'"> 
-    <div class="row m-0 justify-content-space-between px-3px nav-bar nav-inicio " :class="`${no_border?'':'border-b-gray30-1'}`">
+    <div class="row m-0 justify-content-space-between px-3px nav-bar nav-inicio back-color-negro" :class="`${no_border?'':'border-b-gray30-1'}`">
 
         
-        <div class="w-11 my-auto position-relative" @click="openRightMenu()" v-if="1" >
+        <div class="w-13 boton-menu p-0" v-if="backs || emitBack" >
+            <template v-if="backs">
+                <button type="button" class="button button-outline button-raised button-active-gray3 h-100 p-2px" @click="back()" >
+                    <i class="f7-icons color-white letra-blanco-5-5vw">chevron_left</i>
+                </button>
+            </template>
+            <template v-else-if="emitBack">
+                <button type="button" class="button button-outline button-raised button-active-gray3 h-100 p-2px" @click="$emit('back_click')">
+                    <i class="f7-icons color-white letra-blanco-5-5vw">chevron_left</i>
+                </button>
+            </template>
+        </div>
+
+        <div class="w-11 my-auto position-relative" @click="openMenu()" v-else >
             <div class="row w-100 m-0 pt-1px  px-2px"> 
-                <icono icono="menu" clase="letra-gray2-35" />
+                <icono icono="menu" clase="letra-rojo-35" />
             </div>
         </div>
 
 
         <div class="w-50vw my-auto mx-auto">
             <div class="row w-100 m-0">
-                <imagen :logo="1" />
+                <imagen :logo="3" />
             </div>
          </div>
 
@@ -23,12 +36,11 @@
         </div>
 
 
-        <div class="col-auto px-1 boton-carrito h-100 position-relative" @click="router.navigate('/mi_cuenta')">
+        <div class="col-auto px-1 boton-carrito h-100 position-relative" @click="goCuenta()">
             <div class="w-45px h-45px">
                 <imagen clase="border-radius-50" :fit="true" :perfil="true" />
             </div>
         </div>
-
 
     </div>
     </template>
@@ -125,7 +137,7 @@
                 <i class="material-icons letra-amar2-7-5vw" >notifications</i>
             </button>
         </div>
-        <div class="w-12 boton-carrito h-100" @click="openRightMenu()">
+        <div class="w-12 boton-carrito h-100" @click="openMenu()">
             <button type="button" class="button button-outline button-raised button-active-gray3 h-100 p-2px" >
                 <i class="material-icons letra-gray3-7-5vw" >menu</i>
             </button>
@@ -230,6 +242,7 @@
             }
         },
         computed:{
+            session(){return this.$store.getters.getSession;},
             router(){
                 if(!this.routerView) return this.$store.getters.getRouter;
                 else return this.routerView;
@@ -245,10 +258,20 @@
             goTo(ruta){
                 this.router.navigate(ruta);
             },
+
+            goCuenta(){
+                if(this.session.token){
+                    this.router.navigate('/mi_cuenta')
+                }else{
+                    this.$store.commit('openModal',['modalSession']);
+                }
+            },
+
             refresh(){
                 this.$store.dispatch('synchronizeData');
                 swal("","Información actulizada","success");
             },
+
             sync(){
                 this.$store.dispatch('synchronizeData');
             },

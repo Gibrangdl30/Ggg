@@ -5,6 +5,7 @@ import botonIcono from './botonIcono.vue';
 import icono from './icono.vue';
 import inputForm from './inputForm.vue';
 import busquedaInput from './busquedaInput.vue';
+import busquedaBlack from './busquedaBlack.vue';
 
 import imagen from './imagen.vue';
 
@@ -31,6 +32,7 @@ import tabs from './tabs.vue';
 import toggle from './toggle.vue';
 import calendario from './calendario.vue';
 import categorias from './categorias.vue';
+import categoriasSubs from './categoriasSubs.vue';
 import scollX from './scollX.vue';
 import rating from './rating.vue';
 import amenidades from './amenidades.vue';
@@ -44,6 +46,7 @@ function plugin(Vue) {
     Vue.component('icono', icono);
     Vue.component('inputForm', inputForm);
     Vue.component('busquedaInput', busquedaInput);
+    Vue.component('busquedaBlack', busquedaBlack);
     Vue.component('imagen', imagen);
     Vue.component('mapa', mapa);
     Vue.component('mapaPick', mapaPick);
@@ -66,6 +69,7 @@ function plugin(Vue) {
     Vue.component('mensajeComponent', mensajeComponent);
     Vue.component('calendario', calendario);
     Vue.component('categorias', categorias);
+    Vue.component('categoriasSubs', categoriasSubs);
     Vue.component('scollX', scollX);
     Vue.component('rating', rating);
     Vue.component('amenidades', amenidades);

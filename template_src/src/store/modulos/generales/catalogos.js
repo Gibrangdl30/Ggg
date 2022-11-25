@@ -24,6 +24,8 @@ const initialState = {
     comunicados:  { a:[] },
     categorias:  { a:[] },
     cat: null,
+    sub: null,
+    
     motivos:  { a:[] },
     tipos_familia:  { a:[] },
 

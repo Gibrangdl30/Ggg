@@ -24,7 +24,7 @@ const initialState = {
     },
 
     modales:{
-        loader:false,
+        loader:2,
         selectImagen:false,
         seleccionarImagen:false,
         globalMsn:false,
@@ -226,8 +226,10 @@ const mutations = {
         state.modales['modalMensaje'] = false; 
     },
 
-    closeModal(state,[modal]){
-        state.modales[modal] = false;
+    closeModal(state,[modal, force = 0]){
+        if(state.modales[modal] != 2 || force == 1){
+            state.modales[modal] = false;
+        }
     },
 
     setOpenPreview(state, galeria){

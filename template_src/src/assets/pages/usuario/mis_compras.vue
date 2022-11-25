@@ -1,13 +1,14 @@
 <template>
     <f7-page class="" id="inicio">
         <div class="vista">
+
             <nav-bar tipo="inicio" title="Pedidos" :fix="1" :backs="true"   />
 
             <div class="contenedor-page-tabs ">
 
                 <div class="row w-100 m-0 pt-2 pb-2" v-if="1"  >
                     <div class="row w-100 m-0 px-3" v-for=" info of consumos" :key="info.id">
-                        <div  class="row w-100 m-0 my-2 border-gray01-1 border-radius-10px overflow-hidden "  @click="comentar(info)" >
+                        <div  class="row w-100 m-0 my-2 border-gray01-1 border-radius-10px overflow-hidden "   >
                             <div class="row w-100 m-0 justify-content-center" :class="info.type == 's'?'app-degra ':''" >
                                 <div class="row w-100 m-0 py-5px px-2 " >
                                     <div class="w-23vw h-23vw my-auto mt-2">
@@ -31,7 +32,7 @@
                             <div class="row w-100 m-0 ">
                                 <div class="row w-100 m-0 mt-2 mb-2 mx-3 border-t-gray01-2">
                                     <div class="row w-100 m-0 letra-gray3-17">Productos:</div>
-                                    <div v-for="p of info.productos" :key="p.id" class="row w-100 m-0 py-1">
+                                    <div v-for="p of info.productos" :key="p.id" class="row w-100 m-0 py-1" @click="goes(p)">
                                         <div class="row w-100 m-0">
                                             <div class="w-50px h-50px">
                                                 <imagen clase="border-radius-5px border-gray01-1" :src="p.imagen" />
@@ -43,6 +44,8 @@
                                                     <div class="col-auto px-0 px-2 letra-rojo-13">Cantidad: {{p.cantidad}}</div>
                                                     <div class="col px-0  letra-gray4-13">Total: {{p.total | currency}}</div>
                                                 </div>
+                                                <div class="row w-100 m-0 letra-rojo-15">{{p.brand}}</div>
+                                                <div class="row w-100 m-0 letra-gray3-15">{{p.name}}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -90,6 +93,10 @@ const moment = require('moment');
         methods:{
             go(ruta){
                 this.router.navigate(ruta);
+            },
+            goes(info){
+                this.$store.commit('setCarritosState',['prod',{ id: info.product_id }]);
+                this.router.navigate('/producto');
             },
 
             back(ruta){

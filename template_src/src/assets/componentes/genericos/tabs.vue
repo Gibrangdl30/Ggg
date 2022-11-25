@@ -181,7 +181,7 @@ export default {
         return {
             active: 1,
             circle: false,
-            onlyIcon: false,
+            onlyIcon: 1,
         }
     },
     props: [

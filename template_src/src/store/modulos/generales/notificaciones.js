@@ -1,6 +1,7 @@
 
 const initialState = {
-    enable: true,
+    enable: 0,
+
     notificacion:{},
     pushNotification:{},
     push: null,
@@ -54,41 +55,46 @@ const mutations = {
                     if(!state.push){
                         let init = ()=>{
                             // console.log("REGISTRANDO PUSH READY");
-                            state.push = PushNotification.init(state.opciones);
-                            PushNotification.hasPermission(data => {
-                                if (data.isEnabled) {
-                                    // console.log('>>>>PUSH is Enabled');
-                                }
-                            });
-                            let processNotificacion = (data)=>{
-                                this.dispatch('synchronizeData');
-                                this.commit('setNotificacionesPush',data);
-                            };
-                            state.push.on('registration', data => {
-                                state.token = data.registrationId;
-                                this.dispatch('postSaveToken');
-                            });
-                            state.push.on('notification', data => {
-                                console.log("==== NOTI RECIBIDA", data);
-                                processNotificacion(data);
-                            });
+                            try{
+                                state.push = PushNotification.init(state.opciones);
+                                PushNotification.hasPermission(data => {
+                                    if (data.isEnabled) {
+                                        // console.log('>>>>PUSH is Enabled');
+                                    }
+                                });
+                                let processNotificacion = (data)=>{
+                                    this.dispatch('synchronizeData');
+                                    this.commit('setNotificacionesPush',data);
+                                };
+                                state.push.on('registration', data => {
+                                    state.token = data.registrationId;
+                                    this.dispatch('postSaveToken');
+                                });
+                                state.push.on('notification', data => {
+                                    console.log("==== NOTI RECIBIDA", data);
+                                    processNotificacion(data);
+                                });
+                            }catch(er){}
                         };
+
                         init();
                     }
                 }
             }
 
         }
-        
     },
+
     cleanPush(state){
         state.push = null;
     },
+
     goToMensajes(state){
         this.commit('cerrarNotificacionMensaje');
         this.getters.getRouter.navigate('/mensajes',{reloadCurrent:true});
     }
 };
+
 const actions = {
     
     postSaveToken({state}){

@@ -2,7 +2,7 @@
     <div class="page " id="inicio">
     <div class="page-content position-relative">
 
-        <div class="vista " >
+        <div class="vista h-100" >
 
             <div class="row w-100 m-0  " v-if="false" >
                 <div class="row w-100 m-0  position-relative">
@@ -15,7 +15,7 @@
                 </div>
             </div>
 
-            <div class=" contenedor-page-tabs ">
+            <div class=" contenedor-page-tabs h-100">
                 <div class="row w-100 m-0">
                     <productoComponent :full="true" :data="platillo" @set="set"/>
                 </div>
@@ -51,8 +51,8 @@ const moment = require('moment')
         computed: {
             router(){return this.$store.getters.getRouter;},
             session(){return this.$store.getters.getSession;},
-            restaurante(){return this.$store.getters.restaurantesFind('restaurantes','restaurante') || {};},
-            platillo(){return this.$store.getters.carritoObject('prod') || {}},
+            prods(){return this.$store.getters.info('productos'); },
+            platillo(){return this.prods.find(w => w.id == this.$store.getters.carritoObject('prod').id) || {}},
         },
 
         mounted(){
@@ -72,7 +72,6 @@ const moment = require('moment')
                 console.log("ADDD", this.form);
                 if(this.total){
                     this.form.distancia = 0;
-                    this.form.distancia = this.restaurante.distancia;
                     this.$store.commit('addProductoCarrito',{prod: this.form, callback: ()=>{
                         this.$store.commit('openMsn',['¡Gracias! Los Producto(s) han sido agregados a tu carrito','Pagar y recibir',false,false]);
                         this.router.back('/consumos');

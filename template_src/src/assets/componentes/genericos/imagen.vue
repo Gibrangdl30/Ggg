@@ -1,5 +1,5 @@
 <template>
-    <img :class="` h-100 w-100 ${clase?clase:''} ${!nofit?'object-fit':''}`" :id="`img_${id} `" :onload="verload()"  :src="imagen" :alt="`alt_${id}`" @click="showImage()">
+    <img :class="` h-100 w-100 ${clase?clase:''} ${contain?'object-fit-contain':'object-fit'}`" :id="`img_${id} `" :onload="verload()"  :src="imagen" :alt="`alt_${id}`" @click="showImage()">
 </template>
 <script>
 export default {
@@ -19,6 +19,7 @@ export default {
     props:[    
             'src',
             'fit',
+            'contain',
             'nofit',
             'create',
             'size',
@@ -41,6 +42,9 @@ export default {
         },
         imagen(){
             if(this.logo) {
+                if(this.logo == 3){
+                    return `${this.baseImg}elblanco.svg`;
+                } 
                 if(this.logo == 2){
                     return `${this.baseImg}ellogo.svg`;
                 }
@@ -72,7 +76,7 @@ export default {
             if(this.user){
                 return `${this.baseImg}perfil.png`;
             }
-            return `${this.baseImg}2l.svg`;
+            return `${this.baseImg}ellogo.svg`;
         },
 
     },

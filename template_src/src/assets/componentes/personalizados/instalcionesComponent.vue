@@ -222,7 +222,7 @@ export default {
         set1(){
             console.log("NAVEGANDO TO RUTA");
             this.$store.commit('setCarritosState',['prod', this.info]);
-            this.router.navigate('/producto');
+            this.router.navigate('/producto/'+this.info.id);
             this.$store.dispatch('synchronizeData');
         },
 

@@ -8,6 +8,7 @@ import eventosComponent from './eventosComponent.vue';
 import asientosComponent from './asientosComponent.vue';
 import productoComponent from './productoComponent.vue';
 import instalcionesComponent from './instalcionesComponent.vue';
+import sliderPlatillo from './sliderPlatillo.vue';
 
 
 function plugin(Vue) {
@@ -21,5 +22,6 @@ function plugin(Vue) {
     Vue.component('asientosComponent', asientosComponent);
     Vue.component('productoComponent', productoComponent);
     Vue.component('instalcionesComponent', instalcionesComponent);
+    Vue.component('sliderPlatillo', sliderPlatillo);
 }
 export default plugin

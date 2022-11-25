@@ -90,7 +90,10 @@ import consumo_detalle from './assets/pages/usuario/consumo_detalle.vue';
 
 import crear_post from './assets/pages/usuario/crear_post.vue';
 import crear_post_res from './assets/pages/usuario/crear_post_res.vue';
+import tienda_productos from './assets/pages/usuario/tienda_productos.vue';
 
+import subcategorias from './assets/pages/usuario/subcategorias.vue';
+import subcategoria_productos from './assets/pages/usuario/subcategoria_productos.vue';
 
 import post_comentarios from './assets/pages/usuario/post_comentarios.vue';
 import iniciar_chat_amigo from './assets/pages/usuario/iniciar_chat_amigo.vue';
@@ -118,6 +121,9 @@ const usuario = [
   {path: '/favoritos',component: favoritos},
   {path: '/consumos',component: consumos},
   {path: '/producto',component: producto},
+
+  {path: '/producto/:id',component: producto},
+  
   {path: '/carrito',component: carrito},
   {path: '/confirmacion_carrito',component: confirmacion_carrito},
   
@@ -143,6 +149,11 @@ const usuario = [
 
   {path: '/crear_post',component: crear_post},
   {path: '/crear_post_res',component: crear_post_res},
+
+  {path: '/tienda_productos',component: tienda_productos},
+  
+  {path: '/subcategorias',component: subcategorias},
+  {path: '/subcategoria_productos',component: subcategoria_productos},
   
   {path: '/seleccionar_usuarios_post',component: seleccionar_usuario_post},
 

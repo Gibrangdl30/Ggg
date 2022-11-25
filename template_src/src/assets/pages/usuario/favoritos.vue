@@ -4,7 +4,7 @@
         <div class="vista">
             <nav-bar tipo="inicio" title="Favoritos" :fix="1" :backs="true"   />
 
-            <div class="row w-100 m-0 px-3 py-2 ">
+            <div v-if="0" class="row w-100 m-0 px-3 py-2 ">
                 <busquedaInput v-model="b" holder="Buscar..." />
             </div>
 
@@ -19,6 +19,7 @@
                 </div>
 
             </div>
+            
             <tabs />
         </div>
 

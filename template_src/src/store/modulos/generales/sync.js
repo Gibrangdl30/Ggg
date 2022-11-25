@@ -148,6 +148,8 @@ const actions = {
         $(`#${cont}`).animate({ scrollTop: 9999 }, 'slow');
     },
 
+
+
     postGetSync({state}, force = false){
         if(!state.sync || force){
             this.commit('initSync');
@@ -309,6 +311,28 @@ const actions = {
             console.error("ERROR",e);
             this.commit('stop');
         }
+    },
+
+    postDetalleProd({ commit, state }, [ id, callback ]){
+        let data = {
+            producto_id: id,
+        };
+        let finish = (res)=>{
+            if(callback){
+                callback(res.data.prod);
+            }
+        };
+
+        let load = {
+            loader: 0,
+            alert: 0,
+            url: 'sync/get_detalle',
+            data: data,
+        }
+        this.dispatch('superPostLoader', load).then(
+        res => {
+            finish(res);
+        },error=>{});
     },
 
     superPostLoader({state}, {  

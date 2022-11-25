@@ -16,7 +16,7 @@
                 <div class="row w-100 m-0">
                     <div class="row w-100 m-0 py-2" v-for="p of productos" :key="p.id" >
                         <div class="row w-100 m-0 ">
-                            <div class="row w-100 m-0 pb-2  border-b-gray00-1 pt-2 px-3">
+                            <div class="row w-100 m-0 pb-2  border-b-gray00-1 pt-2 px-3" @click="goes(p.info)" >
                                 <div class="w-16vw h-16vw">
                                     <imagen clase="border-radius-10px border-rojo-1" :create="true" :src="p.info.imagen" />
                                 </div>
@@ -25,7 +25,7 @@
                                     <div class="row w-100 m-0 letra-gray3-15 " v-if="p.cat">{{p.cat}}</div>
                                 </div>
                                
-                                <div class="w-10 px-0 ml-auto overflow-hidden text-center pt-9px" @click="$store.commit('removeProductoCarrito',p)" >
+                                <div class="w-10 px-0 ml-auto overflow-hidden text-center pt-9px" @click.stop="$store.commit('removeProductoCarrito',p)" >
                                     <icono icono="cancel" clase="letra-rojo1-30 " />
                                 </div>
                             </div>
@@ -123,6 +123,12 @@ const moment = require('moment')
             go(ruta){
                 this.router.navigate(ruta);
             },
+
+            goes(info){
+                this.$store.commit('setCarritosState',['prod',{ id: info.id }]);
+                this.router.navigate('/producto');
+            },
+
             goRestaurante(){
                 this.$store.commit('setRestauranteState',['restaurante',this.data.restaurantes_id]);
                 this.router.navigate('/restaurante');

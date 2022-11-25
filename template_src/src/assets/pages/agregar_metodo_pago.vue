@@ -4,7 +4,7 @@
             
         <nav-bar tipo="inicio" :backs="true" :title="'Nueva tarjeta'" :fix="1" />
 
-            <div class="contenedor-page-tabs ">
+            <div class=" contenedor-page-tabs ">
 
                 <div class="row w-100 m-0 pt-4 px-3">
                     <div class="row w-100 m-0 px-3 letra-gray3-19 justify-content-center text-center ">
@@ -24,20 +24,24 @@
                         </div>
                     </div>
                     <div class="col-12 px-1 mt-3">
-                        <inputForm type="number" texto="Numero de la tarjeta:" placeholder="" v-model="card.number" :maxlength="16"  />
+                        <inputForm :offset="500" type="number" texto="Numero de la tarjeta:" placeholder="" v-model="card.number" :maxlength="16"  />
                     </div>
                     <div class="col-6 px-1 mt-4">
-                        <inputForm :date="true" type="month"  texto="Vigencia (mes/año):" placeholder="MM/YY" v-model="card.expiracion"  />
+                        <inputForm :offset="800" @focus="ex=1" @blur="ex=0" :date="true" type="month"  texto="Vigencia (mes/año):" placeholder="MM/YY" v-model="card.expiracion"  />
                     </div> 
                     <div class="col-6 px-1 mt-4">
-                        <inputForm type="number" texto="CVV" placeholder="***" v-model="card.cvv" maxlength="4"  />
+                        <inputForm :offset="1000" @focus="ex=1" @blur="ex=0" type="number" texto="CVV" placeholder="***" v-model="card.cvv" maxlength="4"  />
                     </div>
                 </div>
+
                 <div class="row w-100 m-0 justify-content-center px-3 pt-5">
                     <div class="col-11 mx-auto px-0">
                         <boton-app @click="check()" texto="Agregar tarjeta" radius="35px"></boton-app>
                     </div>
                 </div>
+
+                <div class="row w-100 m-0 py-4"></div>
+                <div class="row w-100 m-0 py-5 h-50vh " v-if="ex"></div>
             </div>
         </div>
 
@@ -52,6 +56,7 @@ const moment = require('moment');
         },
         data(){
             return{
+                ex: 0,
                 card:{
                     number: '',
                     expiracion:'',

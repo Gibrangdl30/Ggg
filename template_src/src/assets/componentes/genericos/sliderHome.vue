@@ -92,6 +92,10 @@ export default {
     },
     mounted() {
         setTimeout(this.initSlider,300);
+        setTimeout(()=>{
+            this.$store.commit('closeModal',['loader', 1]);
+        },1000*3);
+
     },
     methods:{
         initSlider(){
