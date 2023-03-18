@@ -1,5 +1,7 @@
 import axios from 'axios';
 import swal from 'sweetalert';
+import _ from 'lodash';
+
 const moment = require('moment');
 
 const initialState = {
@@ -24,6 +26,8 @@ const initialState = {
         iva: 0,
         total: 0,
     },
+
+    servicioCom: 0,
 
     servicioQR: {},
 };
@@ -52,6 +56,10 @@ const mutations={
                 }
             }
         }
+        
+        if('servicioCom' in data){
+            state['servicioCom'] = data['servicioCom'];
+        }
     },
 
     initMetodoPago(state, metodos){
@@ -68,6 +76,11 @@ const mutations={
         if(!prod.cantidad){
             prod.cantidad = 1;
         }
+        prod.id = _.uniqueId('prod');
+        prod.envios = [];
+        prod.envio = null;
+        prod.precio_envio = 0;
+
         state.desgloce.carrito.push(prod);
         this.commit('calcularTotal');
         if(callback){
@@ -84,21 +97,53 @@ const mutations={
         this.commit('calcularTotal');
     },
 
+    setEnviosCarrito(state, {res = []}){
+        console.log("RES", res);
+        const del = res.deliveries;
+        state.desgloce.carrito.map((x,i)=>{
+            console.log("DEL i", del[i]);
+            x.envios = [];
+            del[i].deliveries.map(d=>{
+                x.envios.push({
+                    id: _.uniqueId('en'),
+                    nombre:     d.alias,
+                    tipo:       d.serviceName,
+                    precio:     Number(d.amount),
+                    dias:       Number(d.expectedDelivery[0]),
+                    info:       d,
+                });
+            });
+
+        });
+    },
+
+    selectEnvioProd(state, {prod = {}, envio = {}}){
+        state.desgloce.carrito.map(s=>{
+            if(s.id == prod.id){
+                s.envio = envio;
+                s.precio_envio = envio.precio;
+            }
+        });
+        this.commit('calcularTotal');
+    },
+
     calcularTotal(state){
-        state.desgloce.subtotal = 0;
-        state.desgloce.comision = 0;
-        state.desgloce.total = 0;
-        state.desgloce.costoEnvio = 150;
-        state.desgloce.cambioIva = 0.16;
+        state.desgloce.subtotal     = 0;
+        state.desgloce.comision     = 0;
+        state.desgloce.total        = 0;
+        state.desgloce.costoEnvio   = 0;
+        state.desgloce.cambioIva    = 0.16;
 
         console.log("CARRRITO CARRITO", state.desgloce.carrito );
 
         state.desgloce.carrito.map(x=>{
             state.desgloce.subtotal = state.desgloce.subtotal + ((Number(x.precio) * Number(x.cantidad)) );
+            state.desgloce.costoEnvio = state.desgloce.costoEnvio + x.precio_envio;
         });
 
-        state.desgloce.comision = state.desgloce.subtotal * 0;
-        state.desgloce.iva = state.desgloce.subtotal * state.desgloce.cambioIva;
+        state.desgloce.comision = state.desgloce.subtotal   * state.servicioCom;
+        state.desgloce.subtotal = state.desgloce.subtotal   + state.desgloce.comision;
+        state.desgloce.iva      = state.desgloce.subtotal   * state.desgloce.cambioIva;
         state.desgloce.ivaEnvio = state.desgloce.costoEnvio * state.desgloce.cambioIva;
 
         state.desgloce.total = (state.desgloce.subtotal + state.desgloce.iva) + (state.desgloce.costoEnvio + state.desgloce.ivaEnvio);
@@ -131,18 +176,27 @@ const actions={
             metodo:     state.metodo_pago,
         };
 
+        if(state.desgloce.carrito.some(p=>!p.envio || !p.envio.id)){
+            swal("","Selecciona el envio de todos los productos para continuar","");
+            return;
+        }
+
         if( !state.metodo_pago ){
             swal("","Selecciona un metodo de pago","");
             return;
         }
 
         let finish = (res)=>{
+            this.dispatch('postSaveOrderApi', { oId: res.data.oId } );
+            
             this.dispatch('synchronizeData');
-            this.dispatch('sendDataAllUsers',[{servicio:true}]);
             this.getters.getRouter.navigate('/inicio');
+            
+
             this.commit('cleanCarrito');
             this.commit('openMsn',[
-            `Compra realizada\nEl ID de tu operación es ${res.data.id}\nRecibirás 1 correo de confirmación de esta compra.\n`,'Entendido',true,false]);
+                `Compra realizada\nEl ID de tu operación es ${res.data.id}\nRecibirás 1 correo de confirmación de esta compra.\n`,'Entendido',true,false]);
+
         };
 
         this.dispatch('postPromiseLoader', ['pedidos/crear_pedido', data]).then(

@@ -13,20 +13,23 @@
 
         <div class="row w-100 m-0" v-if="full">
             
-            <div class="row w-100 m-0 pt-26px " >
+            <div class="row w-100 m-0" >
                 <div class="row w-100 m-0 position-relative">
-                    <div class="w-auto position-absolute left-10px top-33px z-1000000" @click="router.back()">
-                        <div class="row w-100 m-0">
-                            <i class="f7-icons color-white letra-rojo2-30" >chevron_left</i>
+                    <template >
+                        <div v-if="0" class="w-auto position-absolute left-10px top-33px z-1000000" @click="router.back()">
+                            <div class="row w-100 m-0">
+                                <i class="f7-icons color-white letra-rojo2-30" >chevron_left</i>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="w-auto position-absolute right-30px top-32px z-1000000" @click="$store.dispatch('postAddFavorito',info)" v-if="1" >
-                        <div class="row w-100 m-0" >
-                            <icono icono="favorite" clase="letra-rojo2-35" v-if="$store.getters.stateDataFindFieldId('favoritos','producto_id', info.id)" />
-                            <icono icono="favorite_border" clase="letra-rojo2-35" v-else />
+                        <div class="w-auto position-absolute right-15px top-15px z-1000000" @click="$store.dispatch('postAddFavorito',info)" v-if="1" >
+                            <div class="row w-100 m-0" >
+                                <icono icono="favorite" clase="letra-rojo2-35" v-if="$store.getters.stateDataFindFieldId('favoritos','producto_id', info.id)" />
+                                <icono icono="favorite_border" clase="letra-rojo2-35" v-else />
+                            </div>
                         </div>
-                    </div>
+                    </template>
+
 
                     <sliderPlatillo :info="info" />
                     <!-- <imagen clase="h-max-50vh" :fit="true" :src="info.imagen" /> -->
@@ -38,9 +41,18 @@
                     <div class="row w-100 m-0 pt-1 pb-1">
                         <div class="col px-0 letra-rojo1-28 fw-600" >{{info.name}}</div>
                     </div>
+
+                    <div class="row w-100 m-0">
+                        <div class="row w-100 m-0 px-0 my-auto letra-gray2-19 text-capitalize fw-800 " v-if="info.precioSin" ><p class="m-0" ><s>{{info.precioSin | currency}} MXN</s></p></div>
+                        <div class="row w-100 m-0 px-0 my-auto letra-rojo-21 text-capitalize fw-800 ">{{info.precio | currency}} MXN</div>
+                    </div>
                     
                     <div class="row w-100 m-0 pt-1 pb-1">
                         <div class="col px-0 letra-gray3-20 fw-600" >Clave Articulo {{info.sku}}</div>
+                    </div> 
+
+                    <div class="row w-100 m-0 pt-1 pb-1">
+                        <div class="col px-0 letra-rojo1-19 fw-600" >Stock Disponible: {{info.stock}}</div>
                     </div> 
                     
                     <div class="row w-100 m-0 pt-1 pb-3" >
@@ -54,18 +66,18 @@
                         </div>
                     </div> 
 
-                    <div class="row w-100 m-0 pt-1 pb-1 pb-4">
+                    <div v-if="0" class="row w-100 m-0 pt-1 pb-1 pb-4">
                         <div class="col-12 px-0 letra-gray4-18 fw-600" >Tiempo de entrega</div>
                         <div class="col-12 px-0 letra-rojo1-24 fw-600 text-capitalize " >{{entrega}}</div>
 
                     </div> 
                     
                     <div class="row w-100 m-0 pt-1 pb-1">
-                        <div class="row w-100 m-0 px-0 letra-gray4-18" v-if="info.short_description" v-html="info.short_description" ></div>
+                        <div class="row w-100 m-0 px-0 letra-gray4-18 text-justify " v-if="info.short_description" v-html="info.short_description" ></div>
                     </div>
                     
                     <div class="row w-100 m-0 pt-4 pb-1">
-                        <div class="row w-100 m-0 px-0 letra-gray3-18" v-if="info.description" v-html="info.description" ></div>
+                        <div class="row w-100 m-0 px-0 letra-gray3-18 text-justify html-elements " v-if="info.description" v-html="info.description" ></div>
                     </div>
                
                 </div>
@@ -85,7 +97,36 @@
                 </div>
             </div>
 
-            <div class="row w-100 m-0 px-3 py-2 pb-3  " v-if="1">
+            <div class="row w-100 m-0" >
+                <template v-if="info.modelos && info.modelos.length" >
+                    <div class="row w-100 m-0 px-3">
+                        <div class="row w-100 m-0 letra-gray3-20" v-if="info.stocktype=='sizes'" >Tallas</div>
+                        <div class="row w-100 m-0 letra-gray3-20" v-else >Modelos</div>
+                        <div class="row w-100 m-0 pt-3">
+                            <div v-for="m of info.modelos" :key="m.id" class="row w-100 m-0 py-2">
+
+                                <div class="col-auto px-1 pr-2 my-auto" >
+                                    <div class="row w-100 m-0" >
+                                        <div class="w-auto" @click="form.modelo = m.id; set();" >
+                                          <icono clase="letra-rojo-30" icono="radio_button_checked" v-if="form.modelo == m.id" />
+                                          <icono clase="letra-gray3-30" icono="radio_button_unchecked" v-else  />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-60px h-60px border-radius-10px overflow-hidden">
+                                    <imagen  :src="m.imagen" />
+                                </div>
+                                <div class="col-3 px-0 letra-gray3-18 text-center">{{m.size}}</div>
+                                <div class="col-5 px-0 letra-gray3-18 text-center ">{{m.description}}</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </template>
+                
+            </div>
+
+            <div class="row w-100 m-0 px-3 py-2 pb-3  " v-if="info.sku && Number(info.width) && Number(info.weight) && Number(info.high)" >
                 <div class="col my-auto px-0">
                     <div class="row w-100 m-0">
                         <div class="col my-auto px-0 letra-gray4-22 text-capitalize">Cantidad: </div>
@@ -108,28 +149,31 @@
                 </div>
             </div>
 
-            <div class="row w-100 m-0  " >
-                <div class="row w-100 m-0 px-3 pb-2 letra-gray4-18 fw-600">Productos relacionados: </div>
-                <div class="row w-100 m-0" v-if="0" >
-                    <scollX cantidad="auto" >
-                        <div class="swiper-slide w-auto px-2 text-center" v-for="xp of platillos" :key="xp.id" >
-                            <div class="w-auto" >
+            <template v-if="platillos && platillos.length" >
+                <div class="row w-100 m-0  " >
+                    <div class="row w-100 m-0 px-3 pb-2 letra-gray4-18 fw-600">Productos relacionados: </div>
+                    <div class="row w-100 m-0" v-if="0" >
+                        <scollX cantidad="auto" >
+                            <div class="swiper-slide w-auto px-2 text-center" v-for="xp of platillos" :key="xp.id" >
+                                <div class="w-auto" >
+                                    <instalcionesComponent :row="1"  :data="xp"  />
+                                </div>
+                            </div>
+                        </scollX>
+                    </div>
+
+                    <div class="row w-100 m-0">
+                        <div class="row w-100 m-0 py-2 px-3" v-for="xp of platillos" :key="xp.id" >
+                            <div class="row w-100 m-0" >
                                 <instalcionesComponent :row="1"  :data="xp"  />
                             </div>
                         </div>
-                    </scollX>
-                </div>
-
-                <div class="row w-100 m-0">
-                    <div class="row w-100 m-0 py-2 px-3" v-for="xp of platillos" :key="xp.id" >
-                        <div class="row w-100 m-0" >
-                            <instalcionesComponent :row="1"  :data="xp"  />
-                        </div>
                     </div>
                 </div>
-            </div>
+            </template>
 
-            <div class="row w-100 m-0 pt-5 pb-5"></div>
+
+            <div class="row w-100 m-0 pY-3"></div>
            
         </div>
 
@@ -205,6 +249,7 @@ export default {
                 cantidad: 1,
                 precio: 0,
                 total: 0,
+                modelo: null,
             },
             show: false,
             detalle: null,
@@ -228,7 +273,7 @@ export default {
 
         aprox(){ return moment().add(55,'minutes').format('HH:mm [hrs]')},
         restaurante(){return this.$store.getters.restaurantesFind('restaurantes','restaurante') || {};},
-        platillos(){return (this.info.platillos || [] ).filter(f=>f.id != this.info.id).slice(0,5) },
+        platillos(){ return (this.info.platillos || [] ).filter(f=>f.id != this.info.id) },
 
     },
     

@@ -31,7 +31,9 @@
 		AAF77FE7596244E691B60E38 /* CDVLocalFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0672228A47CF48968180E279 /* CDVLocalFilesystem.m */; };
 		ABD180BB51B34F389D3E6AF7 /* CDVIonicKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C6EB02D0B34081971F3629 /* CDVIonicKeyboard.m */; };
 		AFC137EEE3EF4EA3ADF4584C /* CDVWKWebViewEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = FA504E3941DD421BBF0F8418 /* CDVWKWebViewEngine.m */; };
+		B6682764D8C24F83B44256FC /* CordovaStripe.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BA2FB37560947D0A8499BCF /* CordovaStripe.m */; };
 		BCB7C83EB5664AD186EEA0FC /* CDVAssetLibraryFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = DECBCE95397B4AE5A93247E2 /* CDVAssetLibraryFilesystem.m */; };
+		C680ECD391F04E2483895DC4 /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D473D6705B494F45B084232F /* Stripe.framework */; };
 		C819B1619BC5445FA7A95C6E /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80E60A5F51894BD1B3D0005F /* ImageIO.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D25CC157DE7A4B7991C0361D /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B95DE709264ADD99C7ABAA /* CDVFile.m */; };
 		D59011BDCEDF485DBDA5627E /* CDVLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = C94D3D6A4F9048D5A851DEE1 /* CDVLocation.m */; };
@@ -69,6 +71,7 @@
 		045F228414F04EA8A4A16E1C /* CDVCamera.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVCamera.m; path = "cordova-plugin-camera/CDVCamera.m"; sourceTree = "<group>"; };
 		0672228A47CF48968180E279 /* CDVLocalFilesystem.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVLocalFilesystem.m; path = "cordova-plugin-file/CDVLocalFilesystem.m"; sourceTree = "<group>"; };
 		0A3765A3E0C74DC1AB016E7E /* CDVWKInAppBrowserUIDelegate.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVWKInAppBrowserUIDelegate.h; path = "cordova-plugin-inappbrowser/CDVWKInAppBrowserUIDelegate.h"; sourceTree = "<group>"; };
+		0BA2FB37560947D0A8499BCF /* CordovaStripe.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CordovaStripe.m; path = "cordova-plugin-stripe/CordovaStripe.m"; sourceTree = "<group>"; };
 		0E07515218CC434E93259555 /* WebKit.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -103,6 +106,7 @@
 		7E9174FD2C724E14AAD509C6 /* CDVInAppBrowserOptions.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVInAppBrowserOptions.m; path = "cordova-plugin-inappbrowser/CDVInAppBrowserOptions.m"; sourceTree = "<group>"; };
 		80E60A5F51894BD1B3D0005F /* ImageIO.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		826BD723336148C496C0ECF8 /* CDVWKProcessPoolFactory.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVWKProcessPoolFactory.m; path = "cordova-plugin-wkwebview-engine/CDVWKProcessPoolFactory.m"; sourceTree = "<group>"; };
+		84C0AD8ED46D4387B10B9650 /* CordovaStripe.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CordovaStripe.h; path = "cordova-plugin-stripe/CordovaStripe.h"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Mexico Limited-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Mexico Limited-Info.plist"; path = "Mexico Limited/Mexico Limited-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = SOURCE_ROOT; };
 		9303B989D00441CAA91295CA /* CDVLocalFilesystem.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVLocalFilesystem.h; path = "cordova-plugin-file/CDVLocalFilesystem.h"; sourceTree = "<group>"; };
 		9BF61493A5E94C488AA0ED5D /* CDVDevice.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVDevice.m; path = "cordova-plugin-device/CDVDevice.m"; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 		CA7B33984E394A38939886EF /* CDVJpegHeaderWriter.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVJpegHeaderWriter.h; path = "cordova-plugin-camera/CDVJpegHeaderWriter.h"; sourceTree = "<group>"; };
 		CB376F5CC08E4B2B8E38D82B /* CDVFileTransfer.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVFileTransfer.h; path = "cordova-plugin-file-transfer/CDVFileTransfer.h"; sourceTree = "<group>"; };
 		CBB9D81498CB41E7A7AA9902 /* CDVInAppBrowserOptions.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVInAppBrowserOptions.h; path = "cordova-plugin-inappbrowser/CDVInAppBrowserOptions.h"; sourceTree = "<group>"; };
+		D473D6705B494F45B084232F /* Stripe.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = Stripe.framework; path = "Mexico Limited/Plugins/cordova-plugin-stripe/Stripe.framework"; sourceTree = "<group>"; };
 		D6C1C814908846639BA4B87F /* QRScanner.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = QRScanner.swift; path = "cordova-plugin-qrscanner/QRScanner.swift"; sourceTree = "<group>"; };
 		D956176D5BCF48B5A3BC1791 /* AVFoundation.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		DAB72E626CFF45148A23AD7D /* CDVDevice.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVDevice.h; path = "cordova-plugin-device/CDVDevice.h"; sourceTree = "<group>"; };
@@ -141,6 +146,7 @@
 				8180F4D2C8954E14832E31A2 /* CoreLocation.framework in Frameworks */,
 				0BDD51788BE74CA5B5080715 /* AVFoundation.framework in Frameworks */,
 				870DD0F697144FB882EF8318 /* WebKit.framework in Frameworks */,
+				C680ECD391F04E2483895DC4 /* Stripe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +221,7 @@
 				EB132F12A3C8450097A9FC43 /* CoreLocation.framework */,
 				D956176D5BCF48B5A3BC1791 /* AVFoundation.framework */,
 				0E07515218CC434E93259555 /* WebKit.framework */,
+				D473D6705B494F45B084232F /* Stripe.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -281,6 +288,8 @@
 				72024BFAF6BF48F1A66ED175 /* CDVWKWebViewEngine.h */,
 				A69494423CBC4C71973E76B9 /* CDVWKWebViewUIDelegate.h */,
 				5AF28E72B84B434DA4B4316B /* CDVWKProcessPoolFactory.h */,
+				0BA2FB37560947D0A8499BCF /* CordovaStripe.m */,
+				84C0AD8ED46D4387B10B9650 /* CordovaStripe.h */,
 			);
 			name = Plugins;
 			path = "Mexico Limited/Plugins";
@@ -431,6 +440,7 @@
 				AFC137EEE3EF4EA3ADF4584C /* CDVWKWebViewEngine.m in Sources */,
 				8CCD44CF3F744FDE8043AA85 /* CDVWKWebViewUIDelegate.m in Sources */,
 				3220C9E848814833859BD53D /* CDVWKProcessPoolFactory.m in Sources */,
+				B6682764D8C24F83B44256FC /* CordovaStripe.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +470,10 @@
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = WNWBMKRFF7;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Mexico Limited/Plugins/cordova-plugin-stripe\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -469,7 +483,7 @@
 				INFOPLIST_FILE = "Mexico Limited/Mexico Limited-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				MARKETING_VERSION = 1.80.0;
+				MARKETING_VERSION = 3.15.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mexico.limited;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -496,6 +510,10 @@
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = WNWBMKRFF7;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Mexico Limited/Plugins/cordova-plugin-stripe\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Mexico Limited/Mexico Limited-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -503,7 +521,7 @@
 				INFOPLIST_FILE = "Mexico Limited/Mexico Limited-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				MARKETING_VERSION = 1.80.0;
+				MARKETING_VERSION = 3.15.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mexico.limited;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

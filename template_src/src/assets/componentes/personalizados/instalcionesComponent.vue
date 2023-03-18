@@ -21,7 +21,13 @@
                 <div class="col my-auto px-0 pl-3">
                     <div class="row w-100 m-0 letra-gray4-18 fw-600">{{info.name}}</div>
                     <div class="row w-100 m-0 letra-gray3-16 text-capitalize "> {{info.cat}}</div>
-                    <div class="row w-100 m-0 letra-rojo-19 text-capitalize fw-800 "> {{info.precio | currency}} MXN</div>
+                    <div class="row w-100 m-0  justify-content-start  "> 
+                        <div class="col-auto px-0">
+                            <div class="row w-100 m-0 justify-content-center text-center px-0 my-auto letra-gray2-16 text-capitalize fw-800 " v-if="info.precioSin" ><p class="m-0" ><s>{{info.precioSin | currency}} MXN</s></p></div>
+                            <div class="row w-100 m-0 justify-content-center text-center px-0 my-auto letra-rojo-19 text-capitalize fw-800 ">{{info.precio | currency}} MXN</div>
+                            <div class="row w-100 m-0 justify-content-center text-center px-0 my-auto letra-rojo1-15 text-capitalize fw-800 " v-if="info.free_shipping=='1'">Envio gratis</div>
+                        </div>
+                    </div>
                     <div v-if="0" class="row w-100 m-0 pt-1 letra-gray3-17 ">
                         <div class="col px-0">A {{(info.tiempo || 25)}} min de ti</div>
                         <div class="col-auto ml-auto px-0 pr-3">{{(info.distancia || 15)}} Km</div>
@@ -29,6 +35,29 @@
                     <!-- <div class="row w-100 m-0 letra-gray3-16 ">{{[info.fecha, info.hora] | fechaE}}</div> -->
                 </div>
             </div>
+        </div>
+    </template> 
+    
+    <template v-if="carta">
+        <div class="w-45vw" @click="set1()">
+        <div class="row w-100 m-0 border-gray0-1 border-radius-10px overflow-hidden" >
+            <div class="row w-100 m-0 ">
+                <div class="w-42vw h-42vw mx-auto">
+                    <imagen clase="border-radius-10px" :create="true" :src="info.imagen" />
+                </div>
+            </div>
+            <div class="row w-100 m-0 pb-2">
+                <div class="row w-100 m-0 mt-1 h-73px align-content-center overflow-hidden justify-content-center text-center letra-gray4-18 fw-600">{{info.name | truncate(52)}}</div>
+                <div class="row w-100 m-0 h-55px align-content-center overflow-hidden justify-content-center text-center letra-gray3-16 text-capitalize "> {{info.cat}}</div>
+                <div class="row w-100 m-0 justify-content-start  "> 
+                    <div class="row w-100 m-0 justify-content-center text-center px-0 my-auto letra-gray2-16 text-capitalize fw-800 " v-if="info.precioSin" ><p class="m-0" ><s>{{info.precioSin | currency}} MXN</s></p></div>
+                    <div class="row w-100 m-0 justify-content-center text-center px-0 my-auto letra-rojo-19 text-capitalize fw-800 ">{{info.precio | currency}} MXN</div>
+                    <div class="row w-100 m-0 h-25px align-content-center ">
+                        <div class="row w-100 m-0 justify-content-center text-center px-0 my-auto letra-rojo1-15 text-capitalize fw-800 " v-if="info.free_shipping=='1'">Envio gratis</div>
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
     </template>
 
@@ -188,6 +217,7 @@ export default {
         'data',
         'value',
         'row',
+        'carta',
         'campo',
         'reserva',
         'cancel',

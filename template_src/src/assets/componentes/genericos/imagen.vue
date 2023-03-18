@@ -9,6 +9,7 @@ export default {
             img: null,
             load: null,
             height: null,
+            error: null,
             width: null,
             galeria: [],
             baseUrl: this.$store.getters.baseUrl,
@@ -41,11 +42,11 @@ export default {
             return `${this.baseUrl}img/render/${this.src}/renderfoto.jpg`
         },
         imagen(){
-            if(this.logo) {
+            if(this.logo || this.error) {
                 if(this.logo == 3){
                     return `${this.baseImg}elblanco.svg`;
                 } 
-                if(this.logo == 2){
+                if( this.logo == 2 || this.error ){
                     return `${this.baseImg}ellogo.svg`;
                 }
                 return `${this.baseImg}ellogocc1.svg`;
@@ -95,6 +96,10 @@ export default {
             if(this.show){
                 this.load.src = this.imagen;
                 if(this.load){
+                    this.load.onerror = ()=>{
+                        console.log("Error IMG");
+                        this.error = 1;
+                    };
                     this.load.onload = ()=>{
                         this.height = this.load.height*5;
                         this.width = this.load.width*5;

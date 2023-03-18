@@ -17,7 +17,7 @@
                         </div>
                     </div>
                     <div class="row w-100 m-0 pt-3 letra-negro-18 fw-800 justify-content-center text-center">{{tienda.brand}}</div>
-                    <div class="row w-100 m-0 px-4 pt-3 pb-4 letra-gray3-16 justify-content-center text-center">{{tienda.comments}}</div>
+                    <div class="row w-100 m-0 px-4 pt-3 pb-4 letra-gray3-16 justify-content-center text-center" v-html="tienda.comments"></div>
                 </div>
              
                 <div class="row w-100 m-0 pt-2"  >

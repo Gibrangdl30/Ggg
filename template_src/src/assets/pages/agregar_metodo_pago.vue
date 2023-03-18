@@ -85,8 +85,8 @@ const moment = require('moment');
                 this.card.year = moment(this.card.expiracion,'YYYY-MM').format('YYYY');
                 console.log("CARD DATA", this.card);
                 if(!this.device){
-                    this.saveDebug();
-                    // this.checarNumero();
+                    this.checarNumero();
+                    //this.saveDebug();
                 }
                 else{
                     this.saveDebug();

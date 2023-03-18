@@ -181,8 +181,10 @@ const actions = {
                         // console.log("ENCONTRE LUGARES",response.data.results);
                         let resultados = response.data.results;
                         if(resultados.length){
-                            let info = resultados[0];
-                            resolve(info.formatted_address);
+                            let info = resultados;
+                            // info = resultados[0];
+                            // resolve(info.formatted_address);
+                            resolve(info);
                         }
                         return;
                     }

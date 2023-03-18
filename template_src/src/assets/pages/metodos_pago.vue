@@ -20,16 +20,24 @@
                         <div class="col-12 p-0">
                             
                             <div class="row m-0 border-botom-gray border-b-gray3-1" v-for="m of tarjetas" :key="m.id" >
-                                <div class="row m-0 w-100 justify-content-between py-2">
-                                    <div class="col-2 my-auto p-0" @click="click(m.id)">
-                                        <imagen  :src="m.brand.toLowerCase()" icono="1" />
+                                <div class="row m-0 w-100 justify-content-between py-2" >
+                                    <div class="col px-0">
+                                        <div class="row w-100 m-0 pl-2" @click="click(m.id)" >
+                                            <div class="col-2 my-auto p-0" >
+                                                <imagen  :src="m.brand.toLowerCase()" icono="1" formato="png" />
+                                            </div>
+                                            <div class="col my-auto letra-gray3-5-1vw px-2"  >**** {{m.ending}}</div>
+
+                                            <div class="col-2 my-auto text-center px-0 pt-3px">
+                                                <toggle :icon="2" :checked="metodo_pago == m.id"  />
+                                            </div>
+                                            <!-- {{ metodo_pago }} {{ m.id }} -->
+                                        </div>
                                     </div>
-                                    <div class="col my-auto letra-gray3-5-1vw px-2" @click="click(m.id)">**** {{m.ending}}</div>
-                                    <div class="col-auto my-auto px-0 pt-3px">
-                                        <toggle :icon="1" :checked="metodo_pago == m.id" @change="set(m.id)" />
-                                    </div>
-                                    <div class="col-2 my-auto p-0">
-                                        <boton-icono @click="eliminarMetodoPago(m)" :noborder="true" icono="delete"/>
+
+
+                                    <div class="col-auto my-auto p-0 pr-3">
+                                        <boton-icono @click="eliminarMetodoPago(m)" :noborder="true" icono="delete" />
                                     </div>
                                 </div>
                             </div>
@@ -80,8 +88,9 @@ import { f7Page } from 'framework7-vue';
             },
             click(id){
                 this.$store.commit('setCarritosState',['metodo_pago',id]);
-                this.router.back();
+                // this.router.back();
             },
+
             eliminarMetodoPago(metodo){
                 this.$store.dispatch('postRemoveMetodoPago',metodo)
             },

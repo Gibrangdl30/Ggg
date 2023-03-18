@@ -50,6 +50,9 @@
     },
     "cordova-plugin-ionic-keyboard": {
       "PACKAGE_NAME": "com.padel.plus"
+    },
+    "cordova-plugin-stripe": {
+      "PACKAGE_NAME": "com.mexico.limited"
     }
   },
   "dependent_plugins": {

@@ -1,30 +1,119 @@
 .html-100{
     height: 100vh !important;
+    user-select: none !important;
 }
 
 .framework7-root{
     padding-top: 0px !important;
     padding-bottom: 0px !important;
+    overscroll-behavior: none !important;
+    overscroll-behavior-block: none !important;
+}
+
+.page{
+    background: white !important;
+    overscroll-behavior: block !important;
+    overscroll-behavior-block: none !important;
 }
 
 .ios{
+    overscroll-behavior: none !important;
+    overscroll-behavior-block: none !important;
     .page-content{
+        overscroll-behavior: none !important;
+        overscroll-behavior-block: none !important;
         padding-bottom: 0px !important;
     }
 }
 
+.p-100{
+    p{
+        width: 100%;
+    }
+  }
+  
 *{
-    user-select: auto !important;
+user-select: auto !important;
+}
+  
+.row>.col-auto{
+width: auto !important;
+
+}
+
+.row>.col, .row>.col-1, .row>.col-2, .row>.col-3, .row>.col-4, .row>.col-5, .row>.col-6, .row>.col-7, .row>.col-8, .row>.col-9, .row>.col-10, .row>.col-11, .row>.col-12 {
+width: 100% !important;
+}
+
+.framework7-root{
+    padding-top: 0px !important;
+    user-select: none !important;
 }
 
 .row>.col-auto{
     width: auto !important;
-    
 }
 
 .row>.col, .row>.col-1, .row>.col-2, .row>.col-3, .row>.col-4, .row>.col-5, .row>.col-6, .row>.col-7, .row>.col-8, .row>.col-9, .row>.col-10, .row>.col-11, .row>.col-12 {
     width: 100% !important;
 }
+
+
+.userno{
+    user-select: none !important;
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    -khtml-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+}
+
+.row{
+    user-select: none !important;
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    -khtml-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    // pointer-events: none !important;
+}
+
+.sliderx {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 5px;
+    background: #fb1220;
+    outline: none;
+    opacity: 0.7;
+    border-radius: 10px;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  .sliderx:hover {
+    opacity: 1;
+  }
+  
+  .sliderx::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-bottom: 1px solid gray;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+  }
+  
+  .sliderx::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border-bottom: 1px solid gray;
+    background: white;
+    cursor: pointer;
+  }
+
 
 @import "cdn/colors";
 

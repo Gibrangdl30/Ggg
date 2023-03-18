@@ -2,7 +2,9 @@ import axios from 'axios';
 import _ from 'lodash';
 
 const initialState = {
-    modo: 'undefined',
+
+    modo: null,
+
     meses:{a:[
         {numero: '01', mes: 'Enero', dias: 31},
         {numero: '02', mes: 'Febrero', dias: 28},
@@ -97,6 +99,9 @@ const mutations={
         if(data.stripe){
             if(data.stripe.key){
                 try{
+                    if(state.modo){
+                        return;
+                    }
                     if(data.stripe.key.includes('live')){
                         state.modo = 'live';
                     }
@@ -119,6 +124,7 @@ const mutations={
             }
         }
     },
+    
     
 };
 const actions={

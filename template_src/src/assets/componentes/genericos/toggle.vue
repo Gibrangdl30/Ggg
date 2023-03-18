@@ -65,9 +65,16 @@ input:checked + .slider:before {
 <template>
 <div class="row w-100 m-0">
 
-  <div class="row w-100 m-0" v-if="icon">
-      <div class="w-auto" @click="$emit('input', value == v?f:v )" >
-        <icono clase="letra-gray3-30" icono="radio_button_checked" v-if="value == v" />
+  <div class="row w-100 m-0" v-if="icon==2">
+      <div class="w-auto mx-auto" @click="$emit('change', 1)" >
+        <icono clase="letra-rojo-30" icono="radio_button_checked" v-if="checked" />
+        <icono clase="letra-gray3-30" icono="radio_button_unchecked" v-else  />
+      </div>
+  </div>
+  
+  <div class="row w-100 m-0" v-else-if="icon">
+      <div class="w-auto mx-auto" @click="$emit('input', value == v?f:v )" >
+        <icono clase="letra-rojo-30" icono="radio_button_checked" v-if="value == v" />
         <icono clase="letra-gray3-30" icono="radio_button_unchecked" v-else  />
       </div>
   </div>

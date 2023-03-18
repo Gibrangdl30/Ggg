@@ -17,6 +17,11 @@
                                     <div class="col px-0 pl-3 my-auto " >
                                         <div class="row w-100 m-0 letra-gray4-17 fw-600 " >Pedido #{{info.id}}</div>
                                         <div class="row w-100 m-0 letra-gray3-17 fw-600 " ></div>
+                                        <div class="row w-100 m-0 letra-rojo1-16 fw-600  justify-content-start " >
+                                            <div class="col-auto px-0 my-auto">Metodo pago:</div>
+                                            <div class="col-auto px-0 pl-2 my-auto" v-if="info.paymentMethod == 'tarjeta' || info.paymentMethod == 'Stripe'">Tarjeta</div>
+                                            <div class="col-auto px-0 pl-2 my-auto" v-else-if="info.paymentMethod == 'Deposito'">Deposito</div>
+                                        </div>
                                         <div class="row w-100 m-0 letra-rojo1-19 fw-600 " >
                                             <div class="col-auto px-0 my-auto">Total: {{info.total | currency}}</div>
                                             <!-- <div class="col-auto px-0 my-auto mr-auto ml-2 letra-rojo1-23" v-if="info.productos.length-1">+{{info.productos.length-1}}</div>    -->

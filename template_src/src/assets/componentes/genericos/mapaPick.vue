@@ -39,6 +39,7 @@
                 if(this.map.getCenter().lat() != this.value.lat && this.map.getCenter().lng() != this.value.lng){
                     console.log("SET CENTER",this.value);
                     this.map.setCenter({lat: this.value.lat, lng:this.value.lng });
+                    this.dragend();
                 }
             },
         },
@@ -86,9 +87,8 @@
                 //console.log("DRAAGGING");
             },
             dragend(){
-            },
-            centerchange(){
-                console.log("OIN", this.pin);
+                // console.log("OIN", this.pin);
+
                 this.pin.setPosition(this.map.getCenter());
                 // console.log("SET",this.value);
                 this.value.lat = this.map.getCenter().lat();
@@ -96,12 +96,25 @@
                 this.$emit('input', this.value);
                 this.getDireccion();
             },
+            centerchange(){
+                // console.log("OIN", this.pin);
+                
+                this.pin.setPosition(this.map.getCenter());
+                // console.log("SET",this.value);
+                // this.value.lat = this.map.getCenter().lat();
+                // this.value.lng = this.map.getCenter().lng();
+                // this.$emit('input', this.value);
+                // this.getDireccion();
+            },
             getDireccion(){
                 this.$store.dispatch('getDireccionPosicion',[this.value]).then(
                     res=>{
-                        console.log("TRAYANEOD LA DIRECCIONS");
-                        this.value.direccion = res;
-                        this.value.calle = res;
+                        console.log("TRAYANEOD LA DIRECCIONS", res);
+                        this.value.infox = res;
+                        res = res[0];
+                        this.value.direccion = res.formatted_address;
+                        this.value.calle = res.formatted_address;
+                        this.value.datax = res.address_components;
                         this.$emit('input', this.value);
                     },error=>{}
                 );

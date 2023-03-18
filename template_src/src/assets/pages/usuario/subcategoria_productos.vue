@@ -33,10 +33,22 @@
                     </template>
              
                 <div class="row w-100 m-0 pt-2"  >
-                    <div class="row w-100 m-0 px-3 to-eventos_zonas" v-for=" (e,x) of paginado" :key="e.id">
+                    <div class="row w-100 m-0  to-eventos_zonas" v-for=" (e,x) of paginado" :key="e.id">
 
-                        <div class="row w-100 m-0 py-2" >
+                        <div class="row w-100 m-0">
+                            <div v-for="a of cats.banners.filter(s=>s.order == x)" :key="a.id" class="row w-100 m-0 py-2">
+                                <imagen :src="a.imagen" />
+                            </div>
+                        </div>
+
+                        <div class="row w-100 m-0 px-3 py-2" >
                             <instalcionesComponent :row="1"  :data="e"  />
+                        </div>
+
+                        <div class="row w-100 m-0">
+                            <div v-for="a of cats.banners.filter(s=> x == paginado.length - 1 && s.order >= paginado.length  )" :key="a.id" class="row w-100 m-0 py-2">
+                                <imagen :src="a.imagen" />
+                            </div>
                         </div>
 
                     </div>
@@ -121,6 +133,7 @@ const moment = require('moment');
 
         mounted(){
             this.$store.dispatch('initData', [this.$f7]);
+            console.log("cats.banners", this.cats.banners, this.paginado)
         },
 
         methods:{

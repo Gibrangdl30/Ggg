@@ -1,6 +1,8 @@
 <template>
     <f7-page class="back-color-rojo1 ">
+        
         <div class="vista h-100 back-color-rojo1  ">
+
             <div class="contenedor-page back-color-rojo1 ">
 
                 <div class="row w-100 m-0 pt-4 pb-4" v-if="0">
@@ -33,12 +35,15 @@
                                 <div class="col px-0 mb-auto pl-3" @click="set(c.id)">
                                     <div class="row m-0 w-100 letra-blanco-20 fw-600">{{c.name}}</div>
                                 </div>
-                                <div class="col-auto px-0 pt-3px" v-if="c.subcat && c.subcat.length" @click="show==c.id?show = null:show = c.id">
+
+                                <div class="col-auto px-0 pt-3px" 
+                                    v-if="c.subcat.filter(s=>s.prod && s.prod.id) && c.subcat.filter(s=>s.prod && s.prod.id).length" 
+                                    @click="show==c.id?show = null:show = c.id" >
                                     <icono :icono="show == c.id?'expand_less':'expand_more'" clase="letra-blanco-30" />
                                 </div>
                             </div>
                             <div class="row w-100 m-0" v-if="show == c.id">
-                                <div v-for="s of c.subcat" @click="set2(c.id, s.id)" class="row w-100 m-0 px-3 py-5px back-color-gray4 border-b-gray01-1 " >
+                                <div v-for="s of c.subcat.filter(s=>s.prod && s.prod.id)" @click="set2(c.id, s.id)" class="row w-100 m-0 px-3 py-5px back-color-gray4 border-b-gray01-1 " >
                                     <div class="col px-0 mb-auto pl-3">
                                         <div class="row m-0 w-100 letra-blanco-20 fw-600">{{s.name}}</div>
                                     </div>

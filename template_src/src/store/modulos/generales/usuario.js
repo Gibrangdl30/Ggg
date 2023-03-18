@@ -123,13 +123,16 @@ const actions={
         };
 
         let finish = (res)=>{
+            if(!this.getters.stateDataFindFieldId('favoritos','producto_id', form.id)){
+                swal({
+                    title:"Producto agregado a tus favoritos",
+                    text:"",
+                    icon:"success",
+                    button: 'Entendido',
+                });
+            }
+
             this.dispatch('synchronizeData');
-            swal({
-                title:"Producto agregado a tus favoritos",
-                text:"",
-                icon:"success",
-                button: 'Entendido',
-            });
         };
 
         this.dispatch('postPromiseLoader', ['datos/add_favorito', data]).then(

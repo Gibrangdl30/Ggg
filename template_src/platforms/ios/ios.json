@@ -34,7 +34,7 @@
           "CFBundleVersion": [
             {
               "xml": "<string>11</string>",
-              "count": 9
+              "count": 34
             }
           ]
         }
@@ -101,6 +101,10 @@
             {
               "xml": "<preference name=\"CordovaWebViewEngine\" value=\"CDVWKWebViewEngine\" />",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"CordovaStripe\"><param name=\"ios-package\" value=\"CordovaStripe\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -152,6 +156,9 @@
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
     "cordova-plugin-wkwebview-engine": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-stripe": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     }
   },
@@ -473,6 +480,14 @@
       "clobbers": [
         "window.WkWebView"
       ]
+    },
+    {
+      "id": "cordova-plugin-stripe.stripe",
+      "file": "plugins/cordova-plugin-stripe/www/CordovaStripe.js",
+      "pluginId": "cordova-plugin-stripe",
+      "clobbers": [
+        "cordova.plugins.stripe"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -490,6 +505,7 @@
     "cordova-plugin-splashscreen": "6.0.2",
     "cordova-plugin-statusbar": "3.0.0",
     "cordova-plugin-whitelist": "1.3.5",
-    "cordova-plugin-wkwebview-engine": "1.2.2"
+    "cordova-plugin-wkwebview-engine": "1.2.2",
+    "cordova-plugin-stripe": "1.5.3"
   }
 }

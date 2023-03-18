@@ -46,7 +46,8 @@
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.1",
-    "webpack-merge": "^4.2.2"
+    "webpack-merge": "^4.2.2",
+    "cordova-plugin-stripe": "^1.5.3"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.11.1",
@@ -100,7 +101,8 @@
         "GPS_REQUIRED": "true"
       },
       "cordova-plugin-qrscanner": {},
-      "cordova-plugin-statusbar": {}
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-stripe": {}
     },
     "platforms": [
       "browser",

@@ -6,6 +6,35 @@
             <nav-bar tipo="inicio" :emitBack="true" @back_click="router.navigate('/inicio',{reloadCurrent: true})" :color="false" :title="'Carrito'" :fix="1" />
 
             <div class="contenedor-page-tabs  ">
+
+                <template v-if="1" >
+                    <div class="row w-100 m-0 border-b-rojo-2 pb-2">
+                        <div class="row w-100 m-0 back-color-rojo py-10px px-3">
+                            <div class="row w-100 m-0 letra-blanco-16 fw-600 text-capitalize">dirección de envío</div>
+                        </div>
+
+                        <div class="row w-100 m-0 px-3">
+                            <div class="row w-100 m-0 py-2 " @click="router.navigate('/mis_domicilios')">
+                                <div class="row w-100 m-0 px-3">
+                                    <div v-if="domicilio && domicilio.id" class="col-auto mr-auto px-0 letra-gray3-16">{{domicilio.calle}} {{domicilio.numero}}</div>
+                                    <div v-else class="col-auto mr-auto px-0 letra-gray3-16">Selecciona una dirección</div>
+                                </div>
+
+                                <div class="row w-100 m-0" v-if="data.programada == '0'" >
+                                    <div class="row w-100 m-0 px-3 pt-1">
+                                        <div class="col-auto px-0 ml-auto text-right px-0 letra-blanco-14">Distancia {{Math.round(distancia)}} km</div>
+                                    </div>
+                                    <div class="row w-100 m-0 px-3 " >
+                                        <div class="col-auto ml-auto text-right px-0 letra-blanco-14 ">Llegara aproximadamente a las {{tiempo}}</div>
+                                    </div>
+                                </div>
+                                <!-- <div class="row w-100 m-0 px-3 pt-1">
+                                    <div class="col px-0 letra-blanco-16">{{domicilio.municipio}}, {{domicilio.estado}}</div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </template>
                 
                 <template v-if="1" >
                     <div class="row w-100 m-0 pt-4" v-if="!productos || !productos.length">
@@ -62,15 +91,20 @@
                     <div class="row w-100 m-0">
                         <div class="row w-100 m-0" v-if="1" >
                             <div class="col-auto my-auto px-0 letra-gray3-16 ">Subtotal:</div>
-                            <div class="col-auto ml-auto my-auto px-0 letra-gray4-18 fw-600">{{data.subtotal | currency}}</div>
+                            <div class="col-auto ml-auto my-auto px-0 letra-gray4-18 fw-600">{{ (data.subtotal - data.comision) | currency}}</div>
                         </div>
                         <div class="row w-100 m-0" v-if="data.comision" >
                             <div class="col-auto my-auto px-0 letra-gray3-16 " >Comisión:</div>
                             <div class="col-auto ml-auto my-auto px-0 letra-gray4-18 fw-600">{{ data.comision | currency }}</div>
                         </div>
+                        <div class="row w-100 m-0" v-if="data.comision" >
+                            <div class="col-auto my-auto px-0 letra-gray3-16 " >Subtotal:</div>
+                            <div class="col-auto ml-auto my-auto px-0 letra-gray4-18 fw-600">{{ data.subtotal | currency }}</div>
+                        </div>
                         <div class="row w-100 m-0" v-if="1">
-                            <div class="col-auto my-auto px-0 letra-gray3-16 " >Envio: </div>
-                            <div class="col-auto ml-auto my-auto px-0 letra-gray4-18 fw-600">{{ data.costoEnvio | currency}}</div>
+                            <div class="col-auto my-auto px-0 letra-gray3-16 " >Costo y tiempo de envio: </div>
+                            <div class="col-auto ml-auto my-auto px-0 letra-gray4-18 fw-600" v-if="data.costoEnvio">{{ data.costoEnvio | currency}}</div>
+                            <div class="col-auto ml-auto my-auto px-0 letra-gray4-18 fw-600" v-else >{{ 'Por definir'}}</div>
                         </div>
                         <div class="row w-100 m-0">
                             <div class="col-auto my-auto px-0 letra-gray3-16 ">Total:</div>
@@ -134,8 +168,13 @@ const moment = require('moment')
                 this.router.navigate('/restaurante');
             },
             next(){
+                if(!this.domicilio.id){
+                    swal("","Ingresa la dirección de envio para continuar","");
+                    return;
+                }
                 let t = Number(this.data.subtotal);
                 if(t){
+                    this.$store.dispatch('postCotizaApi');
                     this.router.navigate('/confirmacion_carrito');
                 }
                 else{

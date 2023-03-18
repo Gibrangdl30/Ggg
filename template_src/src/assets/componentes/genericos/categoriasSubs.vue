@@ -20,19 +20,19 @@
 
                     <div @click="set(i.id)" class="row w-100 m-0 pt-2 letra-negro-18 justify-content-center text-center fw-800">{{i.name}}</div>
 
-                    <div class="w-80vw">
-                        <div class="row w-100 m-0 py-1 px-1 justify-content-space-between">
+                    <div class="w-82vw">
+                        <div class="row w-100 m-0 py-1 justify-content-space-between">
 
-                            <div class="col-auto px-0 pt-1 border-radius-10px" :class="sub(i.subcat)[ind].id==subId?'back-color-':''" v-for="(s,ind) of i.subcat.filter( w => w.outstanding == '1').filter((a,x) => x < 4)" 
+                            <div class="col-6 px-0 pt-1 border-radius-10px" :class="sub(i.subcat)[ind].id==subId?'back-color-':''" v-for="(s,ind) of i.subcat.filter( w => w.outstanding == '1').filter((a,x) => x < 4)" 
                                         @click.stop="set2(i.id, sub(i.subcat)[ind].id)" >
                                     <!-- @click.stop="update(i.id, sub(i.subcat)[ind])" > -->
                                 <div class="row w-100 m-0 justify-content-center ">
-                                    <div class="w-37vw h-37vw carta mx-1 border-radius-10px overflow-hidden">
+                                    <div class="w-36vw h-36vw carta mx-1 border-radius-10px overflow-hidden">
                                         <imagen v-if="sub(i.subcat)[ind]"  :src="sub(i.subcat)[ind].imagen" />
                                     </div>
                                 </div>
-                                <div  class="w-37vw mx-auto h-46px align-content-center">
-                                    <div v-if="sub(i.subcat)[ind]" class="row w-100 m-0 h-45px align-content-center letra-gray4-14 justify-content-center text-center">{{sub(i.subcat)[ind].name}}</div>
+                                <div  class="row w-100 m-0 h-46px align-content-center">
+                                    <div v-if="sub(i.subcat)[ind]" class="row w-100 m-0 align-content-center letra-gray4-14 justify-content-center text-center">{{sub(i.subcat)[ind].name}}</div>
                                 </div>
                             </div> 
                             

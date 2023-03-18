@@ -316,6 +316,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "window.WkWebView"
       ]
+    },
+    {
+      "id": "cordova-plugin-stripe.stripe",
+      "file": "plugins/cordova-plugin-stripe/www/CordovaStripe.js",
+      "pluginId": "cordova-plugin-stripe",
+      "clobbers": [
+        "cordova.plugins.stripe"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -333,6 +341,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-splashscreen": "6.0.2",
     "cordova-plugin-statusbar": "3.0.0",
     "cordova-plugin-whitelist": "1.3.5",
-    "cordova-plugin-wkwebview-engine": "1.2.2"
+    "cordova-plugin-wkwebview-engine": "1.2.2",
+    "cordova-plugin-stripe": "1.5.3"
   };
 });

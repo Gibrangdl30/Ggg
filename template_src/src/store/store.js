@@ -20,6 +20,7 @@ import notificaciones from './modulos/generales/notificaciones.js';
 import provider from './modulos/generales/provider.js';
 import servicio from './modulos/generales/servicio.js';
 import session from './modulos/generales/session.js';
+import enviosapi from './modulos/generales/enviosapi.js';
 import sync from './modulos/generales/sync.js';
 import usuario from './modulos/generales/usuario.js';
 
@@ -39,6 +40,7 @@ const general = {
     provider,
     servicio,
     session,
+    enviosapi,
     sync,
     usuario,
 };

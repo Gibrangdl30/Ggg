@@ -273,6 +273,7 @@
             },
 
             sync(){
+                this.$store.dispatch('postLoginApi');
                 this.$store.dispatch('synchronizeData');
             },
             openMenu(){

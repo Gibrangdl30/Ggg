@@ -26,14 +26,14 @@
                 <div class="row w-100 m-0">
                     
                    <div class="row w-100 m-0" v-for="a of domicilios" :key="a.id">
-                       <div class="row w-100 m-0 px-2 py-2 border-b-gray0-1">
+                       <div class="row w-100 m-0 px-2 py-2 border-b-gray0-1" @click="set(a.id)" >
                             <div class="col my-auto px-0 ">
                                <div class="row w-100 m-0 letra-gray3-17">{{a.calle}} {{a.numero}}</div>
                                <!-- <div class="row w-100 m-0 letra-gray4-15">{{`${a.municipio}, ${a.estado}`}}</div> -->
                             </div>
-                           <div class="col-auto my-auto px-0">
-                                <icono icono="c" clase="letra-rojo-30" v-if="domicilio.id == a.id" />
-                                <icono icono="unc" clase="letra-gray3-30" v-else @click="set(a.id)" />
+                           <div class="col-auto my-auto px-0 mr-4">
+                                <icono icono="radio_button_checked" clase="letra-rojo-30" v-if="domicilio.id == a.id" />
+                                <icono icono="radio_button_unchecked" clase="letra-gray3-30" v-else  />
                                 <!-- <toggle 
                                     :auto="true" 
                                     :checked="domicilio.id == a.id" 
@@ -41,7 +41,7 @@
                                     @change="set" 
                                 /> -->
                            </div>
-                           <div class="col-auto my-auto px-0 pl-2 pb-8px">
+                           <div class="col-auto my-auto px-0 ml-2 pb-8px">
                                 <boton-icono @click="eliminar(a)" :noborder="true" icono="delete"/>
                             </div>
                        </div>

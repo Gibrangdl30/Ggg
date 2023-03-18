@@ -16,7 +16,7 @@ const initialState = {
     deviceIos: true,
     syncError: 0,
     apiV: '3',
-    version: '1.05.0',
+    version: '2.25.0',
     init: false,
     autoUpdate: null,
 };
@@ -26,6 +26,8 @@ const state = JSON.parse(JSON.stringify(initialState));
 const getters = {   
     deviceready(state){return state.deviceready;},
     deviceReady(state){return state.deviceready;},
+    debugB(state){return typeof device == 'undefined' || device.platform == 'browser'},
+    
     debug(state){return state.deviceready == false; },
     deviceIos(state){return state.deviceIos;},
     update(state){return state.update;},
@@ -52,6 +54,8 @@ const mutations = {
         this.commit('updateCarritosState', data);
         this.commit('setCatalogos', data);
         this.commit('setChats', data);
+
+        // this.dispatch('postLoginApi');
         
         //PERSONALIZADO
         this.commit('setUsuarioInfo', data);

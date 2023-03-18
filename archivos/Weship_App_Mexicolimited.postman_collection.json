@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "5ca0d092-93cd-417f-ae2c-170c3430ddae",
+		"name": "Weship_App_Mexicolimited",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13672434"
+	},
+	"item": [
+		{
+			"name": "Cotizacion_de_envio",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"products\" :[\r\n        {\r\n            \"id\":280,\r\n            \"quantity\":1,\r\n            \"modelo\":98\r\n        },\r\n        {\r\n            \"id\":9,\r\n            \"quantity\":1,\r\n            \"modelo\":null\r\n        }\r\n    ],\r\n    \"user\":{\r\n        \"name\" : \"Richard\",\r\n        \"email\" : \"richard@sustam.com\",\r\n        \"lastname\": \"Sustam\",\r\n        \"phone\":\"3333333333\",\r\n        \"street\":  \"Diamante\",\r\n        \"num_ext\": \"2860\",\r\n        \"state_id\": 14,\r\n        \"town_id\": 640,\r\n        \"zipcode\": 44540,\r\n        \"neighborhood\":\"Bosques de la victoria\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://mexicolimited.com/apiapp/distance",
+					"protocol": "https",
+					"host": [
+						"mexicolimited",
+						"com"
+					],
+					"path": [
+						"apiapp",
+						"distance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Guaardar_envio",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"products\" :[\r\n        {\r\n            \"id\":280,\r\n            \"quantity\":1,\r\n            \"modelo\":98,\r\n            \"price\":100\r\n        },\r\n        {\r\n            \"id\":9,\r\n            \"quantity\":1,\r\n            \"modelo\":null,\r\n            \"price\":100\r\n        }\r\n    ],\r\n    \"user\":{\r\n        \"name\" : \"Richard\",\r\n        \"email\" : \"richard@sustam.com\",\r\n        \"lastname\": \"Sustam\",\r\n        \"phone\":\"3333333333\",\r\n        \"street\":  \"Diamante\",\r\n        \"num_ext\": \"2860\",\r\n        \"state_id\": 14,\r\n        \"town_id\": 640,\r\n        \"zipcode\": 44540,\r\n        \"neighborhood\":\"Bosques de la victoria\"\r\n    },\r\n    \"couriers\":[\r\n        {\r\n            \"afiliate\":\"Fiesta Mexicana\",\r\n            \"courier\":\"Estafeta\",\r\n            \"discount_ship\":66,\r\n            \"envio\":47,\r\n            \"serviceName\":\"Terrestre\",\r\n            \"serviceType\":70,\r\n            \"to_users_id\":10\r\n        },\r\n        {\r\n            \"afiliate\":\"Alhaja Dau\",\r\n            \"courier\":\"Estafeta\",\r\n            \"discount_ship\":66,\r\n            \"envio\":65,\r\n            \"serviceName\":\"Dia Sig.\",\r\n            \"serviceType\":60,\r\n            \"to_users_id\":47\r\n        }\r\n    ],\r\n    \"orders_id\":98\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://mexicolimited.com/apiapp/saveship",
+					"protocol": "https",
+					"host": [
+						"mexicolimited",
+						"com"
+					],
+					"path": [
+						"apiapp",
+						"saveship"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

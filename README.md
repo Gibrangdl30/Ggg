@@ -10,6 +10,14 @@ cordova-plugin-keyboard
 cordova-support-google-services
 phonegap-plugin-push
 
+###### ERROR DE RED ORIGIN NULL IS NOT ALLOWED BY ACCESS CONTROL ALLOW ORIGIN
+BUSCAR EL TEXTO WKWebViewConfiguration* configuration = [[WKWebViewConfiguration alloc] init];
+ESTA EN EL ARCHIVO CDVWKWebViewEngine.m en platform/ios
+Y DEBAJO DE ESA LINEA AGREGAR EL CODIGO
+#### [configuration setValue:@"TRUE" forKey:@"allowUniversalAccessFromFileURLs"];
+
+b12 acido folico
+pqq
 
 For Android 
 cordova plugin rm cordova-plugin-keyboard && cordova plugin add cordova-plugin-ionic-keyboard

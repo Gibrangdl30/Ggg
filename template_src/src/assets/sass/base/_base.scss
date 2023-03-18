@@ -6,6 +6,13 @@ input {
 	user-select: element !important;
 }
 
+
+.html-elements{
+	ul{
+		padding-left: 15px !important;
+	}
+}
+
 .tab-link {
 	
 	&.active:not(.offline),

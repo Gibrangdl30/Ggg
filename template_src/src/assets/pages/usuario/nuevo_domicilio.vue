@@ -56,6 +56,7 @@ const moment = require('moment')
                     indicaciones: null,
                     lat: null,
                     lng: null,
+                    datax: null,
                 },
             } 
         },

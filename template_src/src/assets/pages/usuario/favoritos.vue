@@ -10,6 +10,10 @@
 
             <div class="contenedor-page-tabs back-color-blanco">
 
+                <div class="row w-100 m-0" v-if="!instalciones || !instalciones.length">
+                    <div class="row w-100 m-0 px-4 py-4 letra-gray3-18 justify-content-center text-center">Aquí aparecerán tus productos y servicios marcados con corazón.</div>
+                </div>
+
                 <div class="row w-100 m-0 pt-2 pb-2"  >
                     <div class="row w-100 m-0 px-3 to-eventos_zonas" v-for=" (e) of instalciones" :key="e.id">
                         <div class="row w-100 m-0 py-2" >
