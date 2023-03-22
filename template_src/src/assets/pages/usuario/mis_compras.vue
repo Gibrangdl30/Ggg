@@ -50,7 +50,17 @@
                                                     <div class="col px-0  letra-gray4-13">Total: {{p.total | currency}}</div>
                                                 </div>
                                                 <div class="row w-100 m-0 letra-rojo-15">{{p.brand}}</div>
-                                                <div class="row w-100 m-0 letra-gray3-15">{{p.name}}</div>
+                                                <div class="row w-100 m-0 letra-gray4-15">{{p.name}}</div>
+                                                <div class="row w-100 m-0 py-2">
+                                                    <div class="row w-100 m-0 " v-if="p.estatusEnvio">
+                                                        <div class="col px-0 letra-gray3-16">{{p.estatusEnvioTexto || 'Estatus envío:' }}</div>
+                                                        <div class="col-auto px-0 letra-rojo1-18 fw-600">{{p.estatusEnvio}}</div>
+                                                    </div>
+                                                    <div class="row w-100 m-0 " v-if="p.fechaAprox">
+                                                        <div class="col px-0 letra-gray3-16">{{p.fechaAproxTexto || 'Fecha aproximada de entrega:'}}</div>
+                                                        <div class="col-auto px-0 letra-rojo1-18 fw-600">{{p.fechaAprox}}</div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
