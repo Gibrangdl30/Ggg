@@ -44,17 +44,45 @@
                                             </div>
                                             <div class="col px-0 pl-2">
                                                 <div class="row w-100 m-0 letra-gray4-16">{{p.nombre}}</div>
-                                                <div class="row w-100 m-0">
-                                                    <div class="col px-0 letra-gray3-13">Precio: {{p.precio | currency}}</div>
-                                                    <div class="col-auto px-0 px-2 letra-rojo-13">Cantidad: {{p.cantidad}}</div>
-                                                    <div class="col px-0  letra-gray4-13">Total: {{p.total | currency}}</div>
-                                                </div>
                                                 <div class="row w-100 m-0 letra-rojo-15">{{p.brand}}</div>
                                                 <div class="row w-100 m-0 letra-gray4-15">{{p.name}}</div>
+
+                                                <div class="row w-100 m-0 pt-3">
+                                                    <div class="row w-100 m-0">
+                                                        <div class="col px-0 letra-gray3-16">Precio:</div>
+                                                        <div class="col-auto px-0 letra-rojo-18 fw-600">{{p.precio | currency}}</div>
+                                                    </div>
+                                                    <div class="row w-100 m-0">
+                                                        <div class="col px-0 letra-gray3-16">Cantidad:</div>
+                                                        <div class="col-auto px-0 letra-rojo-18 fw-600">{{p.cantidad}}</div>
+                                                    </div>
+                                                    <template v-if="p.precioEnvio">
+                                                        <div class="row w-100 m-0" >
+                                                            <div class="col px-0 letra-gray3-16">Costo de envio:</div>
+                                                            <div class="col-auto px-0 letra-rojo-18 fw-600" v-if="Number(p.precioEnvio)">{{p.precioEnvio | currency}}</div>
+                                                            <div class="col-auto px-0 letra-rojo-18 fw-600" v-else >{{ p.precioEnvio }}</div>
+                                                        </div>
+                                                    </template>
+                                                    <template v-if="p.total">
+                                                        <div class="row w-100 m-0" >
+                                                            <div class="col px-0 letra-gray3-16">Total:</div>
+                                                            <div class="col-auto px-0 letra-rojo-18 fw-600">{{p.total | currency}}</div>
+                                                        </div>
+                                                    </template>
+                                                </div>
+                                                
                                                 <div class="row w-100 m-0 py-2">
+                                                    <div class="row w-100 m-0 " v-if="p.paqueteriaEnvio">
+                                                        <div class="col px-0 letra-gray3-16">{{p.paqueteriaEnvioTexto || 'Paqueteria:' }}</div>
+                                                        <div class="col-auto px-0 letra-rojo1-18 fw-600">{{p.paqueteriaEnvio}}</div>
+                                                    </div>
                                                     <div class="row w-100 m-0 " v-if="p.estatusEnvio">
                                                         <div class="col px-0 letra-gray3-16">{{p.estatusEnvioTexto || 'Estatus envío:' }}</div>
                                                         <div class="col-auto px-0 letra-rojo1-18 fw-600">{{p.estatusEnvio}}</div>
+                                                    </div>
+                                                    <div class="row w-100 m-0 " v-if="p.guiaEnvio">
+                                                        <div class="col px-0 letra-gray3-16">{{p.guiaEnvioTexto || 'Guia:' }}</div>
+                                                        <div class="col-auto px-0 letra-rojo1-18 fw-600">{{p.guiaEnvio}}</div>
                                                     </div>
                                                     <div class="row w-100 m-0 " v-if="p.fechaAprox">
                                                         <div class="col px-0 letra-gray3-16">{{p.fechaAproxTexto || 'Fecha aproximada de entrega:'}}</div>
@@ -110,6 +138,7 @@ const moment = require('moment');
                 this.router.navigate(ruta);
             },
             goes(info){
+                return;
                 this.$store.commit('setCarritosState',['prod',{ id: info.product_id }]);
                 this.router.navigate('/producto');
             },

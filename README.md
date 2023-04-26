@@ -10,6 +10,8 @@ cordova-plugin-keyboard
 cordova-support-google-services
 phonegap-plugin-push
 
+ivan_gpardo@hotmail.com
+
 ###### ERROR DE RED ORIGIN NULL IS NOT ALLOWED BY ACCESS CONTROL ALLOW ORIGIN
 BUSCAR EL TEXTO WKWebViewConfiguration* configuration = [[WKWebViewConfiguration alloc] init];
 ESTA EN EL ARCHIVO CDVWKWebViewEngine.m en platform/ios
