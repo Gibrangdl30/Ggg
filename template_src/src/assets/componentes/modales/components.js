@@ -1,8 +1,10 @@
+import menuModal from './menuModal.vue';
 import modalSearchDireccion from './modalSearchDireccion.vue';
 import modalPickRangoFecha from './modalPickRangoFecha.vue';
 import modalPickFecha from './modalPickFecha.vue';
 import modalNotificacion from './modalNotificacion.vue';
 import modal_loader from './modal_loader.vue';
+import modalProcesando from './modalProcesando.vue';
 import modalMensaje from './modalMensaje.vue';
 import globalMsn from './globalMsn.vue';
 import modalSession from './modalSession.vue';
@@ -15,8 +17,10 @@ import modalSeleccionarEnvios from './modalSeleccionarEnvios.vue';
 
 
 function plugin(Vue) {
+    Vue.component('menuModal', menuModal);
     Vue.component('globalMsn', globalMsn);
     Vue.component('modal-loader', modal_loader);
+    Vue.component('modalProcesando', modalProcesando);
     Vue.component('modalCalificar', modalCalificar);
     Vue.component('modalMensajeStatic', modalMensajeStatic);
     Vue.component('modalMensaje', modalMensaje);

@@ -8,7 +8,7 @@
                 <busquedaBlack :close="1" :loader="0" v-model="b" holder="Buscar... " />
             </div>
 
-            <div class="contenedor-page-tabs PB-2">
+            <div class="contenedor-page-tabs pb-2">
 
                 <template v-if="!b" >
                     <div class="row w-100 m-0 pb-2" v-if="top && top.length" >
@@ -146,8 +146,12 @@ const moment = require('moment');
                 b: null,
                 modal: null,
                 modal2: null,
-                c: 50,
+                c: 25,
                 add: 15,
+
+                // populares:      this.$store.getters.info('popu'),
+                // promociones:    this.$store.getters.info('promociones'),
+                // perder:        this.$store.getters.info('perder'),
 
             } 
         },
@@ -178,9 +182,10 @@ const moment = require('moment');
 
             byCats(){
                 if(this.b){
-                    return this.prods.filter(w =>  this.buscar(w) );
+                    // return this.prods.filter(w =>  this.buscar(w) );
+                    return this.prods.sort( (a, b) => { return this.buscar(b) - this.buscar(a) });
                 }
-                return this.prods;
+                return this.prods.filter((s,x) => x < 11);
 
                 if(this.sub){
                     return this.prods.filter(s=>s.subcat.some(c=>c.id == this.sub));
@@ -193,13 +198,15 @@ const moment = require('moment');
             
             instalciones(){
                 if(this.b){
-                    return this.byCats.sort( (a, b) => { return this.buscar(b) - this.buscar(a) });
+                    // return this.byCats.sort( (a, b) => { return this.buscar(b) - this.buscar(a) });
+                    return this.byCats.filter( (x,y) => y <= this.c );
                 }
-                return this.byCats;
+                return this.byCats.filter( (x,y) => y <= this.c );
             },
 
             paginado(){
-                return this.instalciones.filter((x,y) => {return y <= this.c});
+                // return this.instalciones.filter((x,y) => {return y <= this.c});
+                return this.instalciones;
             }
         },
 

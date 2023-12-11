@@ -25,6 +25,7 @@ const initialState = {
 
     modales:{
         loader:2,
+        menuModal:false,
         selectImagen:false,
         seleccionarImagen:false,
         globalMsn:false,
@@ -97,7 +98,7 @@ const mutations = {
             state.router_change = f7.view.current.router.on('routeChange',(nueva, anterior, router)=>{
                 state.ruta = {url: nueva.url};
                 // this.$store.dispatch('synchronizeData');
-                // console.log("router", nueva.url);
+                console.log("R=> R=> R=> R=>", nueva.url);
             });
         }
     },
@@ -257,7 +258,8 @@ const mutations = {
         state.f7.panel.close('left', true);
     },
     openMenuRight(state){
-        state.f7.panel.open('right', true);
+        this.commit('openModal', ['menuModal']);
+        // state.f7.panel.open('right', true);
     },
     closeMenuRight(state){
         state.f7.panel.close('right', true);

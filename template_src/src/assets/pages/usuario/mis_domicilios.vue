@@ -28,7 +28,7 @@
                    <div class="row w-100 m-0" v-for="a of domicilios" :key="a.id">
                        <div class="row w-100 m-0 px-2 py-2 border-b-gray0-1" @click="set(a.id)" >
                             <div class="col my-auto px-0 ">
-                               <div class="row w-100 m-0 letra-gray3-17">{{a.calle}} {{a.numero}}</div>
+                               <div class="row w-100 m-0 letra-gray3-17">{{a.calle}}</div>
                                <!-- <div class="row w-100 m-0 letra-gray4-15">{{`${a.municipio}, ${a.estado}`}}</div> -->
                             </div>
                            <div class="col-auto my-auto px-0 mr-4">

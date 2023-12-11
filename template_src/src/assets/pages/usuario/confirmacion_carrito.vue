@@ -23,7 +23,7 @@
                             <div class="row w-100 m-0 py-2 " >
                             <!-- <div class="row w-100 m-0 py-2 " @click="router.navigate('/mis_domicilios')"> -->
                                 <div class="row w-100 m-0 px-3">
-                                    <div v-if="domicilio && domicilio.id" class="col-auto mr-auto px-0 letra-gray3-16">{{domicilio.calle}} {{domicilio.numero}}</div>
+                                    <div v-if="domicilio && domicilio.id" class="col-auto mr-auto px-0 letra-gray3-16">{{domicilio.calle}}</div>
                                     <div v-else class="col-auto mr-auto px-0 letra-gray3-16">Selecciona una dirección</div>
                                 </div>
 
@@ -91,8 +91,8 @@
 
                             <div class="row w-100 m-0">
                                 <div class="row w-100 m-0">
-                                    <div class="col-7 px-0 ml-auto" @click="prod = p; show = 1;">
-                                        <div class="row w-100 m-0 justify-content-center text-center back-color-rojo letra-blanco-16 py-2 border-radius-10px">Seleccionar tipo de envio</div>
+                                    <div class="col-12 px-0 pt-9px ml-auto" @click="prod = p; show = 1;">
+                                        <div class="row w-100 m-0 justify-content-center text-center back-color-negro letra-blanco-16 fw-400 py-2 border-radius-10px">Seleccionar tipo de envio</div>
                                     </div>
                                 </div>
                             </div>
@@ -154,8 +154,8 @@
                     </div> -->
 
                     <template v-if="1" >
-                        <div class="row w-100 m-0 py-10px mt-3 px-3">
-                            <div class="row w-100 m-0 letra-rojo-18 fw-600 text-capitalize">información de pago</div>
+                        <div class="row w-100 m-0 my-10px mt-3 px-3 back-color-rojo">
+                            <div class="row w-100 m-0 py-10px letra-blanco-16 fw-600 text-capitalize">información de pago</div>
                         </div>
                         <div class="row w-100 m-0 py-2" @click="router.navigate('/metodos_pago')">
                         <!-- <div class="row w-100 m-">{{metodoPagoId}}</div> -->

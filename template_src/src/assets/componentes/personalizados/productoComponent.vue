@@ -83,20 +83,6 @@
                 </div>
             </div>
 
-            <div class="row w-100 m-0  " v-if="0" >
-                <div class="row w-100 m-0" v-if="info.tipo=='calendario'">
-                    <div class="row w-100 m-0 px-3">
-                        <inputForm texto="Fecha del evento:" type="date" placeholder="" v-model="form.fecha" />
-                    </div>
-                </div>
-                <div class="row w-100 m-0 px-3 py-3  ">
-                    <div class="row w-100 m-0 letra-blanco-15">Comentarios:</div>
-                    <div class="row w-100 m-0 pt-2">
-                        <inputForm clase="border-radius-15px" :textarea="true" :offset="500" rows="5" texto="" type="text" placeholder="" v-model="form.comentarios" />
-                    </div>
-                </div>
-            </div>
-
             <div class="row w-100 m-0" >
                 <template v-if="info.modelos && info.modelos.length" >
                     <div class="row w-100 m-0 px-3">
@@ -134,7 +120,6 @@
                 </div>
                 <div class="col-auto my-auto px-1 pl-2">
                     <div class="row w-100 m-0 px-1 justify-content-left back-color-rojo border-radius-30px " >
-
                         <div class="col-auto px-0 py-1 my-auto" @click="remove()">
                             <icono  icono="remove" clase="letra-blanco-40 pt-6px"/>
                         </div>
@@ -325,18 +310,19 @@ export default {
                 this.set();
             }
         },
+        
         set(){
-            this.form.platillos_id = this.info.id;
-            this.form.tipo = this.info.tipo;
-            this.form.restaurantes_id = this.info.restaurantes_id;
-            this.form.tipo = this.info.tipo;
-            this.form.nombre = this.info.name;
-            this.form.description = this.info.description;
-            this.form.cat = this.info.cat;
-            this.form.platillo = this.info;
-            this.form.info = this.info;
-            this.form.precio = Number(this.info.precio);
-            this.form.total = this.form.cantidad * Number(this.form.precio);
+            this.form.platillos_id      = this.info.id;
+            // this.form.tipo              = this.info.tipo;
+            // this.form.restaurantes_id   = this.info.restaurantes_id;
+
+            this.form.nombre            = this.info.name;
+            this.form.description       = this.info.description;
+            this.form.cat               = this.info.cat;
+            this.form.platillo          = this.info;
+            this.form.info              = this.info;
+            this.form.precio            = Number(this.info.precio);
+            this.form.total             = this.form.cantidad * Number(this.form.precio);
             this.$emit('set',this.form);
         }
     },

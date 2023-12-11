@@ -310,6 +310,7 @@ const state = {
             }
         ]
     },
+
     baseApi: 'https://mexicolimited.com/apiapp/',
     refreshToken: null,
     token: null,
@@ -354,12 +355,14 @@ const actions = {
         },error=>{});
     },
     
-    postCotizaApi({ commit, state }){
+    postCotizaApiNew({ commit, state }){
         const ss = this.getters.getSession;
         const dom = this.getters.carritoFind('domicilios','domicilio');
         const car = this.getters.carritoObject('desgloce');
         const prods = car.carrito;
 
+        // LIMPIAMOS LOS PRODUCTOS DE ENVIOS ANTERIORES
+        this.commit('cleanEnviosCarrito', {});
         
         let s =  {
             "name":         ss.nombre,
@@ -375,9 +378,67 @@ const actions = {
             "num_ext":          dom.numero,
         };
 
-        if(this.getters.debugB){
-            this.commit('setEnviosCarrito',{res: state.res});
+        // if(this.getters.debugB){
+        //     this.commit('setEnviosCarrito',{res: state.res});
+        // }
+        
+        let p = [];
+        prods.map(x=>{
+            p.push({
+                "id": x.info.id,
+                "quantity": x.cantidad,
+                "modelo": null
+            });
+        });
+
+
+        let data = {
+            "products"  :p,
+            "user"      :s,
+        };
+
+        let finish = (res)=>{
+            console.log("RES RES RES ", res);
+            this.commit('setEnviosCarrito',{res: res});
+        };
+
+        let load = {
+            url: 'distance',
+            data: data,
         }
+
+        this.dispatch('postPromiseLoader', ['envios/verenvio', data]).then(
+        res => {
+            finish(res);
+        },error=>{});
+    },    
+
+    postCotizaApi({ commit, state }){
+        const ss = this.getters.getSession;
+        const dom = this.getters.carritoFind('domicilios','domicilio');
+        const car = this.getters.carritoObject('desgloce');
+        const prods = car.carrito;
+
+        // LIMPIAMOS LOS PRODUCTOS DE ENVIOS ANTERIORES
+        this.commit('cleanEnviosCarrito', {});
+        
+        let s =  {
+            "name":         ss.nombre,
+            "email":        ss.email,
+            "lastname":     ss.nombre,
+            "phone":        ss.telefono,
+
+            "zipcode":          dom.cp,
+            "neighborhood":     dom.colonia,
+            "town_id":          dom.mun_id,
+            "state_id":         dom.estado_id,
+            "street":           dom.calle_nombre,
+            "num_ext":          dom.numero,
+        };
+
+        // if(this.getters.debugB){
+        //     this.commit('setEnviosCarrito',{res: state.res});
+        // }
         
         let p = [];
         prods.map(x=>{
@@ -409,7 +470,8 @@ const actions = {
         },error=>{});
     },
     
-    postSaveOrderApi({ commit, state }, {oId = {}}){
+    postSaveOrderApi({ commit, state }, {oId = {}, callback = null}){
+
         const ss = this.getters.getSession;
         const dom = this.getters.carritoFind('domicilios','domicilio');
         const car = this.getters.carritoObject('desgloce');
@@ -465,10 +527,22 @@ const actions = {
             url: 'saveship',
             data: data,
         }
-        this.dispatch('postApiRequest', load).then(
-        res => {
-            finish(res);
-        },error=>{});
+
+        console.log("REGRESANDO DATA", data);
+        if(callback){
+            callback(data);
+        }
+        return data;
+
+        // this.dispatch('postApiRequest', load).then(
+        // res => {
+        //     finish(res);
+        // },error=>{});
+
+        // this.dispatch('postPromiseLoader', ['envios/guardarenvio', data]).then(
+        // res => {
+        //     finish(res);
+        // },error=>{});
     },
   
 
@@ -565,7 +639,7 @@ const actions = {
                             if(error.err){
                                 swal("", error.err, "error");
                             }else{
-                                swal("","Fallo conexion al servidor", "error");
+                                // swal("","Fallo conexion al servidor", "error");
                             }
                             reject(error);
                         });

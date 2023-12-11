@@ -46,7 +46,7 @@
 
         <imagen :class="(padding)?padding:'p-4'" :icono="true" src="user" v-else-if="user" @click="takePicture()" />
 
-        <imagen :class="(padding)?padding:'p-4'" :icono="true" src="camb3" v-else @click="takePicture()" />
+        <imagen :class="(padding)?padding:'p-4'" :icono="true" src="camb4" v-else @click="takePicture()" />
 
     </div>
 

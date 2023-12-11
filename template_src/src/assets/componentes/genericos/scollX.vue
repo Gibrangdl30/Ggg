@@ -28,12 +28,11 @@ export default {
 
     mounted() {
         setTimeout(this.initSlider,300);
-        console.log("SWIPER SWIPER", Swiper)
+        // console.log("SWIPER SWIPER", Swiper)
     },
     methods:{
         initSlider(){
-        console.log("SWIPER SWIPER INIT INIT", Swiper)
-
+        // console.log("SWIPER SWIPER INIT INIT", Swiper)
             this.slider = new Swiper (`.${this.id}`, {
                     initialSlide: 0,
                     centeredSlides: false, 

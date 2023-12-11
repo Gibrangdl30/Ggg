@@ -25,6 +25,10 @@ import enviar_mensaje from './assets/pages/enviar_mensaje.vue';
 
 import concidencias from './assets/pages/concidencias.vue';
 import terminos_privacidad from './assets/pages/terminos_privacidad.vue';
+import tdeclaracion from './assets/pages/tdeclaracion.vue';
+import tpolitica_envios from './assets/pages/tpolitica_envios.vue';
+import terminos_market from './assets/pages/terminos_market.vue';
+import tconvenios from './assets/pages/tconvenios.vue';
 
 const general = [
   {path: '/views',component: views,},
@@ -53,6 +57,10 @@ const general = [
   {path: '/terminos_condiciones',component: terminos_condiciones},
   {path: '/concidencias',component: concidencias},
   {path: '/terminos_privacidad',component: terminos_privacidad},
+  {path: '/tdeclaracion',component: tdeclaracion},
+  {path: '/tpolitica_envios',component: tpolitica_envios},
+  {path: '/terminos_market',component: terminos_market},
+  {path: '/tconvenios',component: tconvenios},
 ];
 
 

@@ -19,8 +19,11 @@
                         <div class="col px-0 letra-gray3-4-2vw">Ubicación</div>
                     </div>
                     <div class="row w-100 m-0 letra-gray38-4-1vw">
-                        <div class="w-65 pl-0 pr-1 my-auto ">{{form.direccion}}</div>
-                        <div class="w-35 pl-1 pr-0 my-auto ">
+                        <!-- <div class="w-65 pl-0 pr-1 my-auto ">{{form.direccion}}</div> -->
+                        <div class="w-65 pl-0 pr-1 my-auto ">
+                            <inputForm type="text" :offset="800" contendorId="direccionnueva" :textarea="true" rows="4" texto="Indicaciones:" placeholder="" v-model="form.direccion" />
+                        </div>
+                        <div class="w-35 pl-1 pr-0 mb-auto pt-4px ">
                             <inputForm type="text" :offset="500" contendorId="direccionnueva" texto="Numero interior:" placeholder="123" v-model="form.numero_interior"  />
                         </div>
                     </div>

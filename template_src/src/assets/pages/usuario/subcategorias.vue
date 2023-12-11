@@ -54,6 +54,7 @@
 
                 <template v-else >
                     <div class="row w-100 m-0 pt-2"  >
+                        LL- {{paginado.length}}
                         <div class="row w-100 m-0  to-eventos_zonas" v-for=" (e,x) of paginado" :key="e.id">
 
                             <div class="row w-100 m-0">

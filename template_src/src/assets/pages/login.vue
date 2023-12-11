@@ -1,5 +1,21 @@
 <template>
     <f7-page id="inicio">
+        <modalMensajeStatic 
+            v-if="modal==1"
+            texto="cliente"
+            :oneButton="1"
+            boton="Sistema de creadores"
+            @click="open"
+            @close="modal = 0"
+        />
+        <modalMensajeStatic 
+            v-if="modal==2"
+            texto="clienteUsuario"
+            boton="continuar"
+            @click="open"
+            @click2="next"
+            @close="modal = 0"
+        />
         <div class="vista">
         <div class="contenedor-page-tabs position-relative">
 
@@ -59,10 +75,12 @@ import Swiper from 'swiper';
         },
         data(){
             return{
+                modal: 0,
                 form:{
                     email: '',
                     password: '',
                 },
+                callback: null,
             } 
         },
         computed: {
@@ -86,12 +104,18 @@ import Swiper from 'swiper';
                this.$store.commit('changeView','usuario');
             },
             open(){
-                this.$store.dispatch('openBrowser', 'https://axitapp.online');
+                this.$store.dispatch('openBrowser', 'https://mexicolimited.com/admin#/login');
             },
+
+            next(){
+                this.callback();
+            },
+
             login(){
                 
                 this.$store.dispatch('userPostRegistoTelefono',[this.form, 'login']);
             },
+
             enter(){
                 if(!this.form.email){
                     return;
@@ -99,8 +123,18 @@ import Swiper from 'swiper';
                 if(!this.form.password){
                     return;
                 }
-                this.$store.dispatch('postLogin',[this.form]);
-            }
+                this.$store.dispatch('postLogin',[this.form, (data)=>{
+                        if(data.cliente == 2){
+                            this.modal = 1;
+                        }
+                        console.log("DATAS DATAS", data);
+                        if(data.cliente == 1){
+                            this.modal = 2;
+                            this.callback = data.callback;
+                        }
+                    }
+                ]);
+            },
           
         }
     }

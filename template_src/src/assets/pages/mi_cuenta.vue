@@ -19,6 +19,7 @@
             :boton="'Aceptar'"
             @close="modal=0"
         />
+        
 
     <div class="vista">
         <nav-bar tipo="inicio" title="Mi cuenta" :backs="1" :fix="1" />
@@ -91,10 +92,21 @@
                         </div>
                    
                         <div class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1"  >
-                            <button type="button" class="button button-outline button-raised button-active-gray px-3 py-2 text-left" @click="router.navigate('/terminos_condiciones')">
+                            <button type="button" class="button button-outline button-raised button-active-gray px-3 py-2 text-left" @click="router.navigate('/tdeclaracion')">
                                 <div class="row m-0 w-100 justify-content-between">
-                                    <div class="col my-auto letra-gray3-5-1vw p-0">Terminos y Condiciones</div>
-                                    <div class="col-auto p-0">
+                                    <div class="w-90 my-auto letra-gray3-5-1vw p-0 white-space-preline ">Declaración de privacidad y confidencialidad de la información</div>
+                                    <div class="col-auto my-auto p-0">
+                                        <icono icono="chevron_right" clase="letra-gray3-30" />
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+
+                        <div class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1"  >
+                            <button type="button" class="button button-outline button-raised button-active-gray px-3 py-2 text-left" @click="router.navigate('/tpolitica_envios')">
+                                <div class="row m-0 w-100 justify-content-between">
+                                    <div class="w-90 my-auto letra-gray3-5-1vw p-0 white-space-preline ">Política de envíos, Pagos y Devoluciones.</div>
+                                    <div class="col-auto my-auto p-0">
                                         <icono icono="chevron_right" clase="letra-gray3-30" />
                                     </div>
                                 </div>
@@ -102,9 +114,31 @@
                         </div>
 
                         <div v-if="1" class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1"  >
-                            <button type="button" class="button button-outline button-raised button-active-gray px-3 py-2 text-left" @click="router.navigate('/aviso_privacidad')">
+                            <button type="button" class="button button-outline button-raised button-active-gray px-3 py-2 text-left" @click="router.navigate('/terminos_market')">
                                 <div class="row m-0 w-100 justify-content-between">
-                                    <div class="col my-auto letra-gray3-5-1vw p-0">Aviso de privacidad</div>
+                                    <div class="w-90 my-auto letra-gray3-5-1vw p-0 white-space-preline ">Términos y Condiciones del Marketplace</div>
+                                    <div class="col-auto my-auto p-0">
+                                        <icono icono="chevron_right" clase="letra-gray3-30" />
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+
+                        <div v-if="1" class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1"  >
+                            <button type="button" class="button button-outline button-raised button-active-gray px-3 py-2 text-left" @click="router.navigate('/tconvenios')">
+                                <div class="row m-0 w-100 justify-content-between">
+                                    <div class="w-90 my-auto letra-gray3-5-1vw p-0 white-space-preline ">Convenio para creadores</div>
+                                    <div class="col-auto p-0">
+                                        <icono icono="chevron_right" clase="letra-gray3-30" />
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                        
+                        <div class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1"  >
+                            <button type="button" class="button button-outline button-raised button-active-gray px-3 py-2 text-left" @click="router.navigate('/terminos_condiciones')">
+                                <div class="row m-0 w-100 justify-content-between">
+                                    <div class="w-90 my-auto letra-gray3-5-1vw p-0 white-space-preline ">Términos y Condiciones</div>
                                     <div class="col-auto p-0">
                                         <icono icono="chevron_right" clase="letra-gray3-30" />
                                     </div>
@@ -112,7 +146,17 @@
                             </button>
                         </div>
 
-
+                        <div v-if="0" class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1"  >
+                            <button type="button" class="button button-outline button-raised button-active-gray px-3 py-2 text-left" @click="router.navigate('/aviso_privacidad')">
+                                <div class="row m-0 w-100 justify-content-between">
+                                    <div class="w-90 my-auto letra-gray3-5-1vw p-0 white-space-preline ">Aviso de privacidad</div>
+                                    <div class="col-auto p-0">
+                                        <icono icono="chevron_right" clase="letra-gray3-30" />
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                        
                         <div v-if="0" class="row m-0 border-botom-gray border-t-gray-lligth-1 border-b-gray-lligth-1"  >
                             <button type="button" class="button button-outline button-raised button-active-gray px-3 py-2 text-left" @click="$store.dispatch('sendWhatsapp', session.soporte)" >
                                 <div class="row m-0 w-100 justify-content-between">
@@ -147,7 +191,7 @@
                         </div>
                 </div>
                 </div>
-                <div class="row m-0 pt-4 justify-content-center letra-gray3-4-1vw">V.{{version}}</div>
+                <div class="row m-0 pt-4 justify-content-center letra-gray3-4-1vw">V.{{5.05}}</div>
             </div>
         </div>
 

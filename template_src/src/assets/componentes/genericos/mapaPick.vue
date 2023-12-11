@@ -45,8 +45,9 @@
         },
       
         mounted(){
-            setTimeout(this.initMapa,350);
+            setTimeout(this.initMapa,150);
         },
+        
         methods:{
             initMapa(){
                 try{
@@ -61,7 +62,7 @@
                             position: this.centro, 
                             map: this.map,
                             icon: {
-                                url: require('../../iconos/pin.svg'),
+                                url: 'https://mexicolimited.com/apiv1/iconos/pin1.svg',
                                 scaledSize:{height: 35, width: 35}
                             },
                         });
@@ -86,16 +87,17 @@
                this.set = true;
                 //console.log("DRAAGGING");
             },
+
             dragend(){
                 // console.log("OIN", this.pin);
-
-                this.pin.setPosition(this.map.getCenter());
                 // console.log("SET",this.value);
+                this.pin.setPosition(this.map.getCenter());
                 this.value.lat = this.map.getCenter().lat();
                 this.value.lng = this.map.getCenter().lng();
                 this.$emit('input', this.value);
                 this.getDireccion();
             },
+
             centerchange(){
                 // console.log("OIN", this.pin);
                 

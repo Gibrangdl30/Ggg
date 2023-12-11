@@ -3,8 +3,8 @@
             enter-active-class="animated fadeIn faster"
             leave-active-class="animated fadeOut faster">
     <div class="modal_aplicar w-100 m-0 p-0 justify-content-center" @click.self="closeModal()">
-        <div class="row w-100 m-0px px-3  " @click.self="closeModal()" >
-            <div class="row w-100 m-0 mt-3 back-color-blanco  py-3 border-radius-15px position-relative">
+        <div class="row w-100 m-0px px-3 mt-4  " @click.self="closeModal()" >
+            <div class="row w-100 m-0 mt-5 back-color-blanco  py-3 border-radius-15px position-relative">
 
                 <div class="w-auto position-absolute right-5px top-5px z-100" @click="closeModal()">
                     <icono icono="clear" clase="letra-gray3-40 fw-600" />

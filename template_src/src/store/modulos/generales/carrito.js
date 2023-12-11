@@ -97,6 +97,15 @@ const mutations={
         this.commit('calcularTotal');
     },
 
+    cleanEnviosCarrito(state, {} ){
+        state.desgloce.carrito.map((x,i)=>{
+            x.envios = [];
+            x.envio = null;
+            x.precio_envio = 0;
+        });
+        this.commit('calcularTotal');
+    },
+
     setEnviosCarrito(state, {res = []}){
         console.log("RES", res);
         const del = res.deliveries;
@@ -132,7 +141,11 @@ const mutations={
         state.desgloce.comision     = 0;
         state.desgloce.total        = 0;
         state.desgloce.costoEnvio   = 0;
-        state.desgloce.cambioIva    = 0.16;
+        state.desgloce.cambioIva    = 0.0;
+
+        if(this.getters.infoX('ivaCalc')){
+            state.desgloce.cambioIva = this.getters.infoX('ivaCalc');
+        }
 
         console.log("CARRRITO CARRITO", state.desgloce.carrito );
 
@@ -174,20 +187,24 @@ const actions={
             carrito:    state.desgloce,
             domicilio:  this.getters.carritoFind('domicilios','domicilio'),
             metodo:     state.metodo_pago,
+            xdata:      {},
         };
 
         if(state.desgloce.carrito.some(p=>!p.envio || !p.envio.id)){
             swal("","Selecciona el envio de todos los productos para continuar","");
             return;
         }
-
         if( !state.metodo_pago ){
             swal("","Selecciona un metodo de pago","");
             return;
         }
 
+        this.dispatch('postSaveOrderApi', { oId: 'OrderX', callback: (dx)=>{
+            data.xdata = dx;
+        }});
+
         let finish = (res)=>{
-            this.dispatch('postSaveOrderApi', { oId: res.data.oId } );
+            // this.dispatch('postSaveOrderApi', { oId: res.data.oId } );
             
             this.dispatch('synchronizeData');
             this.getters.getRouter.navigate('/inicio');
@@ -272,7 +289,10 @@ const actions={
 
         let finish = (res)=>{
             this.dispatch('synchronizeData');
-            this.dispatch('sendDataAllUsers',[{servicio:true}]);
+            // this.dispatch('sendDataAllUsers',[{servicio:true}]);
+            if(res.domID){
+                this.commit('setCarritosState',['domicilio', res.domID]);
+            }
             this.getters.getRouter.back();
             swal("","Domicilio agregado","success");
         };

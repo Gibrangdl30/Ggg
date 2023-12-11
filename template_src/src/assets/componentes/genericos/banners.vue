@@ -2,10 +2,11 @@
 <div class="row w-100 m-0 slider-component">
     <div :class="id +' swiper-container slider-container'">
         <div class="swiper-wrapper">
-            <div class="swiper-slide" v-for="i of galleria" :key="i.id" >
+            <div class="swiper-slide" v-for="i of galleria" :key="i.id" @click="open(i)">
                 <div class="row w-100 m-0 justify-content-center">
                     <imagen :create="1" :src="i.imagen" alt="foto_producto" />
                 </div>
+                <!-- <div class="row w-100 m-0 justify-content-center pr-5 ">{{ i.id }}</div> -->
             </div>
         </div>
 
@@ -61,7 +62,14 @@ export default {
             this.slider.on('slideChange',()=>{
                 this.index = this.slider.realIndex;
             });
-      }
+        },
+
+        open(x){
+            // console.log("URL => =>",x.id, " => => ", x.url);
+            if(x.url){
+                this.$store.dispatch('openBrowser', x.url);
+            }
+        }
     },
 }
 </script>

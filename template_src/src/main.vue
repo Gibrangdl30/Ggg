@@ -3,16 +3,17 @@
     <!-- App -->
     <f7-app :params="f7params">
         <f7-panel left cover>
-            <f7-view class="left-view" url="/menu" :main="true" name="menu" id="menu" />
+            <f7-view class="left-view" url="/menu" :main="true" name="menu" id="menu" :iosSwipeBack="false" />
         </f7-panel>
 
         <f7-panel right cover>
-            <f7-view class="back-color-rojo" url="/menu" tabActive :main="true" name="por_ordenar" id="por_ordenar"></f7-view>
+            <f7-view class="back-color-rojo" url="/menu" tabActive :main="true" :iosSwipeBack="false" name="por_ordenar" id="por_ordenar"></f7-view>
          </f7-panel>
 
-        <f7-view url="/views" :main="true" class="ios-edges"></f7-view>
+        <f7-view url="/views" :main="true" :iosSwipeBack="false" class="ios-edges"></f7-view>
 
-        <modalCalificar />
+        <!-- <modalCalificar /> -->
+        <menuModal />
         <modalNotificacion />
         <globalMsn />
         <modalSession />

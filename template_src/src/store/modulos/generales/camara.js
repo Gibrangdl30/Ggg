@@ -17,7 +17,7 @@ const mutations = {
 const actions = {
     getFotoFunction({state}, [fn]){
         let optionsCamera = {
-            quality: 35,
+            quality: 45,
             destinationType: Camera.DestinationType.FILE_URI,
             saveToPhotoAlbum: false,
             correctOrientation: true,
@@ -35,7 +35,7 @@ const actions = {
 
     selectFotoFunction({state}, [fn]){
         let optionsCamera = {
-            quality: 35,
+            quality: 45,
             destinationType: Camera.DestinationType.FILE_URI,
             allowEdit:false,
             sourceType: Camera.PictureSourceType.PHOTOLIBRARY,

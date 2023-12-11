@@ -2,6 +2,14 @@
     <div class="page " id="inicio">
     <div class="page-content position-relative">
 
+        <modalMensajeStatic 
+            v-if="modal==1"
+            texto="mensajeCreador"
+            boton="Enviar"
+            @click="send"
+            @close="modal = 0"
+        />
+
         <div class="vista h-100 position-relative" >
             <nav-bar tipo="logo" :no_border="1" title="" :backs="1" :logo="false" :profile="true"  />
 
@@ -33,22 +41,32 @@
 
             <div class=" contenedor-page-tabs h-100">
                 <div class="row w-100 m-0 position-relative">
-                    <productoComponent :full="true" :data="platillo" @set="set"/>
+                    <productoComponent :full="true" :data="platillo" @set="set" />
                 </div>
             </div>
 
-            <template v-if="platillo.sku && Number(platillo.width) && Number(platillo.weight) && Number(platillo.high) " >
-                <template v-if=" Number(platillo.stock) " >
-                    <template v-if="total" >
-                        <div class="row w-100 m-0 back-color-rojo1 " v-if="1" @click="add()">
-                            <div class="row w-100 m-0 pt-3 pb-4 px-3">
-                                <div class="row w-100 m-0 px-3">
-                                    <div class="col my-auto px-0 letra-blanco-22 fw-600 " >Agregar</div>
-                                    <div class="col-auto my-auto px-0 letra-blanco-25 fw-800 ">{{total | currency}}</div>
+            <template v-if="total" >
+                <template v-if="prod.sku && Number(prod.width) && Number(prod.weight) && Number(prod.high) " >
+                    <template v-if=" Number(prod.stock) " >
+                            <div class="row w-100 m-0 back-color-rojo1 " v-if="1" @click="add()">
+                                <div class="row w-100 m-0 pt-3 pb-4 px-3">
+                                    <div class="row w-100 m-0 px-3">
+                                        <div class="col my-auto px-0 letra-blanco-22 fw-600 " >Agregar</div>
+                                        <div class="col-auto my-auto px-0 letra-blanco-25 fw-800 ">{{ total | currency}}</div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                     </template>
+                </template>
+                <template v-else >
+                    <div class="row w-100 m-0 back-color-rojo1 " >
+                        <div class="row w-100 m-0 pb-4">
+                            <div class="row w-100 m-0 pt-3 letra-blanco-16 justify-content-center text-center " >Producto temporalmente no disponible para la venta</div>
+                            <div class="row w-100 m-0 pt-2 px-3">
+                                <div @click="modal=1" class="row w-100 m-0 py-1 back-color-rojo justify-content-center text-center letra-blanco-18 border-radius-10px">Avísale a este creador que te interesa</div>
+                            </div>
+                        </div>
+                    </div>
                 </template>
             </template>
 
@@ -67,7 +85,9 @@ const moment = require('moment')
         },
         data(){
             return{
+                modal: 0,
                 total: 0,
+                prod: {},
                 form: {},
             } 
         },
@@ -84,16 +104,28 @@ const moment = require('moment')
 
         methods:{
             set(platillo){
-                this.total = platillo.total;
-                this.form = platillo;
+                this.prod       = platillo.info;
+                this.total      = platillo.total;
+                this.form       = platillo;
             },
+
+            send(form){
+                console.log("FORM", form);
+                if(!form.name || !form.email || !form.phone || !form.msg){
+                    swal("","Ingresa todos los campos, para enviar","");
+                    return;
+                }
+                form.producto_id = this.platillo.id;
+                this.$store.dispatch('actionEnviarContacto',[ form ]);
+            },
+
             add(){
                 if(!this.session.token){
                     this.$store.commit('openModal',['modalSession']);
                     return;
                 }
 
-                if(this.platillo.modelos && this.platillo.modelo.length){
+                if(this.platillo.modelos && this.platillo.modelos.length){
                     if(!this.form.modelo){
                         swal("","Selecciona la talla/modelo para continuar","");
                         return;

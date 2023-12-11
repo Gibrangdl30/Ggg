@@ -9,4 +9,15 @@
 .panel-right, .panel-left{
     background: transparent !important;
     width: 85% !important;
+    -webkit-transition: 0ms all linear !important;
+    -moz-transition: 0ms all linear !important;
+    -o-transition: 0ms all linear !important;
+    transition: 0ms all linear !important;     
+}
+
+.panel-in, .panel-out {
+    -webkit-transition: 0ms all linear !important;
+    -moz-transition: 0ms all linear !important;
+    -o-transition: 0ms all linear !important;
+    transition: 0ms all linear !important;     
 }

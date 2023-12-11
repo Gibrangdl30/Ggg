@@ -24,6 +24,7 @@
     "cordova-ios": "^5.1.1",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
     "cordova-plugin-statusbar": "^3.0.0",
+    "cordova-plugin-stripe": "^1.5.3",
     "css-loader": "^3.2.0",
     "current-device": "^0.10.0",
     "epipebomb": "^1.0.0",
@@ -46,8 +47,7 @@
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.1",
-    "webpack-merge": "^4.2.2",
-    "cordova-plugin-stripe": "^1.5.3"
+    "webpack-merge": "^4.2.2"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.11.1",

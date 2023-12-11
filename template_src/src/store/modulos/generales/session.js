@@ -119,16 +119,41 @@ const actions = {
             },error=>{});
     },
 
-    postLogin({ commit, state }, [data]){
+    postLogin({ commit, state }, [data, callback = null]){
          this.dispatch('postPromiseLoader', ['usuarios/login', data]).then(
             res => {
-                this.commit('setToken', res.data);
-                this.commit('setLogin', 1);
-                this.dispatch('synchronizeData', true);
-                this.commit('initVista');
-                this.commit('changeViewByTipe');
-                // this.commit('changeView','usuario');
-                // swal("",res.msg,"success");
+
+
+                //USUARIO NORMAL
+                if(res.data.cliente == 3){
+                    this.commit('setToken', res.data);
+                    this.commit('setLogin', 1);
+                    this.dispatch('synchronizeData', true);
+                    this.commit('initVista');
+                    this.commit('changeViewByTipe');
+                }
+
+                // USUARIO NO DE LA APP
+                if(res.data.cliente == 2){
+                    if(callback){
+                        callback(res.data);
+                    }
+                }
+
+                // USUARIO DE LA APP Y CREADOR
+                if(res.data.cliente == 1){
+                    res.data.callback = ()=>{
+                        this.commit('setToken', res.data);
+                        this.commit('setLogin', 1);
+                        this.dispatch('synchronizeData', true);
+                        this.commit('initVista');
+                        this.commit('changeViewByTipe');
+                    };
+
+                    if(callback){
+                        callback(res.data);
+                    }
+                }
             },
             error=>{});
     },

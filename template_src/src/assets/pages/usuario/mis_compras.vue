@@ -1,5 +1,17 @@
 <template>
     <f7-page class="" id="inicio">
+        <modalCalificar 
+            v-if="modal" 
+            :data="prod" 
+            @close="modal = 0"
+        />
+        <modalCalificar 
+            v-if="modal2"
+            :reportar="1"
+            :data="prod" 
+            :pedido="ped" 
+            @close="modal2 = 0"
+        />
         <div class="vista">
 
             <nav-bar tipo="inicio" title="Pedidos" :fix="1" :backs="true"   />
@@ -29,6 +41,7 @@
                                         <div class="row w-100 m-0  ">
                                             <div class="col-auto px-0 ml-auto letra-gray3-16 " v-if="info.creado">{{ [info.creado, 'YYYY-MM-DD HH:mm:ss'] |  moment('HH:mm [hrs] DD/MM/YYYY') }}</div>
                                         </div>
+                                        
                                     </div>
 
                                 </div>
@@ -37,7 +50,7 @@
                             <div class="row w-100 m-0 ">
                                 <div class="row w-100 m-0 mt-2 mb-2 mx-3 border-t-gray01-2">
                                     <div class="row w-100 m-0 letra-gray3-17">Productos:</div>
-                                    <div v-for="p of info.productos" :key="p.id" class="row w-100 m-0 py-1" @click="goes(p)">
+                                    <div v-for="p of info.productos" :key="p.id" class="row w-100 m-0 py-1" >
                                         <div class="row w-100 m-0">
                                             <div class="w-50px h-50px">
                                                 <imagen clase="border-radius-5px border-gray01-1" :src="p.imagen" />
@@ -91,6 +104,25 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="row w-100 m-0 ">
+                                            <div class="col-10 ml-auto px-1" >
+                                                <div v-if="p.calificacion" @click="prod = p;" class="row w-100 m-0 border-radius-10px py-1 back-color-gray2 letra-blanco-18 justify-content-center text-center">Calificar creador</div>
+                                                <div v-else @click="prod = p; modal = 1;" class="row w-100 m-0 border-radius-10px py-1 back-color-rojo letra-blanco-18 justify-content-center text-center">Calificar creador</div>
+                                            </div>
+                                            <div class="row w-100 m-0 pt-11px"></div>
+
+                                            <div class="col-10 ml-auto px-1  ">
+                                                <volverAComprarComponent :data="p" />
+                                            </div>
+
+                                            <div class="col-10 ml-auto px-1 pt-6px" >
+                                                <div class="row w-100 m-0 py-1" @click="ped = info; prod = p; modal2 = 1;" >
+                                                    <div class="row w-100 m-0 back-color-negro border-radius-10px ">
+                                                        <div class="row w-100 m-0 py-1 letra-blanco-18 text-center justify-content-center">Reportar problema</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -119,13 +151,15 @@ const moment = require('moment');
                 modal2: null,
                 c: 15,
                 add: 5,
+
+                prod:   null,
+                ped:    null,
                 // notShow:[],
             } 
         },
         computed: {
             router(){return this.$store.getters.getRouter;},
             session(){return this.$store.getters.getSession;},
-
             consumos(){return this.$store.getters.info('pedidos') },
         },
 

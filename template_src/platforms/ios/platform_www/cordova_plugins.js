@@ -302,6 +302,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
+      "id": "cordova-plugin-stripe.stripe",
+      "file": "plugins/cordova-plugin-stripe/www/CordovaStripe.js",
+      "pluginId": "cordova-plugin-stripe",
+      "clobbers": [
+        "cordova.plugins.stripe"
+      ]
+    },
+    {
       "id": "cordova-plugin-wkwebview-engine.ios-wkwebview-exec",
       "file": "plugins/cordova-plugin-wkwebview-engine/src/www/ios/ios-wkwebview-exec.js",
       "pluginId": "cordova-plugin-wkwebview-engine",
@@ -315,14 +323,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "pluginId": "cordova-plugin-wkwebview-engine",
       "clobbers": [
         "window.WkWebView"
-      ]
-    },
-    {
-      "id": "cordova-plugin-stripe.stripe",
-      "file": "plugins/cordova-plugin-stripe/www/CordovaStripe.js",
-      "pluginId": "cordova-plugin-stripe",
-      "clobbers": [
-        "cordova.plugins.stripe"
       ]
     }
   ];
@@ -340,8 +340,8 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-qrscanner": "3.0.1",
     "cordova-plugin-splashscreen": "6.0.2",
     "cordova-plugin-statusbar": "3.0.0",
+    "cordova-plugin-stripe": "1.5.3",
     "cordova-plugin-whitelist": "1.3.5",
-    "cordova-plugin-wkwebview-engine": "1.2.2",
-    "cordova-plugin-stripe": "1.5.3"
+    "cordova-plugin-wkwebview-engine": "1.2.2"
   };
 });

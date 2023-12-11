@@ -47,10 +47,12 @@
                 </div>
             </div>
             <div class="row w-100 m-0 pb-2">
-                <div class="row w-100 m-0 mt-1 h-73px align-content-center overflow-hidden justify-content-center text-center letra-gray4-18 fw-600">{{info.name | truncate(52)}}</div>
+                <div class="row w-100 m-0 mt-1 h-73px align-content-center overflow-hidden justify-content-center text-center letra-gray4-18 fw-600">{{info.name | truncate(40)}}</div>
                 <div class="row w-100 m-0 h-55px align-content-center overflow-hidden justify-content-center text-center letra-gray3-16 text-capitalize "> {{info.cat}}</div>
                 <div class="row w-100 m-0 justify-content-start  "> 
-                    <div class="row w-100 m-0 justify-content-center text-center px-0 my-auto letra-gray2-16 text-capitalize fw-800 " v-if="info.precioSin" ><p class="m-0" ><s>{{info.precioSin | currency}} MXN</s></p></div>
+                    <div class="row w-100 m-0 h-25px align-content-center justify-content-center text-center px-0 my-auto letra-gray2-16 text-capitalize fw-800 "  >
+                        <p v-if="info.precioSin" class="m-0" ><s>{{info.precioSin | currency}} MXN</s></p>
+                    </div>
                     <div class="row w-100 m-0 justify-content-center text-center px-0 my-auto letra-rojo-19 text-capitalize fw-800 ">{{info.precio | currency}} MXN</div>
                     <div class="row w-100 m-0 h-25px align-content-center ">
                         <div class="row w-100 m-0 justify-content-center text-center px-0 my-auto letra-rojo1-15 text-capitalize fw-800 " v-if="info.free_shipping=='1'">Envio gratis</div>

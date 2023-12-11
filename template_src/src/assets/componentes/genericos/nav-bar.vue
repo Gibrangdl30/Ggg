@@ -278,7 +278,7 @@
             },
             openMenu(){
                 this.$store.dispatch('synchronizeData');
-                this.$store.commit('openMenu');
+                this.$store.commit('openMenuRight');
             },
             openRightMenu(){
                 this.$store.dispatch('synchronizeData');

@@ -8,6 +8,7 @@ const initialState = {
     syncAll: false,
     syncExtra: {
         post: { load: false, url:'posts' },
+        docs: { load: false, url:'docs' },
     },
     update: moment().format('HH:mm [hrs] DD/MM/YYYY'),
     deviceready: false,
@@ -16,7 +17,7 @@ const initialState = {
     deviceIos: true,
     syncError: 0,
     apiV: '3',
-    version: '2.25.0',
+    version: '4.10.0',
     init: false,
     autoUpdate: null,
 };
@@ -317,7 +318,7 @@ const actions = {
         }
     },
 
-    postDetalleProd({ commit, state }, [ id, callback ]){
+    postDetalleProd({ commit, state }, [ id, callback = null, loader = 0 ]){
         let data = {
             producto_id: id,
         };
@@ -328,7 +329,7 @@ const actions = {
         };
 
         let load = {
-            loader: 0,
+            loader: loader,
             alert: 0,
             url: 'sync/get_detalle',
             data: data,
