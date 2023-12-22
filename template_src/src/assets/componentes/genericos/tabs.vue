@@ -46,7 +46,7 @@
                 </div>
             </div>
 
-            <div class="col p-0 h-100" @click="open('https://mexicolimited.com/#/asociarse')">
+            <!-- <div class="col p-0 h-100" @click="open('https://mexicolimited.com/#/asociarse')">
                 <div class="row w-100 m-0 position-absolute left-0px top--6px z-10 justify-content-center" v-if="circle">
                     <div class="w-60px h-60px mx-auto back-color-azul1 border-radius-50 " v-if="tabVisible==5"></div>
                 </div>
@@ -59,7 +59,7 @@
                         <div :class="(tabVisible==5)?'letra-rojo3-2-6vw' :'letra-gray3-2-6vw'" class="row w-100 m-0 text-capitalize text-center justify-content-center w-100" >Afiliate</div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     
         <div class="row w-100 m-0" v-if="coor">
