@@ -11,11 +11,14 @@ module.exports = function() {
       rules: [
         {
           test: /\.css$/,
-          loader: ['style-loader', 'css-loader']
+          use: ['style-loader', 'css-loader']
         }
       ]
     },
-    plugins: [new webpack.NamedModulesPlugin()],
+    optimization: {
+      moduleIds: 'named'
+    },
+    // plugins: [new webpack.NamedModulesPlugin()],
     devServer: {
       contentBase: path.join(__dirname, '../www'),
       port: devServerPort,
