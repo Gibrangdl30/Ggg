@@ -5,6 +5,7 @@ const commonConfig = require('./webpack.common');
 const CordovaHtmlOutputPlugin = require('../webpack/plugins/CordovaHtmlOutputPlugin.js');
 const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = function() {
   return webpackMerge(commonConfig({ mode: 'production' }), {
@@ -12,12 +13,13 @@ module.exports = function() {
       rules: [
         {
           test: /\.css$/,
-          use: ['style-loader', 'css-loader']
+          use: [MiniCssExtractPlugin.loader, 'css-loader']
         }
       ]
     },
     plugins: [
-      new CordovaHtmlOutputPlugin(),
+      //new CordovaHtmlOutputPlugin(),
+      new MiniCssExtractPlugin(),
       new TerserPlugin({
         extractComments: false
       }),

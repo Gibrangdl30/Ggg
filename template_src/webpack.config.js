@@ -1,9 +1,9 @@
 module.exports = function (env) {
-  if (typeof env === 'undefined') {
+  if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
     return require('./config/webpack.dev')();
-  } else if (typeof env.devserver !== 'undefined' && env.devserver) {
+  } else if (process.env.NODE_ENV == 'devserver') {
     return require('./config/webpack.server')();
-  } else if (typeof env.release !== 'undefined' && env.release) {
+  } else if (process.env.NODE_ENV == 'production' || process.env.NODE_ENV == 'release') {
     return require('./config/webpack.release')();
   }
 };
