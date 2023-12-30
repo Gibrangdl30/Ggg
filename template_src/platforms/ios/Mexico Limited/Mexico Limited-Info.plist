@@ -21,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>11</string>
+	<string>5.05.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -29,16 +29,10 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>NSCameraUsageDescription</key>
-	<string>Debes autorizar el uso de la cámara para adjuntar fotos a tu perfil </string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Accederemos a tu ubicación para ver las Propiedades cercanos a ti.</string>
 	<key>NSMainNibFile</key>
-	<string></string>
+	<string/>
 	<key>NSMainNibFile~ipad</key>
-	<string></string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Podrás subir una imágen de tu carrete fotográfico para tu perfil, portafolio o categoria. </string>
+	<string/>
 	<key>UIInterfaceOrientation</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -48,11 +42,18 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Accederemos a tu ubicación para ver las Propiedades cercanos a ti.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Debes autorizar el uso de la cámara para adjuntar fotos a tu perfil </string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Podrás subir una imágen de tu carrete fotográfico para tu perfil, portafolio o categoria. </string>
 </dict>
 </plist>
