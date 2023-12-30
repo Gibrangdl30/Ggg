@@ -10,7 +10,7 @@ module.exports = function (options) {
   return {
     mode: options.mode,
     entry: entryFile,
-
+    
     resolve: {
       extensions: ['.js', '.json', '.vue'],
       modules: [path.join(__dirname, '../src'), 'node_modules'],
@@ -32,7 +32,8 @@ module.exports = function (options) {
     },
 
     module: {
-      rules: [{
+      rules: [
+        {
           test: /\.(png|jpe?g|gif)$/,
           loader: 'file-loader',
           options: {

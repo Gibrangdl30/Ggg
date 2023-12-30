@@ -101,6 +101,7 @@ $colors: (
         {
             color: #{nth($color, 2)} !important;
             font-size: #{$size}px !important;
+            line-height: #{$size * 1.25}px;
         }  
         .#{nth($color, 1)}-#{$size}
         {

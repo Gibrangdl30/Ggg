@@ -39,21 +39,17 @@
             <div class="row w-100 m-0 px-3 py-3 ">
                 <div class="col px-0">
                     <div class="row w-100 m-0 pt-1 pb-1">
-                        <div class="col px-0 letra-rojo1-28 fw-600" >{{info.name}}</div>
+                        <div class="col px-0 letra-gray2-21 fw-600" >{{info.name}}</div>
                     </div>
+
+                    <div class="row w-100 m-0 pt-1 pb-1">
+                        <div class="col px-0 letra-gray3-18 fw-400" >Clave Articulo {{info.sku}}</div>
+                    </div> 
 
                     <div class="row w-100 m-0">
-                        <div class="row w-100 m-0 px-0 my-auto letra-gray2-19 text-capitalize fw-800 " v-if="info.precioSin" ><p class="m-0" ><s>{{info.precioSin | currency}} MXN</s></p></div>
-                        <div class="row w-100 m-0 px-0 my-auto letra-rojo-21 text-capitalize fw-800 ">{{info.precio | currency}} MXN</div>
+                        <div class="row w-100 m-0 px-0 my-auto letra-gray2-18 text-capitalize fw-800 " v-if="info.precioSin" ><p class="m-0" ><s>{{info.precioSin | currency}} MXN</s></p></div>
+                        <div class="row w-100 m-0 px-0 my-auto letra-rojo-22 text-capitalize fw-800 ">{{info.precio | currency}} MXN</div>
                     </div>
-                    
-                    <div class="row w-100 m-0 pt-1 pb-1">
-                        <div class="col px-0 letra-gray3-20 fw-600" >Clave Articulo {{info.sku}}</div>
-                    </div> 
-
-                    <div class="row w-100 m-0 pt-1 pb-1">
-                        <div class="col px-0 letra-rojo1-19 fw-600" >Stock Disponible: {{info.stock}}</div>
-                    </div> 
                     
                     <div class="row w-100 m-0 pt-1 pb-3" >
                         <div class="col-auto px-0" @click="goTienda()" >
@@ -61,7 +57,7 @@
                                 <div class="col-auto px-0">
                                     <icono icono="storefront" clase="letra-rojo-30" />
                                 </div>
-                                <div class="col-auto px-0 letra-rojo-20 fw-600" > {{info.brand}}</div>
+                                <div class="col-auto px-0 letra-rojo-18 fw-600" > {{info.brand}}</div>
                             </div>
                         </div>
                     </div> 
@@ -112,7 +108,11 @@
                 
             </div>
 
-            <div class="row w-100 m-0 px-3 py-2 pb-3  " v-if="info.sku && Number(info.width) && Number(info.weight) && Number(info.high)" >
+            <div class="row w-100 m-0 px-3 py-2 pb-3  " v-if="info.sku && Number(info.width) && Number(info.weight) && Number(info.high)" >                    
+                <div class="row w-100 m-0 pt-1 pb-1">
+                    <div class="col px-0 letra-gray3-18 fw-600" >Stock Disponible: {{info.stock}}</div>
+                </div> 
+
                 <div class="col my-auto px-0">
                     <div class="row w-100 m-0">
                         <div class="col my-auto px-0 letra-gray4-22 text-capitalize">Cantidad: </div>

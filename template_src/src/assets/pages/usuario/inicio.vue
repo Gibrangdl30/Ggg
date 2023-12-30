@@ -27,9 +27,9 @@
                 </template>
 
                 
-
+                <!-- MAIN CONTENT -->
                 <div class="row w-100 m-0 pt-2"  >
-
+                    <!-- HOME PAGE COMPONENTS -->
                     <template v-if="!cat && !sub && !b">
                         <div class="row w-100 m-0 pl-3">
                             <div class="row w-100 m-0 letra-negro-19 fw-600">Productos populares </div>
@@ -89,12 +89,41 @@
                         </template>
                         
                     </template>
+                    <!-- END: HOME PAGE COMPONENTS -->
 
-
-                    <!-- <div class="row w-100 m-0 px-3 letra-negro-19 fw-600">No te puedes perder </div> -->
                     <template v-if="cat || sub || b" >
+                        <ais-infinite-hits>
+                            <template v-slot="{
+                                items,
+                                refinePrevious,
+                                refineNext,
+                                isLastPage,
+                                sendEvent,
+                            }">
+                                <!-- <div>
+                                    <button @click="refinePrevious">
+                                    Show previous results
+                                    </button>
+                                </div> -->
+
+                                <div class="row w-100 m-0 px-3 mb-3 to-eventos_zonas" v-for="item in items" :key="item.objectID">
+                                    <div class="row w-100 m-0" >
+                                        <instalcionesComponent :row="1" :data="item" />
+                                    </div>
+                                </div>
+
+                                <div class="row w-100 m-0 pb-1 pt-3">
+                                    <div v-if="!isLastPage" class="row w-100 m-0">
+                                        <div class="col-8 px-0 mx-auto" >
+                                            <botonApp @click="refineNext" texto="Ver más" tipo="azul" radius="30px" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </ais-infinite-hits>
+
+                        <!--
                         <div class="row w-100 m-0 px-3 pt-4 to-eventos_zonas" v-for=" (e,x) of paginado" :key="e.id">
-                            <!-- {{ buscar(e) }} -->
                             <div class="row w-100 m-0 py-2" >
                                 <instalcionesComponent :row="1"  :data="e"  />
                             </div>
@@ -110,22 +139,15 @@
                                     </div>
                                 </div>
                             </template>
-
-                        </div>
-
-                        <div class="row w-100 m-0 pb-1 pt-3">
-                            <div class="row w-100 m-0">
-                                <div class="col-8 px-0 mx-auto" v-if="c < instalciones.length" @click="c += add">
-                                    <botonApp texto="Ver mas" tipo="azul" radius="30px" />
-                                </div>
-                            </div>
-                        </div>
+                        </div>-->
                     </template>
-
                 </div>
+                <!-- END: MAIN CONTENT -->
             </div>
             
+            <!-- FIXED BOTTOM NAVIGATION -->
             <tabs />
+            <!-- END: FIXED BOTTOM NAVIGATION -->
         </div>
 
     </f7-page>

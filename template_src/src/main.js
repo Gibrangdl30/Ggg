@@ -23,6 +23,10 @@ import customTheme from './assets/css/app.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
+// Import Algolia Search
+import InstantSearch from 'vue-instantsearch';
+Vue.use(InstantSearch);
+
 // Import App Component
 import app from './main.vue';
 
