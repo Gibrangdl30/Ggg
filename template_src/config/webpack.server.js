@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const devServerPort = 8081;
 
@@ -11,11 +12,17 @@ module.exports = function() {
       rules: [
         {
           test: /\.css$/,
-          loader: ['style-loader', 'css-loader']
+          use: [MiniCssExtractPlugin.loader, 'css-loader']
         }
       ]
     },
-    plugins: [new webpack.NamedModulesPlugin()],
+    plugins: [
+      // new webpack.NamedModulesPlugin()
+      new MiniCssExtractPlugin(),
+    ],
+    optimization: {
+      moduleIds: 'named'
+    },
     devServer: {
       contentBase: path.join(__dirname, '../www'),
       port: devServerPort,

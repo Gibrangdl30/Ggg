@@ -10,7 +10,7 @@
                     <icono icono="clear" :clase=" `letra-gray3-26` " />
                 </div> -->
                 <input  :id="id" type="text" class="busqueda-input w-100 p-0 pl-1 pr-4 border-radius-28px color-blanco" 
-                        :placeholder="holder || 'Buscar ...'" 
+                        :placeholder="holder || 'Buscar...'" 
                         :value="value" 
                         @input="$emit('input',$event.target.value); initX();" 
                         @change="$emit('change', $event.target.value); "

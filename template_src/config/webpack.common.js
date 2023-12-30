@@ -25,9 +25,9 @@ module.exports = function (options) {
 
     output: {
       pathinfo: true,
-      devtoolLineToLine: true,
-      filename: '[hash].[name].js',
-      sourceMapFilename: "[hash].[name].js.map",
+      // devtoolLineToLine: true,
+      filename: '[contenthash].[name].js',
+      sourceMapFilename: "[contenthash].[name].js.map",
       path: path.join(__dirname, '../www')
     },
 
@@ -36,14 +36,14 @@ module.exports = function (options) {
           test: /\.(png|jpe?g|gif)$/,
           loader: 'file-loader',
           options: {
-            name: '[name].[ext]?[hash]'
+            name: '[name].[ext]?[contenthash]'
           }
         },
         {
           test: /\.(woff2?|eot|ttf|otf|mp3|wav)(\?.*)?$/,
           loader: 'file-loader',
           options: {
-            name: '[name].[ext]?[hash]'
+            name: '[name].[ext]?[contenthash]'
           }
         },
         {
@@ -52,11 +52,11 @@ module.exports = function (options) {
         },
         {
           test: /\.scss$/,
-          loader: ['vue-style-loader', 'css-loader', 'sass-loader']
+          use: ['vue-style-loader', 'css-loader', 'sass-loader']
         },
         {
           test: /\.sass$/,
-          loader: ['vue-style-loader', 'css-loader', 'sass-loader?indentedSyntax']
+          use: ['vue-style-loader', 'css-loader', 'sass-loader?indentedSyntax']
         },
         {
           test: /\.vue$/,
@@ -67,8 +67,8 @@ module.exports = function (options) {
               js: {
                 loader: 'babel-loader',
                 options: {
-                  presets: ['env'],
-                  plugins: ['transform-object-rest-spread']
+                  presets: [['@babel/preset-env', { targets: "defaults" }]],
+                  plugins: ['transform-runtime', '@babel/plugin-proposal-optional-chaining']
                 }
               }
             }
@@ -80,8 +80,8 @@ module.exports = function (options) {
           use: {
             loader: 'babel-loader',
             options: {
-              presets: ['env'],
-              plugins: ['transform-runtime', 'transform-object-rest-spread']
+              presets: [['@babel/preset-env', { targets: "defaults" }]],
+              plugins: ['@babel/plugin-transform-runtime', '@babel/plugin-proposal-optional-chaining']
             }
           }
         }
