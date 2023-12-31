@@ -9,7 +9,7 @@
             <div class="row w-100 m-0 overflow-hidden" @click="set1()">
                 <div class="row w-100 m-0 border-radius-2px ">
                     <div class="w-25vw h-25vw mb-auto mr-auto">
-                        <img :class="`h-100 w-100`" :src="`https://mexicolimited.com${info.image}`" :alt="info.name" />
+                        <imagen clase="border-radius-10px" :create="true" :src="info.imagen" />
                         <!-- <div class="w-50vw">
                             <div class="row w-100 m-0  letra-blanco-15">A 10 MIN</div>
                         </div> -->

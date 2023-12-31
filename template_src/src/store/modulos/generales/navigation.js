@@ -11,6 +11,7 @@ const initialState = {
     emitBack: null,
     backId: null,
     funcion: null,
+    search_query: null,
 
     msn:{
         data:   {},
@@ -71,8 +72,8 @@ const getters = {
     getModalesAbiertos(state){ 
         for(let m in state.modales){if(state.modales[m].open)return true;}
         return false;
-    }
-
+    },
+    getSearchQuery(state){return state.search_query;},
 };
 
 function closeModales(modales){
@@ -263,6 +264,10 @@ const mutations = {
     },
     closeMenuRight(state){
         state.f7.panel.close('right', true);
+    },
+
+    setSearchQuery(state, value){
+        state['search_query'] = value;
     },
 
 };

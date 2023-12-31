@@ -9,7 +9,7 @@
             </div>
 
             <template v-if="debugB">
-                <div class="row w-100 m-0 letra-gray3-20 justify-content-center py-2">Categorias -> subs</div>
+                <div class="row w-100 m-0 letra-gray3-20 justify-content-center py-2">Categorías -> Subs</div>
             </template>
             
             <div class="contenedor-page-tabs ">
@@ -120,7 +120,7 @@ const moment = require('moment');
             cat(){return this.$store.getters.catalogoGetObject('cat') || null;},
             sub(){return this.$store.getters.catalogoGetObject('sub') || null;},
             categorias(){return this.$store.getters.info('categorias') },
-            cats(){return this.categorias.find(w=>w.id == this.cat) || {}},
+            cats(){return this.categorias.find(w => w.id == this.cat) || {}},
             subs(){return this.cats.subcat.filter(s=>s.prod && s.prod.id) },
 
             prods(){return this.$store.getters.info('productos').filter(w=>w.categorias.some(s=>s.id == this.cat)) },
