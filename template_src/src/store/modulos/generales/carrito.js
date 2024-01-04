@@ -14,6 +14,8 @@ const initialState = {
     para_usuarios_id: null,
     listas_id: null,
     eventos_id: null,
+
+    loadState: 0,
     
     desgloce: {
         carrito : [],
@@ -41,6 +43,21 @@ const getters={
     carritoFindInside:(state)=>(obj,data,key,id)=>{return state[obj].a.find(a=>{return a.id == state[data]})[key].find(x=>{return x.id == state[id]})},
 };
 const mutations={
+
+    initCarrito(state){
+        if(!state.loadState){
+            let x = localStorage.getItem('carritoMex456');
+            // console.log("GET LOAD", x);
+            if(x){
+                x = JSON.parse(x);
+                state.desgloce.carrito = x;
+                this.commit('calcularTotal');
+            }
+            state.loadState = 1;
+            
+        }
+
+    },
 
     setCarritosState(state,[key,data]){
         state[key] = data;
@@ -137,6 +154,9 @@ const mutations={
     },
 
     calcularTotal(state){
+
+        localStorage.setItem('carritoMex456', JSON.stringify(state.desgloce.carrito));
+
         state.desgloce.subtotal     = 0;
         state.desgloce.comision     = 0;
         state.desgloce.total        = 0;
