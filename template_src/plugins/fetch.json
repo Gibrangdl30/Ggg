@@ -7,14 +7,6 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-wkwebview-engine": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-wkwebview-engine@^1.2.2"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "cordova-plugin-device": {
     "source": {
       "type": "registry",
