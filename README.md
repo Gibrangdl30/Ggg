@@ -5,6 +5,9 @@ Cordova version: 8.1.0
 <engine name="browser" spec="^5.0.4" />
 <engine name="android" spec="^8.1.0" />
 
+https://alonsotorres@bitbucket.org/sustamapps/mexicolimited_app_new.git
+https://alonsotorres@bitbucket.org/sustambackend/mexicolimited_api.git
+
 cordova-plugin-keyboard
 
 cordova-support-google-services

@@ -133,6 +133,7 @@ const actions = {
     
     initData({state}, [f7]){
         this.dispatch('synchronizeData');
+        this.commit('initCarrito')
         this.commit('updateF7',[f7])
         this.commit('addBackbutton_action');
     },
