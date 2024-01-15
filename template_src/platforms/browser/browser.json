@@ -36,6 +36,5 @@
     }
   },
   "installed_plugins": {},
-  "dependent_plugins": {},
-  "modules": []
+  "dependent_plugins": {}
 }

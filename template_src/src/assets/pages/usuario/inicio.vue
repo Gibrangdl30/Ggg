@@ -106,7 +106,8 @@
                                     Show previous results
                                     </button>
                                 </div> -->
-
+                                
+                                <!-- PRODUCT THUMBNAIL -->
                                 <div class="row w-100 m-0 px-3 mb-3 to-eventos_zonas" v-for="item in items"
                                     :key="item.objectID">
                                     <div class="row w-100 m-0">
@@ -116,7 +117,9 @@
                                         />
                                     </div>
                                 </div>
+                                <!-- END: PRODUCT THUMBNAIL -->
 
+                                <!-- VIEW MORE BUTTON -->
                                 <div class="row w-100 m-0 pb-1 pt-3">
                                     <div v-if="!isLastPage" class="row w-100 m-0">
                                         <div class="col-8 px-0 mx-auto">
@@ -124,6 +127,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- END: VIEW MORE BUTTON -->
                             </template>
                         </ais-infinite-hits>
 

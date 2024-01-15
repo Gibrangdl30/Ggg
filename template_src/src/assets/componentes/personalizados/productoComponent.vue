@@ -47,8 +47,11 @@
                     </div> 
 
                     <div class="row w-100 m-0">
-                        <div class="row w-100 m-0 px-0 my-auto letra-gray2-18 text-capitalize fw-800 " v-if="info.precioSin" ><p class="m-0" ><s>{{info.precioSin | currency}} MXN</s></p></div>
-                        <div class="row w-100 m-0 px-0 my-auto letra-rojo-22 text-capitalize fw-800 ">{{info.precio | currency}} MXN</div>
+                        <div class="row w-100 m-0 px-0 my-auto letra-gray2-18 text-capitalize fw-800 " v-if="info.activate_discount && info.discount > 0" >
+                            <p class="m-0" ><s>{{info.pre_price | currency}} MXN</s></p>
+                        </div>
+                        <div class="row w-100 m-0 px-0 my-auto letra-rojo-22 text-capitalize fw-800 ">{{info.price | currency}} MXN</div>
+                        <div class="row w-100 m-0 px-0 my-auto letra-rojo1-14 text-capitalize fw-600 " v-if="info.free_shipping == '1'">Envío gratis</div>
                     </div>
                     
                     <div class="row w-100 m-0 pt-1 pb-3" >
@@ -80,12 +83,12 @@
             </div>
 
             <div class="row w-100 m-0" >
-                <template v-if="info.modelos && info.modelos.length" >
+                <template v-if="info.models && info.models.length" >
                     <div class="row w-100 m-0 px-3">
                         <div class="row w-100 m-0 letra-gray3-20" v-if="info.stocktype=='sizes'" >Tallas</div>
                         <div class="row w-100 m-0 letra-gray3-20" v-else >Modelos</div>
                         <div class="row w-100 m-0 pt-3">
-                            <div v-for="m of info.modelos" :key="m.id" class="row w-100 m-0 py-2">
+                            <div v-for="m of info.models" :key="m.id" class="row w-100 m-0 py-2">
 
                                 <div class="col-auto px-1 pr-2 my-auto" >
                                     <div class="row w-100 m-0" >
@@ -96,7 +99,7 @@
                                     </div>
                                 </div>
                                 <div class="w-60px h-60px border-radius-10px overflow-hidden">
-                                    <imagen  :src="m.imagen" />
+                                    <imagen  :src="m.imageUrl" />
                                 </div>
                                 <div class="col-3 px-0 letra-gray3-18 text-center">{{m.size}}</div>
                                 <div class="col-5 px-0 letra-gray3-18 text-center ">{{m.description}}</div>
@@ -218,7 +221,7 @@ const moment = require('moment');
 export default {
     data(){
         return {
-            
+            // info: {},
             modal:  0,
 
             form: {
@@ -262,12 +265,13 @@ export default {
 
     },
     
-    mounted(){
-        this.$store.dispatch('postDetalleProd',[this.info.id, (p)=>{
-            console.log("GET DETALLE", this.info, p);
-            this.detalle = p;
+    created(){
+        // this.$store.dispatch('postDetalleProd',[this.info.id, (p)=>{
+            // this.info = this.data;
+            this.detalle = this.info;
+            console.log("GET DETALLE", this.info);
             this.set();
-        }])
+        // }])
     },
 
     methods:{
