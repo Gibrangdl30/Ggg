@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin ...>
+  <platform name="android">
+    <dependency id="cordova-androidx-build" />
+  </platform>
+</plugin>
